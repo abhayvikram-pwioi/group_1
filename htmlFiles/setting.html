@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/cssFiles/setting.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Overview Tab</title>
+</head>
+
+<body>
+
+    <section class="settings">
+
+        <aside class="sidebar" id="main-sidebar">
+
+            <div class="sidebar-logo">
+                <img src="/assets/images/logo.png" alt="" class="logo-png" >
+                <h2>FitHive</h2>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="/htmlFiles/overview.html" class="menu-item">
+                    <i class="fa-solid fa-chart-bar"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/htmlFiles/yourProgress.html" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Your Progress</span>
+                </a>
+
+
+                <a href="/htmlFiles/analytics.html" class="menu-item">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Analytics</span>
+                </a>
+
+                <a href="/htmlFiles/setting.html" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Setting</span>
+                </a>
+            </nav>
+
+        </aside>
+
+            <header>
+
+                <div class="header-left">
+
+                    <i class="fa-solid fa-bars" id="menu-toggle"></i>
+
+                    <div class="header-center">
+                         <div class="header-name-sec">
+                        <h3 id="header-name1">ggood</h3>
+                        <h3 id="header-name2">Aman kumar</h3>
+                        </div>
+                        <p>Ready to crush your goals today?</p>
+                    </div>
+
+                </div>
+
+                <div class="header-right">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-bell"></i>
+
+                    <div class="reward-sec">
+                        <i class="fa-solid fa-trophy"></i>
+                        <p id="reward-points">2045</p>
+                        <h4>Pts</h4>
+                    </div>
+                    <div class="profile-section">
+                        <img src="/assets/images/image.jpeg" alt="Alex Johnson" width="50px" height="50px" id="profile-pic">
+
+                    </div>
+                </div>
+
+            </header>
+
+        <div class="top">
+            <h1>Settings</h1>
+            <p>Manage your FitPro profile and preferences</p>
+        </div>
+
+
+        <div class="settings-grid">
+
+            <!-- LEFT COLUMN -->
+
+            <div class="left-col">
+
+                <div class="card profile-card">
+
+                    <div class="card-head">
+
+                        <div class="circle">👤</div>
+
+                        <div>
+                            <h2>Profile Information</h2>
+                            <p>Update your fitness details</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-area">
+
+                        <div class="img-wrap">
+
+                            <img src="/assets/images/image.jpeg" id="profile-pic-set">
+
+                            <div class="edit-icon" id="editBtn">
+                                ✎
+                            </div>
+
+                        </div>
+
+
+                        <div class="basic-info">
+
+                            <h3 id="profile-name-set">Aman Kumar</h3>
+
+                            <span>Elite Member</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card notif">
+
+                    <div class="setting-row">
+
+                        <div>
+                            <h3>Workout Notifications</h3>
+                            <p>Daily workout reminders</p>
+                        </div>
+
+                        <label class="switch">
+                            <input checked type="checkbox">
+                            <span></span>
+                        </label>
+
+                    </div>
+
+                    <hr>
+
+
+                    <div class="setting-row">
+
+                        <div>
+                            <h3>Email Reports</h3>
+                            <p>Weekly fitness summary</p>
+                        </div>
+
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span></span>
+                        </label>
+
+                    </div>
+
+
+                    <hr>
+
+                    <div class="setting-row">
+
+                        <div>
+                            <h3>Marketing Mails</h3>
+                            <p>Offers and memberships</p>
+                        </div>
+
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span></span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+            <!-- RIGHT COLUMN -->
+
+
+            <div class="right-col">
+
+
+                <div class="card">
+
+                    <div class="card-head">
+
+                        <div class="circle">☀</div>
+
+                        <div>
+                            <h2>Appearance</h2>
+                            <p>Customize your experience</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="inside-box">
+
+                        <div>
+
+                            <h3>Dark Mode</h3>
+                            <p>Reduce eye strain</p>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input checked type="checkbox" id="themeToggle">
+
+                            <span></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card-links">
+
+                    <div class="card-head">
+
+                        <div class="circle">🔗</div>
+
+                        <div>
+                            <h2>Quick Links</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="link">Billing & Plans →</div>
+
+                    <div class="link">Privacy & Security →</div>
+
+                    <div class="link">Membership Details →</div>
+
+
+                </div>
+
+
+
+                <a class="logout" href="/htmlFiles/login.html" style="text-decoration: none;">
+                    Log Out →
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- hidden profile popup -->
+
+
+    <div class="edit-popup">
+
+        <div class="edit-card">
+
+            <h2>Edit Fitness Profile</h2>
+
+            <div class="goal-upload">
+
+                <label for="goal-image-set" class="upload-box">
+                    <i class="fa-solid fa-upload"></i>
+                </label>
+
+                <input type="file" id="goal-image-set">
+
+            </div>
+
+            <div class="form-grid">
+
+                <input placeholder="Full Name" id="name-set">
+
+                <input placeholder="Email" id="email-set">
+
+                <input placeholder="Weight" id="weight-set">
+
+                <input placeholder="Height" id="height-set">
+
+                <input placeholder="Goal Weight" id="goal-weight-set">
+
+                <input placeholder="Age" id="age-set">
+
+                <select id="workout-goal-set">
+
+                    <option>Workout Goal</option>
+
+                    <option>Fat Loss</option>
+
+                    <option>Strength</option>
+
+                    <option>Muscle Gain</option>
+
+                    <option>Cardio</option>
+
+                </select>
+
+
+                <select id="activity-level-set">
+
+                    <option>Activity Level</option>
+
+                    <option>Beginner</option>
+
+                    <option>Intermediate</option>
+
+                    <option>Advanced</option>
+
+                </select>
+
+            </div>
+
+            <button id="save-changes-set">
+
+                Save Changes
+
+            </button>
+
+        </div>
+
+    </div>
+    <script>
+
+        let btn = document.querySelector("#editBtn")
+
+        let popup = document.querySelector(".edit-popup")
+
+
+        btn.onclick = () => {
+
+            popup.style.display = "flex"
+
+        }
+
+
+        popup.onclick = (e) => {
+
+            if (e.target === popup) {
+
+                popup.style.display = "none"
+
+            }
+
+        }
+
+
+    </script>
+
+
+    <script src="/jsFiles/app.js"></script>
+</body>
+
+</html>

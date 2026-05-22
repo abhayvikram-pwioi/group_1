@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitHive — Gym Dashboard</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+    rel="stylesheet">
+</head>
+<link rel="stylesheet" href="/cssFiles/Home.css">
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Fit<span>Hive</span></div>
+    <ul class="nav-links">
+      <li><a href="#bmi">BMI</a></li>
+      <li><a href="#stats">Stats</a></li>
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/htmlFiles/login.html" class="btn-ghost">Log in</a>
+      <a class="btn-lime" href="/htmlFiles/signUp.html">Sign up</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-orb orb1"></div>
+    <div class="hero-bg-orb orb2"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="hero-badge-dot"></span>12,400+ Active Members</div>
+        <h1>TRAIN<br><em>HARDER.</em><br>LIVE BETTER.</h1>
+        <p>Your all-in-one fitness hub. Track workouts, crush goals, and join a community built around results — not
+          excuses.</p>
+        <div class="hero-cta">
+          <button class="btn-lime-lg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+            <a href="/htmlFiles/signUp.html" style="text-decoration: none;">Sign up</a>
+          </button>
+          <button class="btn-ghost-lg">
+            <a href="#plans" style="text-decoration: none; color: white;">Explore Plans</a>
+
+          </button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-main">
+          <div class="hero-avatar">JK</div>
+          <h3>Keep moving today!</h3>
+          <h2>Hi, Jordan</h2>
+          <div class="progress-label"><span>Daily goal</span><span style="color:var(--lime)">74%</span></div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:74%"></div>
+          </div>
+          <div class="hero-mini-stats">
+            <div class="hero-mini-stat">
+              <div class="val">3,789</div>
+              <div class="lbl">Steps</div>
+            </div>
+            <div class="hero-mini-stat">
+              <div class="val">1.1k</div>
+              <div class="lbl">Cal burned</div>
+            </div>
+            <div class="hero-mini-stat">
+              <div class="val">2.1</div>
+              <div class="lbl">km distance</div>
+            </div>
+            <div class="hero-mini-stat">
+              <div class="val">123</div>
+              <div class="lbl">Heart rate</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-floating float1">
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:2px">Day streak 🔥</div>
+          <div class="f-val">24</div>
+        </div>
+        <div class="hero-floating float2" style="font-size:12px;padding:10px 14px;">
+          <div style="color:var(--text-muted);font-size:11px;margin-bottom:4px">Workout complete</div>
+          <div style="color:var(--lime);font-weight:600">You crushed it! 💪</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BMI CALCULATOR -->
+  <section class="bmi-section" id="bmi">
+    <div class="section-inner">
+      <div class="section-label">Health tools</div>
+      <h2 class="section-title">BMI CALCULATOR</h2>
+      <p class="section-sub">Know your numbers. Enter your details and instantly see where you stand on the health
+        scale.</p>
+      <div class="bmi-grid">
+        <div class="bmi-form">
+          <div class="input-group">
+            <label>GENDER</label>
+            <div class="radio-row">
+              <button class="radio-btn active" onclick="setGender(this,'M')">Male</button>
+              <button class="radio-btn" onclick="setGender(this,'F')">Female</button>
+              <button class="radio-btn" onclick="setGender(this,'O')">Other</button>
+            </div>
+          </div>
+          <div class="input-group">
+            <label>AGE</label>
+            <input class="input-styled" type="number" id="bmi-age" placeholder="e.g. 25" min="1" max="120"
+              oninput="calcBMI()">
+          </div>
+          <div class="input-group">
+            <label>HEIGHT (cm)</label>
+            <input class="input-styled" type="number" id="bmi-height" placeholder="e.g. 175" oninput="calcBMI()">
+          </div>
+          <div class="input-group">
+            <label>WEIGHT (kg)</label>
+            <input class="input-styled" type="number" id="bmi-weight" placeholder="e.g. 70" oninput="calcBMI()">
+          </div>
+          <button class="btn-lime-lg" style="align-self:flex-start" onclick="calcBMI()">Calculate BMI</button>
+        </div>
+
+        <div class="bmi-result-card">
+          <div style="font-size:12px;color:var(--text-muted);letter-spacing:1px;margin-bottom:8px">YOUR BMI</div>
+          <div class="bmi-number" id="bmi-val">—</div>
+          <div class="bmi-category" id="bmi-cat">Enter your details to calculate</div>
+          <div class="bmi-range-track">
+            <div class="bmi-thumb" id="bmi-thumb" style="left:0%"></div>
+          </div>
+          <div class="bmi-range-labels">
+            <span>16</span><span>18.5</span><span>25</span><span>30</span><span>40</span>
+          </div>
+          <div class="bmi-categories">
+            <div class="bmi-cat-item">
+              <div class="bmi-cat-dot" style="background:#3b82f6"></div>
+              <div class="bmi-cat-label">Underweight</div>
+            </div>
+            <div class="bmi-cat-item">
+              <div class="bmi-cat-dot" style="background:#22c55e"></div>
+              <div class="bmi-cat-label">Normal</div>
+            </div>
+            <div class="bmi-cat-item">
+              <div class="bmi-cat-dot" style="background:#BEFF00"></div>
+              <div class="bmi-cat-label">Overweight</div>
+            </div>
+            <div class="bmi-cat-item">
+              <div class="bmi-cat-dot" style="background:#ef4444"></div>
+              <div class="bmi-cat-label">Obese</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats">
+    <div class="section-inner">
+      <div class="section-label">By the numbers</div>
+      <h2 class="section-title">COMMUNITY AT A GLANCE</h2>
+      <p class="section-sub">Real metrics from a growing fitness community. Every number here represents a person who
+        chose to show up.</p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <div class="stat-val">12.4K</div>
+          <div class="stat-label">Members joined</div>
+          <div class="stat-change up">↑ 18.3% this month</div>
+          <div class="mini-bars">
+            <div class="mini-bar" style="height:30%"></div>
+            <div class="mini-bar" style="height:45%"></div>
+            <div class="mini-bar" style="height:35%"></div>
+            <div class="mini-bar" style="height:60%"></div>
+            <div class="mini-bar" style="height:50%"></div>
+            <div class="mini-bar" style="height:75%"></div>
+            <div class="mini-bar active" style="height:90%"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M6 20v-2a6 6 0 0 1 12 0v2" />
+              <path d="M2 20h2M20 20h2" />
+            </svg>
+          </div>
+          <div class="stat-val">148</div>
+          <div class="stat-label">Certified trainers</div>
+          <div class="stat-change up">↑ 12 new this quarter</div>
+          <div class="mini-bars">
+            <div class="mini-bar" style="height:40%"></div>
+            <div class="mini-bar" style="height:55%"></div>
+            <div class="mini-bar" style="height:48%"></div>
+            <div class="mini-bar" style="height:70%"></div>
+            <div class="mini-bar" style="height:62%"></div>
+            <div class="mini-bar" style="height:80%"></div>
+            <div class="mini-bar active" style="height:88%"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+              <polyline points="16 7 22 7 22 13" />
+            </svg>
+          </div>
+          <div class="stat-val">94%</div>
+          <div class="stat-label">Retention rate</div>
+          <div class="stat-change up">↑ 6% vs last year</div>
+          <div class="mini-bars">
+            <div class="mini-bar" style="height:70%"></div>
+            <div class="mini-bar" style="height:78%"></div>
+            <div class="mini-bar" style="height:72%"></div>
+            <div class="mini-bar" style="height:85%"></div>
+            <div class="mini-bar" style="height:80%"></div>
+            <div class="mini-bar" style="height:90%"></div>
+            <div class="mini-bar active" style="height:94%"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+          </div>
+          <div class="stat-val">320+</div>
+          <div class="stat-label">Weekly classes</div>
+          <div class="stat-change up">↑ 40 new classes added</div>
+          <div class="mini-bars">
+            <div class="mini-bar" style="height:50%"></div>
+            <div class="mini-bar" style="height:65%"></div>
+            <div class="mini-bar" style="height:55%"></div>
+            <div class="mini-bar" style="height:80%"></div>
+            <div class="mini-bar" style="height:70%"></div>
+            <div class="mini-bar" style="height:88%"></div>
+            <div class="mini-bar active" style="height:95%"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </div>
+          <div class="stat-val">4.9</div>
+          <div class="stat-label">Average rating</div>
+          <div class="stars" style="margin-top:10px">
+            <svg class="star" viewBox="0 0 24 24">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <svg class="star" viewBox="0 0 24 24">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <svg class="star" viewBox="0 0 24 24">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <svg class="star" viewBox="0 0 24 24">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <svg class="star" viewBox="0 0 24 24">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </div>
+          <div style="font-size:12px;color:var(--text-dim);margin-top:6px">Based on 3,200 reviews</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div class="stat-val">99%</div>
+          <div class="stat-label">Uptime this year</div>
+          <div class="stat-change up">Zero major outages</div>
+          <div style="margin-top:14px;display:flex;gap:4px;flex-wrap:wrap">
+            <div id="uptime-blocks"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section id="plans" style="background:var(--bg-card)">
+    <div class="section-inner">
+      <div class="section-label">Membership</div>
+      <h2 class="section-title">PLANS BUILT FOR<br>EVERY GOAL</h2>
+      <p class="section-sub">Whether you're starting out or going pro, there's a plan that fits your grind.</p>
+      <div class="plans-grid">
+        <div class="plan-card">
+          <span class="plan-badge">STARTER</span>
+          <div class="plan-name">Basic Access</div>
+          <div class="plan-price">₹499</div>
+          <div class="plan-period">/ month</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Gym floor access
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>5 group classes / month
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Fitness assessment
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>App dashboard access
+            </li>
+          </ul>
+          <button class="plan-btn">Get started</button>
+        </div>
+        <div class="plan-card featured">
+          <span class="plan-badge">MOST POPULAR</span>
+          <div class="plan-name">Pro Member</div>
+          <div class="plan-price">₹999</div>
+          <div class="plan-period">/ month</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Everything in Basic
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Unlimited group classes
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>2 PT sessions / month
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Nutrition guidance
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Priority class booking
+            </li>
+          </ul>
+          <button class="plan-btn">Join Pro</button>
+        </div>
+        <div class="plan-card">
+          <span class="plan-badge">ELITE</span>
+          <div class="plan-name">All Access</div>
+          <div class="plan-price">₹1,799</div>
+          <div class="plan-period">/ month</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Everything in Pro
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Dedicated personal trainer
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Custom meal plans
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>Spa & recovery lounge
+            </li>
+            <li>
+              <div class="plan-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>24/7 access + guest passes
+            </li>
+          </ul>
+          <button class="plan-btn">Go Elite</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section" id="reviews">
+    <div class="section-inner">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">WHAT MEMBERS SAY</h2>
+      <p class="section-sub">Don't take our word for it — hear from the community that keeps showing up every day.</p>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#BEFF00,#6bc800)">AR</div>
+              <div>
+                <div class="reviewer-name">Arjun Rao</div>
+                <div class="reviewer-plan">Pro Member · Delhi</div>
+              </div>
+            </div>
+            <div class="stars">
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+          </div>
+          <div class="review-quote">Lost 12 kg in 3 months with FitHive. The trainers here are genuinely invested in
+            your progress, and the app makes tracking everything super effortless.</div>
+          <div class="review-date">March 2025</div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">PS</div>
+              <div>
+                <div class="reviewer-name">Priya Sharma</div>
+                <div class="reviewer-plan">Elite Member · Mumbai</div>
+              </div>
+            </div>
+            <div class="stars">
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+          </div>
+          <div class="review-quote">The custom meal plans and personal trainer sessions under Elite are unmatched. I've
+            tried 4 different gyms — FitHive is in a completely different league.</div>
+          <div class="review-date">January 2025</div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">KM</div>
+              <div>
+                <div class="reviewer-name">Karan Mehta</div>
+                <div class="reviewer-plan">Pro Member · Bengaluru</div>
+              </div>
+            </div>
+            <div class="stars">
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg class="star" viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+          </div>
+          <div class="review-quote">Signed up 6 months ago not knowing where to start. Now I'm prepping for a
+            half-marathon. The streak system on the app is genuinely addictive in the best way.</div>
+          <div class="review-date">April 2025</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">FitHive</div>
+          <p>Your all-in-one fitness platform. Built for people who are serious about change — not just talking about
+            it.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Workouts</a></li>
+            <li><a href="#">Nutrition</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Trainers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help center</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms of use</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>©️ 2025 FitHive. All rights reserved.</p>
+        <div class="footer-socials">
+          <button class="social-btn" title="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </button>
+          <button class="social-btn" title="Twitter/X">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+            </svg>
+          </button>
+          <button class="social-btn" title="YouTube">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setGender(el, g) {
+      document.querySelectorAll('.radio-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      calcBMI();
+    }
+
+    function calcBMI() {
+      const h = parseFloat(document.getElementById('bmi-height').value);
+      const w = parseFloat(document.getElementById('bmi-weight').value);
+      const valEl = document.getElementById('bmi-val');
+      const catEl = document.getElementById('bmi-cat');
+      const thumb = document.getElementById('bmi-thumb');
+
+      if (!h || !w || h < 50 || w < 10) {
+        valEl.textContent = '—';
+        catEl.textContent = 'Enter your details to calculate';
+        catEl.style.color = 'var(--text-muted)';
+        thumb.style.left = '0%';
+        return;
+      }
+
+      const bmi = w / ((h / 100) ** 2);
+      const rounded = Math.round(bmi * 10) / 10;
+      valEl.textContent = rounded.toFixed(1);
+
+      let cat, col, pct;
+      if (bmi < 18.5) { cat = 'Underweight'; col = '#3b82f6'; pct = Math.max(2, ((bmi - 16) / (18.5 - 16)) * 30); }
+      else if (bmi < 25) { cat = 'Normal weight'; col = '#22c55e'; pct = 30 + ((bmi - 18.5) / (25 - 18.5)) * 25; }
+      else if (bmi < 30) { cat = 'Overweight'; col = '#BEFF00'; pct = 55 + ((bmi - 25) / (30 - 25)) * 20; }
+      else { cat = 'Obese'; col = '#ef4444'; pct = Math.min(98, 75 + ((bmi - 30) / (40 - 30)) * 23); }
+
+      catEl.textContent = cat;
+      catEl.style.color = col;
+      thumb.style.left = pct + '%';
+    }
+
+    const uptimeEl = document.getElementById('uptime-blocks');
+    if (uptimeEl) {
+      let html = '<div style="display:flex;gap:3px;flex-wrap:wrap">';
+      for (let i = 0; i < 52; i++) {
+        const ok = Math.random() > 0.01;
+        html += `<div style="width:10px;height:10px;border-radius:2px;background:${ok ? 'var(--lime)' : '#ef4444'};opacity:${ok ? 0.7 : 1}"></div>`;
+      }
+      html += '</div>';
+      uptimeEl.innerHTML = html;
+    }
+
+
+  </script>
+
+</body>
+
+</html>
