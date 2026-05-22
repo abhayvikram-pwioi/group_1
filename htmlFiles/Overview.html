@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/cssFiles/overview.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Overview Tab</title>
+</head>
+
+<body>
+    <div class="layout">
+
+        <aside class="sidebar" id="main-sidebar">
+
+            <div class="sidebar-logo">
+                <img src="/assets/images/logo.png" alt="" class="logo-png">
+                <h2>FitHive</h2>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="/htmlFiles/overview.html" class="menu-item">
+                    <i class="fa-solid fa-chart-bar"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/htmlFiles/yourProgress.html" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Your Progress</span>
+                </a>
+
+
+                <a href="/htmlFiles/analytics.html" class="menu-item">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Analytics</span>
+                </a>
+
+                <a href="/htmlFiles/setting.html" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Setting</span>
+                </a>
+            </nav>
+
+        </aside>
+
+
+        <div class="main-wrapper">
+
+            <header>
+
+                <div class="header-left">
+
+                    <i class="fa-solid fa-bars" id="menu-toggle"></i>
+
+                    <div class="header-center">
+                        <div class="header-name-sec">
+                            <h3 id="header-name1">ggood</h3>
+                            <h3 id="header-name2">Aman kumar</h3>
+                        </div>
+                        <p>Ready to crush your goals today?</p>
+                    </div>
+
+                </div>
+
+                <div class="header-right">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-bell"></i>
+
+                    <div class="reward-sec">
+                        <i class="fa-solid fa-trophy"></i>
+                        <p id="reward-points">2045</p>
+                        <h3>pts</h3>
+                    </div>
+                    <div class="profile-section">
+                        <img src="/assets/images/image.jpeg" alt="Alex Johnson" width="50px" height="50px"
+                            id="profile-pic">
+
+                    </div>
+                </div>
+
+            </header>
+
+            <div class="dashboard-skeleton">
+                <div class="membership-sec-skeleton skeleton"></div>
+                <div class="stats-container-skeleton">
+                    <div class="stats-card-skeleton skeleton"></div>
+                    <div class="stats-card-skeleton skeleton"></div>
+                    <div class="stats-card-skeleton skeleton"></div>
+                    <div class="stats-card-skeleton skeleton"></div>
+                </div>
+                <div class="section-down-skeleton">
+                    <div class="upcoming-class-skeleton skeleton"></div>
+                    <div class="recent-activities-skeleton skeleton"></div>
+                </div>
+            </div>
+
+            <main class="dashboard-container main-grid">
+
+
+
+                <div class="membership-sec">
+                    <img src="/assets/images/membership-bg.png" alt="">
+
+                    <section class="membership-card">
+                        <div class="plan-info">
+                            <p>Active Plan</p>
+                            <h2 id="active-plan">Premium Pro</h2>
+                            <div class="plan-info-polular">
+                                <p id="popular-plan">Popular plan</p>
+                            </div>
+                            <button class="renew" id="renew-btn">
+                                Renew in 14D
+                            </button>
+                        </div>
+
+                        <div class="expiry-info">
+                            <p>Plans Expire On</p>
+                            <h2 id="date-expiry">Oct 24, 2026</h2>
+                            <p id="date-expiry-left">364 days left</p>
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <section class="stats-container">
+
+                    <div class="stats-card">
+                        <div class="stats-card-sec">
+
+                            <div class="stats-icon-head">
+                                <i class="fa-solid fa-person-chalkboard"></i>
+                                <p>Total Sessions</p>
+                            </div>
+
+                            <div class="stats-content">
+                                <div class="stats-value">
+                                    <h1 style="margin-left: 10px;" id="total-session-value">0</h1>
+                                </div>
+                                <div class="stats-content-down-text">
+                                    <p class="percent" id="total-session-percent">0%↑</p>
+                                    <p>from last month</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="stats-card">
+                        <div class="stats-card-sec">
+
+                            <div class="stats-icon-head">
+                                <i class="fa-solid fa-dumbbell"></i>
+                                <p>Calories Burned</p>
+                            </div>
+
+                            <div class="stats-content">
+                                <div class="stats-value">
+                                    <h1 style="margin-left: 10px;" id="calories-value">0</h1>
+                                    <p>kcal</p>
+                                </div>
+                                <div class="stats-content-down-text">
+                                    <p class="percent" id="calories-percent">0%↑</p>
+                                    <p>from last month</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="stats-card">
+                        <div class="stats-card-sec">
+
+                            <div class="stats-icon-head">
+                                <i class="fa-solid fa-meteor"></i>
+                                <p>Streak</p>
+
+                            </div>
+
+                            <div class="stats-content">
+                                <div class="stats-value">
+                                    <h1 style="margin-left: 13px;" id="streak-value">0 🔥</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="stats-card">
+                        <div class="stats-card-sec">
+
+                            <div class="stats-icon-head">
+                                <i class="fa-solid fa-ranking-star"></i>
+                                <p>Weekly Rank</p>
+                            </div>
+
+                            <div class="stats-content">
+                                <div class="stats-value">
+                                    <h1 style="margin-left: 10px;" id="weekly-rank-value">#999 🏆</h1>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <div class="section-down">
+
+                    <section class="upcoming-class">
+
+                        <img src="/assets/images/upcoming-calss-bg.png" alt="">
+
+                        <div class="overlay-content">
+
+                            <div class="section-header">
+                                <p>Upcoming Class</p>
+                                <h2 id="upcoming-class-topic">HIIT Extreme</h2>
+                            </div>
+
+                            <div class="class-details">
+
+                                <div class="card-icon">
+                                    <i class="fa-solid fa-calendar"></i>
+
+                                    <time datetime="2026-05-16T17:30" id="upcoming-class-time">
+                                        Today, 5:30 PM
+                                    </time>
+                                </div>
+
+                                <div class="card-icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span id="upcoming-class-studio">Studio 2</span>
+                                </div>
+
+                            </div>
+
+                            <button type="submit" class="upcoming-class-btn">
+                                View Details
+                            </button>
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="recent-activities">
+
+                        <div class="section-header">
+                            <h2>Recent Activity</h2>
+                        </div>
+
+                        <div class="activity-items" id="activityList">
+
+                            <div class="activity-item">
+
+                                <div class="activity-info">
+                                    <h3 id="activity-topic">Strength Training</h3>
+                                    <p id="activity-time">Yesterday, 45 mins</p>
+                                </div>
+
+                                <div class="activity-calories">
+                                    <h4 is="activity-cal-value">+350 kcal</h4>
+                                </div>
+
+                            </div>
+
+                            <div class="activity-item">
+
+                                <div class="activity-info">
+                                    <h3>Strength Training</h3>
+                                    <p>Yesterday, 45 mins</p>
+                                </div>
+
+                                <div class="activity-calories">
+                                    <h4>+350 kcal</h4>
+                                </div>
+
+                            </div>
+
+                            <div class="activity-item">
+
+                                <div class="activity-info">
+                                    <h3>Strength Training</h3>
+                                    <p>Yesterday, 45 mins</p>
+                                </div>
+
+                                <div class="activity-calories">
+                                    <h4>+350 kcal</h4>
+                                </div>
+
+                            </div>
+<!-- 
+                            <div class="activity-item">
+
+                                <div class="activity-info">
+                                    <h3>Cardio Blast</h3>
+                                    <p>May 2, 30 mins</p>
+                                </div>
+
+                                <div class="activity-calories">
+                                    <h4>+200 kcal</h4>
+                                </div>
+
+                            </div>
+
+                            <div class="activity-item">
+
+                                <div class="activity-info">
+                                    <h3>Recovery Yoga</h3>
+                                    <p>May 1, 60 mins</p>
+                                </div>
+
+                                <div class="activity-calories">
+                                    <h4>+150 kcal</h4>
+                                </div>
+
+                            </div> -->
+
+                        </div>
+
+
+
+                    </section>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <script src="/jsFiles/app.js"></script>
+</body>
+
+</html>
