@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "totalSessions": {
+            "value": 17,
+            "change": "+10%"
+        },
+        "caloriesBurned": {
+            "value": 1032,
+            "unit": "kcal",
+            "change": "+54%"
+        },
+        "streak": {
+            "value": "10 🔥"
+        },
+        "weeklyRank": {
+            "value": "#2 🏆"
+        }
+    }
+]
