@@ -326,3 +326,18 @@ color:var(--text-dim);
 line-height:1.8;
 
 }
+
+@media (max-width:768px) {
+
+    .login-card {
+
+        width: 350px;
+
+        padding: 20px;
+
+    }
+
+    #login-main-text{
+        font-size: 40px;
+    }
+}
