@@ -13,5 +13,20 @@
                 "calories": "+200 kcal"
             }
         ]
+    },
+    {
+        "id": 2,
+        "activities": [
+            {
+                "workout": "Yoga Session",
+                "date": "Today, 60 mins",
+                "calories": "+250 kcal"
+            },
+            {
+                "workout": "HIIT Extreme",
+                "date": "Yesterday, 35 mins",
+                "calories": "+420 kcal"
+            }
+        ]
     }
 ]

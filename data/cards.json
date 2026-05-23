@@ -16,5 +16,23 @@
         "weeklyRank": {
             "value": "#2 🏆"
         }
+    },
+    {
+        "id": 2,
+        "totalSessions": {
+            "value": 12,
+            "change": "+8%"
+        },
+        "caloriesBurned": {
+            "value": 845,
+            "unit": "kcal",
+            "change": "+40%"
+        },
+        "streak": {
+            "value": "8 🔥"
+        },
+        "weeklyRank": {
+            "value": "#5 🏆"
+        }
     }
 ]
