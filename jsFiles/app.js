@@ -970,13 +970,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-            let chartData = JSON.parse(localStorage.getItem("chart_" + userId)) || [0, 0, 0, 0, 0, 0, 0];
-
-            chartData[0] += parseInt(caloriesFilled);
-            // abhi demo ke liye Monday index
-
-            localStorage.setItem("chart_" + userId, JSON.stringify(chartData));
-
 
             alert("Activity Saved");
 
@@ -1067,9 +1060,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-            const reports = JSON.parse(localStorage.getItem("userReports")) || {};
+              const currentDetailedReport =
+                data.reports.find(
+                    u => String(u.id) === String(id)
+                );
 
-            const userReports = reports[id] || [];
+            const localReports = JSON.parse(localStorage.getItem("userReports")) || {};
+
+            const userReports = localReports[id] || currentDetailedReport?.reports || [];
+
 
 
             const tableBody = document.getElementById("table-body");
