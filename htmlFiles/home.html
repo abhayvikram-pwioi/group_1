@@ -642,6 +642,14 @@
       uptimeEl.innerHTML = html;
     }
 
+    const membershipBtns = document.querySelectorAll(".plan-btn");
+
+    membershipBtns.forEach((btn)=>{
+      btn.addEventListener("click",(e)=>{
+        window.location.href = "signUp.html";
+      })
+    })
+
 
   </script>
 
