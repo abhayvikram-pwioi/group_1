@@ -318,6 +318,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const membership = document.getElementById("membership-choice").value;
 
+                if (name == "" || email == "" || phone == "" || age == "" || password == "") {
+                    alert("Fill all the details");
+                    return;
+                }
+
 
                 let users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -974,16 +979,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     u => u.id == id
                 );
 
-            const currentGoals =
+             const currentGoals =
                 data.goals.find(
-                    u => u.id == id
+                    u => String(u.id) === String(id)
                 );
 
             if (currentGoals) {
                 document.getElementById("goal-score").textContent = currentGoals.currentCalories;
                 document.getElementById("goal-total-score").textContent = currentGoals.targetCalories;
                 document.getElementById("goal-des").textContent = currentGoals.description;
-                document.getElementById("bar").style.width = currentGoals.percentage;
+                goalPercent.textContent = currentGoals.percentage + " %";
+                document.getElementById("bar").style.width = `${currentGoals.percentage}%`
+            } else {
+
+                document.getElementById("goal-score").textContent = "0";
+
+                document.getElementById("goal-total-score").textContent = "500";
+
+                document.getElementById("goal-des").textContent = "Start your fitness journey";
+
+                document.getElementById("bar").style.width = "0%";
+
             }
 
             const reports = JSON.parse(localStorage.getItem("userReports")) || {};
