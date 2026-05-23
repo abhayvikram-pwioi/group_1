@@ -53,7 +53,6 @@ body.light-mode {
 
 body.light-mode .logo-png {
     content: url("/assets/images/logo-light.png");
-    border: 1px solid black;
 }
 
 body.light-mode .sidebar-logo h2 {
