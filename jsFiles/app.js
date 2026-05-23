@@ -348,6 +348,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     id: Date.now(),
 
+					joinedDate: new Date().toISOString(),
+
                     useremail: email,
 
                     password: password,
@@ -596,6 +598,55 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("active-plan").textContent = currentUser.profile.membership;
                 document.getElementById("popular-plan").textContent = currentUser.profile.popular;
             }
+
+
+               const currentPlan =
+                data.plans.find(
+                    u => String(u.id) === String(id)
+                );
+
+
+            // ================= DATE ======================
+
+            let joined;
+
+            if (currentUser.joinedDate) {
+                joined = new Date(currentUser.joinedDate);
+
+            }
+            else if (currentPlan) {
+
+                joined = new Date(currentPlan.joinedDate);
+
+            }
+            else {
+                joined = new Date();
+            }
+
+            const today = new Date();
+
+            const expiryDate = new Date(joined);
+
+            expiryDate.setMonth(expiryDate.getMonth() + 1);
+
+            const diff = expiryDate - today;
+
+
+            const daysLeft = Math.max(Math.ceil(diff / (1000 * 60 * 60 * 24)), 0);
+
+
+            document.getElementById("renew-btn").textContent = "Renew in " + daysLeft + "D";
+
+
+            document.getElementById("date-expiry").textContent = expiryDate.toLocaleDateString("en-US",
+                {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric"
+                }
+            );
+
+            document.getElementById("date-expiry-left").textContent = daysLeft + " days left";
 
 
             //========== CARDS =========
