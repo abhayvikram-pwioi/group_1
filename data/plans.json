@@ -1,21 +1,10 @@
 [
     {
         "id": 1,
-        "name": "Premium Pro",
-        "badge": "Popular Plan",
-        "renewIn": "14D",
-        "expiry": "Oct 24, 2026",
-        "daysLeft": 143,
-        "backgroundImage": "gym-mountain.png"
+        "joinedDate": "2026-04-24"
     },
     {
         "id": 2,
-        "name": "Gold Membership",
-        "badge": "Recommended",
-        "renewIn": "25D",
-        "expiry": "Nov 2, 2026",
-        "daysLeft": 171,
-        "backgroundImage": "gym2.png"
+        "joinedDate": "2026-05-02"
     }
 ]
-
