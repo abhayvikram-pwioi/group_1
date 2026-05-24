@@ -67,3 +67,9 @@ Workout Tracking API
 Payment Gateway Integration
 Admin Dashboard
 User Profile Management
+
+Team Member 
+1. Shreyansh Singh
+2. Aman Kumar
+3. Bhumika Sharma
+4. Hemant Nanda
