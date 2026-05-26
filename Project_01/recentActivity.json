@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "activities": [
+            {
+                "workout": "Strength Training",
+                "date": "Yesterday, 45 mins",
+                "calories": "+350 kcal"
+            },
+            {
+                "workout": "Cardio Blast",
+                "date": "May 2, 30 mins",
+                "calories": "+200 kcal"
+            }
+        ]
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "weight": "72 kg",
+        "height": "178 cm",
+        "age": "21 yrs",
+        "bmi": "22.7",
+        "goal": "Muscle Gain",
+        "workoutType": "Intermediate"
+    }
+]

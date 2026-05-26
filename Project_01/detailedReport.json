@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "reports": [
+            {
+                "date": "Today",
+                "workout": "HIIT Extreme",
+                "subtitle": "High intensity",
+                "duration": "45 mins",
+                "calories": "420 kcal",
+                "status": "Completed"
+            },
+            {
+                "date": "Yesterday",
+                "workout": "Strength Training",
+                "subtitle": "Upper Body",
+                "duration": "60 mins",
+                "calories": "350 kcal",
+                "status": "Completed"
+            }
+        ]
+    }
+]
