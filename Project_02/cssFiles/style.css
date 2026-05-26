@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0%;
   padding: 0%;
 }
@@ -29,12 +29,10 @@
   --border-light: #d0d7f2;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(
-    135deg,
-    #dfe5ff 0%,
-    #eef2ff 50%,
-    #c9d5ff 100%
-  );
+  --gradient-primary: linear-gradient(135deg,
+      #dfe5ff 0%,
+      #eef2ff 50%,
+      #c9d5ff 100%);
 
   /* Typography */
   --font-primary: 'Poppins', sans-serif;
@@ -57,12 +55,12 @@
 ========================= PRODUCT PAGE ================================
 =======================================================================*/
 
-.main-sec{
+.main-sec {
   display: flex;
   padding: 20px;
 }
 
-.filter-sec{
+.filter-sec {
   border: 1px solid black;
   border-radius: var(--radius-md);
   display: flex;
@@ -70,20 +68,65 @@
   gap: 25px;
   width: 100%;
   max-width: 300px;
+  height: 100%;
   padding: 25px;
-
 }
 
-.filter-head-up{
+.filter-head-up {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 1px solid black;
 }
 
-.filter-list{
+.filter-list {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.price-filter{
+   border: 1px solid black;
+
+}
+
+.filter-down{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.price-values {
+  display: flex;
+  justify-content: space-between;
+}
+
+#priceSlider{
+width:100%;
+cursor:pointer;
+}
+
+.sort-filter{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#sort-topics{
+width:100%;
+padding:10px;
+border-radius: var(--radius-lg);
+outline:none;
+}
+
+.rating-filter{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rating-list{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
