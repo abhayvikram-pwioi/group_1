@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "useremail": "aman@gmail.com",
+    "password": "1234",
+    "profile": {
+      "name": "Aman Kumar",
+      "membership": "Premium Pro",
+      "popular": "popular plan",
+      "rewardPoints": 2045,
+      "weeklyRank": 2,
+      "streak": 10,
+      "expiryDate": "Oct 24, 2026",
+      "daysLeft": 143
+    }
+  },
+  {
+    "id": 2,
+    "useremail": "bhumika@gmail.com",
+    "password": "1234",
+    "profile": {
+      "name": "Bhumika Sharma",
+      "membership": "Elite Plan",
+      "popular": "popular plan",
+      "rewardPoints": 1680,
+      "weeklyRank": 5,
+      "streak": 8,
+      "expiryDate": "Nov 2, 2026",
+      "daysLeft": 171
+    }
+  }
+]

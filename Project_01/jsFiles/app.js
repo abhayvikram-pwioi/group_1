@@ -319,6 +319,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 const membership = document.getElementById("membership-choice").value;
 
 
+
+
+
+                if (name == "" || email == "" || phone == "" || age == "" || password == "") {
+                    alert("Fill all the details");
+                    return;
+                }
+
+
+                if (!/^\d{10}$/.test(phone)) {
+
+                    alert(
+                        "Phone number must contain exactly 10 digits"
+                    );
+                    return;
+                }
+
+
+
+
+
+
+
                 let users = JSON.parse(localStorage.getItem("users")) || [];
 
 
@@ -343,6 +366,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     id: Date.now(),
 
+                    joinedDate: new Date().toISOString(),
+
+
                     useremail: email,
 
                     password: password,
@@ -356,8 +382,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         popular: "Basic",
 
                         rewardPoints: 0,
-
-                        photo: "../assets/images/default-pic.jpg"
 
                     },
 
@@ -401,16 +425,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         },
 
                         caloriesBurned: {
-                            value: "0 kcal",
+                            value: "0",
                             change: "+0%"
                         },
 
                         streak: {
-                            value: 0
+                            value: "0 🔥"
                         },
 
                         weeklyRank: {
-                            value: "#999"
+                            value: "#999 🏆"
                         }
 
                     })
@@ -422,8 +446,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     JSON.stringify({
 
                         name: name,
-
-                        photo: "../assets/default-pic.png",
 
                         weight: "0",
 
@@ -506,6 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loadData().then(data => {
 
             const id = localStorage.getItem("currentUserId");
+            const profile = JSON.parse(localStorage.getItem("userProfile_" + id)) || {};
 
             const localUsers =
                 JSON.parse(
@@ -522,7 +545,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     u => u.id == id
                 );
 
-            const profile = JSON.parse(localStorage.getItem("userProfile_" + id)) || {};
 
             if (headerPhoto && profile.photo) {
                 headerPhoto.src = profile.photo;
@@ -553,8 +575,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         skeleton(); // for skeleton
 
-
-
         loadData().then(data => {
 
             const id = localStorage.getItem("currentUserId");
@@ -578,10 +598,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             const currentUser =
-
                 allUsers.find(
-                    u =>
-                        u.id == id
+                    u => String(u.id) === String(id)
                 );
 
             //========== USER DATA =========
@@ -591,6 +609,56 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("active-plan").textContent = currentUser.profile.membership;
                 document.getElementById("popular-plan").textContent = currentUser.profile.popular;
             }
+
+            const currentPlan =
+                data.plans.find(
+                    u => String(u.id) === String(id)
+                );
+
+
+            // ================= DATE ======================
+
+            let joined;
+
+            if (currentUser.joinedDate) {
+                joined = new Date(currentUser.joinedDate);
+
+            }
+            else if (currentPlan) {
+
+                joined = new Date(currentPlan.joinedDate);
+
+            }
+            else {
+                joined = new Date();
+            }
+
+            const today = new Date();
+
+            const expiryDate = new Date(joined);
+
+            expiryDate.setMonth(expiryDate.getMonth() + 1);
+
+            const diff = expiryDate - today;
+
+
+            const daysLeft = Math.max(Math.ceil(diff / (1000 * 60 * 60 * 24)), 0);
+
+
+            document.getElementById("renew-btn").textContent = "Renew in " + daysLeft + "D";
+
+
+            document.getElementById("date-expiry").textContent = expiryDate.toLocaleDateString("en-US",
+                {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric"
+                }
+            );
+
+            document.getElementById("date-expiry-left").textContent = daysLeft + " days left";
+
+
 
 
             //========== CARDS =========
@@ -667,10 +735,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("upcoming-class-studio").textContent = currentUpcomingClass.studio;
             } else {
 
-                document.getElementById("upcoming-class-topic").textContent = "No Classes";
-
+                document.getElementById("upcoming-class-topic").textContent = "No Classes"
+                document.getElementById("card-details-sec").style.display = "none";
+                document.getElementById("upcoming-class-btn").style.display = "none";
             }
-
 
 
         });
@@ -784,6 +852,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const workoutduration = document.getElementById("duration").value || 0;
             const waterIntakeFilled = document.getElementById("water").value || 0;
             const weightFilled = document.getElementById("weight").value || 0;
+
+
 
             const newActivity = {
                 workout: workoutFilled,
@@ -900,13 +970,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-            let chartData = JSON.parse(localStorage.getItem("chart_" + userId)) || [0, 0, 0, 0, 0, 0, 0];
-
-            chartData[0] += parseInt(caloriesFilled);
-            // abhi demo ke liye Monday index
-
-            localStorage.setItem("chart_" + userId, JSON.stringify(chartData));
-
 
             alert("Activity Saved");
 
@@ -944,7 +1007,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    
+
 
     // ====================== ANALYTICS TAB ==========================
 
@@ -976,19 +1039,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const currentGoals =
                 data.goals.find(
-                    u => u.id == id
+                    u => String(u.id) === String(id)
                 );
 
             if (currentGoals) {
                 document.getElementById("goal-score").textContent = currentGoals.currentCalories;
                 document.getElementById("goal-total-score").textContent = currentGoals.targetCalories;
                 document.getElementById("goal-des").textContent = currentGoals.description;
-                document.getElementById("bar").style.width = currentGoals.percentage;
+                goalPercent.textContent = currentGoals.percentage + " %";
+                document.getElementById("bar").style.width = `${currentGoals.percentage}%`
+            } else {
+
+                document.getElementById("goal-score").textContent = "0";
+
+                document.getElementById("goal-total-score").textContent = "500";
+
+                document.getElementById("goal-des").textContent = "Start your fitness journey";
+
+                document.getElementById("bar").style.width = "0%";
+
             }
 
-            const reports = JSON.parse(localStorage.getItem("userReports")) || {};
+            const currentDetailedReport =
+                data.reports.find(
+                    u => String(u.id) === String(id)
+                );
 
-            const userReports = reports[id] || [];
+            const localReports =
+                JSON.parse(
+                    localStorage.getItem("userReports")
+                ) || {};
+
+            const userReports =
+                localReports[id] ||
+                currentDetailedReport?.reports ||
+                [];
 
 
             const tableBody = document.getElementById("table-body");
@@ -1181,6 +1266,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
+            document.getElementById("name-set").value = profile.name || "";
+
+            document.getElementById("email-set").value = profile.email || currentUser.useremail || "";
+
+            document.getElementById("weight-set").value = profile.weight || "";
+
+            document.getElementById("height-set").value = profile.height || "";
+
+            document.getElementById("goal-weight-set").value = profile.goalWeight || "";
+
+            document.getElementById("age-set").value = profile.age || "";
+
+            // document.getElementById("workout-goal-set").value = profile.goal || "";
+
+            // document.getElementById("activity-level-set").value = profile.activity || "";
 
         });
 
@@ -1325,4 +1425,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+history.pushState(
+    null,
+    null,
+    location.href
+);
 
+window.onpopstate =
+    function () {
+
+        history.go(1);
+
+    };
