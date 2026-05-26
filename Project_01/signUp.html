@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GymHub Registration</title>
+  <link rel="stylesheet" href="/cssFiles/signUp.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="top-line"></div>
+
+    <div class="logo">FH</div>
+
+    <h1>Create Account</h1>
+    <p class="subtitle">
+      Join GymHub and manage your fitness dashboard with a modern neon experience.
+    </p>
+
+    <form>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your full name" required id="signUp-name" />
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="example@mail.com" required id="signUp-email" />
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="9876543210" required id="signUp-phone" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" placeholder="21" required id="signUp-age" />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" placeholder="••••••••" required id="signUp-password" />
+        </div>
+
+      </div>
+      <div class="membership-choice-sec">
+        <select name="" id="membership-choice">
+          <option value="">Basic Plan</option>
+          <option value="">Medium Plan</option>
+          <option value="">Premium Pro Plan</option>
+        </select>
+      </div>
+
+
+      <button class="btn" id="signUp-btn" type="button">Sign Up</button>
+    </form>
+
+    <div class="divider">Already have an account?</div>
+
+    <button class="login-btn">Login</button>
+
+    <div class="footer">
+      GymHub Neon UI • Responsive Registration Form<br>
+      Dark Theme • Modern CSS • Mobile Friendly
+    </div>
+  </div>
+
+
+  <script src="/jsFiles/app.js"></script>
+  <script src="/jsFiles/data.js"></script>
+
+</body>
+
+</html>

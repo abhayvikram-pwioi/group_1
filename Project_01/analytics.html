@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Tab</title>
+    <link rel="stylesheet" href="/cssFiles/Analytics.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+    <div id="section" class="Analytics-sec">
+
+
+       <aside class="sidebar" id="main-sidebar">
+
+            <div class="sidebar-logo">
+                <img src="/assets/images/logo.png" alt="" class="logo-png" >
+                <h2>FitHive</h2>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="/htmlFiles/overview.html" class="menu-item">
+                    <i class="fa-solid fa-chart-bar"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/htmlFiles/yourProgress.html" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Your Progress</span>
+                </a>
+
+
+                <a href="/htmlFiles/analytics.html" class="menu-item">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Analytics</span>
+                </a>
+
+                <a href="/htmlFiles/setting.html" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Setting</span>
+                </a>
+            </nav>
+
+        </aside>
+
+            <header>
+
+                <div class="header-left">
+
+                    <i class="fa-solid fa-bars" id="menu-toggle"></i>
+
+                    <div class="header-center">
+                         <div class="header-name-sec">
+                        <h3 id="header-name1">ggood</h3>
+                        <h3 id="header-name2">Aman kumar</h3>
+                        </div>
+                        <p>Ready to crush your goals today?</p>
+                    </div>
+
+                </div>
+
+                <div class="header-right">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-bell"></i>
+
+                    <div class="reward-sec">
+                        <i class="fa-solid fa-trophy"></i>
+                        <p id="reward-points">2045</p>
+                        <h4>Pts</h4>
+                    </div>
+                    <div class="profile-section">
+                        <img src="/assets/images/image.jpeg" alt="Alex Johnson" width="50px" height="50px" id="profile-pic">
+
+                    </div>
+                </div>
+
+            </header>
+
+
+        <div class="analytics-tab-head">
+            <div class="analytics-head-text">
+                <h2 class="text-Analytics">Analytics</h2>
+                <p class="subheading subtext-analytics">Track your progress and performance insights</p>
+            </div>
+            <div class="analytics-head-btns">
+                <button id="weeklyBtn" class="time-btn active-time-btn" date-time="weekly">Weekly</button>
+                <button id="monthlyBtn" class="time-btn" date-time="monthly">Monthly</button>
+                <button id="yearlyBtn" class="time-btn" date-time="yearly">Yearly</button>
+            </div>
+        </div>
+
+        <div class="analytics-tab-goalChart">
+            <img src="/assets/images/goal-img.png" alt="image" class="goal-img">
+            <div class="goalChart-text">
+                <h3 class="goal-text">Goal Progress</h3>
+                <p class="subheading goal-subtext" id="goal-des">Stay consistent and crush your goals.</p>
+                <h3 style="color: #C6FF00;" class="goal-percent" id="goal-percent">0 %</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" id="bar"></div>
+                </div>
+                <div class="goalChartBar-score">
+                    <p id="goal-score">0</p>
+                    <p>/</p>
+                    <p id="goal-total-score">500 Kcal</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="analytics-charts-sec">
+
+            <div class="chart-activity-sec">
+                <div class="chart-activity-up">
+                    <div class="activity-up-text">
+                        <h3 class="activity-text" id="activity-topic-text">Calories Burned</h3>
+                        <p id="activity-topic-subtext" class="subheading activity-subtext">Calories burned over time
+                        </p>
+                    </div>
+
+                    <div class="topic-charts">
+                        <select id="activity-topic">
+                            <option value="calories">Calories</option>
+                            <option value="attendence">Attendence</option>
+                            <option value="workoutSessions">Workout Sessions</option>
+                            <option value="weightProgress">Weight Progress</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="activity-trend-chart">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-membership-sec">
+                <div class="chart-membership-up">
+                    <h3 class="membership-text">Membership Usage</h3>
+                    <p class="subheading membership-subrtext">Distribution by category</p>
+                </div>
+                <div class="membership-chart">
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="detail-report-sec">
+            <div class="detail-up-sec">
+                <h3>Detailed Report</h3>
+                <!-- <button id="detail-expand-btn">#</button> -->
+            </div>
+            <div class="detail-report-table">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Workout Type</th>
+                            <th>Duration</th>
+                            <th>Calories</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="table-body">
+
+                        <!-- <tr>
+                            <td>Today</td>
+                            <td>
+                                <div class="detail-workoutType">
+                                    <p class="detailWorkoutType-text-1">HIIT Extreme</p>
+                                    <p class="detailWorkoutType-text-2">High intensity</p>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="duration">
+                                    ⏱ 45 mins
+                                </span>
+                            </td>
+                            <td class="calories">420 kcal</td>
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Yesterday</td>
+                            <td>
+                                <div class="detail-workoutType">
+                                    <p class="detailWorkoutType-text-1">HIIT Extreme</p>
+                                    <p class="detailWorkoutType-text-2">High intensity</p>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="duration">
+                                    ⏱ 45 mins
+                                </span>
+                            </td>
+                            <td class="calories">420 kcal</td>
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Today</td>
+                            <td>
+                                <div class="detail-workoutType">
+                                    <p class="detailWorkoutType-text-1">HIIT Extreme</p>
+                                    <p class="detailWorkoutType-text-2">High intensity</p>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="duration">
+                                    ⏱ 45 mins
+                                </span>
+                            </td>
+                            <td class="calories">420 kcal</td>
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Today</td>
+                            <td>
+                                <div class="detail-workoutType">
+                                    <p class="detailWorkoutType-text-1">HIIT Extreme</p>
+                                    <p class="detailWorkoutType-text-2">High intensity</p>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="duration">
+                                    ⏱ 45 mins
+                                </span>
+                            </td>
+                            <td class="calories">420 kcal</td>
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Today</td>
+                            <td>
+                                <div class="detail-workoutType">
+                                    <p class="detailWorkoutType-text-1">HIIT Extreme</p>
+                                    <p class="detailWorkoutType-text-2">High intensity</p>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="duration">
+                                    ⏱ 45 mins
+                                </span>
+                            </td>
+                            <td class="calories">420 kcal</td>
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr> -->
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    <script src="/jsFiles/app.js"></script>
+    <script src="/jsFiles/data.js"></script>
+    <script src="/jsFiles/chart.js"></script>
+</body>
+
+</html>
