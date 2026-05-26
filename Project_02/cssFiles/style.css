@@ -57,3 +57,33 @@
 ========================= PRODUCT PAGE ================================
 =======================================================================*/
 
+.main-sec{
+  display: flex;
+  padding: 20px;
+}
+
+.filter-sec{
+  border: 1px solid black;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 300px;
+  padding: 25px;
+
+}
+
+.filter-head-up{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.filter-list{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
