@@ -17,7 +17,7 @@
 
     <h1>Create Account</h1>
     <p class="subtitle">
-      Join GymHub and manage your fitness dashboard with a modern neon experience.
+      Join FitHive and manage your fitness dashboard with a modern neon experience.
     </p>
 
     <form>
@@ -52,9 +52,9 @@
       </div>
       <div class="membership-choice-sec">
         <select name="" id="membership-choice">
-          <option value="">Basic Plan</option>
-          <option value="">Medium Plan</option>
-          <option value="">Premium Pro Plan</option>
+          <option value="Basic plan">Basic Plan</option>
+          <option value="Medium plan">Medium Plan</option>
+          <option value="Premium Pro">Premium Pro Plan</option>
         </select>
       </div>
 
@@ -64,18 +64,26 @@
 
     <div class="divider">Already have an account?</div>
 
-    <button class="login-btn">Login</button>
+    <button class="login-btn" id="login">Login</button>
 
     <div class="footer">
-      GymHub Neon UI • Responsive Registration Form<br>
+      FitHive Neon UI • Responsive Registration Form<br>
       Dark Theme • Modern CSS • Mobile Friendly
     </div>
   </div>
 
 
   <script src="/jsFiles/app.js"></script>
-  <script src="/jsFiles/data.js"></script>
 
+  <script>
+
+    document.getElementById("login").addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "login.html";
+    })
+
+  </script>
 </body>
 
 </html>
+

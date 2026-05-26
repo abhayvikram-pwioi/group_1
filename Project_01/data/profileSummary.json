@@ -7,5 +7,14 @@
         "bmi": "22.7",
         "goal": "Muscle Gain",
         "workoutType": "Intermediate"
+    },
+    {
+        "id": 2,
+        "weight": "58 kg",
+        "height": "165 cm",
+        "age": "22 yrs",
+        "bmi": "21.3",
+        "goal": "Weight Loss",
+        "workoutType": "Beginner"
     }
 ]
