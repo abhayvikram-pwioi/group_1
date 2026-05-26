@@ -1,0 +1,48 @@
+:root {
+  /* Main Colors */
+  --bg-primary: #dfe5ff;
+  --bg-secondary: #f8f9ff;
+  --bg-dark: #0d0d0d;
+
+  /* Text Colors */
+  --text-primary: #111111;
+  --text-secondary: #667085;
+  --text-accent: #5068c9;
+  --text-light: #ffffff;
+
+  /* Buttons */
+  --btn-primary-bg: #111111;
+  --btn-primary-text: #ffffff;
+  --btn-secondary-border: #5068c9;
+  --btn-secondary-text: #5068c9;
+
+  /* Cards & Containers */
+  --card-bg: #ffffff;
+  --card-shadow: rgba(17, 17, 17, 0.08);
+
+  /* Borders */
+  --border-light: #d0d7f2;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(
+    135deg,
+    #dfe5ff 0%,
+    #eef2ff 50%,
+    #c9d5ff 100%
+  );
+
+  /* Typography */
+  --font-primary: 'Poppins', sans-serif;
+
+  /* Radius */
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+
+  /* Shadows */
+  --shadow-soft: 0 8px 30px rgba(80, 104, 201, 0.08);
+  --shadow-card: 0 10px 35px rgba(0, 0, 0, 0.08);
+
+  /* Transition */
+  --transition: all 0.3s ease-in-out;
+}
