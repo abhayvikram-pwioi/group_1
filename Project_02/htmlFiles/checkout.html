@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartCart Checkout</title>
+</head>
 
+<body>
+
+<div class="order-summary">
+
+  <h2>Order Summary</h2>
+
+  <div id="product-container"></div>
+
+  <div id="totalAmount">
+    Total: ₹0
+  </div>
+</div>
+
+  <script>
+    async function fetchProducts(){
+
+  const response =
+  await fetch("https://dummyjson.com/products");
+
+  const data = await response.json();
+
+  console.log(data.products);
+
+}
+fetchProducts();
+  </script>
+
+</body>
+</html>
