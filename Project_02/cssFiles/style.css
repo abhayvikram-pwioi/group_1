@@ -314,3 +314,44 @@ hr{
   box-shadow: var(--shadow-card);
   transform: scale(1.04);
 }
+
+/* QUICK VIEW SECTION */
+
+.quick-view-sec{
+  border: 1px solid black;
+  width: 700px;
+  padding: 20px;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-sm);
+}
+
+.quick-view-main-sec{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.quick-view-specifications{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quick-view-specifications-1{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.quick-view-specifications-2{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.spec{
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  width: 250px;
+}
