@@ -52,7 +52,7 @@
 }
 
 body {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 /* ====================================================================
@@ -89,8 +89,8 @@ header {
 /* FILTER SECTION  */
 
 .filter-sec {
-  background: var(--bg-primary);
-  border: 1px solid black;
+  background: var(--bg-secondary);
+  /* border: 1px solid black; */
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
@@ -109,6 +109,7 @@ header {
   max-height: calc(100vh - 120px);
 
   flex-shrink: 0;
+  box-shadow: var(--shadow-card);
 
 }
 
@@ -212,12 +213,12 @@ hr {
 }
 
 .product-card {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 330px;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   border-radius: 40px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+  box-shadow: var(--shadow-card);
 }
 
 
@@ -322,7 +323,7 @@ hr {
   border: 1px solid black;
   width: 800px;
   padding: 40px;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border-radius: var(--radius-lg);
 
   position: fixed;
@@ -397,4 +398,16 @@ hr {
   border-radius: var(--radius-sm);
   padding: 10px;
   width: 250px;
+}
+
+/* PRODUCT PAGE RESPONSIVENESS  */
+
+@media(max-width:768px){
+
+.filter-sec{
+display:none;
+
+}
+
+
 }
