@@ -18,7 +18,33 @@
 
         <div class="main-sec">
 
-            <div class="filter-sec">
+
+            <div class="responsive-filters">
+
+                <div class="filter-sec-main-responsive">
+                    <button id="filter-main-btn-res"><i class="fa-solid fa-sliders"
+                            class="filter-btns-res"></i></button>
+                    <hr style="height: 30px; width: 0px; margin: auto;">
+                    <div class="filter-list-res">
+                        <select id="sort-topics-res">
+                            <option>sort</option>
+                            <option>Popularity</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                        <button class="filter-btns-res" id="rating-filter-btn"><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>& Up</button>
+                        <button class="filter-btns-res" id="Electronics-filter-btn">Electronics</button>
+                        <button class="filter-btns-res" id="books-filter-btn">Books</button>
+                    </div>
+                </div>
+
+                <hr>
+
+            </div>
+
+            <div class="filter-sec" id="filter-section">
                 <div class="filter-head-up">
                     <h2>Filters</h2>
                     <button id="filter-clear-btn">clear</button>
@@ -100,6 +126,8 @@
                 </div>
 
             </div>
+
+
 
             <div class="product-sec">
                 <div class="product-sec-headline">
@@ -579,6 +607,26 @@
             modal.classList.remove("active");
 
             document.body.classList.remove("modal-open");
+
+        });
+
+        const filterOpenBtnRes = document.getElementById("filter-main-btn-res");
+        const filterSection = document.getElementById("filter-section");
+
+        filterOpenBtnRes.addEventListener("click", (e) => {
+            e.stopPropagation();
+
+            filterSection.classList.add("activee");
+            closeBtnFilter.style.display = "block";
+        });
+
+        filterSection.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+
+        document.addEventListener("click", () => {
+
+            filterSection.classList.remove("activee");
 
         });
     </script>
