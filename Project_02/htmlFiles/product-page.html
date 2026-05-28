@@ -610,7 +610,25 @@
 
         });
 
-        
+        const filterOpenBtnRes = document.getElementById("filter-main-btn-res");
+        const filterSection = document.getElementById("filter-section");
+
+        filterOpenBtnRes.addEventListener("click", (e) => {
+            e.stopPropagation();
+
+            filterSection.classList.add("activee");
+            closeBtnFilter.style.display = "block";
+        });
+
+        filterSection.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+
+        document.addEventListener("click", () => {
+
+            filterSection.classList.remove("activee");
+
+        });
     </script>
 </body>
 
