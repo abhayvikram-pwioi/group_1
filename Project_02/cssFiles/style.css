@@ -323,7 +323,7 @@ hr {
   width: 800px;
   padding: 40px;
   background-color: var(--bg-primary);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-lg);
 
   position: fixed;
   top: 30%;
@@ -332,10 +332,8 @@ hr {
 
   opacity: 0;
   visibility: hidden;
-  animation: popup 1s ease;
+  animation: popup 1.5s ease;
 }
-
-
 
 @keyframes popup {
 

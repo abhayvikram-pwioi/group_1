@@ -443,6 +443,33 @@
     </main>
 
 
+    <script>
+        const quickBtns = document.querySelectorAll(".view-btn");
+
+        const modal = document.getElementById("quickViewModal");
+
+        const closeBtn = document.getElementById("quick-view-close-btn");
+
+
+
+        quickBtns.forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                modal.classList.add("active");
+
+            });
+
+        });
+
+
+
+        closeBtn.addEventListener("click", () => {
+
+            modal.classList.remove("active");
+
+        });
+    </script>
 </body>
 
 </html>
