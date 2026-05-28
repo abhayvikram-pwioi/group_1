@@ -51,7 +51,7 @@
   --transition: all 0.3s ease-in-out;
 }
 
-body{
+body {
   background: var(--bg-secondary);
 }
 
@@ -118,18 +118,19 @@ header {
   align-items: center;
 }
 
-hr{
+hr {
   margin-bottom: 10px;
   color: var(--text-secondary);
 }
-#filter-clear-btn{
+
+#filter-clear-btn {
   background: transparent;
   border: none;
   color: var(--btn-secondary-text);
   font-size: 14px;
 }
 
-#filter-clear-btn:hover{
+#filter-clear-btn:hover {
   cursor: pointer;
 }
 
@@ -140,7 +141,7 @@ hr{
   margin-bottom: 10px;
 }
 
-.filter-list label{
+.filter-list label {
   width: 100px;
   color: var(--text-secondary);
 }
@@ -303,13 +304,13 @@ hr{
   cursor: pointer;
 }
 
-.add-btn:hover{
+.add-btn:hover {
   cursor: pointer;
   transform: scale(1.04);
   box-shadow: var(--card-shadow);
 }
 
-.view-btn:hover{
+.view-btn:hover {
   cursor: pointer;
   box-shadow: var(--shadow-card);
   transform: scale(1.04);
@@ -317,39 +318,59 @@ hr{
 
 /* QUICK VIEW SECTION */
 
-.quick-view-sec{
+.quick-view-sec {
   border: 1px solid black;
-  width: 700px;
-  padding: 20px;
+  width: 800px;
+  padding: 40px;
   background-color: var(--bg-primary);
   border-radius: var(--radius-sm);
+
+  position: fixed;
+  top: 30%;
+  left: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
 }
 
-.quick-view-main-sec{
+.quick-view-main-sec {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.quick-view-specifications{
+.quick-view-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.quick-view-specifications-1{
+#quick-view-close-btn {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+}
+
+.quick-view-specifications {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quick-view-specifications-1 {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.quick-view-specifications-2{
+.quick-view-specifications-2 {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.spec{
+.spec {
   background: var(--bg-secondary);
   border-radius: var(--radius-sm);
   padding: 10px;
