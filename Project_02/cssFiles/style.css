@@ -254,7 +254,7 @@ hr {
   padding: 10px 20px 20px 20px;
 }
 
-.product-content h2{
+.product-content h2 {
   font-size: 22px;
 }
 
@@ -323,21 +323,34 @@ hr {
 
 /* QUICK VIEW SECTION */
 
+
+/* FOR BLUR OF BACKGROUND AFTER POPUP OPENS */
+body.modal-open .main-sec{ 
+filter:blur(6px);
+pointer-events:none;
+user-select:none;
+transition:.3s;
+opacity:.4;
+
+}
+
+
+
 .quick-view-sec {
-  border: 1px solid black;
-  width: 800px;
+  width: 500px;
   padding: 40px;
   background-color: var(--bg-secondary);
   border-radius: var(--radius-lg);
 
   position: fixed;
   top: 30%;
-  left: 25%;
+  left: 35%;
   z-index: 5000;
-
   opacity: 0;
   visibility: hidden;
   animation: popup 1.5s ease;
+  
+
 }
 
 @keyframes popup {
@@ -401,17 +414,22 @@ hr {
   background: var(--bg-secondary);
   border-radius: var(--radius-sm);
   padding: 10px;
-  width: 250px;
+  width: 200px;
+  border:1px solid black;
+}
+
+.spec h3{
+  font-size: 14px;
 }
 
 /* PRODUCT PAGE RESPONSIVENESS  */
 
-@media(max-width:768px){
+@media(max-width:768px) {
 
-.filter-sec{
-display:none;
+  .filter-sec {
+    display: none;
 
-}
+  }
 
 
 }
