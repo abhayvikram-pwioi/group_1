@@ -345,7 +345,7 @@ body.modal-open .main-sec {
 .quick-view-sec {
   width: 500px;
   padding: 40px;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   border-radius: var(--radius-lg);
 
   position: fixed;
@@ -421,7 +421,6 @@ body.modal-open .main-sec {
   border-radius: var(--radius-sm);
   padding: 10px;
   width: 200px;
-  border: 1px solid black;
 }
 
 .spec h3 {
@@ -453,11 +452,11 @@ body.modal-open .main-sec {
   .product-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 15px;
   }
 
   .product-card {
-    width: 175px;
+    width: 178px;
     height: 100%;
     border-radius: 18px;
   }
@@ -493,7 +492,7 @@ body.modal-open .main-sec {
   .product-card-btns {
     margin-top: 10px;
     gap: 10px;
-    }
+  }
 
 
   .add-btn {
@@ -507,6 +506,40 @@ body.modal-open .main-sec {
     padding: 5px;
     border-radius: 10px;
     font-size: 12px;
+  }
+
+
+
+  .quick-view-sec {
+    width: 300px;
+    padding: 15px;
+    top: 20%;
+    left: 13%;
+    border-radius: 20px
+  }
+
+  .quick-view-main-sec p {
+    font-size: 14px;
+  }
+
+  .quick-view-head h2 {
+    font-size: 20px;
+  }
+
+  #quick-view-close-btn {
+    border: none;
+    background: transparent;
+    font-size: 13px;
+  }
+
+  .quick-view-specifications {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .spec {
+    padding: 10px;
+    width: 270px;
   }
 
 
