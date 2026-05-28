@@ -302,3 +302,15 @@ hr{
   color: #64748b;
   cursor: pointer;
 }
+
+.add-btn:hover{
+  cursor: pointer;
+  transform: scale(1.04);
+  box-shadow: var(--card-shadow);
+}
+
+.view-btn:hover{
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transform: scale(1.04);
+}
