@@ -328,11 +328,35 @@ hr {
   position: fixed;
   top: 30%;
   left: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 5000;
+
+  opacity: 0;
+  visibility: hidden;
+  animation: popup 1s ease;
 }
+
+
+
+@keyframes popup {
+
+  from {
+    transform: scale(.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+
+
+.quick-view-sec.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 
 .quick-view-main-sec {
   display: flex;
