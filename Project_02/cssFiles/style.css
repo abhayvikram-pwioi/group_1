@@ -52,7 +52,7 @@
 }
 
 body {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 /* ====================================================================
@@ -89,8 +89,8 @@ header {
 /* FILTER SECTION  */
 
 .filter-sec {
-  background: var(--bg-primary);
-  border: 1px solid black;
+  background: var(--bg-secondary);
+  /* border: 1px solid black; */
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
@@ -109,6 +109,7 @@ header {
   max-height: calc(100vh - 120px);
 
   flex-shrink: 0;
+  box-shadow: var(--shadow-card);
 
 }
 
@@ -207,17 +208,17 @@ hr {
 
 .product-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
 .product-card {
-  border: 1px solid black;
-  width: 330px;
-  background: var(--bg-primary);
-  border-radius: 40px;
+  width: 250px;
+  height: 430px;
+  background: var(--bg-secondary);
+  border-radius: 23px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+  box-shadow: var(--shadow-card);
 }
 
 
@@ -250,12 +251,15 @@ hr {
 
 
 .product-content {
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
 }
 
+.product-content h2{
+  font-size: 22px;
+}
 
 .product-category {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 
@@ -263,7 +267,8 @@ hr {
   display: flex;
   gap: 10px;
   align-items: center;
-
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .product-card-rating span {
@@ -285,7 +290,7 @@ hr {
 
 .add-btn {
   flex: 1;
-  padding: 20px;
+  padding: 10px;
   background: var(--btn-primary-bg);
   color: white;
   border: none;
@@ -296,8 +301,8 @@ hr {
 
 .view-btn {
   flex: 1;
-  padding: 20px;
-  background: var(--bg-secondary);
+  padding: 10px;
+  background: var(--bg-primary);
   border: none;
   border-radius: var(--radius-md);
   color: #64748b;
@@ -322,8 +327,8 @@ hr {
   border: 1px solid black;
   width: 800px;
   padding: 40px;
-  background-color: var(--bg-primary);
-  border-radius: var(--radius-sm);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
 
   position: fixed;
   top: 30%;
@@ -332,10 +337,8 @@ hr {
 
   opacity: 0;
   visibility: hidden;
-  animation: popup 1s ease;
+  animation: popup 1.5s ease;
 }
-
-
 
 @keyframes popup {
 
@@ -399,4 +402,16 @@ hr {
   border-radius: var(--radius-sm);
   padding: 10px;
   width: 250px;
+}
+
+/* PRODUCT PAGE RESPONSIVENESS  */
+
+@media(max-width:768px){
+
+.filter-sec{
+display:none;
+
+}
+
+
 }
