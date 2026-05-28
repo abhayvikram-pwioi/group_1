@@ -337,14 +337,14 @@ opacity:.4;
 
 
 .quick-view-sec {
-  width: 800px;
+  width: 500px;
   padding: 40px;
   background-color: var(--bg-secondary);
   border-radius: var(--radius-lg);
 
   position: fixed;
   top: 30%;
-  left: 25%;
+  left: 35%;
   z-index: 5000;
   opacity: 0;
   visibility: hidden;
@@ -414,7 +414,12 @@ opacity:.4;
   background: var(--bg-secondary);
   border-radius: var(--radius-sm);
   padding: 10px;
-  width: 250px;
+  width: 200px;
+  border:1px solid black;
+}
+
+.spec h3{
+  font-size: 14px;
 }
 
 /* PRODUCT PAGE RESPONSIVENESS  */
