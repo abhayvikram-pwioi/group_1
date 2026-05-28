@@ -1,5 +1,5 @@
 # 🏋️ FitHive — Gym Member Dashboard
-
+Deployed link:
 <p align="center">
   Modern Gym Member Dashboard built with HTML, CSS & JavaScript
 </p>
