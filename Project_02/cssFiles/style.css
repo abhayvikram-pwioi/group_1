@@ -685,6 +685,27 @@ body.modal-open .main-sec {
   box-shadow: var(--shadow-card);
 }
 
+.detail-specifications{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-specifications-1 , .detail-specifications-2{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.spec-detail{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--bg-primary);
+  padding: 10px;
+  width: 400px;
+  border-radius: 15px;
+}
 
 @media(max-width:768px) {
 
