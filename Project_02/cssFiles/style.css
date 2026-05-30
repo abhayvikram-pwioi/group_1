@@ -194,12 +194,14 @@ hr {
   min-height: 0;
   height: 100%;
   padding: 0px 30px 0px 30px;
+  width:100%;
 }
 
 .product-sec-headline {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width:100%;
   padding: 10px 0 10px;
 }
 
