@@ -612,6 +612,31 @@ body.modal-open .main-sec {
   border: none;
 }
 
+.product-delivery-sec{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.delivery-detail{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: var(--shadow-card);
+}
+
+.delivery-detail i{
+  font-size: 25px;
+  color: #5068c9;
+}
+
+.delivery-detail-text p{
+  color: var(--text-secondary);
+}
+
+
 
 @media(max-width:768px) {
 
