@@ -21,6 +21,16 @@ function renderProducts(products) {
 
     productList.innerHTML = "";
 
+    if(products.length === 0){
+
+        productList.innerHTML = `
+            <h2>No Products Found</h2>
+        `;
+
+        return;
+    }
+
+
     products.forEach(product => {
 
         let price = (product.price * 10).toFixed(0);
