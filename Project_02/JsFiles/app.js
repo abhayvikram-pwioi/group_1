@@ -1,12 +1,14 @@
-async function getProducts() {
+let allProducts = [];
 
-    const response =
-        await fetch("https://dummyjson.com/products");
+async function getProducts(){
 
-    const data =
-        await response.json();
+    const response = await fetch("https://dummyjson.com/products");
 
-    renderProducts(data.products);
+    const data = await response.json();
+
+    allProducts = data.products;
+
+    renderProducts(allProducts);
 
 }
 
@@ -17,6 +19,8 @@ function renderProducts(products) {
     productList.innerHTML = "";
 
     products.forEach(product => {
+
+        let price = (product.price * 10).toFixed(0);
         
         productList.innerHTML += `
         
@@ -46,7 +50,7 @@ function renderProducts(products) {
                                 <span id="rating-count">(200})</span>
                             </div>
 
-                            <h3>₹${product.price}</h3>
+                            <h3>₹${price}</h3>
 
 
                             <div class="product-card-btns">
@@ -67,6 +71,8 @@ function renderProducts(products) {
         
         `
     });
+
+
 
 }
 
