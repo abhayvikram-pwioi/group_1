@@ -78,3 +78,40 @@ function renderProducts(products) {
 
 getProducts();
 
+
+const categoryCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+
+categoryCheckboxes.forEach(box => {
+
+    box.addEventListener("change", applyFilters);
+
+});
+
+
+function applyFilters(){
+
+    const selectedCategories = [];
+
+    categoryCheckboxes.forEach(box => {
+
+        if(box.checked){
+            selectedCategories.push(box.value.toLowerCase());
+        }
+
+    });
+
+     if(selectedCategories.length === 0){
+
+        renderProducts(allProducts);
+
+        return;
+
+    }
+
+    const filteredProducts = allProducts.filter(product =>
+            selectedCategories.includes( product.category.toLowerCase() )
+    );
+
+    renderProducts(filteredProducts);
+
+}
