@@ -14,6 +14,9 @@ async function getProducts(){
 
 function renderProducts(products) {
 
+    document.querySelector(".product-count").textContent = `${products.length} Products`;
+
+
     const productList = document.getElementById("product-list");
 
     productList.innerHTML = "";
