@@ -707,6 +707,25 @@ body.modal-open .main-sec {
   border-radius: 15px;
 }
 
+.more-products-sec{
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.more-products{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 20px;
+}
+.more-products-sec h1{
+  font-size: 45px;
+}
+
+
 @media(max-width:768px) {
 
   /* PRODUCT PAGE RESPONSIVENESS  */
