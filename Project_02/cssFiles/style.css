@@ -225,6 +225,10 @@ hr {
 
 
 .product-img-box {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   overflow: hidden;
 }
@@ -541,13 +545,13 @@ body.modal-open .main-sec {
   gap: 20px;
 }
 
-.price-sec-detail{
+.price-sec-detail {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.discount-box{
+.discount-box {
   padding: 2px 5px 2px 5px;
   background-color: green;
   color: white;
@@ -697,19 +701,20 @@ body.modal-open .main-sec {
   box-shadow: var(--shadow-card);
 }
 
-.detail-specifications{
+.detail-specifications {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.detail-specifications-1 , .detail-specifications-2{
+.detail-specifications-1,
+.detail-specifications-2 {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.spec-detail{
+.spec-detail {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -719,7 +724,7 @@ body.modal-open .main-sec {
   border-radius: 15px;
 }
 
-.more-products-sec{
+.more-products-sec {
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 50px;
@@ -728,12 +733,13 @@ body.modal-open .main-sec {
   gap: 20px;
 }
 
-.more-products{
+.more-products {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
 }
-.more-products-sec h1{
+
+.more-products-sec h1 {
   font-size: 45px;
 }
 
