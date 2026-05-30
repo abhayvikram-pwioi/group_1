@@ -1,11 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/cssFiles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Product Detail Page</title>
 </head>
+
 <body>
-    
+    <main class="product-detail-page">
+        <header>Header</header>
+        <div class="product-detail-main">
+            <div class="product-details">
+                <div class="product-img-sec">
+                    <img src="https://picsum.photos/250/200" alt="">
+                </div>
+                <div class="product-des">
+                    <h3>BOOKS</h3>
+                    <h1>Best Seller Fiction Novel</h1>
+                    <div class="rating-sec">
+
+                        <div class="product-ratings">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+
+                        <div class="product-rating-count">
+                            <p>(1200 reviews)</p>
+                            <hr>
+                            <div class="product-stock-count">
+                                <span><i class="fa-solid fa-circle-check"></i></span>
+                                <span>In Stock</span>
+                                <span>(60)</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="product-tags">
+                        <p>beauty</p>
+                        <p>mascara</p>
+                    </div>
+
+                    <div class="product-buying-sec">
+
+                        <div class="quantity-selector">
+
+                            <button class="qty-btn">-</button>
+
+                            <span class="qty-value">1</span>
+
+                            <button class="qty-btn">+</button>
+
+                        </div>
+
+                        <button id="addToCart-btn"><i class="fa-solid fa-cart-plus"></i>Add to cart</button>
+                        <button id="buyNow-btn">Buy Now</button>
+
+                    </div>
+
+                    <div class="product-wishlist-sec">
+                        <button id="addToWish-btn"><i class="fa-regular fa-heart"></i> Add to Wishlist</button>
+                        <button><i class="fa-solid fa-share-nodes"></i> Share</button>
+                    </div>
+
+                    <hr>
+
+                    <div class="product-delivery-sec">
+
+                        <div class="delivery-detail">
+                            <i class="fa-solid fa-truck"></i>
+                            <div class="delivery-detail-text">
+                                <h3>Free Shipping</h3>
+                                <p>All Over India</p>
+                            </div>
+                        </div>
+
+                         <div class="delivery-detail">
+                            <i class="fa-solid fa-truck"></i>
+                            <div class="delivery-detail-text">
+                                <h3>Return Delivery</h3>
+                                <p>Free 30 Days Delivery Returns</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- product Details -->
+            </div>
+
+        </div>
+    </main>
 </body>
+
 </html>
