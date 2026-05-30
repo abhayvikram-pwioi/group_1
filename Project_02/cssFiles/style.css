@@ -536,11 +536,23 @@ body.modal-open .main-sec {
 }
 
 .product-buying-sec {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   gap: 20px;
 }
 
+.price-sec-detail{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.discount-box{
+  padding: 2px 5px 2px 5px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
 
 
 .quantity-selector {
