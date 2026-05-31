@@ -120,6 +120,25 @@ sortTopics.addEventListener("change", applyFilters);
 
 
 
+const ratingLinks = document.querySelectorAll(".rating-list a");
+
+let selectedRating = 0;
+
+ratingLinks.forEach(e => {
+
+    e.addEventListener("click", () => {
+
+        selectedRating = Number(e.dataset.rating);
+
+        applyFilters();
+
+    });
+
+});
+
+
+
+
 function applyFilters() {
 
     const selectedCategories = [];
@@ -134,6 +153,7 @@ function applyFilters() {
 
     const maxPrice = Number(priceSlider.value);
 
+
     const filteredProducts = allProducts.filter(product => {
         const categoryMatch = selectedCategories.length === 0 ? true : selectedCategories.includes(product.category.toLowerCase());
 
@@ -141,7 +161,14 @@ function applyFilters() {
 
         const priceMatch = actualPrice <= maxPrice;
 
-        return categoryMatch && priceMatch;
+
+         const ratingMatch = selectedRating === 0? true: product.rating >= selectedRating;
+
+        return (
+            categoryMatch &&
+            priceMatch &&
+            ratingMatch
+        );
     });
 
     const sortValue = sortTopics.value;
@@ -154,9 +181,9 @@ function applyFilters() {
 
         filteredProducts.sort((a, b) => b.price - a.price);
 
-    } else if(sortValue === "popularity"){
+    } else if (sortValue === "popularity") {
 
-        filteredProducts.sort((a,b) => b.rating - a.rating);
+        filteredProducts.sort((a, b) => b.rating - a.rating);
     }
 
 
@@ -164,5 +191,6 @@ function applyFilters() {
 
 
 }
+
 
 
