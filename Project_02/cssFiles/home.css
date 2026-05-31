@@ -297,6 +297,32 @@ img{
 
     transition:var(--transition);
 }
+.wishlist-btn:hover{
+    color:red;
+    transform:scale(1.1);
+}
+.wishlist-btn.active{
+    color:red;
+}
+.add-cart{
+    background: var(--text-accent);
+    color:white;
+    border:none;
+    border-radius:25px;
+    padding:10px 15px;
+}
+.add-cart .plus,
+.add-cart .minus{
+    font-size:1.2rem;
+    font-weight:bold;
+    cursor:pointer;
+    user-select:none;
+}
+
+.add-cart .qty{
+    min-width:20px;
+    text-align:center;
+}
 .card:hover img{
     transform:scale(1.05);
 
