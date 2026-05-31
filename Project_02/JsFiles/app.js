@@ -1,6 +1,6 @@
 let allProducts = [];
 
-async function getProducts(){
+async function getProducts() {
 
     const response = await fetch("https://dummyjson.com/products");
 
@@ -21,10 +21,20 @@ function renderProducts(products) {
 
     productList.innerHTML = "";
 
+    if (products.length === 0) {
+
+        productList.innerHTML = `
+            <h2>No Products Found</h2>
+        `;
+
+        return;
+    }
+
+
     products.forEach(product => {
 
         let price = (product.price * 10).toFixed(0);
-        
+
         productList.innerHTML += `
         
            <div class="product-card">
@@ -50,7 +60,7 @@ function renderProducts(products) {
 
                             <div class="product-card-rating">
                                 ⭐⭐⭐⭐☆
-                                <span id="rating-count">(200})</span>
+                                <span id="rating-count">(200)</span>
                             </div>
 
                             <h3>₹${price}</h3>
@@ -91,30 +101,96 @@ categoryCheckboxes.forEach(box => {
 });
 
 
-function applyFilters(){
+
+const priceSlider = document.getElementById("priceSlider");
+
+const priceValueMax = document.getElementById("priceValueMax");
+
+priceSlider.addEventListener("input", (e) => {
+    priceValueMax.textContent = `₹${Number(priceSlider.value).toLocaleString("en-IN")}`;
+});
+
+priceSlider.addEventListener("input", applyFilters);
+
+
+
+const sortTopics = document.getElementById("sort-topics");
+
+sortTopics.addEventListener("change", applyFilters);
+
+
+
+const ratingLinks = document.querySelectorAll(".rating-list a");
+
+let selectedRating = 0;
+
+ratingLinks.forEach(e => {
+
+    e.addEventListener("click", () => {
+
+        selectedRating = Number(e.dataset.rating);
+
+        applyFilters();
+
+    });
+
+});
+
+
+
+
+function applyFilters() {
 
     const selectedCategories = [];
 
     categoryCheckboxes.forEach(box => {
 
-        if(box.checked){
+        if (box.checked) {
             selectedCategories.push(box.value.toLowerCase());
         }
 
     });
 
-     if(selectedCategories.length === 0){
+    const maxPrice = Number(priceSlider.value);
 
-        renderProducts(allProducts);
 
-        return;
+    const filteredProducts = allProducts.filter(product => {
+        const categoryMatch = selectedCategories.length === 0 ? true : selectedCategories.includes(product.category.toLowerCase());
 
+        const actualPrice = Math.round(product.price * 10);
+
+        const priceMatch = actualPrice <= maxPrice;
+
+
+         const ratingMatch = selectedRating === 0? true: product.rating >= selectedRating;
+
+        return (
+            categoryMatch &&
+            priceMatch &&
+            ratingMatch
+        );
+    });
+
+    const sortValue = sortTopics.value;
+
+    if (sortValue === "lowToHigh") {
+
+        filteredProducts.sort((a, b) => a.price - b.price);
+
+    } else if (sortValue === "highToLow") {
+
+        filteredProducts.sort((a, b) => b.price - a.price);
+
+    } else if (sortValue === "popularity") {
+
+        filteredProducts.sort((a, b) => b.rating - a.rating);
     }
 
-    const filteredProducts = allProducts.filter(product =>
-            selectedCategories.includes( product.category.toLowerCase() )
-    );
 
     renderProducts(filteredProducts);
 
+
 }
+
+
+
