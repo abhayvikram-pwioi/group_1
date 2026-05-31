@@ -112,9 +112,13 @@ priceSlider.addEventListener("input", (e) => {
 
 priceSlider.addEventListener("input", applyFilters);
 
+
+
 const sortTopics = document.getElementById("sort-topics");
 
 sortTopics.addEventListener("change", applyFilters);
+
+
 
 function applyFilters() {
 
@@ -146,14 +150,12 @@ function applyFilters() {
 
         filteredProducts.sort((a, b) => a.price - b.price);
 
-    }
-
-    else if (sortValue === "highToLow") {
+    } else if (sortValue === "highToLow") {
 
         filteredProducts.sort((a, b) => b.price - a.price);
 
     } else if(sortValue === "popularity"){
-        
+
         filteredProducts.sort((a,b) => b.rating - a.rating);
     }
 
