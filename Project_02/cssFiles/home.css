@@ -135,7 +135,42 @@ img{
     color:var(--text-accent);
     transform:translateY(-3px);
 }
-
+.cart-icon{
+    position: relative;
+}
+#cart-count{
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--text-accent);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:0.75rem;
+    font-weight:600;
+}
+.wishlist-icon{
+    position: relative;
+}
+#wishlist-count{
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--text-accent);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:0.75rem;
+    font-weight:600;
+}
 .banner{
     height: 650px;
     margin: 30px 5%;
@@ -236,6 +271,31 @@ img{
     height: 320px;
     object-fit: cover;
     transition: 0.4s;
+}
+.card i{
+    position:absolute;
+    top:15px;
+    right:15px;
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:white;
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:1.2rem;
+
+    color:var(--text-secondary);
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+    transition:var(--transition);
 }
 .card:hover img{
     transform:scale(1.05);
