@@ -1,6 +1,6 @@
 let allProducts = [];
 
-async function getProducts(){
+async function getProducts() {
 
     const response = await fetch("https://dummyjson.com/products");
 
@@ -21,7 +21,7 @@ function renderProducts(products) {
 
     productList.innerHTML = "";
 
-    if(products.length === 0){
+    if (products.length === 0) {
 
         productList.innerHTML = `
             <h2>No Products Found</h2>
@@ -34,7 +34,7 @@ function renderProducts(products) {
     products.forEach(product => {
 
         let price = (product.price * 10).toFixed(0);
-        
+
         productList.innerHTML += `
         
            <div class="product-card">
@@ -60,7 +60,7 @@ function renderProducts(products) {
 
                             <div class="product-card-rating">
                                 ⭐⭐⭐⭐☆
-                                <span id="rating-count">(200})</span>
+                                <span id="rating-count">(200)</span>
                             </div>
 
                             <h3>₹${price}</h3>
@@ -101,30 +101,66 @@ categoryCheckboxes.forEach(box => {
 });
 
 
-function applyFilters(){
+
+const priceSlider = document.getElementById("priceSlider");
+
+const priceValueMax = document.getElementById("priceValueMax");
+
+priceSlider.addEventListener("input", (e) => {
+    priceValueMax.textContent = `₹${Number(priceSlider.value).toLocaleString("en-IN")}`;
+});
+
+priceSlider.addEventListener("input", applyFilters);
+
+const sortTopics = document.getElementById("sort-topics");
+
+sortTopics.addEventListener("change", applyFilters);
+
+function applyFilters() {
 
     const selectedCategories = [];
 
     categoryCheckboxes.forEach(box => {
 
-        if(box.checked){
+        if (box.checked) {
             selectedCategories.push(box.value.toLowerCase());
         }
 
     });
 
-     if(selectedCategories.length === 0){
+    const maxPrice = Number(priceSlider.value);
 
-        renderProducts(allProducts);
+    const filteredProducts = allProducts.filter(product => {
+        const categoryMatch = selectedCategories.length === 0 ? true : selectedCategories.includes(product.category.toLowerCase());
 
-        return;
+        const actualPrice = Math.round(product.price * 10);
+
+        const priceMatch = actualPrice <= maxPrice;
+
+        return categoryMatch && priceMatch;
+    });
+
+    const sortValue = sortTopics.value;
+
+    if (sortValue === "lowToHigh") {
+
+        filteredProducts.sort((a, b) => a.price - b.price);
 
     }
 
-    const filteredProducts = allProducts.filter(product =>
-            selectedCategories.includes( product.category.toLowerCase() )
-    );
+    else if (sortValue === "highToLow") {
+
+        filteredProducts.sort((a, b) => b.price - a.price);
+
+    } else if(sortValue === "popularity"){
+        
+        filteredProducts.sort((a,b) => b.rating - a.rating);
+    }
+
 
     renderProducts(filteredProducts);
 
+
 }
+
+
