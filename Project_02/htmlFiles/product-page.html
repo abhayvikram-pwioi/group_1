@@ -14,7 +14,29 @@
 <body>
     <main class="product-page">
 
-        <header>Header</header>
+        <header class="page-header">
+            <div class="page-logo">
+                <b>Shop-verse</b>
+            </div>
+            <nav class="category">
+                <a href="#">Men</a>
+                <a href="#">Women</a>
+                <a href="#">Kids</a>
+                <a href="#">Accessories</a>
+            </nav>
+            <div class="page-search">
+                <input type="text" placeholder="Search products..." width="100px">
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+            </div>
+            <nav class="page-icon">
+                <a href="#"><i class="fa-regular fa-heart"></i></a>
+                <a href="#"><i class="fa-regular fa-circle-user"></i></a>
+                <a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a>
+            </nav>
+        </header>
 
         <div class="main-sec">
 
@@ -116,8 +138,8 @@
                     <div class="rating-filter">
                         <h4>Ratings</h4>
                         <div class="rating-list">
-                            <a data-rating="4" >4+ star</a>
-                            <a data-rating="3" >3+ star</a>
+                            <a data-rating="4">4+ star</a>
+                            <a data-rating="3">3+ star</a>
                             <a data-rating="2">2+ star</a>
                         </div>
                     </div>
@@ -609,6 +631,7 @@
 
         });
 
+
         const filterOpenBtnRes = document.getElementById("filter-main-btn-res");
         const filterSection = document.getElementById("filter-section");
 
@@ -616,7 +639,6 @@
             e.stopPropagation();
 
             filterSection.classList.add("activee");
-            closeBtnFilter.style.display = "block";
         });
 
         filterSection.addEventListener("click", (e) => {
@@ -628,6 +650,7 @@
             filterSection.classList.remove("activee");
 
         });
+
     </script>
 
     <script src="/JsFiles/app.js"></script>
