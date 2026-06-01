@@ -40,7 +40,7 @@ if (topicSelect) {
 
 
     (async () => {
-
+        showNewsSkeleton();
         const articles = await getNews("general");
         renderNewsCards(articles);
 
@@ -48,6 +48,7 @@ if (topicSelect) {
 
     topicSelect.addEventListener("change", async () => {
 
+        showNewsSkeleton();
         const articles = await getNews(topicSelect.value);
 
         if (!articles || articles.length === 0) {
@@ -65,6 +66,8 @@ if (topicSelect) {
         const query = document.getElementById("searchNews").value.trim();
 
         const category = document.getElementById("newsCategory").value;
+
+        showNewsSkeleton();
 
         let articles;
 
@@ -313,4 +316,47 @@ async function renderNewsOnPage() {
 
 if (image) {
     renderNewsOnPage();
+}
+
+
+function showNewsSkeleton() {
+
+    const container = document.getElementById("news-container");
+
+    container.innerHTML = "";
+
+    for (let i = 0; i < 6; i++) {
+
+        container.innerHTML += `
+            <div class="news-card skeleton-card">
+
+                <div class="skeleton skeleton-img"></div>
+
+                <div class="news-card-details">
+
+                    <div class="skeleton skeleton-source"></div>
+
+                    <div class="skeleton skeleton-title"></div>
+
+                    <div class="skeleton skeleton-title small"></div>
+
+                    <div class="skeleton skeleton-text"></div>
+
+                    <div class="skeleton skeleton-text"></div>
+
+                </div>
+
+                <hr>
+
+                <div class="news-card-bottom">
+
+                    <div class="skeleton skeleton-date"></div>
+
+                    <div class="skeleton skeleton-btn"></div>
+
+                </div>
+
+            </div>
+        `;
+    }
 }
