@@ -264,7 +264,46 @@ if (filter) {
 }
 
 
+const savedProduct = localStorage.getItem("selectedProduct");
 
+if (savedProduct) {
+
+    const product = JSON.parse(savedProduct);
+
+    const title = document.getElementById("product-title");
+
+    if (title) {
+
+        document.getElementById("product-title").textContent = product.title;
+
+        document.getElementById("product-image").src = product.thumbnail;
+
+        document.getElementById("product-description").textContent = product.description;
+
+        document.getElementById("product-category").textContent = product.category;
+
+        document.getElementById("product-stock").textContent = `(${product.stock})`;
+
+        document.getElementById("product-price").textContent = `₹${(product.price * 100).toFixed(0)}`;
+
+        document.getElementById("product-tag-1").textContent = `• ${product.tags[0]}`;
+        document.getElementById("product-tag-2").textContent = `• ${product.tags[1]}`;
+
+        // document.getElementById("product-discounted-price").textContent = 
+
+        document.getElementById("discount-percent").textContent = `${product.discountPercentage} %`;
+
+        document.getElementById("product-brand").textContent = `Brand : ${product.brand}`;
+        document.getElementById("product-dimensions").textContent = `Dimensions : ${product.dimensions.width}cm X ${product.dimensions.height}cm X ${product.dimensions.depth}cm`;
+        const weight = Number(product.weight)*10;
+        document.getElementById("product-weight").textContent = `Weight : ${weight}g`;
+
+         document.getElementById("brand").textContent = `${product.brand}`;
+        document.getElementById("weight").textContent = `${weight}g`;
+
+        document.getElementById("warranty").textContent = `${product.warrantyInformation}`;
+    }
+}
 
 
 
