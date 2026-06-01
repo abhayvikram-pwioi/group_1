@@ -214,31 +214,32 @@ if (filter) {
 
     }
 
+    document.addEventListener("click", (e) => {
+
+        const btn = e.target.closest(".view-btn");
+
+        if (!btn) return;
+
+        const productId = btn.dataset.id;
+
+        const product = allProducts.find(
+            p => p.id == productId
+        );
+
+        document.getElementById("quick-view-title").textContent = `${product.title}`;
+        document.getElementById("quick-view-des").textContent = `${product.description}`;
+        document.getElementById("brand-quick-view").textContent = `${product.brand}`;
+        const weight = Number(product.weight) * 10;
+        document.getElementById("weight-quick-view").textContent = `${weight}g`;
+        document.getElementById("warranty-quick-view").textContent = `${product.warrantyInformation}`;
+        document.getElementById("dimention-quick-view").textContent = `${product.dimensions.width}cm X ${product.dimensions.height}cm X ${product.dimensions.depth}cm`;
+
+
+    });
 
 }
 
-document.addEventListener("click", (e) => {
 
-    const btn = e.target.closest(".view-btn");
-
-    if (!btn) return;
-
-    const productId = btn.dataset.id;
-
-    const product = allProducts.find(
-        p => p.id == productId
-    );
-
-    document.getElementById("quick-view-title").textContent = `${product.title}`;
-    document.getElementById("quick-view-des").textContent = `${product.description}`;
-    document.getElementById("brand-quick-view").textContent = `${product.brand}`;
-    const weight = Number(product.weight) * 10;
-    document.getElementById("weight-quick-view").textContent = `${weight}g`;
-    document.getElementById("warranty-quick-view").textContent = `${product.warrantyInformation}`;
-    document.getElementById("dimention-quick-view").textContent = `${product.dimensions.width}cm X ${product.dimensions.height}cm X ${product.dimensions.depth}cm`;
-
-
-});
 
 
 document.addEventListener("click", (e) => {
@@ -254,7 +255,7 @@ document.addEventListener("click", (e) => {
             product => product.id === productId
         );
 
-    localStorage.setItem( "selectedProduct",JSON.stringify(selectedProduct));
+    localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
 
     window.location.href = "product-details-page.html";
 
@@ -332,13 +333,13 @@ function getStars(rating) {
 
 function renderSuggestedProducts() {
 
-    const currentProduct =JSON.parse(localStorage.getItem("selectedProduct") );
+    const currentProduct = JSON.parse(localStorage.getItem("selectedProduct"));
 
-    const suggestedProducts = allProducts .filter(
-                product =>
-                    product.category === currentProduct.category &&
-                    product.id !== currentProduct.id
-            ).slice(0, 4);
+    const suggestedProducts = allProducts.filter(
+        product =>
+            product.category === currentProduct.category &&
+            product.id !== currentProduct.id
+    ).slice(0, 4);
 
 
     const moreProductsList = document.querySelector(".more-products");
