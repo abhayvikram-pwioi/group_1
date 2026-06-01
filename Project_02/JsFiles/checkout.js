@@ -147,14 +147,6 @@ function(){
         name
     );
 
-    /* FIX 5 & 6 & 7 & 8:
-       - Removed the duplicate second "let options" block (caused SyntaxError).
-       - Removed "rzp.open()" from global scope (was opening popup on page load).
-       - Removed "new Razorpay(options)" from global scope.
-       - Razorpay is now created and opened ONLY here, inside the click handler,
-         AFTER all validation has passed.
-       - If payment method is COD, show a simple success alert instead. */
-
     if(payment.value === "COD"){
 
         alert("Order Placed Successfully");
