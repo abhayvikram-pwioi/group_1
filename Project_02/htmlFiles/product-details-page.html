@@ -36,15 +36,15 @@
                 <a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a>
             </nav>
         </header>
-        
+
         <div class="product-detail-main">
             <div class="product-details">
                 <div class="product-img-sec">
-                    <img src="https://picsum.photos/250/200" alt="" class="product-image-detail">
+                    <img src="https://picsum.photos/250/200" alt="" class="product-image-detail" id="product-image">
                 </div>
                 <div class="product-des">
-                    <h3>BOOKS</h3>
-                    <h1 id="product-tittle">Best Seller Fiction Novel</h1>
+                    <h3 id="product-category">BOOKS</h3>
+                    <h1 id="product-title">Best Seller Fiction Novel</h1>
                     <div class="rating-sec">
 
                         <div class="product-ratings">
@@ -61,22 +61,22 @@
                             <div class="product-stock-count">
                                 <span><i class="fa-solid fa-circle-check"></i></span>
                                 <span>In Stock</span>
-                                <span>(60)</span>
+                                <span id="product-stock">(60)</span>
                             </div>
                         </div>
 
                     </div>
 
                     <div class="product-tags">
-                        <p style="display: flex; align-items: center;">• beauty</p>
-                        <p style="display: flex; align-items: center;">• mascara</p>
+                        <p style="display: flex; align-items: center;" id="product-tag-1">• beauty</p>
+                        <p style="display: flex; align-items: center;" id="product-tag-2">• mascara</p>
                     </div>
 
                      <div class="price-sec-detail">
-                        <h1>₹899</h1>
-                        <h2><s>₹999</s></h2>
+                        <h1 id="product-price">₹899</h1>
+                        <h2 id="product-discounted-price"><s>₹999</s></h2>
                         <div class="discount-box">
-                            <h4>29% OFF</h4>
+                            <h4 id="discount-percent">29% OFF</h4>
                         </div>
                     </div>
 
@@ -133,15 +133,15 @@
 
                 <div class="description">
                     <h1>Description</h1>
-                    <p>Experience the ultimate combination of style, comfort, and advanced technology with the Best
+                    <p id="product-description">Experience the ultimate combination of style, comfort, and advanced technology with the Best
                         Seller Fiction Novel. Designed for everyday use with premium materials ensuring long-lasting
                         durability. Whether you're working, reading, or on an adventure, this product delivers
                         exceptional performance.</p>
                     <div class="key-features">
                         <h2>Key Features</h2>
-                        <p># brand": Chic Cosmetics </p>
-                        <p># dimensions : 15 x 15 x 15</p>
-                        <p># Wieght : 800g </p>
+                        <p id="product-brand"># brand": Chic Cosmetics </p>
+                        <p id="product-dimensions"># dimensions : 15 x 15 x 15</p>
+                        <p id="product-weight"># Wieght : 800g </p>
                     </div>
                 </div>
 
@@ -150,19 +150,19 @@
                     <div class="detail-specifications">
                         <div class="detail-specifications-1">
                             <div class="spec-detail">
-                                <p>MATERIAL</p>
-                                <h3>Premium Synthetic & Metal</h3>
+                              <p>BRAND</p>
+                            <h3 id="brand">Premium Synthetic & Metal</h3>
                             </div>
                             <div class="spec-detail">
                                 <p>WEIGHT</p>
-                                <h3>Varies by dimension</h3>
+                                <h3 id="weight">Varies by dimension</h3>
                             </div>
                         </div>
 
                         <div class="detail-specifications-2">
                             <div class="spec-detail">
                                 <p>WARRANTY</p>
-                                <h3>1 Year Limited</h3>
+                                <h3 id="warranty">1 Year Limited</h3>
                             </div>
                             <div class="spec-detail">
                                 <p>MODEL YEAR</p>
@@ -377,7 +377,7 @@
     </main>
 
 
-
+<script src="/JsFiles/app.js"></script>
 </body>
 
 </html>

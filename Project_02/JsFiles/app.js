@@ -1,60 +1,63 @@
-let allProducts = [];
+const filter = document.getElementById("filter-head");
 
-async function getProducts() {
+if (filter) {
+    let allProducts = [];
 
-    const response = await fetch("https://dummyjson.com/products");
+    async function getProducts() {
 
-    const data = await response.json();
+        const response = await fetch("https://dummyjson.com/products");
 
-    allProducts = data.products;
+        const data = await response.json();
 
-    renderProducts(allProducts);
+        allProducts = data.products;
+
+        renderProducts(allProducts);
 
 
-    const quickBtns = document.querySelectorAll(".view-btn");
+        const quickBtns = document.querySelectorAll(".view-btn");
 
-    quickBtns.forEach(btn => {
+        quickBtns.forEach(btn => {
 
-        btn.addEventListener("click", () => {
+            btn.addEventListener("click", () => {
 
-            modal.classList.add("active");
-            document.body.classList.add("modal-open");
+                modal.classList.add("active");
+                document.body.classList.add("modal-open");
+
+            });
 
         });
 
-    });
+    }
 
-}
+    function renderProducts(products) {
 
-function renderProducts(products) {
-
-    document.querySelector(".product-count").textContent = `${products.length} Products`;
+        document.querySelector(".product-count").textContent = `${products.length} Products`;
 
 
-    const productList = document.getElementById("product-list");
+        const productList = document.getElementById("product-list");
 
-    productList.innerHTML = "";
+        productList.innerHTML = "";
 
-    if (products.length === 0) {
+        if (products.length === 0) {
 
-        productList.innerHTML = `
+            productList.innerHTML = `
             <h2>No Products Found</h2>
         `;
 
-        return;
-    }
+            return;
+        }
 
 
-    products.forEach(product => {
+        products.forEach(product => {
 
-        let price = (product.price * 10).toFixed(0);
+            let price = (product.price * 10).toFixed(0);
 
-        productList.innerHTML += `
+            productList.innerHTML += `
         
-           <div class="product-card">
+           <div class="product-card" >
 
                         <div class="product-img-box">
-                            <img src="${product.thumbnail}" alt="book" id="product-img">
+                            <img src="${product.thumbnail}" alt="book" id="product-img"  data-id="${product.id}">
 
                             <button class="product-card-wishlist">
                                 <i class="fa-regular fa-heart"></i>
@@ -97,111 +100,166 @@ function renderProducts(products) {
                     </div>
         
         `
-    });
+        });
 
 
 
-}
+    }
 
-getProducts();
-
-
-const categoryCheckboxes = document.querySelectorAll('input[type="checkbox"]');
-
-categoryCheckboxes.forEach(box => {
-
-    box.addEventListener("change", applyFilters);
-
-});
+    getProducts();
 
 
-
-const priceSlider = document.getElementById("priceSlider");
-
-const priceValueMax = document.getElementById("priceValueMax");
-
-priceSlider.addEventListener("input", (e) => {
-    priceValueMax.textContent = `₹${Number(priceSlider.value).toLocaleString("en-IN")}`;
-});
-
-priceSlider.addEventListener("input", applyFilters);
-
-
-
-const sortTopics = document.getElementById("sort-topics");
-
-sortTopics.addEventListener("change", applyFilters);
-
-
-
-const ratingLinks = document.querySelectorAll(".rating-list a");
-
-let selectedRating = 0;
-
-ratingLinks.forEach(e => {
-
-    e.addEventListener("click", () => {
-
-        selectedRating = Number(e.dataset.rating);
-
-        applyFilters();
-
-    });
-
-});
-
-
-
-
-function applyFilters() {
-
-    const selectedCategories = [];
+    const categoryCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 
     categoryCheckboxes.forEach(box => {
 
-        if (box.checked) {
-            selectedCategories.push(box.value.toLowerCase());
+        box.addEventListener("change", applyFilters);
+
+    });
+
+
+
+    const priceSlider = document.getElementById("priceSlider");
+
+    const priceValueMax = document.getElementById("priceValueMax");
+
+    priceSlider.addEventListener("input", (e) => {
+        priceValueMax.textContent = `₹${Number(priceSlider.value).toLocaleString("en-IN")}`;
+    });
+
+    priceSlider.addEventListener("input", applyFilters);
+
+
+
+    const sortTopics = document.getElementById("sort-topics");
+
+    sortTopics.addEventListener("change", applyFilters);
+
+
+
+    const ratingLinks = document.querySelectorAll(".rating-list a");
+
+    let selectedRating = 0;
+
+    ratingLinks.forEach(e => {
+
+        e.addEventListener("click", () => {
+
+            selectedRating = Number(e.dataset.rating);
+
+            applyFilters();
+
+        });
+
+    });
+
+
+
+
+    function applyFilters() {
+
+        const selectedCategories = [];
+
+        categoryCheckboxes.forEach(box => {
+
+            if (box.checked) {
+                selectedCategories.push(box.value.toLowerCase());
+            }
+
+        });
+
+        const maxPrice = Number(priceSlider.value);
+
+
+        const filteredProducts = allProducts.filter(product => {
+            const categoryMatch = selectedCategories.length === 0 ? true : selectedCategories.includes(product.category.toLowerCase());
+
+            const actualPrice = Math.round(product.price * 10);
+
+            const priceMatch = actualPrice <= maxPrice;
+
+
+            const ratingMatch = selectedRating === 0 ? true : product.rating >= selectedRating;
+
+            return (
+                categoryMatch &&
+                priceMatch &&
+                ratingMatch
+            );
+        });
+
+        const sortValue = sortTopics.value;
+
+        if (sortValue === "lowToHigh") {
+
+            filteredProducts.sort((a, b) => a.price - b.price);
+
+        } else if (sortValue === "highToLow") {
+
+            filteredProducts.sort((a, b) => b.price - a.price);
+
+        } else if (sortValue === "popularity") {
+
+            filteredProducts.sort((a, b) => b.rating - a.rating);
         }
 
-    });
 
-    const maxPrice = Number(priceSlider.value);
+        renderProducts(filteredProducts);
 
-
-    const filteredProducts = allProducts.filter(product => {
-        const categoryMatch = selectedCategories.length === 0 ? true : selectedCategories.includes(product.category.toLowerCase());
-
-        const actualPrice = Math.round(product.price * 10);
-
-        const priceMatch = actualPrice <= maxPrice;
-
-
-        const ratingMatch = selectedRating === 0 ? true : product.rating >= selectedRating;
-
-        return (
-            categoryMatch &&
-            priceMatch &&
-            ratingMatch
-        );
-    });
-
-    const sortValue = sortTopics.value;
-
-    if (sortValue === "lowToHigh") {
-
-        filteredProducts.sort((a, b) => a.price - b.price);
-
-    } else if (sortValue === "highToLow") {
-
-        filteredProducts.sort((a, b) => b.price - a.price);
-
-    } else if (sortValue === "popularity") {
-
-        filteredProducts.sort((a, b) => b.rating - a.rating);
     }
 
 
-    renderProducts(filteredProducts);
+
+
+
+    document.addEventListener("click", (e) => {
+
+        const btn = e.target.closest(".view-btn");
+
+        if (!btn) return;
+
+        const productId = btn.dataset.id;
+
+        const product = allProducts.find(
+            p => p.id == productId
+        );
+
+        document.getElementById("quick-view-title").textContent = `${product.title}`;
+        document.getElementById("quick-view-des").textContent = `${product.description}`;
+        document.getElementById("brand-quick-view").textContent = `${product.brand}`;
+        const weight = Number(product.weight)*10;
+        document.getElementById("weight-quick-view").textContent = `${weight}g`;
+        document.getElementById("warranty-quick-view").textContent = `${product.warrantyInformation}`;
+        document.getElementById("dimention-quick-view").textContent = `${product.dimensions.width}cm X ${product.dimensions.height}cm X ${product.dimensions.depth}cm`;
+
+       
+    });
+
+
+
+
+    document.addEventListener("click", (e) => {
+
+        const img = e.target.closest("#product-img");
+
+        if (!img) return;
+
+        const productId = Number(img.dataset.id);
+
+        const selectedProduct =
+            allProducts.find(
+                product => product.id === productId
+            );
+
+        localStorage.setItem(
+            "selectedProduct",
+            JSON.stringify(selectedProduct)
+        );
+
+        window.location.href = "product-details-page.html";
+
+    });
+
 
 }
 
@@ -209,25 +267,4 @@ function applyFilters() {
 
 
 
-document.addEventListener("click", (e) => {
-
-    const btn = e.target.closest(".view-btn");
-
-    if (!btn) return;
-
-    const productId = btn.dataset.id;
-
-    const product = allProducts.find(
-        p => p.id == productId
-    );
-
-    document.getElementById("quick-view-title").textContent = `${product.title}`;
-    document.getElementById("quick-view-des").textContent = `${product.description}`;
-    document.getElementById("brand-quick-view").textContent = `${product.brand}`;
-    document.getElementById("weight-quick-view").textContent = `${product.weight}`;
-    document.getElementById("warranty-quick-view").textContent = `${product.warrantyInformation}`;
-    document.getElementById("dimention-quick-view").textContent = `${product.dimensions.width}cm X ${product.dimensions.height}cm X ${product.dimensions.depth}cm`;
-
-
-});
 
