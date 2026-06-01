@@ -10,6 +10,20 @@ async function getProducts() {
 
     renderProducts(allProducts);
 
+
+    const quickBtns = document.querySelectorAll(".view-btn");
+
+    quickBtns.forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+            modal.classList.add("active");
+            document.body.classList.add("modal-open");
+
+        });
+
+    });
+
 }
 
 function renderProducts(products) {
@@ -72,7 +86,7 @@ function renderProducts(products) {
                                     <i class="fa-solid fa-basket-shopping"></i> Add
                                 </button>
 
-                                <button class="view-btn">
+                                <button class="view-btn" data-id = "${product.id}">
                                     <i class="fa-solid fa-eye"></i> Quick View
                                 </button>
 
@@ -162,7 +176,7 @@ function applyFilters() {
         const priceMatch = actualPrice <= maxPrice;
 
 
-         const ratingMatch = selectedRating === 0? true: product.rating >= selectedRating;
+        const ratingMatch = selectedRating === 0 ? true : product.rating >= selectedRating;
 
         return (
             categoryMatch &&
@@ -189,8 +203,31 @@ function applyFilters() {
 
     renderProducts(filteredProducts);
 
-
 }
 
 
+
+
+
+document.addEventListener("click", (e) => {
+
+    const btn = e.target.closest(".view-btn");
+
+    if (!btn) return;
+
+    const productId = btn.dataset.id;
+
+    const product = allProducts.find(
+        p => p.id == productId
+    );
+
+    document.getElementById("quick-view-title").textContent = `${product.title}`;
+    document.getElementById("quick-view-des").textContent = `${product.description}`;
+    document.getElementById("brand-quick-view").textContent = `${product.brand}`;
+    document.getElementById("weight-quick-view").textContent = `${product.weight}`;
+    document.getElementById("warranty-quick-view").textContent = `${product.warrantyInformation}`;
+    document.getElementById("dimention-quick-view").textContent = `${product.dimensions.width}cm X ${product.dimensions.height}cm X ${product.dimensions.depth}cm`;
+
+
+});
 
