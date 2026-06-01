@@ -630,6 +630,68 @@ input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
 
+.skeleton{
+    background: linear-gradient(
+        90deg,
+        #1d2434 25%,
+        #2d364d 50%,
+        #1d2434 75%
+    );
+
+    background-size: 300% 100%;
+    animation: shimmer 1.2s infinite;
+    border-radius: 8px;
+}
+
+@keyframes shimmer{
+
+    0%{
+        background-position:100% 0;
+    }
+
+    100%{
+        background-position:-100% 0;
+    }
+
+}
+
+.skeleton-img{
+    width:100%;
+    height:180px;
+}
+
+.skeleton-source{
+    width:120px;
+    height:15px;
+    margin-bottom:15px;
+}
+
+.skeleton-title{
+    width:90%;
+    height:22px;
+    margin-bottom:12px;
+}
+
+.skeleton-title.small{
+    width:70%;
+}
+
+.skeleton-text{
+    width:100%;
+    height:15px;
+    margin-bottom:8px;
+}
+
+.skeleton-date{
+    width:90px;
+    height:15px;
+}
+
+.skeleton-btn{
+    width:80px;
+    height:18px;
+}
+
 @media (max-width:768px) {
 
     .main-section {
