@@ -24,7 +24,6 @@ async function loadProduct(){
         ).innerText = "₹" + data.price;
 
     }
-
     catch(error){
 
         console.log(error);
