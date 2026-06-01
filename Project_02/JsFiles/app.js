@@ -76,7 +76,7 @@ if (filter) {
                             </h2>
 
                             <div class="product-card-rating">
-                                ⭐⭐⭐⭐☆
+                                   ${getStars(product.rating)}
                                 <span id="rating-count">(200)</span>
                             </div>
 
@@ -260,8 +260,8 @@ if (filter) {
 
     });
 
-
 }
+
 
 
 const savedProduct = localStorage.getItem("selectedProduct");
@@ -302,8 +302,33 @@ if (savedProduct) {
         document.getElementById("weight").textContent = `${weight}g`;
 
         document.getElementById("warranty").textContent = `${product.warrantyInformation}`;
+
+        document.getElementById("product-rating").innerHTML =`${ getStars(product.rating)}`;
     }
+
+
+    
 }
 
 
 
+function getStars(rating){
+
+    let stars = "";
+
+    const fullStars = Math.floor(rating);
+
+    for(let i=0;i<fullStars;i++){
+
+        stars +=
+        `<i class="fa-solid fa-star"></i>`;
+    }
+
+    for(let i=fullStars;i<5;i++){
+
+        stars +=
+        `<i class="fa-regular fa-star"></i>`;
+    }
+
+    return stars;
+}
