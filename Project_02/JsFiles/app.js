@@ -16,21 +16,8 @@ async function getProducts() {
         renderSuggestedProducts();
     }
 
-
-    const quickBtns = document.querySelectorAll(".view-btn");
-
-    quickBtns.forEach(btn => {
-
-        btn.addEventListener("click", () => {
-
-            modal.classList.add("active");
-            document.body.classList.add("modal-open");
-
-        });
-
-    });
-
 }
+
 getProducts();
 
 const filter = document.getElementById("filter-head");
@@ -97,8 +84,8 @@ if (filter) {
                                     <i class="fa-solid fa-basket-shopping"></i> Add
                                 </button>
 
-                                <button class="view-btn" data-id = "${product.id}">
-                                    <i class="fa-solid fa-eye"></i> Quick View
+                                <button class="buy-btn" data-id = "${product.id}">
+                                    <i class="fa-solid fa-bag-shopping"></i> Buy Now
                                 </button>
 
                             </div>
@@ -388,8 +375,8 @@ function renderSuggestedProducts() {
                                     <i class="fa-solid fa-basket-shopping"></i> Add
                                 </button>
 
-                                <button class="view-btn" data-id = "${product.id}">
-                                    <i class="fa-solid fa-eye"></i> Quick View
+                                <button class="buy-btn" data-id = "${product.id}">
+                                     <i class="fa-solid fa-bag-shopping"></i> Buy Now
                                 </button>
 
                             </div>
