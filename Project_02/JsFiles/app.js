@@ -267,6 +267,30 @@ if (savedProduct) {
         document.getElementById("product-rating").innerHTML = `${getStars(product.rating)}`;
     }
 
+
+    const minusBtn = document.getElementById("minus-btn");
+
+    const plusBtn = document.getElementById("plus-btn");
+
+    const quantityEl = document.getElementById("quantity");
+
+    let quantity = 1;
+
+    plusBtn.addEventListener("click", () => {
+        quantity++;
+        quantityEl.textContent = quantity;
+    });
+
+    minusBtn.addEventListener("click", () => {
+
+        if (quantity > 1) {
+            quantity--;
+            quantityEl.textContent = quantity;
+
+        }
+
+    });
+
 }
 
 
@@ -372,33 +396,33 @@ document.addEventListener("click", (e) => {
 
     const addBtn = e.target.closest(".add-btn");
 
-    if(!addBtn) return;
+    if (!addBtn) return;
 
     const productId =
-    Number(addBtn.dataset.id);
+        Number(addBtn.dataset.id);
 
     addToCart(productId);
 
 });
 
-function addToCart(productId,quantity = 1){
+function addToCart(productId, quantity = 1) {
 
     const product = allProducts.find(
         p => p.id === productId
 
     );
 
-    let cart = JSON.parse( localStorage.getItem("cart") )|| [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const existingItem = cart.find(
         item => item.id === productId
     );
 
-    if(existingItem){
+    if (existingItem) {
 
         existingItem.quantity += quantity;
 
-    }else{
+    } else {
 
         cart.push({
             ...product,
@@ -407,6 +431,6 @@ function addToCart(productId,quantity = 1){
 
     }
 
-    localStorage.setItem("cart",JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
 
 }
