@@ -80,7 +80,7 @@ if (filter) {
 
                             <div class="product-card-btns">
 
-                                <button class="add-btn">
+                                <button class="add-btn" data-id="${product.id}">
                                     <i class="fa-solid fa-basket-shopping"></i> Add
                                 </button>
 
@@ -267,13 +267,15 @@ if (savedProduct) {
         document.getElementById("product-rating").innerHTML = `${getStars(product.rating)}`;
     }
 
+}
 
-    const minusBtn = document.getElementById("minus-btn");
+const minusBtn = document.getElementById("minus-btn");
 
-    const plusBtn = document.getElementById("plus-btn");
+const plusBtn = document.getElementById("plus-btn");
 
-    const quantityEl = document.getElementById("quantity");
+const quantityEl = document.getElementById("quantity");
 
+if (plusBtn) {
     let quantity = 1;
 
     plusBtn.addEventListener("click", () => {
@@ -292,8 +294,6 @@ if (savedProduct) {
     });
 
 }
-
-
 
 function getStars(rating) {
 
@@ -320,7 +320,7 @@ function getStars(rating) {
 function renderSuggestedProducts() {
 
     const currentProduct = JSON.parse(localStorage.getItem("selectedProduct"));
-
+    if (!currentProduct) return;
     const suggestedProducts = allProducts.filter(
         product =>
             product.category === currentProduct.category &&
@@ -370,7 +370,7 @@ function renderSuggestedProducts() {
 
                             <div class="product-card-btns">
 
-                                <button class="add-btn">
+                                <button class="add-btn" data-id="${product.id}">
                                     <i class="fa-solid fa-basket-shopping"></i> Add
                                 </button>
 
@@ -398,8 +398,7 @@ document.addEventListener("click", (e) => {
 
     if (!addBtn) return;
 
-    const productId =
-        Number(addBtn.dataset.id);
+    const productId = Number(addBtn.dataset.id);
 
     addToCart(productId);
 
@@ -411,6 +410,7 @@ function addToCart(productId, quantity = 1) {
         p => p.id === productId
 
     );
+
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -432,8 +432,10 @@ function addToCart(productId, quantity = 1) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+    
 
 }
+
 
 const detailBtn = document.getElementById("add-to-cart-detail");
 
@@ -446,4 +448,6 @@ if (detailBtn) {
 
         addToCart(product.id, quantity);
     })
+
 }
+

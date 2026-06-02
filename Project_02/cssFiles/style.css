@@ -687,7 +687,7 @@ body.modal-open .main-sec {
 
 }
 
-#addToCart-btn,
+.addToCart-btn,
 #buyNow-btn {
   padding: 10px;
   border: none;
