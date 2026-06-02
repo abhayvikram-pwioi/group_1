@@ -1,81 +1,241 @@
+// =====================
+// STORE
+// =====================
 
-let cartCount = 0;
+const store = {
+    men: [],
+    women: [],
+    accessories: []
+};
 
-const cartBadge = document.getElementById("cart-count");
-const cartButtons = document.querySelectorAll(".add-cart");
+// =====================
+// CART & WISHLIST
+// =====================
 
-cartButtons.forEach(button => {
+const cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
 
-    let quantity = 0;
+const wishlist =
+    JSON.parse(localStorage.getItem("wishlist")) || [];
 
-    button.addEventListener("click", function initCart() {
+const cartCount =
+    document.getElementById("cart-count");
 
-        if (quantity !== 0) return;
+const wishlistCount =
+    document.getElementById("wishlist-count");
 
-        quantity = 1;
-        cartCount++;
+cartCount.textContent = cart.length;
+wishlistCount.textContent = wishlist.length;
 
-        cartBadge.textContent = cartCount;
+// =====================
+// FETCH PRODUCTS
+// =====================
 
-        button.innerHTML = `
-            <span class="minus">−</span>
-            <span class="qty">${quantity}</span>
-            <span class="plus">+</span>
-        `;
+async function loadProducts() {
+    try {
 
-        const plusBtn = button.querySelector(".plus");
-        const minusBtn = button.querySelector(".minus");
-        const qtyText = button.querySelector(".qty");
+        const [
+            menShirts,
+            menShoes,
+            menWatches,
+            womenDresses,
+            womenShoes,
+            womenBags,
+            womenJewellery,
+            womenWatches,
+            sunglasses
+        ] = await Promise.all([
 
-        plusBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
+            fetch("https://dummyjson.com/products/category/mens-shirts")
+                .then(res => res.json()),
 
-            quantity++;
-            cartCount++;
+            fetch("https://dummyjson.com/products/category/mens-shoes")
+                .then(res => res.json()),
 
-            qtyText.textContent = quantity;
-            cartBadge.textContent = cartCount;
-        });
+            fetch("https://dummyjson.com/products/category/mens-watches")
+                .then(res => res.json()),
 
-        minusBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
+            fetch("https://dummyjson.com/products/category/womens-dresses")
+                .then(res => res.json()),
 
-            quantity--;
-            cartCount--;
+            fetch("https://dummyjson.com/products/category/womens-shoes")
+                .then(res => res.json()),
 
-            cartBadge.textContent = cartCount;
+            fetch("https://dummyjson.com/products/category/womens-bags")
+                .then(res => res.json()),
 
-            if (quantity <= 0) {
-                quantity = 0;
+            fetch("https://dummyjson.com/products/category/womens-jewellery")
+                .then(res => res.json()),
 
-                button.innerHTML = "Add to Cart";
-            } else {
-                qtyText.textContent = quantity;
-            }
-        });
-    });
+            fetch("https://dummyjson.com/products/category/womens-watches")
+                .then(res => res.json()),
 
-});
-let wishlist = [];
-const wishlistButton = document.querySelectorAll(".wishlist-btn");
-wishlistButton.forEach(button => {
-    button.addEventListener("click", () =>{
-        button.classList.toggle("active");
-    })
-});
+            fetch("https://dummyjson.com/products/category/sunglasses")
+                .then(res => res.json())
 
-let wishlistCount = 0;
-const wishlistBadge = document.getElementById("wishlist-count");
-//const wishlistButton = document.querySelectorAll(".wishlist-btn");
-wishlistButton.forEach(button => {
-    button.addEventListener("click",() =>{
-        button.classList.toggle("active");
-        if(button.classList.toggle("active")){
-            wishlistCount++;
+        ]);
+
+        store.men = [
+            ...menShirts.products,
+            ...menShoes.products,
+            ...menWatches.products
+        ];
+
+        store.women = [
+            ...womenDresses.products,
+            ...womenShoes.products,
+            ...womenBags.products,
+            ...womenJewellery.products,
+            ...womenWatches.products
+        ];
+
+        store.accessories = [
+            ...sunglasses.products,
+            ...womenJewellery.products,
+            ...menWatches.products,
+            ...womenWatches.products
+        ];
+
+        renderProducts(
+            store.men,
+            "men-products"
+        );
+
+        renderProducts(
+            store.women,
+            "women-products"
+        );
+
+        renderProducts(
+            store.accessories,
+            "accessories-products"
+        );
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// =====================
+// RENDER PRODUCTS
+// =====================
+
+function renderProducts(products, containerId) {
+
+    const container =
+        document.getElementById(containerId);
+
+    container.innerHTML = products.map(product => `
+
+        <div class="card">
+
+            <img
+                src="${product.thumbnail}"
+                alt="${product.title}"
+            >
+
+            <i
+                class="fa-solid fa-heart wishlist-btn
+                ${wishlist.includes(product.id) ? "active" : ""}"
+                data-id="${product.id}">
+            </i>
+
+            <h3>${product.title}</h3>
+
+            <p>
+                ${product.description.slice(0, 60)}...
+            </p>
+
+            <p class="price">
+                ₹${Math.round(product.price * 85)}
+            </p>
+
+            <div class="btn">
+
+                <button
+                    class="add-cart"
+                    data-id="${product.id}">
+                    ${cart.includes(product.id)
+                        ? "Added ✓"
+                        : "Add to Cart"}
+                </button>
+
+                <button class="buy-now">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+}
+
+// =====================
+// EVENT DELEGATION
+// =====================
+
+document.addEventListener("click", (e) => {
+
+    // ADD TO CART
+
+    if (e.target.classList.contains("add-cart")) {
+
+        const productId =
+            Number(e.target.dataset.id);
+
+        if (!cart.includes(productId)) {
+
+            cart.push(productId);
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+            cartCount.textContent =
+                cart.length;
+
+            e.target.textContent =
+                "Added ✓";
         }
-        else{
-            wishlistCount--;
+    }
+
+    // WISHLIST
+
+    if (e.target.classList.contains("wishlist-btn")) {
+
+        const productId =
+            Number(e.target.dataset.id);
+
+        if (wishlist.includes(productId)) {
+
+            const index =
+                wishlist.indexOf(productId);
+
+            wishlist.splice(index, 1);
+
+            e.target.classList.remove("active");
+
+        } else {
+
+            wishlist.push(productId);
+
+            e.target.classList.add("active");
         }
-        wishlistBadge.textContent = wishlistCount;
-    })
-})
+
+        localStorage.setItem(
+            "wishlist",
+            JSON.stringify(wishlist)
+        );
+
+        wishlistCount.textContent =
+            wishlist.length;
+    }
+});
+
+// =====================
+// INITIAL LOAD
+// =====================
+
+loadProducts();
