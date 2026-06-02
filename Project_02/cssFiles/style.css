@@ -151,6 +151,12 @@ img {
   transition: var(--transition);
 }
 
+.active-drop{
+    transform: scale(1.2);
+    color: #4f63d8;
+    transition: .3s;
+}
+
 .page-icon a:hover {
   color: var(--text-accent);
   transform: translateY(-3px);
@@ -967,3 +973,5 @@ body.modal-open .main-sec {
 
 
 }
+
+

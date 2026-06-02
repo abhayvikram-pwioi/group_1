@@ -532,3 +532,21 @@ cartZone.addEventListener("drop", (e) => {
     addToCart(productId);
 
 });
+
+cartZone.addEventListener("dragenter", () => {
+
+    cartZone.classList.add("active-drop");
+
+});
+
+cartZone.addEventListener("dragleave", () => {
+
+    cartZone.classList.remove("active-drop");
+
+});
+
+cartZone.addEventListener("drop", () => {
+
+    cartZone.classList.remove("active-drop");
+
+});
