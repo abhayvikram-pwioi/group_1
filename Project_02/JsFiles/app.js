@@ -49,7 +49,7 @@ if (filter) {
 
             productList.innerHTML += `
         
-           <div class="product-card" >
+           <div class="product-card" draggable="true"     data-id="${product.id}" >
 
                         <div class="product-img-box">
                             <img src="${product.thumbnail}" alt="book" id="product-img"  data-id="${product.id}">
@@ -339,7 +339,7 @@ function renderSuggestedProducts() {
 
         moreProductsList.innerHTML += `
      
-      <div class="product-card" >
+      <div class="product-card" draggable="true"     data-id="${product.id}" >
 
                         <div class="product-img-box">
                             <img src="${product.thumbnail}" alt="book" id="product-img"  data-id="${product.id}">
@@ -437,11 +437,11 @@ function addToCart(productId, quantity = 1) {
 }
 
 
-const detailBtn = document.getElementById("add-to-cart-detail");
+const addDetailBtn = document.getElementById("add-to-cart-detail");
 
-if (detailBtn) {
+if (addDetailBtn) {
 
-    detailBtn.addEventListener("click", (e) => {
+    addDetailBtn.addEventListener("click", (e) => {
         const product = JSON.parse(localStorage.getItem("selectedProduct"));
 
         const quantity = Number(document.getElementById("quantity").textContent);
@@ -465,15 +465,88 @@ document.addEventListener("click", (e) => {
         p => p.id === productId
     );
 
-    localStorage.setItem(
-        "checkoutProduct",
-        JSON.stringify({
-            ...product,
-            quantity: 1
-        })
+    localStorage.setItem("checkoutProduct", JSON.stringify({
+        ...product,
+        quantity: 1
+    })
     );
+    console.log(product);
 
-    window.location.href = "checkout.html";
+    // window.location.href = "checkout.html";
+});
+
+
+const buyNowDetail = document.getElementById("buyNow-btn");
+
+if (buyNowDetail) {
+
+    buyNowDetail.addEventListener("click",(e)=>{
+
+        const quantity = Number(document.getElementById("quantity").textContent);
+        const product = JSON.parse(localStorage.getItem("selectedProduct"));
+
+        if(!product) return;
+   
+         localStorage.setItem("checkoutProduct", JSON.stringify({
+           ...product,
+           quantity
+       })
+       );
+
+    // window.location.href = "checkout.html";
+
+    })
+}
+
+document.addEventListener("dragstart", (e) => {
+
+    const card = e.target.closest(".product-card");
+
+    if (!card) return;
+
+    e.dataTransfer.setData(
+        "productId",
+        card.dataset.id
+    );
 
 });
 
+
+const cartZone = document.getElementById("cart-zone");
+
+cartZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+});
+
+cartZone.addEventListener("drop", (e) => {
+
+    e.preventDefault();
+
+    const productId =
+    Number(
+        e.dataTransfer.getData(
+            "productId"
+        )
+    );
+
+    addToCart(productId);
+
+});
+
+cartZone.addEventListener("dragenter", () => {
+
+    cartZone.classList.add("active-drop");
+
+});
+
+cartZone.addEventListener("dragleave", () => {
+
+    cartZone.classList.remove("active-drop");
+
+});
+
+cartZone.addEventListener("drop", () => {
+
+    cartZone.classList.remove("active-drop");
+
+});
