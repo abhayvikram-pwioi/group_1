@@ -434,3 +434,16 @@ function addToCart(productId, quantity = 1) {
     localStorage.setItem("cart", JSON.stringify(cart));
 
 }
+
+const detailBtn = document.getElementById("add-to-cart-detail");
+
+if (detailBtn) {
+
+    detailBtn.addEventListener("click", (e) => {
+        const product = JSON.parse(localStorage.getItem("selectedProduct"));
+
+        const quantity = Number(document.getElementById("quantity").textContent);
+
+        addToCart(product.id, quantity);
+    })
+}
