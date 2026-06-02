@@ -381,3 +381,32 @@ document.addEventListener("click", (e) => {
 
 });
 
+function addToCart(productId,quantity = 1){
+
+    const product = allProducts.find(
+        p => p.id === productId
+
+    );
+
+    let cart = JSON.parse( localStorage.getItem("cart") )|| [];
+
+    const existingItem = cart.find(
+        item => item.id === productId
+    );
+
+    if(existingItem){
+
+        existingItem.quantity += quantity;
+
+    }else{
+
+        cart.push({
+            ...product,
+            quantity
+        });
+
+    }
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+}
