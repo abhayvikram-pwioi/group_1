@@ -366,3 +366,18 @@ function renderSuggestedProducts() {
     });
 
 }
+
+
+document.addEventListener("click", (e) => {
+
+    const addBtn = e.target.closest(".add-btn");
+
+    if(!addBtn) return;
+
+    const productId =
+    Number(addBtn.dataset.id);
+
+    addToCart(productId);
+
+});
+
