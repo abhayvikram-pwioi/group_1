@@ -345,13 +345,18 @@ hr {
 
 .product-card-rating {
   display: flex;
-  gap: 10px;
+  margin-top: 5px;
   align-items: center;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
+.product-card-rating i{
+    color: #FFC107;
+}
+
 .product-card-rating span {
+  margin-left: 5px;
   color: var(--text-secondary);
 }
 
@@ -366,6 +371,8 @@ hr {
   display: flex;
   gap: 20px;
 }
+
+
 
 
 .add-btn {
@@ -588,6 +595,10 @@ body.modal-open .main-sec {
 
 #product-tittle {
   font-size: 50px;
+}
+
+#product-rating i {
+  color:#FFC107;
 }
 
 .rating-sec {
