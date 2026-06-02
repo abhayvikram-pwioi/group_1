@@ -387,7 +387,7 @@ hr {
 }
 
 
-.view-btn {
+.buy-btn {
   flex: 1;
   padding: 10px;
   background: var(--text-accent);
@@ -579,6 +579,7 @@ body.modal-open .main-sec {
   overflow: hidden;
   width: 600px;
   height: 500px;
+  background-color: white;
 }
 
 .product-image-detail {

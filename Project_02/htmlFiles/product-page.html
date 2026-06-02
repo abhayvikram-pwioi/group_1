@@ -556,7 +556,7 @@
 
         </div>
 
-        <div class="quick-view-sec" id="quickViewModal">
+        <!-- <div class="quick-view-sec" id="quickViewModal">
             <div class="quick-view-main-sec">
                 <div class="quick-view-head">
                     <h2 id="quick-view-title">Best Seller Fiction Novel</h2>
@@ -591,9 +591,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
+        </div> -->
 
 
         <footer></footer>
@@ -601,36 +599,6 @@
 
 
     <script>
-        const quickBtns = document.querySelectorAll(".view-btn");
-
-        const modal = document.getElementById("quickViewModal");
-
-        const closeBtn = document.getElementById("quick-view-close-btn");
-
-
-
-        quickBtns.forEach(btn => {
-
-            btn.addEventListener("click", () => {
-
-                modal.classList.add("active");
-
-                document.body.classList.add("modal-open");
-
-            });
-
-        });
-
-
-
-        closeBtn.addEventListener("click", () => {
-
-            modal.classList.remove("active");
-
-            document.body.classList.remove("modal-open");
-
-        });
-
 
         const filterOpenBtnRes = document.getElementById("filter-main-btn-res");
         const filterSection = document.getElementById("filter-section");
