@@ -510,3 +510,25 @@ document.addEventListener("dragstart", (e) => {
     );
 
 });
+
+
+const cartZone = document.getElementById("cart-zone");
+
+cartZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+});
+
+cartZone.addEventListener("drop", (e) => {
+
+    e.preventDefault();
+
+    const productId =
+    Number(
+        e.dataTransfer.getData(
+            "productId"
+        )
+    );
+
+    addToCart(productId);
+
+});
