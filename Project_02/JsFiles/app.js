@@ -432,7 +432,7 @@ function addToCart(productId, quantity = 1) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    
+
 
 }
 
@@ -450,4 +450,30 @@ if (detailBtn) {
     })
 
 }
+
+
+
+document.addEventListener("click", (e) => {
+
+    const buyBtn = e.target.closest(".buy-btn");
+
+    if (!buyBtn) return;
+
+    const productId = Number(buyBtn.dataset.id);
+
+    const product = allProducts.find(
+        p => p.id === productId
+    );
+
+    localStorage.setItem(
+        "checkoutProduct",
+        JSON.stringify({
+            ...product,
+            quantity: 1
+        })
+    );
+
+    window.location.href = "checkout.html";
+
+});
 
