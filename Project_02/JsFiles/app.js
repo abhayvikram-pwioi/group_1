@@ -7,6 +7,7 @@ async function getProducts() {
     const data = await response.json();
 
     allProducts = data.products;
+    console.log(allProducts);
 
     if (document.getElementById("product-list")) {
         renderProducts(allProducts);
@@ -17,6 +18,7 @@ async function getProducts() {
     }
 
 }
+
 
 getProducts();
 
@@ -54,7 +56,7 @@ if (filter) {
                         <div class="product-img-box">
                             <img src="${product.thumbnail}" alt="book" id="product-img"  data-id="${product.id}">
 
-                            <button class="product-card-wishlist">
+                            <button class="product-card-wishlist" data-id="${product.id}">
                                 <i class="fa-regular fa-heart"></i>
                             </button>
                         </div>
@@ -97,8 +99,7 @@ if (filter) {
         `
         });
 
-
-
+          updateWishlistIcons();
     }
 
 
@@ -433,7 +434,6 @@ function addToCart(productId, quantity = 1) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-
 }
 
 
@@ -473,6 +473,7 @@ document.addEventListener("click", (e) => {
     console.log(product);
 
     // window.location.href = "checkout.html";
+
 });
 
 
@@ -496,6 +497,80 @@ if (buyNowDetail) {
     // window.location.href = "checkout.html";
 
     })
+}
+
+document.addEventListener("click", (e) => {
+
+    const wishBtn =
+    e.target.closest(".product-card-wishlist");
+
+    if (!wishBtn) return;
+
+    const productId =
+    Number(wishBtn.dataset.id);
+
+    addToWishlist(productId);
+
+});
+
+function addToWishlist(productId) {
+
+    const product = allProducts.find(
+        p => p.id === productId
+    );
+
+    let wishlist =JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    const exists = wishlist.find(
+        item => item.id === productId
+    );
+
+    if (exists) {
+
+        wishlist = wishlist.filter(
+            item => item.id !== productId
+        );
+
+    } else {
+
+        wishlist.push(product);
+
+    }
+
+    localStorage.setItem("wishlist",JSON.stringify(wishlist));
+    updateWishlistIcons();
+}
+
+function updateWishlistIcons() {
+
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    document.querySelectorAll(".product-card-wishlist").forEach(btn => {
+
+        const productId =  Number(btn.dataset.id);
+
+        const icon = btn.querySelector("i");
+
+        const exists =  wishlist.some(
+            item => item.id === productId
+        );
+
+        if (exists) {
+
+            icon.classList.remove("fa-regular");
+
+            icon.classList.add("fa-solid");
+
+        } else {
+
+            icon.classList.remove("fa-solid");
+
+            icon.classList.add("fa-regular");
+
+        }
+
+    });
+
 }
 
 document.addEventListener("dragstart", (e) => {
