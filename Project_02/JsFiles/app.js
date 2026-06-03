@@ -541,6 +541,35 @@ function addToWishlist(productId) {
     localStorage.setItem("wishlist",JSON.stringify(wishlist));
 }
 
+function updateWishlistIcons() {
+
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    document.querySelectorAll(".product-card-wishlist").forEach(btn => {
+
+        const productId =  Number(btn.dataset.id);
+
+        const icon = btn.querySelector("i");
+
+        const exists =  wishlist.some(
+            item => item.id === productId
+        );
+
+        if (exists) {
+
+            icon.classList.remove("fa-regular");
+
+            icon.classList.add("fa-solid");
+
+        } else {
+
+            icon.classList.remove("fa-solid");
+
+            icon.classList.add("fa-regular");
+
+        }
+
+    });
 
 
 
