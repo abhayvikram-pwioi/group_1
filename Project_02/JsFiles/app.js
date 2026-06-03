@@ -99,8 +99,7 @@ if (filter) {
         `
         });
 
-
-
+          updateWishlistIcons();
     }
 
 
@@ -539,6 +538,7 @@ function addToWishlist(productId) {
     }
 
     localStorage.setItem("wishlist",JSON.stringify(wishlist));
+    updateWishlistIcons();
 }
 
 function updateWishlistIcons() {
@@ -571,7 +571,7 @@ function updateWishlistIcons() {
 
     });
 
-
+}
 
 document.addEventListener("dragstart", (e) => {
 
