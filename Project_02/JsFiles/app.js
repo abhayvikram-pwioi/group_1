@@ -7,6 +7,7 @@ async function getProducts() {
     const data = await response.json();
 
     allProducts = data.products;
+    console.log(allProducts);
 
     if (document.getElementById("product-list")) {
         renderProducts(allProducts);
@@ -17,6 +18,7 @@ async function getProducts() {
     }
 
 }
+
 
 getProducts();
 
@@ -54,7 +56,7 @@ if (filter) {
                         <div class="product-img-box">
                             <img src="${product.thumbnail}" alt="book" id="product-img"  data-id="${product.id}">
 
-                            <button class="product-card-wishlist">
+                            <button class="product-card-wishlist" data-id="${product.id}">
                                 <i class="fa-regular fa-heart"></i>
                             </button>
                         </div>
@@ -433,7 +435,6 @@ function addToCart(productId, quantity = 1) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-
 }
 
 
@@ -473,6 +474,7 @@ document.addEventListener("click", (e) => {
     console.log(product);
 
     // window.location.href = "checkout.html";
+
 });
 
 
