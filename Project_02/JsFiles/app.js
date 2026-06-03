@@ -514,6 +514,34 @@ document.addEventListener("click", (e) => {
 
 });
 
+function addToWishlist(productId) {
+
+    const product = allProducts.find(
+        p => p.id === productId
+    );
+
+    let wishlist =JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    const exists = wishlist.find(
+        item => item.id === productId
+    );
+
+    if (exists) {
+
+        wishlist = wishlist.filter(
+            item => item.id !== productId
+        );
+
+    } else {
+
+        wishlist.push(product);
+
+    }
+
+    localStorage.setItem("wishlist",JSON.stringify(wishlist));
+}
+
+
 
 
 document.addEventListener("dragstart", (e) => {
