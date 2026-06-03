@@ -500,6 +500,22 @@ if (buyNowDetail) {
     })
 }
 
+document.addEventListener("click", (e) => {
+
+    const wishBtn =
+    e.target.closest(".product-card-wishlist");
+
+    if (!wishBtn) return;
+
+    const productId =
+    Number(wishBtn.dataset.id);
+
+    addToWishlist(productId);
+
+});
+
+
+
 document.addEventListener("dragstart", (e) => {
 
     const card = e.target.closest(".product-card");
