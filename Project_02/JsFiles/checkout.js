@@ -277,6 +277,3 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
     initializeOrderButton();
 });
-
-
-
