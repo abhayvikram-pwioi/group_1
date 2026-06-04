@@ -34,129 +34,223 @@ async function loadProduct(){
 
 loadProduct();
 
-let cartItems = 1;
-let cartTotal = 4743;
-
-document.getElementById(
-"cartCount"
-).innerText = cartItems;
-
-document.getElementById(
-"totalPrice"
-).innerText = "₹" + cartTotal;
 
 
 
+const SHIPPING = 10;
+const TAX_RATE = 0.05;
 
-let orderBtn =
-document.querySelector(".order-btn");
+let checkoutItems = [];
+let checkoutTotal = 0;
 
-orderBtn.addEventListener(
-"click",
-function(){
+function getStoredItems(key) {
+    return JSON.parse(localStorage.getItem(key)) || [];
+}
 
+function formatPrice(amount) {
+    return "₹" + Number(amount).toFixed(2);
+}
+
+function getItemImage(item) {
+    return item.image || item.thumbnail || "";
+}
+
+function getItemPrice(item) {
+    return Number(item.price || 0);
+}
+
+function updateCartCount() {
+    const cartCount = document.getElementById("cartCount");
+    const cartItems = getStoredItems("cart");
+    const totalItems = cartItems.reduce(
+        (total, item) => total + Number(item.quantity || 0),
+        0
+    );
+
+    if (cartCount) {
+        cartCount.innerText = totalItems;
+    }
+}
+
+function loadCheckoutItems() {
+    checkoutItems = getStoredItems("checkoutItems");
+
+    if (checkoutItems.length === 0) {
+        checkoutItems = getStoredItems("cart");
+    }
+}
+
+function renderCheckoutItems() {
+    const container = document.getElementById("checkoutItems");
+    const totalPrice = document.getElementById("totalPrice");
+
+    if (!container || !totalPrice) return;
+
+    container.innerHTML = "";
+
+    if (checkoutItems.length === 0) {
+        container.innerHTML = `
+            <div class="empty-checkout">
+                <h3>No items selected</h3>
+                <p>Add items to your cart before checkout.</p>
+                <a href="productpage.html">Continue Shopping</a>
+            </div>
+        `;
+        checkoutTotal = 0;
+        totalPrice.innerText = formatPrice(0);
+        return;
+    }
+
+    const subtotal = checkoutItems.reduce((total, item) => {
+        return total + getItemPrice(item) * Number(item.quantity || 1);
+    }, 0);
+
+    const tax = subtotal * TAX_RATE;
+    checkoutTotal = subtotal + SHIPPING + tax;
+
+    checkoutItems.forEach(item => {
+        const quantity = Number(item.quantity || 1);
+        const itemTotal = getItemPrice(item) * quantity;
+        const checkoutItem = document.createElement("div");
+
+        checkoutItem.classList.add("product");
+        checkoutItem.innerHTML = `
+            <img src="${getItemImage(item)}" alt="${item.title}">
+
+            <div>
+                <h3>${item.title}</h3>
+                <p>${formatPrice(getItemPrice(item))}</p>
+                <p>Qty : ${quantity}</p>
+                <p>Item Total : ${formatPrice(itemTotal)}</p>
+            </div>
+        `;
+
+        container.appendChild(checkoutItem);
+    });
+
+    const totals = document.createElement("div");
+
+    totals.classList.add("checkout-totals");
+    totals.innerHTML = `
+        <div>
+            <span>Subtotal</span>
+            <strong>${formatPrice(subtotal)}</strong>
+        </div>
+        <div>
+            <span>Shipping</span>
+            <strong>${formatPrice(SHIPPING)}</strong>
+        </div>
+        <div>
+            <span>Tax</span>
+            <strong>${formatPrice(tax)}</strong>
+        </div>
+    `;
+
+    container.appendChild(totals);
+    totalPrice.innerText = formatPrice(checkoutTotal);
+}
+
+function validateCheckoutForm() {
     let name =
-    document.getElementById("name")
-    .value.trim();
+        document.getElementById("name")
+            .value.trim();
 
     let email =
-    document.getElementById("email")
-    .value.trim();
+        document.getElementById("email")
+            .value.trim();
 
     let address =
-    document.getElementById("address")
-    .value.trim();
+        document.getElementById("address")
+            .value.trim();
 
     let phone =
-    document.getElementById("phone")
-    .value.trim();
+        document.getElementById("phone")
+            .value.trim();
 
     let city =
-    document.getElementById("city")
-    .value.trim();
+        document.getElementById("city")
+            .value.trim();
 
     let pincode =
-    document.getElementById("pincode")
-    .value.trim();
+        document.getElementById("pincode")
+            .value.trim();
 
-    if(name.length < 3){
-        alert(
-        "Name must be at least 3 characters"
-        );
-        return;
+    if (checkoutItems.length === 0) {
+        alert("Please add items before placing an order");
+        return null;
     }
 
-    if(email === ""){
+    if (name.length < 3) {
+        alert("Name must be at least 3 characters");
+        return null;
+    }
+
+    if (email === "") {
         alert("Email is required");
-        return;
+        return null;
     }
 
-    if(
-    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    .test(email)
-    ){
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         alert("Enter valid email");
-        return;
+        return null;
     }
 
-    if(address === ""){
+    if (address === "") {
         alert("Address is required");
-        return;
+        return null;
     }
 
-    if(
-    !/^[0-9]{10}$/
-    .test(phone)
-    ){
-        alert(
-        "Enter valid phone number"
-        );
-        return;
+    if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Enter valid phone number");
+        return null;
     }
 
-    if(city === ""){
+    if (city === "") {
         alert("City is required");
-        return;
+        return null;
     }
 
-    if(
-    !/^[0-9]{6}$/
-    .test(pincode)
-    ){
-        alert(
-        "Enter valid pincode"
-        );
-        return;
+    if (!/^[0-9]{6}$/.test(pincode)) {
+        alert("Enter valid pincode");
+        return null;
     }
 
     let payment =
-    document.querySelector(
-    'input[name="payment"]:checked'
-    );
-
-    if(!payment){
-        alert(
-        "Please select a payment method"
+        document.querySelector(
+            'input[name="payment"]:checked'
         );
-        return;
+
+    if (!payment) {
+        alert("Please select a payment method");
+        return null;
     }
 
-    localStorage.setItem(
-        "shippingName",
-        name
-    );
+    localStorage.setItem("shippingName", name);
 
-    if(payment.value === "COD"){
+    return payment;
+}
 
-        alert("Order Placed Successfully");
+function initializeOrderButton() {
+    let orderBtn =
+        document.querySelector(".order-btn");
 
-    } else {
+    if (!orderBtn) return;
+
+    orderBtn.addEventListener("click", function () {
+        const payment = validateCheckoutForm();
+
+        if (!payment) return;
+
+        if (payment.value === "COD") {
+            alert("Order Placed Successfully");
+            return;
+        }
 
         let options = {
             key: "rzp_test_SvwDDiaWs6F3Fc",
-            amount: cartTotal * 100,
+            amount: Math.round(checkoutTotal * 100),
             currency: "INR",
-            name: "ShopVerse",
+            name: "ShopEase",
             description: "Order Payment",
             method: {
                 upi: true,
@@ -164,7 +258,7 @@ function(){
                 netbanking: true,
                 wallet: true
             },
-            handler: function(response){
+            handler: function (response) {
                 alert(
                     "Payment Successful\nPayment ID: " +
                     response.razorpay_payment_id
@@ -174,8 +268,15 @@ function(){
 
         let rzp = new Razorpay(options);
         rzp.open();
+    });
+}
 
-    }
-
+document.addEventListener("DOMContentLoaded", () => {
+    loadCheckoutItems();
+    renderCheckoutItems();
+    updateCartCount();
+    initializeOrderButton();
 });
+
+
 

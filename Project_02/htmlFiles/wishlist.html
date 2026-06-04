@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="wishlist.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <header class="page-header">
+
+        <div class="page-logo">
+            <h1>ShopEase</h1>
+        </div>
+
+        <nav class="category">
+            <a href="productpage.html" id="men">Men</a>
+            <a href="productpage.html" id="women">Women</a>
+            <a href="productpage.html" id="kids">Kids</a>
+            <a href="productpage.html" id="accessories">Accessories</a>
+        </nav>
+
+        <div id="products-container"></div>
+
+        <div class="page-search">
+
+            <input type="text" placeholder="Search products...">
+
+            <button>
+                <i class="bi bi-search"></i>
+            </button>
+
+        </div>
+
+        <nav class="page-icon">
+
+            <a href="wishlist.html">
+                <i class="bi bi-bag-heart"></i>
+            </a>
+
+            <a href="#">
+                <i class="bi bi-person-circle"></i>
+            </a>
+
+            <a href="cart.html">
+                <i class="bi bi-cart"></i>
+            </a>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="wishlist-hero">
+
+            <h1>My Wishlist</h1>
+
+            <p>
+                Save your favorite products and buy them later.
+            </p>
+
+            <span class="wishlist-count-pill" id="wishlist-product-count">0 products</span>
+
+        </section>
+
+        <section class="wishlist-layout">
+
+            <section class="wishlist-items">
+
+                <div class="wishlist-actions">
+
+                    <button class="continue-shopping-btn" id="continueShoppingBtn">
+                        <i class="bi bi-arrow-left-circle"></i>
+                        Continue Shopping
+                    </button>
+
+                </div>
+
+                <div class="wishlist-message" id="wishlist-message" aria-live="polite"></div>
+
+                <div id="wishlist-container"></div>
+
+                <div class="empty-wishlist hidden">
+
+                    <i class="bi bi-heartbreak"></i>
+
+                    <h2>No Wishlist Items</h2>
+
+                    <p>
+                        Start adding products you love.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <aside class="wishlist-summary">
+
+                <h2>Wishlist Summary</h2>
+
+                <div class="wishlist-stat-card">
+
+                    <h3>Total Saved</h3>
+
+                    <p id="wishlist-count">0</p>
+
+                </div>
+
+                <button class="move-all-btn" id="moveAllBtn">
+                    Add All to Cart
+                </button>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="shopping">
+
+            <h3>Online Shopping</h3>
+
+            <p>Men</p>
+            <p>Women</p>
+            <p>Kids</p>
+            <p>Home</p>
+            <p>Beauty</p>
+            <p>GenZ</p>
+            <p>Gift Cards</p>
+
+        </div>
+
+        <div class="customerPolicy">
+
+            <h3>Customer Policies</h3>
+
+            <p>Contact Us</p>
+            <p>FAQ</p>
+            <p>T&C</p>
+            <p>Track Orders</p>
+            <p>Privacy Policy</p>
+
+        </div>
+
+        <div class="links">
+
+            <h3>Keep in Touch</h3>
+
+            <span class="bi bi-instagram"></span>
+            <span class="bi bi-twitter-x"></span>
+            <span class="bi bi-facebook"></span>
+
+        </div>
+
+        <div class="help">
+
+            <h3>Help</h3>
+
+            <p>Store Locator</p>
+            <p>Cancellation & Return</p>
+            <p>Shipping & Delivery</p>
+            <p>Frequently Asked Questions</p>
+
+        </div>
+
+    </footer>
+
+    <script src="wishlist.js"></script>
+
+</body>
+
+</html>
