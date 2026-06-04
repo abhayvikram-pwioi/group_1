@@ -1,3 +1,5 @@
+
+
 async function loadProduct(){
     try{
 
@@ -22,7 +24,6 @@ async function loadProduct(){
         ).innerText = "₹" + data.price;
 
     }
-
     catch(error){
 
         console.log(error);
@@ -30,6 +31,11 @@ async function loadProduct(){
     }
 
 }
+
+loadProduct();
+
+
+
 
 const SHIPPING = 10;
 const TAX_RATE = 0.05;
