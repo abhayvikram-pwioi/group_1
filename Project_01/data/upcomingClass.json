@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "Cardio Blast",
+        "time": "Tomorrow, 6:30 PM",
+        "studio": "Studio 1"
+    },
+    {
+        "id": 2,
+        "name": "Yoga Flow",
+        "time": "Today, 5:00 PM",
+        "studio": "Studio 2"
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "totalSessions": {
+            "value": 17,
+            "change": "+10%"
+        },
+        "caloriesBurned": {
+            "value": 1032,
+            "unit": "kcal",
+            "change": "+54%"
+        },
+        "streak": {
+            "value": "10 🔥"
+        },
+        "weeklyRank": {
+            "value": "#2 🏆"
+        }
+    },
+    {
+        "id": 2,
+        "totalSessions": {
+            "value": 12,
+            "change": "+8%"
+        },
+        "caloriesBurned": {
+            "value": 845,
+            "unit": "kcal",
+            "change": "+40%"
+        },
+        "streak": {
+            "value": "8 🔥"
+        },
+        "weeklyRank": {
+            "value": "#5 🏆"
+        }
+    }
+]

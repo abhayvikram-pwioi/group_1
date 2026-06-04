@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "reports": [
+            {
+                "date": "Today",
+                "workout": "HIIT Extreme",
+                "subtitle": "High intensity",
+                "duration": "45 mins",
+                "calories": "420 kcal",
+                "status": "Completed"
+            },
+            {
+                "date": "Yesterday",
+                "workout": "Strength Training",
+                "subtitle": "Upper Body",
+                "duration": "60 mins",
+                "calories": "350 kcal",
+                "status": "Completed"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "reports": [
+            {
+                "date": "Today",
+                "workout": "Yoga Session",
+                "subtitle": "Flexibility",
+                "duration": "50 mins",
+                "calories": "250 kcal",
+                "status": "Completed"
+            },
+            {
+                "date": "Yesterday",
+                "workout": "Cardio Blast",
+                "subtitle": "Fat Burn",
+                "duration": "30 mins",
+                "calories": "300 kcal",
+                "status": "Completed"
+            }
+        ]
+    }
+]

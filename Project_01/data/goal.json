@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "title": "Goal Progress",
+        "description": "Push limits daily",
+        "currentCalories": 420,
+        "targetCalories": 700,
+        "percentage": 60
+    },
+    {
+        "id": 2,
+        "title": "Goal Progress",
+        "description": "Stay consistent",
+        "currentCalories": 320,
+        "targetCalories": 500,
+        "percentage": 64
+    }
+]

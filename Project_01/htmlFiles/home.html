@@ -22,8 +22,8 @@
       <li><a href="#reviews">Reviews</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="/htmlFiles/login.html" class="btn-ghost">Log in</a>
-      <a class="btn-lime" href="/htmlFiles/signUp.html">Sign up</a>
+      <a href="/htmlFiles/login.html" class="btn-ghost" style="text-decoration: none;">Log in</a>
+      <a class="btn-lime" href="/htmlFiles/signUp.html" style="text-decoration: none;">Sign up</a>
     </div>
   </nav>
 
@@ -404,7 +404,7 @@
                 </svg></div>24/7 access + guest passes
             </li>
           </ul>
-          <button class="plan-btn">Go Elite</button>
+          <button class="plan-btn" >Go Elite</button>
         </div>
       </div>
     </div>
@@ -642,6 +642,13 @@
       uptimeEl.innerHTML = html;
     }
 
+    const membershipBtns = document.querySelectorAll(".plan-btn");
+
+    membershipBtns.forEach((btn)=>{
+      btn.addEventListener("click",(e)=>{
+        window.location.href = "signUp.html";
+      })
+    })
 
   </script>
 
