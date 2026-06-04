@@ -1,30 +1,30 @@
 
 
-async function loadProduct(){
-    try{
+async function loadProduct() {
+    try {
 
         let response =
-        await fetch(
-        "https://dummyjson.com/products/1"
-        );
+            await fetch(
+                "https://dummyjson.com/products/1"
+            );
 
         let data =
-        await response.json();
+            await response.json();
 
         document.getElementById(
-        "productImage"
+            "productImage"
         ).src = data.thumbnail;
 
         document.getElementById(
-        "productName"
+            "productName"
         ).innerText = data.title;
 
         document.getElementById(
-        "productPrice"
+            "productPrice"
         ).innerText = "₹" + data.price;
 
     }
-    catch(error){
+    catch (error) {
 
         console.log(error);
 
@@ -32,8 +32,7 @@ async function loadProduct(){
 
 }
 
-loadProduct();
-
+// loadProduct();
 
 
 
@@ -56,11 +55,11 @@ function getItemImage(item) {
 }
 
 function getItemPrice(item) {
-    return Number(item.price || 0);
+     return Math.round(Number(item.price || 0) * 10);
 }
 
 function updateCartCount() {
-    const cartCount = document.getElementById("cartCount");
+const cartCount = document.getElementById("cart-count");
     const cartItems = getStoredItems("cart");
     const totalItems = cartItems.reduce(
         (total, item) => total + Number(item.quantity || 0),
@@ -73,82 +72,136 @@ function updateCartCount() {
 }
 
 function loadCheckoutItems() {
-    checkoutItems = getStoredItems("checkoutItems");
 
-    if (checkoutItems.length === 0) {
-        checkoutItems = getStoredItems("cart");
-    }
-}
+   const buyNowProduct = JSON.parse(localStorage.getItem("checkoutProduct"));
 
-function renderCheckoutItems() {
-    const container = document.getElementById("checkoutItems");
-    const totalPrice = document.getElementById("totalPrice");
+    if (buyNowProduct) {
 
-    if (!container || !totalPrice) return;
+        if (Array.isArray(buyNowProduct)) {
 
-    container.innerHTML = "";
+            checkoutItems = buyNowProduct;
 
-    if (checkoutItems.length === 0) {
-        container.innerHTML = `
-            <div class="empty-checkout">
-                <h3>No items selected</h3>
-                <p>Add items to your cart before checkout.</p>
-                <a href="productpage.html">Continue Shopping</a>
-            </div>
-        `;
-        checkoutTotal = 0;
-        totalPrice.innerText = formatPrice(0);
+        } else {
+
+            checkoutItems = [buyNowProduct];
+
+        }
+
         return;
     }
 
-    const subtotal = checkoutItems.reduce((total, item) => {
-        return total + getItemPrice(item) * Number(item.quantity || 1);
-    }, 0);
+    checkoutItems = getStoredItems("checkoutItems");
+
+    if (checkoutItems.length === 0) {
+
+        checkoutItems =
+            getStoredItems("cart");
+
+    }
+
+}
+
+function renderCheckoutItems() {
+
+    const productList =
+        document.getElementById("product-list");
+
+    const totalsContainer =
+        document.getElementById("checkout-totals");
+
+    const totalPrice =
+        document.getElementById("totalPrice");
+
+    productList.innerHTML = "";
+
+    const subtotal =
+        checkoutItems.reduce((total, item) => {
+
+            return total +
+                (getItemPrice(item) *
+                    Number(item.quantity || 1));
+
+        }, 0);
 
     const tax = subtotal * TAX_RATE;
-    checkoutTotal = subtotal + SHIPPING + tax;
+
+    checkoutTotal =
+        subtotal +
+        SHIPPING +
+        tax;
 
     checkoutItems.forEach(item => {
-        const quantity = Number(item.quantity || 1);
-        const itemTotal = getItemPrice(item) * quantity;
-        const checkoutItem = document.createElement("div");
 
-        checkoutItem.classList.add("product");
-        checkoutItem.innerHTML = `
-            <img src="${getItemImage(item)}" alt="${item.title}">
+        const quantity =
+            Number(item.quantity || 1);
 
-            <div>
-                <h3>${item.title}</h3>
-                <p>${formatPrice(getItemPrice(item))}</p>
-                <p>Qty : ${quantity}</p>
-                <p>Item Total : ${formatPrice(itemTotal)}</p>
+        const itemTotal =
+            getItemPrice(item) * quantity;
+
+        productList.innerHTML += `
+
+        <div class="checkout-product">
+
+            <div class="checkout-product-image">
+
+                <img
+                src="${getItemImage(item)}"
+                alt="${item.title}">
+
             </div>
+
+            <div class="checkout-product-details">
+
+                <h3>${item.title}</h3>
+
+                <p class="price">
+                    ${formatPrice(getItemPrice(item))}
+                </p>
+
+                <p>
+                    Quantity :
+                    <strong>${quantity}</strong>
+                </p>
+
+                <p>
+                    Item Total :
+                    <strong>
+                    ${formatPrice(itemTotal)}
+                    </strong>
+                </p>
+
+            </div>
+
+        </div>
+
         `;
 
-        container.appendChild(checkoutItem);
     });
 
-    const totals = document.createElement("div");
+    totalsContainer.innerHTML = `
 
-    totals.classList.add("checkout-totals");
-    totals.innerHTML = `
-        <div>
+        <div class="total-row">
             <span>Subtotal</span>
             <strong>${formatPrice(subtotal)}</strong>
         </div>
-        <div>
+
+        <div class="total-row">
             <span>Shipping</span>
             <strong>${formatPrice(SHIPPING)}</strong>
         </div>
-        <div>
+
+        <div class="total-row">
             <span>Tax</span>
             <strong>${formatPrice(tax)}</strong>
         </div>
+
     `;
 
-    container.appendChild(totals);
-    totalPrice.innerText = formatPrice(checkoutTotal);
+    totalPrice.textContent =
+        formatPrice(checkoutTotal);
 }
+
+
 
 function validateCheckoutForm() {
     let name =

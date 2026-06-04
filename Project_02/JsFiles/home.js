@@ -191,7 +191,7 @@ document.addEventListener("click", (e) => {
 
     console.log(product);
 
-    // window.location.href = "checkout.html";
+    window.location.href = "checkout.html";
 
 });
 
