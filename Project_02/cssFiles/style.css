@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 * {
   margin: 0%;
   padding: 0%;
@@ -53,6 +55,8 @@
 
 body {
   background: var(--bg-primary);
+  font-family: var(--font-primary);
+
 }
 
 /* ====================================================================
@@ -91,6 +95,8 @@ img {
   top: 0;
   z-index: 100;
   box-shadow: var(--shadow-soft);
+
+
 }
 
 .page-logo {
@@ -100,6 +106,7 @@ img {
 }
 
 .category {
+
   display: flex;
   gap: 30px
 }
@@ -122,6 +129,7 @@ img {
   border-radius: 50px;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
+
 
 }
 
@@ -151,15 +159,49 @@ img {
   transition: var(--transition);
 }
 
-.active-drop {
-  transform: scale(1.2);
-  color: #4f63d8;
-  transition: .3s;
-}
-
 .page-icon a:hover {
   color: var(--text-accent);
   transform: translateY(-3px);
+}
+
+.cart-icon {
+  position: relative;
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--text-accent);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.wishlist-icon {
+  position: relative;
+}
+
+#wishlist-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--text-accent);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 /*  FILTER SECTION  */
@@ -217,7 +259,7 @@ hr {
 }
 
 .filter-list label {
-  width: 100px;
+  width: 120px;
   color: var(--text-secondary);
 }
 
@@ -262,8 +304,8 @@ hr {
   gap: 5px;
 }
 
-.rating-list i{
-   color: #FFC107;
+.rating-list i {
+  color: #FFC107;
 }
 
 /* PRODUCT CARD */
@@ -299,7 +341,7 @@ hr {
 
 .product-card {
   width: 300px;
-  height: 520px;
+  height: 100%;
   background: var(--bg-secondary);
   border-radius: 23px;
   overflow: hidden;
@@ -345,7 +387,8 @@ hr {
 }
 
 .product-content h2 {
-  font-size: 22px;
+  font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .product-category {
@@ -415,7 +458,7 @@ hr {
   box-shadow: var(--card-shadow);
 }
 
-.view-btn:hover {
+.buy-btn:hover {
   cursor: pointer;
   box-shadow: var(--shadow-card);
   transform: scale(1.04);
@@ -782,7 +825,7 @@ body.modal-open .main-sec {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 240px;
     height: 100dvh;
     overflow-y: auto;
     background: white;

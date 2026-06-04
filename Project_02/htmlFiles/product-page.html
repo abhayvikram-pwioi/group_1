@@ -19,10 +19,9 @@
                 <b>Shop-verse</b>
             </div>
             <nav class="category">
-                <a href="#">Men</a>
-                <a href="#">Women</a>
-                <a href="#">Kids</a>
-                <a href="#">Accessories</a>
+                <a href="/htmlFiles/home.html">Home</a>
+                <a href="/htmlFiles/product-page.html">Product</a>
+                <a href="#">Wishlist</a>
             </nav>
             <div class="page-search">
                 <input type="text" placeholder="Search products..." width="100px">
@@ -32,9 +31,16 @@
 
             </div>
             <nav class="page-icon">
-                <a href="#"><i class="fa-regular fa-heart"></i></a>
+
+                <a href="/htmlFiles/" class="wishlist-icon">
+                    <i class="fa-regular fa-heart"></i>
+                    <span id="wishlist-count">0</span>
+                </a>
                 <a href="#"><i class="fa-regular fa-circle-user"></i></a>
-                <a href="/htmlFiles/cart.html" id="cart-zone"><i class="fa-solid fa-cart-arrow-down"></i></a>
+                <a href="/htmlFiles/cart.html" class="cart-icon" id="cart-zone">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <span id="cart-count">0</span>
+                </a>
             </nav>
         </header>
 
@@ -138,9 +144,15 @@
                     <div class="rating-filter">
                         <h3>Ratings</h3>
                         <div class="rating-list">
-                            <a data-rating="4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></a>
-                            <a data-rating="3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></a>
-                            <a data-rating="2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></a>
+                            <a data-rating="4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i></a>
+                            <a data-rating="3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i></a>
+                            <a data-rating="2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i></a>
                         </div>
                     </div>
 
