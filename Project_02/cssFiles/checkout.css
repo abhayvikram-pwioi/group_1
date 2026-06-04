@@ -1,70 +1,95 @@
+/* CSS of checkout page */
+
 
 *{
-    margin: 10;
-    padding: 5;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
 body{
     background-color: #f4f8ff;
+    overflow-y: visible;
 }
 
+.product img{
+    width:70px;
+    height:70px;
+}
 
-.navbar{
+.page-header{
     width: 100%;
-    height: 80px;
     background-color: white;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 60px;
+    align-items: center;
+    padding: 15px 38px;
     border-bottom: 1px solid #ddd;
 }
 
-.logo{
-    font-size: 32px;
+.page-logo{
+    font-size: 28px;
     font-weight: bold;
-}
-
-.blue{
     color: #2f66e0;
 }
 
-nav{
+.category{
     display: flex;
-    gap: 40px;
+    gap: 24px;
 }
 
-nav a{
+.category a{
     text-decoration: none;
     color: #333;
-    font-size: 18px;
+    font-size: 16px;
 }
 
-.right-nav{
+.category a:hover{
+    color: #2f66e0;
+}
+
+.page-search{
     display: flex;
     align-items: center;
+}
+
+.page-search input{
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-right: none;
+    outline: none;
+}
+
+.page-search button{
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+}
+
+.page-icon{
+    display: flex;
     gap: 20px;
 }
 
-.right-nav input{
-    width: 260px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
+.page-icon a{
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
 }
 
-.icons{
-    font-size: 22px;
-    cursor: pointer;
+/* Cart Count */
+
+.cart-link{
     position: relative;
 }
 
-.cart span{
+#cartCount{
     position: absolute;
-    top: -10px;
-    right: -12px;
+    top: -8px;
+    right: -10px;
     background-color: #2f66e0;
     color: white;
     width: 18px;
@@ -76,15 +101,6 @@ nav a{
     justify-content: center;
 }
 
-.profile{
-    width: 40px;
-    height: 40px;
-    background-color: #e8eefc;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .main-container{
     width: 90%;
@@ -101,18 +117,20 @@ nav a{
     flex: 1;
 }
 
+
 .box{
     background-color: white;
     padding: 30px;
-    border-radius: 20px;
-    margin-bottom: 30px;
+    border-radius: 15px;
+    margin-bottom: 25px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .box h2{
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: #222;
 }
+
 
 .form-grid{
     display: grid;
@@ -130,56 +148,109 @@ nav a{
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 15px;
-}
-.payment-option{
-    border: 1px solid #ddd;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    border-radius: 8px;
 }
 
-.payment-option p{
-    font-size: 18px;
+.required{
+    color: red;
 }
+
+
+.payment-option{
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 
 .order-btn{
     width: 100%;
-    padding: 18px;
+    padding: 15px;
     border: none;
     background-color: #2f66e0;
     color: white;
     font-size: 18px;
-    border-radius: 15px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .order-btn:hover{
     background-color: #2454c2;
 }
+
+
 .summary-box{
     background-color: white;
-    padding: 30px;
-    border-radius: 20px;
+    padding: 25px;
+    border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .summary-box h2{
     margin-bottom: 20px;
 }
+
+.product{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .product img{
     width: 70px;
     height: 70px;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .product h3{
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .product p{
     color: gray;
+}
+
+#success{
+    color: green;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+
+
+@media screen and (max-width: 768px){
+
+    .page-header{
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .category{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .page-search input{
+        width: 180px;
+    }
+
+    .main-container{
+        flex-direction: column;
+    }
+
+    .form-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .left-section,
+    .right-section{
+        width: 100%;
+    }
 }

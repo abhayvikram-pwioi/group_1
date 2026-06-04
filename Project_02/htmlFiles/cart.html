@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
 
-    <link rel="stylesheet" href="/group_1/Project_02/cssFiles/cart.css">
+    <link rel="stylesheet" href="cart.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -21,11 +22,13 @@
         </div>
 
         <nav class="category">
-            <a href="#">Men</a>
-            <a href="#">Women</a>
-            <a href="#">Kids</a>
-            <a href="#">Accessories</a>
+        <a href="#" id="men">Men</a>
+        <a href="#" id="women">Women</a>
+        <a href="#" id="kids">Kids</a>
+        <a href="#" id="accessories">Accessories</a>
         </nav>
+
+        <div id="products-container"></div>
 
         <div class="page-search">
 
@@ -41,16 +44,17 @@
 
         <nav class="page-icon">
 
-            <a href="#">
-                <i class="bi bi-bag-heart"></i>
+           <a href="wishlist.html" >
+            <i class="bi bi-bag-heart"></i>
             </a>
 
             <a href="#">
                 <i class="bi bi-person-circle"></i>
             </a>
 
-            <a href="#">
+            <a href="cart.html" class="cart-icon-link" aria-label="View cart">
                 <i class="bi bi-cart"></i>
+                <span class="cart-count" id="cart-count">0</span>
             </a>
 
         </nav>
@@ -83,7 +87,7 @@
 
                     <button class="add-items-btn">
 
-                        <i class="bi bi-plus-circle"></i>
+                        <i class="bi bi-plus-circle" href = "productpage.html"></i>
 
                         Add More Items
 
@@ -259,6 +263,14 @@
 
                 </div>
 
+                <div class="summary-row discount-row hidden" id="discountRow">
+
+                    <p>Discount</p>
+
+                    <span id="discountAmount">-₹0</span>
+
+                </div>
+
                 <div class="summary-row total">
 
                     <p>Total</p>
@@ -282,6 +294,10 @@
 
                 </div>
 
+                <p class="coupon-hint">
+                    Try SAVE10, SAVE20 or FREESHIP
+                </p>
+
                 <button
                     class="checkout-btn"
                     id="checkoutBtn">
@@ -300,44 +316,8 @@
 
             <h2>You May Also Like</h2>
 
-            <div class="recommendation-grid">
-
-                <div class="recommendation-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500"
-                        alt="Running Shoes">
-
-                    <h3>Running Shoes</h3>
-
-                    <p>$89</p>
-
-                </div>
-
-                <div class="recommendation-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500"
-                        alt="Sports Jacket">
-
-                    <h3>Sports Jacket</h3>
-
-                    <p>$69</p>
-
-                </div>
-
-                <div class="recommendation-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=500"
-                        alt="Smart Watch">
-
-                    <h3>Smart Watch</h3>
-
-                    <p>$149</p>
-
-                </div>
-
+            <div class="recommendation-grid" id="recommendationGrid">
+                <p class="recommendation-status">Loading products...</p>
             </div>
 
         </section>
@@ -397,7 +377,6 @@
 
     </footer>
 
-    <script src="cart.js"></script>
-
+    <script src="/group_1/Project_02/JsFiles/cart.js"></script>
 </body>
 </html>

@@ -2,11 +2,14 @@
 // CART & WISHLIST
 // =====================
 
-let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+let addedProducts = [];
 
-let wishlist =
-    JSON.parse(localStorage.getItem("wishlist")) || [];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+
 
 const cartCount =
     document.getElementById("cart-count");
@@ -91,12 +94,12 @@ function renderProducts(products, container) {
 
         container.innerHTML += `
             <div class="card">
-
+                <div class= "img-box">
                 <img
                     src="${product.thumbnail}"
                     alt="${product.title}"
                 >
-
+                    </div>
                 <i
                     class="fa-solid fa-heart wishlist-btn
                     ${wishlist.includes(product.id) ? "active" : ""}"
@@ -116,34 +119,18 @@ function renderProducts(products, container) {
                     ₹${Math.round(product.price * 85)}
                 </p>
 
-                <div class="btn">
+         
 
-                   ${
-cartItem
-?
+   <div class="btn">
+
+${addedProducts.includes(product.id)
+? `
+<button class="added-btn">
+    <i class="fa-solid fa-check"></i>
+    Added
+</button>
 `
-<div class="quantity-box">
-
-    <button
-        class="minus"
-        data-id="${product.id}">
-        -
-    </button>
-
-    <span class="qty">
-        ${cartItem.quantity}
-    </span>
-
-    <button
-        class="plus"
-        data-id="${product.id}">
-        +
-    </button>
-
-</div>
-`
-:
-`
+: `
 <button
     class="add-cart"
     data-id="${product.id}">
@@ -152,16 +139,15 @@ cartItem
 `
 }
 
-                    <button
-                        class="buy-now"
-                        data-id="${product.id}">
-                        Buy Now
-                    </button>
+<button
+    class="buy-now"
+    data-id="${product.id}">
+    Buy Now
+</button>
 
-                </div>
+</div>
 
-            </div>
-        `;
+     </div>`
     });
 }
 
@@ -252,40 +238,117 @@ if(
     // ADD TO CART
     // ==================
 
-    if (
-        e.target.classList.contains(
-            "add-cart"
-        )
-    ) {
+//     if (
+//         e.target.classList.contains(
+//           "add-cart"
+//          )
+//      ) 
+//      {
+//         const productId =
+//              Number(
+//                  e.target.dataset.id
+//              );
 
-        const productId =
-            Number(
-                e.target.dataset.id
-            );
+//          const existingItem =
+//      cart.find(item =>
+//          item.id === productId
+//      );
 
-        const existingItem =
-    cart.find(item =>
-        item.id === productId
-    );
+//  if(existingItem){
 
-if(existingItem){
+//     existingItem.quantity++;
 
-    existingItem.quantity++;
+//  }else{
 
-}else{
+//      cart.push({
+//          id: productId,
+//          quantity: 1
+//      });
 
-    cart.push({
-        id: productId,
-        quantity: 1
-    });
+//  }
 
-}
+//          saveData();
 
-        saveData();
+//         loadProducts();
+//      }
+//       });
+//   if (e.target.classList.contains("add-cart")) {
 
-        loadProducts();
-    }
+//      const productId =
+//          Number(e.target.dataset.id);
+
+//      cart.push({
+//          id: productId,
+//         quantity: 1
+//     });
+
+//     addedProducts.push(productId);
+
+//     saveData();
+
+//     loadProducts();
+
+//     setTimeout(() => {
+
+//         addedProducts =
+//             addedProducts.filter(
+//                 id => id !== productId
+//             );
+
+//         loadProducts();
+
+//     }, 2000);
+// }
+//  });
+
+
+
+
+
+document.addEventListener("click", (e) => {
+
+    const addBtn = e.target.closest(".add-cart");
+
+    if (!addBtn) return;
+
+    const productId = Number(addBtn.dataset.id);
+    
+    addToCart(productId);
+    saveData();
+   loadProducts()
 
 });
 
+function addToCart(productId, quantity = 1) {
 
+    const product = store.find(
+        p => p.id === productId
+    );
+
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingItem = cart.find(
+        item => item.id === productId
+    );
+
+    if (existingItem) {
+
+        existingItem.quantity += quantity;
+
+    } else {
+
+        cart.push({
+            ...product,
+            quantity
+        });
+
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    //   saveData();
+    //   loadProducts();
+    // updateCartCount();
+}
+
+       });

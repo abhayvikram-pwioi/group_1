@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/group_1/Project_02/cssFiles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>product Page</title>
+</head>
+
+<body>
+    <main class="product-page">
+
+        <header class="page-header">
+            <div class="page-logo">
+                <b>Shop-verse</b>
+            </div>
+            <nav class="category">
+                <a href="/htmlFiles/home.html">Home</a>
+                <a href="/htmlFiles/product-page.html">Product</a>
+                <a href="#">Wishlist</a>
+            </nav>
+            <div class="page-search">
+                <input type="text" placeholder="Search products..." width="100px">
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+            </div>
+            <nav class="page-icon">
+
+                <a href="/htmlFiles/" class="wishlist-icon">
+                    <i class="fa-regular fa-heart"></i>
+                    <span id="wishlist-count">0</span>
+                </a>
+                <a href="#"><i class="fa-regular fa-circle-user"></i></a>
+                <a href="/htmlFiles/cart.html" class="cart-icon" id="cart-zone">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </nav>
+        </header>
+
+        <div class="main-sec">
+
+            <div class="responsive-filters">
+
+                <div class="filter-sec-main-responsive">
+                    <button id="filter-main-btn-res"><i class="fa-solid fa-sliders"
+                            class="filter-btns-res"></i></button>
+                    <hr style="height: 30px; width: 0px; margin: auto;">
+                    <div class="filter-list-res">
+                        <select id="sort-topics-res">
+                            <option>sort</option>
+                            <option>Popularity</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                        <button class="filter-btns-res" id="rating-filter-btn"><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>& Up</button>
+                        <button class="filter-btns-res" id="Electronics-filter-btn">Electronics</button>
+                        <button class="filter-btns-res" id="books-filter-btn">Books</button>
+                    </div>
+                </div>
+
+                <hr>
+
+            </div>
+
+            <div class="filter-sec" id="filter-section">
+                <div class="filter-head-up" id="filter-head">
+                    <h2>Filters</h2>
+                    <button id="filter-clear-btn">clear</button>
+                </div>
+
+                <hr>
+
+                <div class="filter-list">
+                    <h3>Category</h3>
+
+                    <label>
+                        <input type="checkbox" value="beauty">
+                        Beauty
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="fragrances">
+                        Fragrances
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="Gaming">
+                        Gaming
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="Shoes">
+                        Shoes
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="groceries">
+                        Groceries
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="Fitness">
+                        Fitness
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="books">
+                        books
+                    </label>
+
+                </div>
+                <div class="filter-down">
+                    <div class="price-filter">
+                        <h3>Price Range</h3>
+
+                        <input type="range" min="0" max="50000" value="30000" id="priceSlider">
+                        <div class="price-values">
+                            <span>₹0</span>
+                            <span id="priceValueMax">₹30,000</span>
+                        </div>
+
+                    </div>
+
+                    <div class="sort-filter">
+                        <h3>Sort By</h3>
+
+                        <select id="sort-topics">
+                            <option value="popularity">Popularity</option>
+                            <option value="lowToHigh">Price: Low to High</option>
+                            <option value="highToLow">Price: High to Low</option>
+                        </select>
+
+                    </div>
+
+                    <div class="rating-filter">
+                        <h3>Ratings</h3>
+                        <div class="rating-list">
+                            <a data-rating="4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i></a>
+                            <a data-rating="3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i></a>
+                            <a data-rating="2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i
+                                    class="fa-regular fa-star"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="product-sec">
+                <div class="product-sec-headline">
+                    <h1 id="product-sec-headline-text">All Products</h1>
+                    <p class="product-count">6 Products</p>
+                </div>
+
+                <div class="product-list" id="product-list">
+
+
+
+
+                    <!-- <div class="product-card">
+
+                        <div class="product-img-box">
+                            <img src="https://picsum.photos/250/200" alt="book" id="product-img">
+
+                            <button class="product-card-wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="product-content">
+
+                            <span class="product-category">
+                                BOOKS
+                            </span>
+
+                            <h2>
+                                Best Seller Fiction Novel
+                            </h2>
+
+                            <div class="product-card-rating">
+                                ⭐⭐⭐⭐☆
+                                <span id="rating-count">(1200)</span>
+                            </div>
+
+                            <h3>₹899</h3>
+
+
+                            <div class="product-card-btns">
+
+                                <button class="add-btn">
+                                    <i class="fa-solid fa-basket-shopping"></i> Add
+                                </button>
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i> Quick View
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="product-card">
+
+                        <div class="product-img-box">
+                            <img src="https://picsum.photos/250/200" alt="book" id="product-img">
+
+                            <button class="product-card-wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="product-content">
+
+                            <span class="product-category">
+                                BOOKS
+                            </span>
+
+                            <h2>
+                                Best Seller Fiction Novel
+                            </h2>
+
+                            <div class="product-card-rating">
+                                ⭐⭐⭐⭐☆
+                                <span id="rating-count">(1200)</span>
+                            </div>
+
+                            <h3>₹899</h3>
+
+
+                            <div class="product-card-btns">
+
+                                <button class="add-btn">
+                                    <i class="fa-solid fa-basket-shopping"></i> Add
+                                </button>
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i> Quick View
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="product-card">
+
+                        <div class="product-img-box">
+                            <img src="https://picsum.photos/250/200" alt="book" id="product-img">
+
+                            <button class="product-card-wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="product-content">
+
+                            <span class="product-category">
+                                BOOKS
+                            </span>
+
+                            <h2>
+                                Best Seller Fiction Novel
+                            </h2>
+
+                            <div class="product-card-rating">
+                                ⭐⭐⭐⭐☆
+                                <span id="rating-count">(1200)</span>
+                            </div>
+
+                            <h3>₹899</h3>
+
+
+                            <div class="product-card-btns">
+
+                                <button class="add-btn">
+                                    <i class="fa-solid fa-basket-shopping"></i> Add
+                                </button>
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i> Quick View
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="product-card">
+
+                        <div class="product-img-box">
+                            <img src="https://picsum.photos/250/200" alt="book" id="product-img">
+
+                            <button class="product-card-wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="product-content">
+
+                            <span class="product-category">
+                                BOOKS
+                            </span>
+
+                            <h2>
+                                Best Seller Fiction Novel
+                            </h2>
+
+                            <div class="product-card-rating">
+                                ⭐⭐⭐⭐☆
+                                <span id="rating-count">(1200)</span>
+                            </div>
+
+                            <h3>₹899</h3>
+
+
+                            <div class="product-card-btns">
+
+                                <button class="add-btn">
+                                    <i class="fa-solid fa-basket-shopping"></i> Add
+                                </button>
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i> Quick View
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="product-card">
+
+                        <div class="product-img-box">
+                            <img src="https://picsum.photos/250/200" alt="book" id="product-img">
+
+                            <button class="product-card-wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="product-content">
+
+                            <span class="product-category">
+                                BOOKS
+                            </span>
+
+                            <h2>
+                                Best Seller Fiction Novel
+                            </h2>
+
+                            <div class="product-card-rating">
+                                ⭐⭐⭐⭐☆
+                                <span id="rating-count">(1200)</span>
+                            </div>
+
+                            <h3>₹899</h3>
+
+
+                            <div class="product-card-btns">
+
+                                <button class="add-btn">
+                                    <i class="fa-solid fa-basket-shopping"></i> Add
+                                </button>
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i> Quick View
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="product-card">
+
+                        <div class="product-img-box">
+                            <img src="https://picsum.photos/250/200" alt="book" id="product-img">
+
+                            <button class="product-card-wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="product-content">
+
+                            <span class="product-category">
+                                BOOKS
+                            </span>
+
+                            <h2>
+                                Best Seller Fiction Novel
+                            </h2>
+
+                            <div class="product-card-rating">
+                                ⭐⭐⭐⭐☆
+                                <span id="rating-count">(1200)</span>
+                            </div>
+
+                            <h3>₹899</h3>
+
+
+                            <div class="product-card-btns">
+
+                                <button class="add-btn">
+                                    <i class="fa-solid fa-basket-shopping"></i> Add
+                                </button>
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i> Quick View
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="product-card">
+
+                        <div class="product-img-box">
+                            <img src="https://picsum.photos/250/200" alt="book" id="product-img">
+
+                            <button class="product-card-wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="product-content">
+
+                            <span class="product-category">
+                                BOOKS
+                            </span>
+
+                            <h2>
+                                Best Seller Fiction Novel
+                            </h2>
+
+                            <div class="product-card-rating">
+                                ⭐⭐⭐⭐☆
+                                <span id="rating-count">(1200)</span>
+                            </div>
+
+                            <h3>₹899</h3>
+
+
+                            <div class="product-card-btns">
+
+                                <button class="add-btn">
+                                    <i class="fa-solid fa-basket-shopping"></i> Add
+                                </button>
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i> Quick View
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="product-card">
+
+                        <div class="product-img-box">
+                            <img src="https://picsum.photos/250/200" alt="book" id="product-img">
+
+                            <button class="product-card-wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="product-content">
+
+                            <span class="product-category">
+                                BOOKS
+                            </span>
+
+                            <h2>
+                                Best Seller Fiction Novel
+                            </h2>
+
+                            <div class="product-card-rating">
+                                ⭐⭐⭐⭐☆
+                                <span id="rating-count">(1200)</span>
+                            </div>
+
+                            <h3>₹899</h3>
+
+
+                            <div class="product-card-btns">
+
+                                <button class="add-btn">
+                                    <i class="fa-solid fa-basket-shopping"></i> Add
+                                </button>
+
+                                <button class="view-btn">
+                                    <i class="fa-solid fa-eye"></i> Quick View
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- <div class="quick-view-sec" id="quickViewModal">
+            <div class="quick-view-main-sec">
+                <div class="quick-view-head">
+                    <h2 id="quick-view-title">Best Seller Fiction Novel</h2>
+                    <button id="quick-view-close-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <p id="quick-view-des">Experience the ultimate combination of style, comfort, and advanced technology with the Best Seller
+                    Fiction Novel. Designed for everyday use with premium materials ensuring long-lasting durability.
+                    Whether you're working, reading, or on an adventure, this product delivers exceptional performance.
+                </p>
+
+                <div class="quick-view-specifications">
+                    <div class="quick-view-specifications-1">
+                        <div class="spec">
+                            <p>BRAND</p>
+                            <h3 id="brand-quick-view">Premium Synthetic & Metal</h3>
+                        </div>
+                        <div class="spec">
+                            <p>WEIGHT</p>
+                            <h3 id="weight-quick-view">Varies by dimension</h3>
+                        </div>
+                    </div>
+
+                    <div class="quick-view-specifications-2">
+                        <div class="spec">
+                            <p>WARRANTY</p>
+                            <h3 id="warranty-quick-view">1 Year Limited</h3>
+                        </div>
+                        <div class="spec">
+                            <p>DIMENSIONS</p> 
+                            <h3 id="dimention-quick-view">2024</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <footer></footer>
+    </main>
+
+
+    <script>
+
+        const filterOpenBtnRes = document.getElementById("filter-main-btn-res");
+        const filterSection = document.getElementById("filter-section");
+
+        filterOpenBtnRes.addEventListener("click", (e) => {
+            e.stopPropagation();
+
+            filterSection.classList.add("activee");
+        });
+
+        filterSection.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+
+        document.addEventListener("click", () => {
+
+            filterSection.classList.remove("activee");
+
+        });
+
+    </script>
+
+    <script src="/group_1/Project_02/JsFiles/app.js"></script>
+</body>
+
+</html>
