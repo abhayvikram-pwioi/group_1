@@ -99,7 +99,7 @@ if (filter) {
         `
         });
 
-          updateWishlistIcons();
+        updateWishlistIcons();
     }
 
 
@@ -482,20 +482,20 @@ const buyNowDetail = document.getElementById("buyNow-btn");
 
 if (buyNowDetail) {
 
-    buyNowDetail.addEventListener("click",(e)=>{
+    buyNowDetail.addEventListener("click", (e) => {
 
         const quantity = Number(document.getElementById("quantity").textContent);
         const product = JSON.parse(localStorage.getItem("selectedProduct"));
 
-        if(!product) return;
-   
-         localStorage.setItem("checkoutProduct", JSON.stringify({
-           ...product,
-           quantity
-       })
-       );
+        if (!product) return;
 
-    // window.location.href = "checkout.html";
+        localStorage.setItem("checkoutProduct", JSON.stringify({
+            ...product,
+            quantity
+        })
+        );
+
+        // window.location.href = "checkout.html";
 
     })
 }
@@ -503,12 +503,12 @@ if (buyNowDetail) {
 document.addEventListener("click", (e) => {
 
     const wishBtn =
-    e.target.closest(".product-card-wishlist");
+        e.target.closest(".product-card-wishlist");
 
     if (!wishBtn) return;
 
     const productId =
-    Number(wishBtn.dataset.id);
+        Number(wishBtn.dataset.id);
 
     addToWishlist(productId);
 
@@ -520,7 +520,7 @@ function addToWishlist(productId) {
         p => p.id === productId
     );
 
-    let wishlist =JSON.parse(localStorage.getItem("wishlist")) || [];
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
     const exists = wishlist.find(
         item => item.id === productId
@@ -538,8 +538,9 @@ function addToWishlist(productId) {
 
     }
 
-    localStorage.setItem("wishlist",JSON.stringify(wishlist));
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
     updateWishlistIcons();
+    updateWishlistCount();
 }
 
 function updateWishlistIcons() {
@@ -548,11 +549,11 @@ function updateWishlistIcons() {
 
     document.querySelectorAll(".product-card-wishlist").forEach(btn => {
 
-        const productId =  Number(btn.dataset.id);
+        const productId = Number(btn.dataset.id);
 
         const icon = btn.querySelector("i");
 
-        const exists =  wishlist.some(
+        const exists = wishlist.some(
             item => item.id === productId
         );
 
@@ -561,12 +562,13 @@ function updateWishlistIcons() {
             icon.classList.remove("fa-regular");
 
             icon.classList.add("fa-solid");
-
+            icon.style.color = "red";
         } else {
 
             icon.classList.remove("fa-solid");
 
             icon.classList.add("fa-regular");
+            icon.style.color = "";
 
         }
 
@@ -599,11 +601,11 @@ cartZone.addEventListener("drop", (e) => {
     e.preventDefault();
 
     const productId =
-    Number(
-        e.dataTransfer.getData(
-            "productId"
-        )
-    );
+        Number(
+            e.dataTransfer.getData(
+                "productId"
+            )
+        );
 
     addToCart(productId);
 
@@ -639,10 +641,23 @@ function updateCartCount() {
 
     const cartCount = document.getElementById("cart-count");
 
-    if(cartCount){
+    if (cartCount) {
         cartCount.textContent = totalItems;
     }
 }
 
 updateCartCount();
+
+
+function updateWishlistCount() {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    
+    const wishlistCount = document.getElementById("wishlist-count");
+
+    if (wishlistCount) {
+        wishlistCount.textContent = wishlist.length;
+    }
+}
+
+updateWishlistCount();
 
