@@ -411,7 +411,6 @@ function addToCart(productId, quantity = 1) {
 
     const product = allProducts.find(
         p => p.id === productId
-
     );
 
 
@@ -422,7 +421,7 @@ function addToCart(productId, quantity = 1) {
     );
 
     if (existingItem) {
-
+        
         existingItem.quantity += quantity;
 
     } else {

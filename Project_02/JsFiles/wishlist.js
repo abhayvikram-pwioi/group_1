@@ -10,6 +10,47 @@ const FALLBACK_PRODUCT_IMAGE = `data:image/svg+xml,${encodeURIComponent(`
 `)}`;
 let wishlistMessageTimer;
 
+function updateCartCount() {
+
+    const cartCount =
+        document.getElementById("cart-count");
+
+    if (!cartCount) return;
+
+    const totalItems =
+        getCartItems().reduce(
+            (total, item) =>
+                total + Number(item.quantity || 0),
+            0
+        );
+
+    cartCount.textContent = totalItems;
+
+    cartCount.classList.toggle(
+        "show",
+        totalItems > 0
+    );
+}
+
+function updateWishlistIconCount() {
+
+    const wishlistCount =
+        document.getElementById("wishlist-icon-count");
+
+    if (!wishlistCount) return;
+
+    const totalItems =
+        getWishlistItems().length;
+
+    wishlistCount.textContent =
+        totalItems;
+
+    wishlistCount.classList.toggle(
+        "show",
+        totalItems > 0
+    );
+}
+
 function getStoredItems(key) {
     return JSON.parse(localStorage.getItem(key)) || [];
 }
@@ -23,7 +64,10 @@ function getCartItems() {
 }
 
 function saveCartItems(items) {
-    saveStoredItems("cart", items);
+
+    saveStoredItems("cart",items);
+
+    updateCartCount();
 }
 
 function getWishlistItems() {
@@ -31,7 +75,10 @@ function getWishlistItems() {
 }
 
 function saveWishlistItems(items) {
-    saveStoredItems("wishlist", items);
+
+    saveStoredItems("wishlist",items);
+
+    updateWishlistIconCount();
 }
 
 function getWishlistImage(item) {
@@ -96,6 +143,8 @@ function updateWishlistCount(count) {
 }
 
 function renderWishlist() {
+    updateCartCount();
+    updateWishlistIconCount();
     const wishlist = getWishlistItems();
     const container = document.getElementById("wishlist-container");
     const count = document.getElementById("wishlist-count");
@@ -195,4 +244,14 @@ document.addEventListener("click", (e) => {
     }
 });
 
-document.addEventListener("DOMContentLoaded", renderWishlist);
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        renderWishlist();
+
+        updateCartCount();
+
+        updateWishlistIconCount();
+    }
+);
