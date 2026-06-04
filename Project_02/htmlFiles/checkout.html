@@ -12,46 +12,35 @@
 <body>
 <main class="checkout-page">
 <header class="page-header">
-
-    <div class="page-logo">
-        <b>Shop-verse</b>
-    </div>
-
-    <nav class="category">
-        <a href="#">Men</a>
-        <a href="#">Women</a>
-        <a href="#">Kids</a>
-        <a href="#">Accessories</a>
-    </nav>
-
-    <div class="page-search">
-        <input
-        type="text"
-        placeholder="Search products...">
-
-        <button>
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-    </div>
-
-    <nav class="page-icon">
-
-        <a href="#">
-            <i class="fa-regular fa-heart"></i>
-        </a>
-
-        <a href="#">
-            <i class="fa-regular fa-circle-user"></i>
-        </a>
-
-        <a href="#" class="cart-link">
-            <i class="fa-solid fa-cart-arrow-down"></i>
-            <span id="cartCount">0</span>
-        </a>
-
-    </nav>
-
-</header>
+            <div class="page-logo">
+                <a href="home.html">Shop-verse</a>
+            </div>
+            <nav class="category">
+                <a href="/htmlFiles/home.html" class="res-show">Home</a>
+                <a href="/htmlFiles/product-page.html" class="res-show">Product</a>
+                 <a href="/htmlFiles/wishlist.html" class="res-hide">Wishlist</a>
+            </nav>
+            
+            <div class="page-search">
+                <input type="text" placeholder="Search products..." width="100px">
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                
+            </div>
+            <nav class="page-icon">
+                
+                <a href="wishlist.html" class="wishlist-icon">
+                    <i class="fa-regular fa-heart"></i>
+                    <span id="wishlist-count">0</span>
+                </a>
+                <a href="#"><i class="fa-regular fa-circle-user"></i></a>
+                <a href="cart.html" class="cart-icon" id="cart-zone">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </nav>
+        </header>
 
 <section class="main-container">
 

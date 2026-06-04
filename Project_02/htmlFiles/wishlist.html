@@ -8,8 +8,9 @@
 
     <link rel="stylesheet" href="/cssFiles/cart.css">
     <link rel="stylesheet" href="/cssFiles/wishlist.css">
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" ">
 </head>
 
 <body>
@@ -18,35 +19,36 @@
 
     <main>
 
-         <header class="page-header">
-            <div class="page-logo">
-                <a href="home.html">Shop-verse</a>
-            </div>
-            <nav class="category">
-                <a href="home.html">Home</a>
-                <a href="product-page.html">Product</a>
-                <a href="wishlist.html">Wishlist</a>
-            </nav>
-            <div class="page-search">
-                <input type="text" placeholder="Search products..." width="100px">
-                <button>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                
-            </div>
-            <nav class="page-icon">
-                
-                <a href="wishlist.html" class="wishlist-icon">
-                    <i class="fa-regular fa-heart"></i>
-                    <span id="wishlist-count">0</span>
-                </a>
-                <a href="#"><i class="fa-regular fa-circle-user"></i></a>
-                <a href="cart.html" class="cart-icon">
-                    <i class="fa-solid fa-cart-arrow-down"></i>
-                    <span id="cart-count">0</span>
-                </a>
-            </nav>
-        </header>
+        <header class=" page-header">
+    <div class="page-logo">
+        <a href="home.html">Shop-verse</a>
+    </div>
+    <nav class="category">
+        <a href="/htmlFiles/home.html" class="res-show">Home</a>
+        <a href="/htmlFiles/product-page.html" class="res-show">Product</a>
+        <a href="/htmlFiles/wishlist.html" class="res-hide">Wishlist</a>
+    </nav>
+
+    <div class="page-search">
+        <input type="text" placeholder="Search products..." width="100px">
+        <button>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+    </div>
+    <nav class="page-icon">
+
+        <a href="wishlist.html" class="wishlist-icon">
+            <i class="fa-regular fa-heart"></i>
+            <span id="wishlist-count">0</span>
+        </a>
+        <a href="#"><i class="fa-regular fa-circle-user"></i></a>
+        <a href="cart.html" class="cart-icon" id="cart-zone">
+            <i class="fa-solid fa-cart-arrow-down"></i>
+            <span id="cart-count">0</span>
+        </a>
+    </nav>
+    </header>
     <main>
 
         <section class="wishlist-hero">
@@ -141,13 +143,12 @@
         </div>
 
         <div class="links">
-
             <h3>Keep in Touch</h3>
-
-            <span class="bi bi-instagram"></span>
-            <span class="bi bi-twitter-x"></span>
-            <span class="bi bi-facebook"></span>
-
+            <div class="links-main">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-facebook"></i>
+            </div>
         </div>
 
         <div class="help">
@@ -165,6 +166,6 @@
 
     <script src="/JsFiles/wishlist.js"></script>
 
-</body>
+    </body>
 
 </html>
