@@ -84,7 +84,7 @@ function renderProducts(products, container) {
                 </div>
 
                 <p class="price">
-                    ₹${Math.round(product.price * 85)}
+                    ₹${Math.round(product.price * 10)}
                 </p>
 
          
@@ -175,7 +175,6 @@ function addToCart(productId, quantity = 1) {
 document.addEventListener("click", (e) => {
 
     const buyBtn = e.target.closest(".buy-now");
-
     if (!buyBtn) return;
 
     const productId = Number(buyBtn.dataset.id);
@@ -189,6 +188,7 @@ document.addEventListener("click", (e) => {
         quantity: 1
     })
     );
+
     console.log(product);
 
     // window.location.href = "checkout.html";
