@@ -605,7 +605,7 @@ cartZone.addEventListener("drop", (e) => {
     );
 
     addToCart(productId);
-
+    
 });
 
 cartZone.addEventListener("dragenter", () => {
