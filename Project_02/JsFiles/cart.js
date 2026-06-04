@@ -23,6 +23,15 @@ let activeCoupon = "";
 let recommendedProducts = [];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const FALLBACK_PRODUCT_IMAGE = `data:image/svg+xml,${encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <rect width="300" height="300" fill="#eef2ff"/>
+  <rect x="80" y="92" width="140" height="116" rx="18" fill="#d0d7f2"/>
+  <circle cx="118" cy="132" r="18" fill="#5068c9"/>
+  <path d="M80 196l42-46 34 34 24-28 40 40z" fill="#667085"/>
+  <text x="150" y="238" text-anchor="middle" font-family="Arial" font-size="18" fill="#667085">Product</text>
+</svg>
+`)}`;
 
 function formatPrice(amount) {
     return "₹" + Number(amount).toFixed(2);
@@ -34,6 +43,20 @@ function getDisplayPrice(product) {
 
 function getCartItems() {
     return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function getCartImage(item) {
+    return item.image || item.thumbnail || (Array.isArray(item.images) && item.images[0]) || FALLBACK_PRODUCT_IMAGE;
+}
+
+function getCartPrice(item) {
+    const price = Number(item.price) || 0;
+
+    if (!item.image && item.thumbnail) {
+        return Math.round(price * 10);
+    }
+
+    return price;
 }
 
 function getStoredProduct(product) {
@@ -464,21 +487,23 @@ function loadCartFromStorage() {
     cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     cart.forEach(item => {
+        const image = getCartImage(item);
+        const price = getCartPrice(item);
         const cartItem = document.createElement("div");
 
         cartItem.classList.add("cart-item");
         cartItem.dataset.id = item.id;
-        cartItem.dataset.price = item.price;
+        cartItem.dataset.price = price;
 
         cartItem.innerHTML = `
             <div class="product-image">
-                <img src="${item.image}" alt="${item.title}">
+                <img src="${image}" alt="${item.title}" onerror="this.onerror=null;this.src='${FALLBACK_PRODUCT_IMAGE}'">
             </div>
 
             <div class="product-details">
                 <div>
                     <h2>${item.title}</h2>
-                    <p class="price">₹${Number(item.price).toFixed(0)}</p>
+                    <p class="price">₹${price.toFixed(0)}</p>
 
                     <div class="product-meta">
                         <p class="stock">
