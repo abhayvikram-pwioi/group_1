@@ -1,21 +1,11 @@
 // =====================
-// STORE
-// =====================
-
-const store = {
-    men: [],
-    women: [],
-    accessories: []
-};
-
-// =====================
 // CART & WISHLIST
 // =====================
 
-const cart =
+let cart =
     JSON.parse(localStorage.getItem("cart")) || [];
 
-const wishlist =
+let wishlist =
     JSON.parse(localStorage.getItem("wishlist")) || [];
 
 const cartCount =
@@ -24,218 +14,278 @@ const cartCount =
 const wishlistCount =
     document.getElementById("wishlist-count");
 
-cartCount.textContent = cart.length;
-wishlistCount.textContent = wishlist.length;
+    function updateCounts() {
+
+    cartCount.textContent = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+);
+
+    wishlistCount.textContent =
+        wishlist.length;
+
+}
+
+function saveData() {
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
+
+    updateCounts();
+}
+
+// cartCount.textContent = cart.length;
+// wishlistCount.textContent = wishlist.length;
+
+   updateCounts();
 
 // =====================
 // FETCH PRODUCTS
 // =====================
-
-async function loadProducts() {
-    try {
-
-        const [
-            menShirts,
-            menShoes,
-            menWatches,
-            womenDresses,
-            womenShoes,
-            womenBags,
-            womenJewellery,
-            womenWatches,
-            sunglasses
-        ] = await Promise.all([
-
-            fetch("https://dummyjson.com/products/category/mens-shirts")
-                .then(res => res.json()),
-
-            fetch("https://dummyjson.com/products/category/mens-shoes")
-                .then(res => res.json()),
-
-            fetch("https://dummyjson.com/products/category/mens-watches")
-                .then(res => res.json()),
-
-            fetch("https://dummyjson.com/products/category/womens-dresses")
-                .then(res => res.json()),
-
-            fetch("https://dummyjson.com/products/category/womens-shoes")
-                .then(res => res.json()),
-
-            fetch("https://dummyjson.com/products/category/womens-bags")
-                .then(res => res.json()),
-
-            fetch("https://dummyjson.com/products/category/womens-jewellery")
-                .then(res => res.json()),
-
-            fetch("https://dummyjson.com/products/category/womens-watches")
-                .then(res => res.json()),
-
-            fetch("https://dummyjson.com/products/category/sunglasses")
-                .then(res => res.json())
-
-        ]);
-
-        store.men = [
-            ...menShirts.products,
-            ...menShoes.products,
-            ...menWatches.products
-        ];
-
-        store.women = [
-            ...womenDresses.products,
-            ...womenShoes.products,
-            ...womenBags.products,
-            ...womenJewellery.products,
-            ...womenWatches.products
-        ];
-
-        store.accessories = [
-            ...sunglasses.products,
-            ...womenJewellery.products,
-            ...menWatches.products,
-            ...womenWatches.products
-        ];
-
-        renderProducts(
-            store.men,
-            "men-products"
-        );
-
-        renderProducts(
-            store.women,
-            "women-products"
-        );
-
-        renderProducts(
-            store.accessories,
-            "accessories-products"
-        );
-
-    } catch (error) {
-        console.error(error);
+let store = [];
+async function getProducts(){
+    const response = await fetch("https://dummyjson.com/products");
+    const data = await response.json();
+    for(let product of data.products) {
+        store.push(product);
     }
+    loadProducts();
 }
 
-// =====================
-// RENDER PRODUCTS
-// =====================
+function loadProducts(){
+    // console.log(
+    // [...new Set(store.map(
+    //     product => product.category
+    // ))]
+//);
+    const beautyProducts = store.filter(product => product.category === "beauty").slice(0,4);
+    const groceryProducts = store.filter(product => product.category === "groceries").slice(0,4);;
+    const perfumeProducts = store.filter(product => product.category === "fragrances").slice(0,4);;
+    
 
-function renderProducts(products, containerId) {
+    const beautyContainer = document.getElementById("beauty-products");
+    const groceriesContainer = document.getElementById("grocery-products");
+    const perfumeContainer = document.getElementById("perfumes-products");
 
-    const container =
-        document.getElementById(containerId);
+     renderProducts(beautyProducts,beautyContainer);
+     renderProducts(groceryProducts,groceriesContainer);
+     renderProducts(perfumeProducts,perfumeContainer);
 
-    container.innerHTML = products.map(product => `
+    
+}
+function renderProducts(products, container) {
 
-        <div class="card">
+    container.innerHTML = "";
 
-            <img
-                src="${product.thumbnail}"
-                alt="${product.title}"
-            >
+    products.forEach(product => {
+        const cartItem = cart.find(
+    item => item.id === product.id
+    );
 
-            <i
-                class="fa-solid fa-heart wishlist-btn
-                ${wishlist.includes(product.id) ? "active" : ""}"
-                data-id="${product.id}">
-            </i>
+        container.innerHTML += `
+            <div class="card">
 
-            <h3>${product.title}</h3>
+                <img
+                    src="${product.thumbnail}"
+                    alt="${product.title}"
+                >
 
-            <p>
-                ${product.description.slice(0, 60)}...
-            </p>
-
-            <p class="price">
-                ₹${Math.round(product.price * 85)}
-            </p>
-
-            <div class="btn">
-
-                <button
-                    class="add-cart"
+                <i
+                    class="fa-solid fa-heart wishlist-btn
+                    ${wishlist.includes(product.id) ? "active" : ""}"
                     data-id="${product.id}">
-                    ${cart.includes(product.id)
-                        ? "Added ✓"
-                        : "Add to Cart"}
-                </button>
+                </i>
 
-                <button class="buy-now">
-                    Buy Now
-                </button>
+                <h3>${product.title}</h3>
+
+                <p>
+                    ${product.description.slice(0, 60)}...
+                </p>
+                <div class="rating">
+                ⭐ ${product.rating}
+                </div>
+
+                <p class="price">
+                    ₹${Math.round(product.price * 85)}
+                </p>
+
+                <div class="btn">
+
+                   ${
+cartItem
+?
+`
+<div class="quantity-box">
+
+    <button
+        class="minus"
+        data-id="${product.id}">
+        -
+    </button>
+
+    <span class="qty">
+        ${cartItem.quantity}
+    </span>
+
+    <button
+        class="plus"
+        data-id="${product.id}">
+        +
+    </button>
+
+</div>
+`
+:
+`
+<button
+    class="add-cart"
+    data-id="${product.id}">
+    Add To Cart
+</button>
+`
+}
+
+                    <button
+                        class="buy-now"
+                        data-id="${product.id}">
+                        Buy Now
+                    </button>
+
+                </div>
 
             </div>
-
-        </div>
-
-    `).join("");
+        `;
+    });
 }
 
-// =====================
-// EVENT DELEGATION
-// =====================
+getProducts();
 
-document.addEventListener("click", (e) => {
+       document.addEventListener("click", (e) => {
+        if(
+    e.target.classList.contains("plus")
+){
 
-    // ADD TO CART
+    const id =
+        Number(e.target.dataset.id);
 
-    if (e.target.classList.contains("add-cart")) {
+    const item =
+        cart.find(
+            item => item.id === id
+        );
 
-        const productId =
-            Number(e.target.dataset.id);
+    item.quantity++;
 
-        if (!cart.includes(productId)) {
+    saveData();
 
-            cart.push(productId);
+    loadProducts();
+}
 
-            localStorage.setItem(
-                "cart",
-                JSON.stringify(cart)
-            );
+if(
+    e.target.classList.contains("minus")
+){
 
-            cartCount.textContent =
-                cart.length;
+    const id =
+        Number(e.target.dataset.id);
 
-            e.target.textContent =
-                "Added ✓";
-        }
+    const item =
+        cart.find(
+            item => item.id === id
+        );
+
+    item.quantity--;
+
+    if(item.quantity <= 0){
+
+        cart = cart.filter(
+            item => item.id !== id
+        );
     }
 
-    // WISHLIST
+    saveData();
 
-    if (e.target.classList.contains("wishlist-btn")) {
+    loadProducts();
+}
+
+    // ==================
+    // WISHLIST
+    // ==================
+
+    if (
+        e.target.classList.contains(
+            "wishlist-btn"
+        )
+    ) {
 
         const productId =
-            Number(e.target.dataset.id);
+            Number(
+                e.target.dataset.id
+            );
 
-        if (wishlist.includes(productId)) {
+        if (
+            wishlist.includes(productId)
+        ) {
 
-            const index =
-                wishlist.indexOf(productId);
-
-            wishlist.splice(index, 1);
-
-            e.target.classList.remove("active");
+            wishlist =
+                wishlist.filter(
+                    id => id !== productId
+                );
 
         } else {
 
             wishlist.push(productId);
 
-            e.target.classList.add("active");
         }
 
-        localStorage.setItem(
-            "wishlist",
-            JSON.stringify(wishlist)
-        );
+        saveData();
 
-        wishlistCount.textContent =
-            wishlist.length;
+        loadProducts();
     }
+
+    // ==================
+    // ADD TO CART
+    // ==================
+
+    if (
+        e.target.classList.contains(
+            "add-cart"
+        )
+    ) {
+
+        const productId =
+            Number(
+                e.target.dataset.id
+            );
+
+        const existingItem =
+    cart.find(item =>
+        item.id === productId
+    );
+
+if(existingItem){
+
+    existingItem.quantity++;
+
+}else{
+
+    cart.push({
+        id: productId,
+        quantity: 1
+    });
+
+}
+
+        saveData();
+
+        loadProducts();
+    }
+
 });
 
-// =====================
-// INITIAL LOAD
-// =====================
 
-loadProducts();
