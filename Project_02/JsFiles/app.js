@@ -246,14 +246,16 @@ if (savedProduct) {
 
         document.getElementById("product-stock").textContent = `(${product.stock})`;
 
-        document.getElementById("product-price").textContent = `₹${(product.price * 100).toFixed(0)}`;
+        document.getElementById("product-price").textContent = `₹${(product.price * 10).toFixed(0)}`;
 
         document.getElementById("product-tag-1").textContent = `• ${product.tags[0]}`;
         document.getElementById("product-tag-2").textContent = `• ${product.tags[1]}`;
 
-        // document.getElementById("product-discounted-price").textContent = 
+        const beforeDiscount = Math.round(((product.price * 10)) / (1 - product.discountPercentage / 100));
 
-        document.getElementById("discount-percent").textContent = `${product.discountPercentage} %`;
+        document.getElementById("product-discounted-price").innerHTML = `<s>₹${beforeDiscount}</s>`
+
+        document.getElementById("discount-percent").textContent = `${Math.round(product.discountPercentage)} %`;
 
         document.getElementById("product-brand").textContent = `Brand : ${product.brand}`;
         document.getElementById("product-dimensions").textContent = `Dimensions : ${product.dimensions.width}cm X ${product.dimensions.height}cm X ${product.dimensions.depth}cm`;
@@ -651,7 +653,7 @@ updateCartCount();
 
 function updateWishlistCount() {
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    
+
     const wishlistCount = document.getElementById("wishlist-count");
 
     if (wishlistCount) {
