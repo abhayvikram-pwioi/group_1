@@ -625,3 +625,4 @@ cartZone.addEventListener("drop", () => {
     cartZone.classList.remove("active-drop");
 
 });
+
