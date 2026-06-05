@@ -51,6 +51,54 @@ function loadProducts() {
 
 }
 
+const searchInput = document.getElementById("search-input");
+
+searchInput.addEventListener("input", () => {
+
+    const searchTerm =
+        searchInput.value.toLowerCase();
+
+    const beautyProducts =
+        store.filter(product =>
+            product.category === "beauty" &&
+            product.title
+                .toLowerCase()
+                .includes(searchTerm)
+        );
+
+    const groceryProducts =
+        store.filter(product =>
+            product.category === "groceries" &&
+            product.title
+                .toLowerCase()
+                .includes(searchTerm)
+        );
+
+    const perfumeProducts =
+        store.filter(product =>
+            product.category === "fragrances" &&
+            product.title
+                .toLowerCase()
+                .includes(searchTerm)
+        );
+
+    renderProducts(
+        beautyProducts,
+        document.getElementById("beauty-products")
+    );
+
+    renderProducts(
+        groceryProducts,
+        document.getElementById("grocery-products")
+    );
+
+    renderProducts(
+        perfumeProducts,
+        document.getElementById("perfumes-products")
+    );
+
+});
+
 function renderProducts(products, container) {
 
     container.innerHTML = "";

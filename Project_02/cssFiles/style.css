@@ -387,7 +387,7 @@ hr {
 
 .product-content h2 {
   font-size: 1.3rem;
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .product-category {
@@ -443,7 +443,7 @@ hr {
 .buy-btn {
   flex: 1;
   padding: 10px;
-  background: var(--text-accent);
+  background: var(--bg-dark);
   border: none;
   border-radius: var(--radius-md);
   color: white;
@@ -455,12 +455,16 @@ hr {
   cursor: pointer;
   transform: scale(1.04);
   box-shadow: var(--card-shadow);
+  background-color: var(--btn-secondary-text);
+  color: white;
 }
 
 .buy-btn:hover {
   cursor: pointer;
   box-shadow: var(--shadow-card);
   transform: scale(1.04);
+    background-color: var(--btn-secondary-text);
+  color: white;
 }
 
 /* QUICK VIEW SECTION */
@@ -625,8 +629,8 @@ body.modal-open .main-sec {
   align-items: center;
   justify-content: space-between;
   width: 120px;
-  height: 40px;
-  padding: 10px;
+  height: 50px;
+  padding: 15px;
   background: #fff;
   border: none;
   border-radius: 15px;
@@ -635,8 +639,8 @@ body.modal-open .main-sec {
 
 
 .qty-btn {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border: none;
   background: #f3f4f6;
   border-radius: 10px;
@@ -665,7 +669,7 @@ body.modal-open .main-sec {
 
 .addToCart-btn,
 #buyNow-btn {
-  padding: 10px;
+  padding: 15px;
   border: none;
   border-radius: 15px;
   background-color: var(--bg-secondary);
@@ -676,6 +680,16 @@ body.modal-open .main-sec {
   font-weight: 700;
   box-shadow: var(--shadow-card);
   width: 180px;
+}
+
+.addToCart-btn {
+  background: #22c55e;
+  color: white;
+}
+
+#buyNow-btn {
+  background: #5568d9;
+  color: white;
 }
 
 .product-wishlist-sec {
@@ -807,67 +821,65 @@ body.modal-open .main-sec {
 
 
 footer {
-    margin-top: 80px;
-    background: var(--bg-dark);
-    color: var(--text-light);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 40px;
-    padding: 60px 5%;
+  margin-top: 80px;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  padding: 60px 5%;
 }
 
 footer h3 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 footer p {
-    color: #c7c7c7;
-    margin-bottom: 12px;
-    transition: var(--transition);
-    cursor: pointer;
+  color: #c7c7c7;
+  margin-bottom: 12px;
+  transition: var(--transition);
+  cursor: pointer;
 }
 
 footer p:hover {
-    color: white;
-    transform: translateX(5px);
+  color: white;
+  transform: translateX(5px);
 }
 
 .links span {
-    font-size: 1.4rem;
-    margin-right: 15px;
-    cursor: pointer;
+  font-size: 1.4rem;
+  margin-right: 15px;
+  cursor: pointer;
 }
 
 .links span:hover {
-    color: var(--text-accent);
+  color: var(--text-accent);
 }
 
-#toast{
-    position: fixed;
-    top: 20px;
-    right: 20px;
+#toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
 
-    background: linear-gradient(
-        135deg,
-        #22c55e,
-        #16a34a
-    );
-    color: white;
+  background: linear-gradient(135deg,
+      #22c55e,
+      #16a34a);
+  color: white;
 
-    padding: 14px 20px;
-    border-radius: 10px;
+  padding: 14px 20px;
+  border-radius: 10px;
 
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 
-    transition: 0.3s;
-    z-index: 9999;
-      box-shadow: 0 10px 25px rgba(34,197,94,.3);
+  transition: 0.3s;
+  z-index: 9999;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, .3);
 }
 
-#toast.show{
-    opacity: 1;
-    visibility: visible;
+#toast.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 @media(max-width:768px) {
@@ -880,44 +892,44 @@ footer p:hover {
   }
 
 
-   .page-header {
+  .page-header {
     padding-top: 12px;
     padding-bottom: 12px;
-    }
+  }
 
-    .page-logo {
-        font-size: 1.2rem;
-    }
+  .page-logo {
+    font-size: 1.2rem;
+  }
 
-    .category {
-        gap: 10px;
-    }
+  .category {
+    gap: 10px;
+  }
 
-    .res-hide{
-        display: none;
-    }
+  .res-hide {
+    display: none;
+  }
 
-    .page-search {
-        display: none;
-    }
+  .page-search {
+    display: none;
+  }
 
-    .page-search input {
-        width: 100%;
-        padding: 10px;
-        font-size: 0.9rem;
-    }
+  .page-search input {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
 
-    .page-search button {
-        padding: 10px 12px;
-    }
+  .page-search button {
+    padding: 10px 12px;
+  }
 
-    .page-icon {
-        gap: 15px;
-    }
+  .page-icon {
+    gap: 15px;
+  }
 
-    .page-icon a {
-        font-size: 1.2rem;
-    }
+  .page-icon a {
+    font-size: 1.2rem;
+  }
 
 
   .responsive-filters {
