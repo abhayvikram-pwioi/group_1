@@ -253,8 +253,7 @@ img {
 
 .product-grid {
     display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(4,1fr);
 
     gap: 25px;
 }
@@ -538,6 +537,34 @@ footer p:hover {
     font-weight: 600;
 }
 
+
+#toast{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+    color: white;
+
+    padding: 14px 20px;
+    border-radius: 10px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s;
+    z-index: 9999;
+      box-shadow: 0 10px 25px rgba(34,197,94,.3);
+}
+
+#toast.show{
+    opacity: 1;
+    visibility: visible;
+}
 
 /* @media(max-width: 768px){
     .page-header{

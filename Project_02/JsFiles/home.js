@@ -51,6 +51,54 @@ function loadProducts() {
 
 }
 
+const searchInput = document.getElementById("search-input");
+
+searchInput.addEventListener("input", () => {
+
+    const searchTerm =
+        searchInput.value.toLowerCase();
+
+    const beautyProducts =
+        store.filter(product =>
+            product.category === "beauty" &&
+            product.title
+                .toLowerCase()
+                .includes(searchTerm)
+        );
+
+    const groceryProducts =
+        store.filter(product =>
+            product.category === "groceries" &&
+            product.title
+                .toLowerCase()
+                .includes(searchTerm)
+        );
+
+    const perfumeProducts =
+        store.filter(product =>
+            product.category === "fragrances" &&
+            product.title
+                .toLowerCase()
+                .includes(searchTerm)
+        );
+
+    renderProducts(
+        beautyProducts,
+        document.getElementById("beauty-products")
+    );
+
+    renderProducts(
+        groceryProducts,
+        document.getElementById("grocery-products")
+    );
+
+    renderProducts(
+        perfumeProducts,
+        document.getElementById("perfumes-products")
+    );
+
+});
+
 function renderProducts(products, container) {
 
     container.innerHTML = "";
@@ -168,6 +216,7 @@ function addToCart(productId, quantity = 1) {
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
+    showToast(`${product.title} added to cart`);
 }
 
 
@@ -227,11 +276,11 @@ function addToWishlist(productId) {
         wishlist = wishlist.filter(
             item => item.id !== productId
         );
-
+        showToast("Removed from Wishlist 💔");
     } else {
 
         wishlist.push(product);
-
+        showToast("Added to Wishlist ❤️");
     }
 
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
@@ -246,33 +295,32 @@ function updateWishlistIcons() {
 
     document.querySelectorAll(".wishlist-btn").forEach(btn => {
 
-            const productId =
-                Number(btn.dataset.id);
+        const productId =
+            Number(btn.dataset.id);
 
-            const exists =
-                wishlist.some(
-                    item => item.id === productId
-                );
+        const exists =
+            wishlist.some(
+                item => item.id === productId
+            );
 
-            if (exists) {
+        if (exists) {
+            btn.classList.remove("fa-regular");
 
-                btn.classList.remove("fa-regular");
+            btn.classList.add("fa-solid");
 
-                btn.classList.add("fa-solid");
+            btn.style.color = "red";
 
-                btn.style.color = "red";
+        } else {
 
-            } else {
+            btn.classList.remove("fa-solid");
 
-                btn.classList.remove("fa-solid");
+            btn.classList.add("fa-regular");
 
-                btn.classList.add("fa-regular");
+            btn.style.color = "";
 
-                btn.style.color = "";
+        }
 
-            }
-
-        });
+    });
 
 
 }

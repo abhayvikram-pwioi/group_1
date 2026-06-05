@@ -22,9 +22,36 @@ async function getProducts() {
 
 getProducts();
 
+const searchInput = document.getElementById("search-input");
+
+searchInput.addEventListener("input", () => {
+    searchProducts(searchInput.value);
+});
+
+
 const filter = document.getElementById("filter-head");
 
 if (filter) {
+
+    function searchProducts(searchTerm) {
+
+        const filteredProducts =
+            allProducts.filter(product =>
+
+                product.title
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+
+                ||
+
+                product.category
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+            );
+
+        renderProducts(filteredProducts);
+    }
+
 
     function renderProducts(products) {
 
@@ -320,6 +347,7 @@ function getStars(rating) {
 }
 
 
+
 function renderSuggestedProducts() {
 
     const currentProduct = JSON.parse(localStorage.getItem("selectedProduct"));
@@ -421,7 +449,7 @@ function addToCart(productId, quantity = 1) {
     );
 
     if (existingItem) {
-        
+
         existingItem.quantity += quantity;
 
     } else {
@@ -436,6 +464,7 @@ function addToCart(productId, quantity = 1) {
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
+    showToast(`${product.title} added to cart`);
 }
 
 
@@ -532,10 +561,12 @@ function addToWishlist(productId) {
         wishlist = wishlist.filter(
             item => item.id !== productId
         );
+        showToast("Removed from Wishlist 💔");
 
     } else {
 
         wishlist.push(product);
+        showToast("Added to Wishlist ❤️");
 
     }
 
