@@ -436,6 +436,7 @@ function addToCart(productId, quantity = 1) {
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
+      showToast(`${product.title} added to cart`);
 }
 
 
@@ -532,10 +533,12 @@ function addToWishlist(productId) {
         wishlist = wishlist.filter(
             item => item.id !== productId
         );
+        showToast("Removed from Wishlist 💔");
 
     } else {
 
         wishlist.push(product);
+        showToast("Added to Wishlist ❤️");
 
     }
 
