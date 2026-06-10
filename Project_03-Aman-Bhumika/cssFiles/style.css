@@ -4,32 +4,49 @@
 }
 
 .main-section{
-    padding: 20px;
+    padding: 20px 100px 20px 100px;
 }
 
 header{
     border: 1px solid black;
-    height: 80px;
+    border-radius: 20px;
+    height: 90px;
     position: sticky;
     margin: auto;
 }
 
 .greeting-sec{
+    margin-top: 20px;
     border: 1px solid black;
+    border-radius: 20px;
     padding: 30px;
 }
 .cards-section{
     display: flex;
-    margin-top: 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .weather-sec{
     border: 1px solid black;
+    border-radius: 20px;
     width: 400px;
     height: 500px;
 }
 
 .news-sec{
     border: 1px solid black;
-    
+    border-radius: 20px;
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+}
+
+footer{
+    border: 1px solid black;
+    padding: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
 }
