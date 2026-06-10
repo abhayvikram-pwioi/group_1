@@ -1,0 +1,16 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.main-section{
+    padding: 20px;
+}
+
+header{
+    border: 1px solid black;
+    height: 80px;
+    position: sticky;
+    width: 90%;
+    margin: auto;
+}
