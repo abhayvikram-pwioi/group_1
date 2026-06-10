@@ -11,6 +11,25 @@ header{
     border: 1px solid black;
     height: 80px;
     position: sticky;
-    width: 90%;
     margin: auto;
+}
+
+.greeting-sec{
+    border: 1px solid black;
+    padding: 30px;
+}
+.cards-section{
+    display: flex;
+    margin-top: 30px;
+}
+
+.weather-sec{
+    border: 1px solid black;
+    width: 400px;
+    height: 500px;
+}
+
+.news-sec{
+    border: 1px solid black;
+    
 }
