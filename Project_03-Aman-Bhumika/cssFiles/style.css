@@ -10,9 +10,14 @@
 header{
     border: 1px solid black;
     border-radius: 20px;
-    height: 90px;
+    height: 50px;
+    padding: 20px;
+    padding: 20px;
     position: sticky;
     margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .greeting-sec{
@@ -20,6 +25,9 @@ header{
     border: 1px solid black;
     border-radius: 20px;
     padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .cards-section{
     display: flex;
@@ -43,8 +51,11 @@ header{
     height: 500px;
 }
 
+hr{
+    margin-top: 20px;
+}
 footer{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 20px;
     display: flex;
     text-align: center;
