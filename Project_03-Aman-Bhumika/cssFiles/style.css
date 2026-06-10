@@ -1,18 +1,17 @@
-*{
+* {
     margin: 0%;
     padding: 0%;
 }
 
-.main-section{
+.main-section {
     padding: 20px 100px 20px 100px;
 }
 
-header{
+header {
     border: 1px solid black;
     border-radius: 20px;
     height: 50px;
-    padding: 20px;
-    padding: 20px;
+    padding: 10px;
     position: sticky;
     margin: auto;
     display: flex;
@@ -20,7 +19,53 @@ header{
     align-items: center;
 }
 
-.greeting-sec{
+.logo-sec {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.header-right-sec {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-sec {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+#searchNews {
+    border: none;
+    height: 30px;
+    width: 100%;
+    max-width: 250px;
+    padding-left: 10px;
+    background: transparent;
+}
+
+.search-sec button{
+    height: 30px;
+    width: 40px;
+    background: transparent;
+    border: none;
+    font-size: 17px;
+}
+
+#newsCategory {
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.greeting-sec {
     margin-top: 20px;
     border: 1px solid black;
     border-radius: 20px;
@@ -29,21 +74,22 @@ header{
     justify-content: space-between;
     align-items: center;
 }
-.cards-section{
+
+.cards-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
 }
 
-.weather-sec{
+.weather-sec {
     border: 1px solid black;
     border-radius: 20px;
     width: 400px;
     height: 500px;
 }
 
-.news-sec{
+.news-sec {
     border: 1px solid black;
     border-radius: 20px;
     width: 100%;
@@ -51,10 +97,11 @@ header{
     height: 500px;
 }
 
-hr{
+hr {
     margin-top: 20px;
 }
-footer{
+
+footer {
     /* border: 1px solid black; */
     padding: 20px;
     display: flex;
