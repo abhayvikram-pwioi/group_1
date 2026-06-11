@@ -4,6 +4,5 @@ Team Member
 3. Bhumika Sharma
 4. Hemant Nanda
 
-Projects 
-1 : GymHub
-2 : E-Commercial Website
+Projects 1 : GymHub
+Projects 2 : E-Commercial Website
