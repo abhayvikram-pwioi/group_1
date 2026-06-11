@@ -266,7 +266,7 @@ footer {
     height: 170px;
 }
 
-#img-news {
+.img-news {
     object-fit: cover;
     height: 170px;
     width: 270px;
@@ -277,7 +277,7 @@ footer {
     padding: 10px;
 }
 
-#title{
+.title{
     margin-top: 5px;
     margin-bottom: 10px;
 }
@@ -287,7 +287,7 @@ footer {
     width: 250px;
 }
 
-#description {
+.description {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
