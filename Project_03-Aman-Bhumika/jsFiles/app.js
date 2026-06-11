@@ -35,3 +35,40 @@ async function getNews(category) {
 }
 // getNews("technology");
 
+(async () => {
+
+    // const articles = await getNews("technology");
+    // renderNewsCards(articles);
+
+})();
+
+
+function renderNewsCards(articles) {
+    const container = document.getElementById("news-container");
+
+    container.innerHTML = "";
+
+    articles.forEach(article => {
+
+        container.innerHTML += `
+            <div class="news-card">
+                <div class="img-sec">
+                    <img src="${article.image}" alt="image" class="img-news">
+                </div>
+                <div class="news-card-details">
+                    <h4 class="source">${article.source.name}</h4>
+                    <h3 class="title"> ${article.title}</h3>
+                    <p class="description">${article.description || "No description"}</p>
+                </div>
+                <hr class="news-hr">
+                    <div class="news-card-bottom">
+                        <p id="date">${new Date(article.publishedAt).toLocaleDateString("en-GB")}</p>
+                    <a hjref= "${article.url}">Read more</a>
+                    </div>
+
+            </div>
+
+        `
+    });
+
+}
