@@ -108,6 +108,13 @@ footer {
     justify-content: space-between;
 }
 
+.head-news-sec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 
 .main-news-sec{
     display: grid;
@@ -133,10 +140,15 @@ footer {
 }
 
 .news-card-details {
-    padding: 15px;
+    padding: 10px;
 }
 
-hr {
+#title{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.news-hr{
     margin: auto;
     width: 250px;
 }
