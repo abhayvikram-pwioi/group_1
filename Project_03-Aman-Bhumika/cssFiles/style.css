@@ -1,3 +1,100 @@
+/* SUNNY */
+
+:root[data-theme="sunny"]{
+    --background:
+    linear-gradient(
+        135deg,
+        #87CEEB,
+        #E6F7FA
+    );
+
+    --card-bg:#FFFFFF;
+    --primary:#FFD166;
+    --secondary:#4A90E2;
+
+    --text-primary:#1A1A1A;
+    --text-secondary:#555555;
+}
+
+
+/* CLOUDY */
+
+:root[data-theme="cloudy"]{
+    --background:
+    linear-gradient(
+        135deg,
+        #BDC4DE,
+        #E6EEF5
+    );
+
+    --card-bg:#FFFFFF;
+    --primary:#6B8FB8;
+    --secondary:#4A6FA5;
+
+    --text-primary:#1F2937;
+    --text-secondary:#4B5563;
+}
+
+
+/* RAINY */
+
+:root[data-theme="rainy"]{
+    --background:
+    linear-gradient(
+        135deg,
+        #1E3A5F,
+        #0D1B2A
+    );
+
+    --card-bg:rgba(255,255,255,0.1);
+
+    --primary:#4FC3F7;
+    --secondary:#1E88E5;
+
+    --text-primary:#FFFFFF;
+    --text-secondary:#B0BEC5;
+}
+
+
+/* STORM */
+
+:root[data-theme="storm"]{
+    --background:
+    linear-gradient(
+        135deg,
+        #4B0082,
+        #1A0033
+    );
+
+    --card-bg:rgba(255,255,255,0.1);
+
+    --primary:#C084FC;
+    --secondary:#8B5CF6;
+
+    --text-primary:#FFFFFF;
+    --text-secondary:#E0E0E0;
+}
+
+
+/* NIGHT */
+
+:root[data-theme="night"]{
+    --background:
+    linear-gradient(
+        135deg,
+        #0F172A,
+        #020617
+    );
+
+    --card-bg:rgba(255,255,255,0.07);
+
+    --primary:#7DA2FF;
+    --secondary:#4A6CF7;
+
+    --text-primary:#F8FAFC;
+    --text-secondary:#94A3B8;
+}
+
 * {
     margin: 0%;
     padding: 0%;
@@ -82,10 +179,47 @@ header {
 }
 
 .weather-sec {
-    border: 1px solid black;
+   width: 350px;
+    min-height: 500px;
+    border: 1px solid #ddd;
     border-radius: 20px;
     width: 350px;
     height: 500px;
+    padding: 20px;
+}
+.section-title{
+    margin-bottom:20px;
+}
+.weather-card{
+    background: rgb(220, 216, 216);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+   
+}
+.weather-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.weather-top img{
+    width: 60px;
+}
+.temperature{
+    text-align: center;
+    margin-top: 20px;
+}
+.temperature h1{
+    font-size:3rem;
+}
+.weather-details{
+    display:flex;
+    justify-content:space-around;
+    margin-top:20px;
+}
+
+.detail{
+    text-align:center;
 }
 
 .news-sec {
