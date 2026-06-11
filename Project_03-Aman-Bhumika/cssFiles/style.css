@@ -148,7 +148,7 @@ header {
     background: transparent;
 }
 
-.search-sec button{
+.search-sec button {
     height: 30px;
     width: 40px;
     background: transparent;
@@ -175,7 +175,6 @@ header {
 .cards-section {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-top: 20px;
 }
 
@@ -184,6 +183,8 @@ header {
     min-height: 500px;
     border: 1px solid #ddd;
     border-radius: 20px;
+    width: 350px;
+    height: 500px;
     padding: 20px;
 }
 .section-title{
@@ -225,8 +226,8 @@ header {
     border: 1px solid black;
     border-radius: 20px;
     width: 100%;
-    max-width: 800px;
-    height: 500px;
+    max-width: 860px;
+    padding: 20px;
 }
 
 hr {
@@ -238,5 +239,65 @@ footer {
     padding: 20px;
     display: flex;
     text-align: center;
+    justify-content: space-between;
+}
+
+.head-news-sec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.main-news-sec{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+.news-card {
+    border: 1px solid black;
+        width: 270px;
+}
+
+.img-sec {
+    border: 1px solid black;
+    width: 270px;
+    height: 170px;
+}
+
+#img-news {
+    object-fit: cover;
+    height: 170px;
+    width: 270px;
+    overflow: hidden;
+}
+
+.news-card-details {
+    padding: 10px;
+}
+
+#title{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.news-hr{
+    margin: auto;
+    width: 250px;
+}
+
+#description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-card-bottom {
+    padding: 15px;
+    display: flex;
+    text-align: center;
+    align-items: center;
     justify-content: space-between;
 }
