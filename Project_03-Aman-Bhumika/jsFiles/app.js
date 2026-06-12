@@ -73,6 +73,7 @@ function renderNewsCards(articles) {
 
 }
 
+
         async function getWeather(){
             const lat = 28.57;
             const lon = 77.55;
