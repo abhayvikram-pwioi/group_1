@@ -33,20 +33,20 @@ async function getNews(category) {
 
 }
 
-// (async () => {
+(async () => {
 
-//     const articles = await getNews("general");
-//     renderNewsCards(articles);
+    const articles = await getNews("general");
+    renderNewsCards(articles);
 
-// })();
+})();
 
-// const topicSelect = document.getElementById("newsCategory");
+const topicSelect = document.getElementById("newsCategory");
 
-// topicSelect.addEventListener("change", async () => {
+topicSelect.addEventListener("change", async () => {
 
-//     const articles = await getNews(topicSelect.value);
-//     renderNewsCards(articles);
-// });
+    const articles = await getNews(topicSelect.value);
+    renderNewsCards(articles);
+});
 
 const searchBtn = document.getElementById("search-btn");
 
@@ -73,19 +73,33 @@ searchBtn.addEventListener("click", async () => {
     }
 
     renderNewsCards(articles);
-    
+
 });
 
 
 async function searchNews(query, category) {
 
     const searchTerm = `${query} ${category}`;
+    try {
 
-    const res = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(searchTerm)}&lang=en&apikey=${API_KEy}`);
+        const res = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(searchTerm)}&lang=en&apikey=${API_KEy}`);
 
-    const data = await res.json();
+        const data = await res.json();
 
-    return data.articles;
+        if (res.status === 429) {
+            throw new Error("API Limit Reached");
+        }
+
+        if (!res.ok) {
+            throw new Error("Something went wrong");
+        }
+
+        return data.articles;
+    } catch (error) {
+
+        alert(error.message);
+    }
+
 }
 
 
