@@ -253,6 +253,10 @@ async function getWeather() {
             if (city) {
                getWeather(city);
             }
+            else{
+                alert("Please enter a city name");
+                return;
+            }
 
         });
         document.getElementById("city-input").addEventListener("keydown", (e) => {
@@ -262,6 +266,10 @@ async function getWeather() {
             if (city) {
                getWeather(city);
              }
+             else{
+                alert("Please enter a city name");
+                return;
+            }
             }
 
     
