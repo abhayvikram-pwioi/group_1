@@ -32,14 +32,41 @@ async function getNews(category) {
     }
 
 }
-// getNews("technology");
 
-(async () => {
+// (async () => {
 
-    // const articles = await getNews("technology");
-    // renderNewsCards(articles);
+//     const articles = await getNews("general");
+//     renderNewsCards(articles);
 
-})();
+// })();
+
+// const topicSelect = document.getElementById("newsCategory");
+
+// topicSelect.addEventListener("change", async () => {
+
+//     const articles = await getNews(topicSelect.value);
+//     renderNewsCards(articles);
+// });
+
+
+
+async function searchNews(query, category){
+
+    const searchTerm = `${query} ${category}`;
+
+    const res = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(searchTerm)}&lang=en&apikey=${API_KEy}`);
+
+    const data = await res.json();
+
+    return data.articles;
+}
+
+
+
+
+
+
+
 
 
 function renderNewsCards(articles) {

@@ -327,7 +327,9 @@ footer {
     font-size: 45px;
 }
 
-
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
 
 
 @media (max-width:768px){
@@ -340,8 +342,13 @@ footer {
         font-size: 14px;
     }
 
+    .header-right-sec{
+        justify-content: center;
+        gap: 10px;
+    }
+
     .search-sec{
-        width: 150px;
+        width: 100px;
     }
 
     .search-sec i{
@@ -372,6 +379,24 @@ footer {
     .cards-section{
         display: flex;
         flex-direction: column;
+        gap: 20px;
+    }
+
+    .weather-sec{
+        width: 326px;
+    }
+
+    .news-sec{
+        width: 326px;
+    }
+
+    footer{
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    footer p{
+        font-size: 13px;
     }
 
 }
