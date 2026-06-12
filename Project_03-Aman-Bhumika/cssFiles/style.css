@@ -1,98 +1,88 @@
 /* SUNNY */
 
-:root[data-theme="sunny"]{
+:root[data-theme="sunny"] {
     --background:
-    linear-gradient(
-        135deg,
-        #87CEEB,
-        #E6F7FA
-    );
+        linear-gradient(135deg,
+            #87CEEB,
+            #E6F7FA);
 
-    --card-bg:#FFFFFF;
-    --primary:#FFD166;
-    --secondary:#4A90E2;
+    --card-bg: #FFFFFF;
+    --primary: #FFD166;
+    --secondary: #4A90E2;
 
-    --text-primary:#1A1A1A;
-    --text-secondary:#555555;
+    --text-primary: #1A1A1A;
+    --text-secondary: #555555;
 }
 
 
 /* CLOUDY */
 
-:root[data-theme="cloudy"]{
+:root[data-theme="cloudy"] {
     --background:
-    linear-gradient(
-        135deg,
-        #BDC4DE,
-        #E6EEF5
-    );
+        linear-gradient(135deg,
+            #BDC4DE,
+            #E6EEF5);
 
-    --card-bg:#FFFFFF;
-    --primary:#6B8FB8;
-    --secondary:#4A6FA5;
+    --card-bg: #FFFFFF;
+    --primary: #6B8FB8;
+    --secondary: #4A6FA5;
 
-    --text-primary:#1F2937;
-    --text-secondary:#4B5563;
+    --text-primary: #1F2937;
+    --text-secondary: #4B5563;
 }
 
 
 /* RAINY */
 
-:root[data-theme="rainy"]{
+:root[data-theme="rainy"] {
     --background:
-    linear-gradient(
-        135deg,
-        #1E3A5F,
-        #0D1B2A
-    );
+        linear-gradient(135deg,
+            #1E3A5F,
+            #0D1B2A);
 
-    --card-bg:rgba(255,255,255,0.1);
+    --card-bg: rgba(255, 255, 255, 0.1);
 
-    --primary:#4FC3F7;
-    --secondary:#1E88E5;
+    --primary: #4FC3F7;
+    --secondary: #1E88E5;
 
-    --text-primary:#FFFFFF;
-    --text-secondary:#B0BEC5;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0BEC5;
 }
 
 
 /* STORM */
 
-:root[data-theme="storm"]{
+:root[data-theme="storm"] {
     --background:
-    linear-gradient(
-        135deg,
-        #4B0082,
-        #1A0033
-    );
+        linear-gradient(135deg,
+            #4B0082,
+            #1A0033);
 
-    --card-bg:rgba(255,255,255,0.1);
+    --card-bg: rgba(255, 255, 255, 0.1);
 
-    --primary:#C084FC;
-    --secondary:#8B5CF6;
+    --primary: #C084FC;
+    --secondary: #8B5CF6;
 
-    --text-primary:#FFFFFF;
-    --text-secondary:#E0E0E0;
+    --text-primary: #FFFFFF;
+    --text-secondary: #E0E0E0;
 }
 
 
 /* NIGHT */
 
-:root[data-theme="night"]{
+:root[data-theme="night"] {
     --background:
-    linear-gradient(
-        135deg,
-        #0F172A,
-        #020617
-    );
+        linear-gradient(135deg,
+            #0F172A,
+            #020617);
 
-    --card-bg:rgba(255,255,255,0.07);
+    --card-bg: rgba(255, 255, 255, 0.07);
 
-    --primary:#7DA2FF;
-    --secondary:#4A6CF7;
+    --primary: #7DA2FF;
+    --secondary: #4A6CF7;
 
-    --text-primary:#F8FAFC;
-    --text-secondary:#94A3B8;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
 }
 
 * {
@@ -269,15 +259,18 @@ header{
 .weather-card:hover{
     transform: translateY(-2px);
 }
-.weather-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+
+.weather-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.weather-top img{
+
+.weather-top img {
     width: 60px;
 }
-.temperature{
+
+.temperature {
     text-align: center;
     margin-top: 20px;
 }
@@ -286,18 +279,19 @@ header{
     font-weight: 700;
     color: var(--text-secondary);
 }
-.weather-details{
-    display:flex;
-    justify-content:space-around;
-    margin-top:20px;
+
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 #condition{
     text-transform: capitalize;
     font-size: 1.1rem;
 }
 
-.detail{
-    text-align:center;
+.detail {
+    text-align: center;
 }
 
 .news-sec {
@@ -322,7 +316,7 @@ footer {
     justify-content: space-between;
 }
 
-.head-news-sec{
+.head-news-sec {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -330,9 +324,9 @@ footer {
 }
 
 
-.main-news-sec{
+.main-news-sec {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 .news-card{
@@ -368,12 +362,12 @@ footer {
     padding: 10px;
 }
 
-.title{
+.title {
     margin-top: 5px;
     margin-bottom: 10px;
 }
 
-.news-hr{
+.news-hr {
     margin: auto;
     width: 250px;
 }
