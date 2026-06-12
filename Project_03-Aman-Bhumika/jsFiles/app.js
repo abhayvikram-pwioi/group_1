@@ -40,11 +40,18 @@ async function getNews(category) {
 
 })();
 
+
 const topicSelect = document.getElementById("newsCategory");
 
 topicSelect.addEventListener("change", async () => {
 
     const articles = await getNews(topicSelect.value);
+
+    if (!articles || articles.length === 0) {
+        showNoResults();
+        return;
+    }
+
     renderNewsCards(articles);
 });
 
@@ -69,6 +76,7 @@ searchBtn.addEventListener("click", async () => {
     }
 
     if (!articles || articles.length === 0) {
+        showNoResults();
         return;
     }
 
@@ -101,13 +109,6 @@ async function searchNews(query, category) {
     }
 
 }
-
-
-
-
-
-
-
 
 
 function renderNewsCards(articles) {
@@ -149,6 +150,24 @@ function renderNewsCards(articles) {
 
 }
 
+
+function showNoResults() {
+
+    const container = document.getElementById("news-container");
+
+    container.innerHTML = `
+
+    <div class="news-not-sec">
+                    <i class="fa-solid fa-file-circle-xmark no-article-icon"></i>
+                    <h2>No Articles</h2>
+                    <p>No articles available for this category at the moment.</p>
+                 </div>
+
+
+    `;
+}
+
+ showNoResults();
 
 async function getWeather() {
     const lat = 28.57;
