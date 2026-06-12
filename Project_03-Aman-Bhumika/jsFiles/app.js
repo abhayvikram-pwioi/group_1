@@ -58,27 +58,26 @@ searchBtn.addEventListener("click", async () => {
 
     let articles;
 
-    if(query){
+    if (query) {
         articles = await searchNews(query, category);
 
     }
-    else{
+    else {
 
         articles = await getNews(category);
 
     }
 
-    if(!articles || articles.length === 0){
+    if (!articles || articles.length === 0) {
         return;
-
     }
 
     renderNewsCards(articles);
-
+    
 });
 
 
-async function searchNews(query, category){
+async function searchNews(query, category) {
 
     const searchTerm = `${query} ${category}`;
 
@@ -105,7 +104,7 @@ function renderNewsCards(articles) {
 
 
     articles.slice(0, 6).forEach(article => {
-       const date = new Date(article.publishedAt);
+        const date = new Date(article.publishedAt);
 
         const formattedDate = date.toLocaleDateString("en-GB", {
             day: "numeric",
