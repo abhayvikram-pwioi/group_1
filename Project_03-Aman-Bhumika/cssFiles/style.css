@@ -262,6 +262,11 @@ footer {
     flex-direction: column;
 }
 
+.single-result{
+    display:flex;
+    justify-content:center;
+}
+
 .img-sec {
     /* width: 270px; */
     height: 170px;

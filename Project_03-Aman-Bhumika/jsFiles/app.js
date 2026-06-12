@@ -48,6 +48,34 @@ async function getNews(category) {
 //     renderNewsCards(articles);
 // });
 
+const searchBtn = document.getElementById("search-btn");
+
+searchBtn.addEventListener("click", async () => {
+
+    const query = document.getElementById("searchNews").value.trim();
+
+    const category = document.getElementById("newsCategory").value;
+
+    let articles;
+
+    if(query){
+        articles = await searchNews(query, category);
+
+    }
+    else{
+
+        articles = await getNews(category);
+
+    }
+
+    if(!articles || articles.length === 0){
+        return;
+
+    }
+
+    renderNewsCards(articles);
+
+});
 
 
 async function searchNews(query, category){
