@@ -124,9 +124,10 @@ header {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 280px;
+    max-width: 250px;
     border: 1px solid black;
     border-radius: 15px;
+    gap: 10px;
 }
 
 #searchNews {
@@ -136,6 +137,7 @@ header {
     max-width: 250px;
     padding-left: 10px;
     background: transparent;
+    outline: none;
 }
 
 .search-sec button {
@@ -144,6 +146,7 @@ header {
     background: transparent;
     border: none;
     font-size: 17px;
+
 }
 
 #newsCategory {
@@ -322,4 +325,53 @@ footer {
 
 .no-article-icon{
     font-size: 45px;
+}
+
+
+
+
+@media (max-width:768px){
+
+    .main-section{
+         padding: 10px;
+    }
+
+    .logo-sec h1{
+        font-size: 14px;
+    }
+
+    .search-sec{
+        width: 150px;
+    }
+
+    .search-sec i{
+        font-size: 15px;
+    }
+
+    #newsCategory{
+        width: 120px;
+    }
+
+    .greeting-sec{
+        padding: 15px;
+    }
+
+     .greeting-sec p{
+        font-size: 14px;
+        width: 250px;
+    }
+
+    #greeting-text{
+        font-size: 25px;
+    }
+
+    .date-time h3{
+        font-size: 16px;
+    }
+
+    .cards-section{
+        display: flex;
+        flex-direction: column;
+    }
+
 }
