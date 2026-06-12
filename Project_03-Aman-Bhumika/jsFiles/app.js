@@ -22,7 +22,6 @@ async function getNews(category) {
         }
   console.log(newsData.articles);
         return newsData.articles;
-        console.log(newsData.articles);
 
     }
 
@@ -48,7 +47,7 @@ function renderNewsCards(articles) {
 
     container.innerHTML = "";
 
-    articles.forEach(article => {
+    articles.slice(0, 6).forEach(article => {
 
         container.innerHTML += `
             <div class="news-card">
@@ -77,7 +76,7 @@ function renderNewsCards(articles) {
         async function getWeather(){
             const lat = 28.57;
             const lon = 77.55;
-            const API_KEY = "fd93ea356d0c60b7649b41d419e306ed";
+            // const API_KEY = "fd93ea356d0c60b7649b41d419e306ed";
 
             const cityName = document.getElementById("city-name");
             const temp = document.getElementById("temp");
