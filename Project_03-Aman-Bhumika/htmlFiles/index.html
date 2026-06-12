@@ -22,14 +22,14 @@
             <div class="header-right-sec">
                 <div class="search-sec">
                     <input type="search" id="searchNews" placeholder="Search News...">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <select name="" id="newsCategory">
-                    <option value="">Trending News</option>
+                    <option value="general">Trending News</option>
                     <option value="technology">Technology</option>
                     <option value="sports">Sports</option>
                     <option value="health">Health</option>
-                    <option value="bussiness">Bussiness</option>
+                    <option value="business">Business</option>
                     <option value="entertainment">Entertainment</option>
                 </select>
             </div>
@@ -37,7 +37,7 @@
 
         <div class="greeting-sec">
             <div class="greeting-msg">
-                <h1>Good Morning</h1>
+                <h1 id="greeting-text">Good Morning</h1>
                 <p>Your personalized command center for global weather and industry insights.</p>
             </div>
             <div class="date-time">
@@ -90,7 +90,13 @@
 
                 <div class="main-news-sec" id="news-container">
 
-                    <!-- <div class="news-card">
+                 <div class="news-not-sec">
+                    <i class="fa-solid fa-file-circle-xmark no-article-icon"></i>
+                    <h2>No Articles</h2>
+                    <p>No articles available for this category at the moment.</p>
+                 </div>
+
+                  <!-- <div class="news-card">
                         <div class="img-sec">
                             <img src="" alt="image" id="img-news">
                         </div>
@@ -107,66 +113,7 @@
                             <a>Read more</a>
                         </div>
 
-                    </div>
-
-                     <div class="news-card">
-                        <div class="img-sec">
-                            <img src="" alt="image" id="img-news">
-                        </div>
-                        <div class="news-card-details">
-                            <h4 id="source">Source</h4>
-                            <h3 id="title"> Title</h3>
-                            <p id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti enim
-                                ab ad
-                                deserunt quam perferendis, ut nobis quia reiciendis facere?</p>
-                        </div>
-                        <hr>
-                        <div class="news-card-bottom">
-                            <p id="date">10 june</p>
-                            <a>Read more</a>
-                        </div>
-
-                    </div>
-
-                     <div class="news-card">
-                        <div class="img-sec">
-                            <img src="" alt="image" id="img-news">
-                        </div>
-                        <div class="news-card-details">
-                            <h4 id="source">Source</h4>
-                            <h3 id="title"> Title</h3>
-                            <p id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti enim
-                                ab ad
-                                deserunt quam perferendis, ut nobis quia reiciendis facere?</p>
-                        </div>
-                        <hr>
-                        <div class="news-card-bottom">
-                            <p id="date">10 june</p>
-                            <a>Read more</a>
-                        </div>
-
-                    </div>
-
-                     <div class="news-card">
-                        <div class="img-sec">
-                            <img src="" alt="image" id="img-news">
-                        </div>
-                        <div class="news-card-details">
-                            <h4 id="source">Source</h4>
-                            <h3 id="title"> Title</h3>
-                            <p id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti enim
-                                ab ad
-                                deserunt quam perferendis, ut nobis quia reiciendis facere?</p>
-                        </div>
-                        <hr>
-                        <div class="news-card-bottom">
-                            <p id="date">10 june</p>
-                            <a>Read more</a>
-                        </div>
-
-                    </div>
-
- -->
+                    </div> -->
 
 
                 </div>

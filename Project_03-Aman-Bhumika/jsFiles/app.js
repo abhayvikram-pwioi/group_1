@@ -20,9 +20,8 @@ async function getNews(category) {
         if (newsData.articles.length === 0) {
             throw new Error("No Articles Available");
         }
-  console.log(newsData.articles);
-        return newsData.articles;
         console.log(newsData.articles);
+        return newsData.articles;
 
     }
 
@@ -33,14 +32,82 @@ async function getNews(category) {
     }
 
 }
-// getNews("technology");
 
 (async () => {
 
-    // const articles = await getNews("technology");
-    // renderNewsCards(articles);
+    const articles = await getNews("general");
+    renderNewsCards(articles);
 
 })();
+
+const topicSelect = document.getElementById("newsCategory");
+
+topicSelect.addEventListener("change", async () => {
+
+    const articles = await getNews(topicSelect.value);
+    renderNewsCards(articles);
+});
+
+const searchBtn = document.getElementById("search-btn");
+
+searchBtn.addEventListener("click", async () => {
+
+    const query = document.getElementById("searchNews").value.trim();
+
+    const category = document.getElementById("newsCategory").value;
+
+    let articles;
+
+    if (query) {
+        articles = await searchNews(query, category);
+
+    }
+    else {
+
+        articles = await getNews(category);
+
+    }
+
+    if (!articles || articles.length === 0) {
+        return;
+    }
+
+    renderNewsCards(articles);
+
+});
+
+
+async function searchNews(query, category) {
+
+    const searchTerm = `${query} ${category}`;
+    try {
+
+        const res = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(searchTerm)}&lang=en&apikey=${API_KEy}`);
+
+        const data = await res.json();
+
+        if (res.status === 429) {
+            throw new Error("API Limit Reached");
+        }
+
+        if (!res.ok) {
+            throw new Error("Something went wrong");
+        }
+
+        return data.articles;
+    } catch (error) {
+
+        alert(error.message);
+    }
+
+}
+
+
+
+
+
+
+
 
 
 function renderNewsCards(articles) {
@@ -48,7 +115,16 @@ function renderNewsCards(articles) {
 
     container.innerHTML = "";
 
-    articles.forEach(article => {
+
+
+    articles.slice(0, 6).forEach(article => {
+        const date = new Date(article.publishedAt);
+
+        const formattedDate = date.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
 
         container.innerHTML += `
             <div class="news-card">
@@ -62,7 +138,7 @@ function renderNewsCards(articles) {
                 </div>
                 <hr class="news-hr">
                     <div class="news-card-bottom">
-                        <p id="date">${new Date(article.publishedAt).toLocaleDateString("en-GB")}</p>
+                        <p id="date">${formattedDate}</p>
                     <a hjref= "${article.url}">Read more</a>
                     </div>
 
