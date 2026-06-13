@@ -204,49 +204,12 @@ console.log("JS loaded");
                 
 
 
-<<<<<<< HEAD
-function showNoResults() {
-
-    const container = document.getElementById("news-container");
-
-    container.innerHTML = `
-
-    <div class="news-not-sec">
-                    <i class="fa-solid fa-file-circle-xmark no-article-icon"></i>
-                    <h2>No Articles</h2>
-                    <p>No articles available for this category at the moment.</p>
-                 </div>
-
-
-    `;
-}
-
- showNoResults();
-
-async function getWeather() {
-    const lat = 28.57;
-    const lon = 77.55;
-    // const API_KEY = "fd93ea356d0c60b7649b41d419e306ed";
-
-    const cityName = document.getElementById("city-name");
-    const temp = document.getElementById("temp");
-    const condition = document.getElementById("condition");
-    const humidity = document.getElementById("humidity");
-    const wind = document.getElementById("wind");
-    const icon = document.getElementById("weather-icon");
-    try {
-        console.log(API_KEY);
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
-        if (!response.ok) {
-            throw new Error("API Error");
-=======
             }
             catch(error){
                 console.log(error);
                 alert("City not found");
             }
             
->>>>>>> e7f0f110eba7d63da2c1932be617754a1cf97fc3
         }
         document.getElementById("search-btn").addEventListener("click",() => {
             const city = document.getElementById("city-input").value.trim();
