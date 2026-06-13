@@ -288,7 +288,7 @@ header {
 
 .weather-sec {
     width: 550px;
-    min-height: 500px;
+    height: 550px;
     background: var(--background);
     color: var(--text-primary);
     border-radius: 20px;
@@ -304,6 +304,10 @@ header {
     border: 1px solid black;
     border-radius: 12px;
 
+}
+
+#temp{
+    font-size: 4rem;
 }
 
 #city-input {
