@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="sunny">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -48,7 +48,7 @@
 
         </div>
         <div class="cards-section">
-            <div class="weather-sec">
+            <div class="weather-sec" data-theme="sunny" id="weather-sec">
                  <h2 class="section-title">Current Weather</h2>
                  <div class="weather-search">
                    <input type="text" id="city-input" placeholder="Enter City">
@@ -86,7 +86,7 @@
             <div class="news-sec">
                 <div class="head-news-sec">
                     <h2>Latest News</h2>
-                    <p>Live</p>
+                    <p class="live">Live</p>
                 </div>
 
                 <div class="main-news-sec" id="news-container">
@@ -121,15 +121,16 @@
             </div>
         </div>
 
-        <hr>
+        
+    </main>
 
         <footer>
             <p>Data provided by OpenWeather API & NewsAPI</p>
             <p>© 2026 Aggregator. All rights reserved.</p>
         </footer>
-    </main>
 
     <script src="/jsFiles/app.js"></script>
+    <script src="/jsFiles/news.js"></script>
 </body>
 
 </html>
