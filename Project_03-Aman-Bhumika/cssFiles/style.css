@@ -213,6 +213,7 @@ header {
     padding-left: 10px;
     background: transparent;
     outline: none;
+     color: white;
 }
 
 .search-sec button {
@@ -224,9 +225,20 @@ header {
 }
 
 #newsCategory {
-    height: 40px;
+    height: 45px;
     width: 200px;
     border-radius: 10px;
+
+
+    background: rgba(15,23,42,0.9);
+    color: #F8FAFC;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 20px;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .greeting-sec {
@@ -252,6 +264,14 @@ header {
     font-size:3rem;
     font-weight:800;
     letter-spacing:-2px;
+
+}
+
+.date-time{
+
+    color:#00D4FF;
+font-size: 22px;
+    font-weight:700;
 
 }
 
@@ -432,11 +452,38 @@ footer {
 
 }
 
+.live{
+
+    background: rgba(239,68,68,0.12);
+    color:#FF5A5A;
+    border: 1px solid rgba(239,68,68,0.2);
+    border-radius:999px;
+    padding:8px 16px;
+    animation: livePulse 2s infinite;
+}
+
+@keyframes livePulse{
+
+    0%{
+        box-shadow:
+        0 0 0 0 rgba(255,107,107,0.4);
+    }
+
+    70%{
+        box-shadow:
+        0 0 0 15px rgba(255,107,107,0);
+    }
+
+    100%{
+        box-shadow:
+        0 0 0 0 rgba(255,107,107,0);
+    }
+}
+
 .img-sec {
     /* width: 270px; */
     height: 170px;
     border-radius: 15px;
-
 }
 
 .img-news {
