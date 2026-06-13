@@ -1,3 +1,12 @@
+
+body{
+    font-family: 'Inter', sans-serif;
+}
+
+h1,h2,h3,h4{
+    font-family: 'Poppins', sans-serif;
+}
+
 :root {
 
     --bg: #020617;
@@ -253,7 +262,7 @@ body {
 .greeting-sec h1 {
 
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -2px;
 
 }
@@ -276,7 +285,7 @@ body {
 
 .weather-sec {
     width: 550px;
-    min-height: 500px;
+    height: 550px;
     background: var(--background);
     color: var(--text-primary);
     border-radius: 20px;
@@ -293,10 +302,17 @@ body {
     border-radius: 12px;
 
 }
-.weather-search{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
+
+#temp{
+    font-size: 4rem;
+}
+
+#city-input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px 0px 0px 12px;
+    outline: black;
 }
 #city-input{
     flex: 1;
@@ -543,9 +559,7 @@ footer {
 }
 
 #date{
-
     color:#94A3B8;
-
     font-size:14px;
 }
 

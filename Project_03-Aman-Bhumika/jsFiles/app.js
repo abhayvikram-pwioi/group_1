@@ -32,7 +32,7 @@ async function getWeather(city=null,lat=null,lon=null) {
         const response = await fetch(url);
         console.log(response);
 
-         if (!response.ok) {
+        if (!response.ok) {
             throw new Error("City not Found");
         }
         
