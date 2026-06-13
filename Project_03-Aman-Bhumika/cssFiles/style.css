@@ -1,6 +1,6 @@
 /* SUNNY */
 
-:root[data-theme="sunny"] {
+.weather-card[data-theme="sunny"] {
     --background:
         linear-gradient(135deg,
             #87CEEB,
@@ -17,7 +17,7 @@
 
 /* CLOUDY */
 
-:root[data-theme="cloudy"] {
+.weather-card[data-theme="cloudy"] {
     --background:
         linear-gradient(135deg,
             #BDC4DE,
@@ -34,7 +34,7 @@
 
 /* RAINY */
 
-:root[data-theme="rainy"] {
+.weather-card[data-theme="rainy"] {
     --background:
         linear-gradient(135deg,
             #1E3A5F,
@@ -52,7 +52,7 @@
 
 /* STORM */
 
-:root[data-theme="storm"] {
+.weather-card[data-theme="storm"] {
     --background:
         linear-gradient(135deg,
             #4B0082,
@@ -70,7 +70,7 @@
 
 /* NIGHT */
 
-:root[data-theme="night"] {
+.weather-card[data-theme="night"] {
     --background:
         linear-gradient(135deg,
             #0F172A,
