@@ -1,3 +1,12 @@
+
+body{
+    font-family: 'Inter', sans-serif;
+}
+
+h1,h2,h3,h4{
+    font-family: 'Poppins', sans-serif;
+}
+
 :root {
 
     --bg: #020617;
@@ -256,7 +265,7 @@ header {
 .greeting-sec h1 {
 
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -2px;
 
 }
