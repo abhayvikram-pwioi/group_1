@@ -165,3 +165,55 @@ function showNoResults() {
 
     `;
 }
+
+
+
+
+
+// =================================TIME FOR GREETING ======================================
+
+function updateDateTime() {
+
+    const now = new Date();
+
+    // Greeting
+    const hour = now.getHours();
+
+    let greeting = "";
+
+    if(hour >= 5 && hour < 12){
+        greeting = "Good Morning";
+    }
+    else if(hour >= 12 && hour < 17){
+        greeting = "Good Afternoon";
+    }
+    else if(hour >= 17 && hour < 21){
+        greeting = "Good Evening";
+    }
+    else{
+        greeting = "Good Night";
+    }
+
+    document.getElementById("greeting-text").textContent =
+        `${greeting}, Welcome Back.`;
+
+
+    document.getElementById("greeting-date").textContent =
+        now.toLocaleDateString("en-GB", {
+            weekday: "short",
+            day: "numeric",
+            month: "long"
+        });
+
+
+    document.getElementById("greeting-time").textContent =
+        now.toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+        });
+}
+
+updateDateTime();
+
+setInterval(updateDateTime, 1000);
