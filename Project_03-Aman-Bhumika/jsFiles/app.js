@@ -22,6 +22,7 @@ async function getWeather(city) {
         console.log(API_KEY);
         const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`);
         console.log(response);
+
         if (!response.ok) {
             throw new Error("City not Found");
         }
