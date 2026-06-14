@@ -55,7 +55,7 @@ topicSelect.addEventListener("change", async () => {
     renderNewsCards(articles);
 });
 
-const searchBtn = document.getElementById("search-btn");
+const searchBtn = document.getElementById("search-btn-news");
 
 searchBtn.addEventListener("click", async () => {
 
@@ -195,7 +195,7 @@ function updateDateTime() {
     }
 
     document.getElementById("greeting-text").textContent =
-        `${greeting}, Welcome Back.`;
+        `${greeting} ,`;
 
 
     document.getElementById("greeting-date").textContent =
