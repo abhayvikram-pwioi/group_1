@@ -55,7 +55,7 @@ topicSelect.addEventListener("change", async () => {
     renderNewsCards(articles);
 });
 
-const searchBtn = document.getElementById("search-btn");
+const searchBtn = document.getElementById("search-btn-news");
 
 searchBtn.addEventListener("click", async () => {
 

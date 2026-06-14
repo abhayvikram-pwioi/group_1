@@ -303,7 +303,8 @@ header {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid black;
+    margin-top: 10px;
+    /* border: 1px solid black; */
     border-radius: 12px;
 
 }
@@ -325,15 +326,17 @@ header {
     width: 70%;
     padding: 15px;
     border:none;
-    border-radius: 12px;
+    border-radius:  12px 0px 0px 12px;
     background: var(--primary);
     cursor: pointer;
+    color: white;
 }
+
 #search-btn{
-    padding:0px 18px;
+    padding: 15px;
     border:none;
-    border-radius:12px;
-    background:var(--secondary);
+    border-radius:0px 12px 12px 0px;
+    background: var(--secondary);
     cursor:pointer;
 }
 
