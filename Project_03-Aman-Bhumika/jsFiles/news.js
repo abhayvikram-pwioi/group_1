@@ -195,7 +195,7 @@ function updateDateTime() {
     }
 
     document.getElementById("greeting-text").textContent =
-        `${greeting}, Welcome Back.`;
+        `${greeting} ,`;
 
 
     document.getElementById("greeting-date").textContent =

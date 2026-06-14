@@ -646,16 +646,19 @@ input[type="search"]::-webkit-search-cancel-button {
 
     .cards-section {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
         gap: 20px;
     }
 
     .weather-sec {
-        width: 326px;
+        width: 330px;
     }
 
     .news-sec {
-        width: 326px;
+        width: 330px;
+         margin-left: 0px;
     }
 
     .news-not-sec {
