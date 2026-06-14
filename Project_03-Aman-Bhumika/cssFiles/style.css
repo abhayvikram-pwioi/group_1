@@ -1,9 +1,11 @@
-
-body{
+body {
     font-family: 'Inter', sans-serif;
 }
 
-h1,h2,h3,h4{
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -150,9 +152,9 @@ header {
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-    border-radius:20px;
-    padding:20px 30px;
-    margin-bottom:25px;
+    border-radius: 20px;
+    padding: 20px 30px;
+    margin-bottom: 25px;
     margin-top: 25px;
     display: flex;
     justify-content: space-between;
@@ -174,7 +176,7 @@ header {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    
+
 }
 
 .header-right-sec {
@@ -231,12 +233,11 @@ header {
     align-items: center;
 }
 
+
 #newsCategory {
     height: 45px;
     width: 200px;
     border-radius: 10px;
-
-
     background: rgba(15, 23, 42, 0.9);
     color: #F8FAFC;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -309,7 +310,7 @@ header {
 
 }
 
-#temp{
+#temp {
     font-size: 4rem;
 }
 
@@ -320,24 +321,25 @@ header {
     border-radius: 12px 0px 0px 12px;
     outline: black;
 }
-#city-input{
+
+#city-input {
     flex: 1;
     margin: 0;
     width: 70%;
     padding: 15px;
-    border:none;
-    border-radius:  12px 0px 0px 12px;
+    border: none;
+    border-radius: 12px 0px 0px 12px;
     background: var(--primary);
     cursor: pointer;
     color: white;
 }
 
-#search-btn{
+#search-btn {
     padding: 15px;
-    border:none;
-    border-radius:0px 12px 12px 0px;
+    border: none;
+    border-radius: 0px 12px 12px 0px;
     background: var(--secondary);
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .weather-card {
@@ -453,8 +455,8 @@ footer {
     transition: all .35s ease;
 }
 
-.news-card:hover img{
-    transform:scale(1.08);
+.news-card:hover img {
+    transform: scale(1.08);
 }
 
 .news-card:hover {
@@ -496,7 +498,7 @@ footer {
 }
 
 .img-sec {
-    overflow:hidden;
+    overflow: hidden;
     height: 170px;
     border-radius: 15px;
 }
@@ -508,31 +510,31 @@ footer {
     /* width: 270px; */
     overflow: hidden;
     border-radius: 15px 15px 0px 0px;
-   transition:.5s ease;
+    transition: .5s ease;
 }
 
-.source{
-    display:inline-block;
-    padding:6px 12px;
-    background:rgba(0,212,255,.12);
+.source {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(0, 212, 255, .12);
 
-    color:#22D3EE;
+    color: #22D3EE;
     border-radius: 5px;
 
-    font-size:13px;
-    font-weight:600;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.news-card-bottom a{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    transition:.3s;
+.news-card-bottom a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: .3s;
 }
 
-.news-card-bottom a:hover{
-     transform:translateX(5px);
-    color:#22D3EE;
+.news-card-bottom a:hover {
+    transform: translateX(5px);
+    color: #22D3EE;
     cursor: pointer;
 }
 
@@ -544,11 +546,11 @@ footer {
 }
 
 .title {
-     display:-webkit-box;
-    -webkit-line-clamp:2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
 
-    -webkit-box-orient:vertical;
-   overflow: hidden;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -566,9 +568,9 @@ footer {
     overflow: hidden;
 }
 
-#date{
-    color:#94A3B8;
-    font-size:14px;
+#date {
+    color: #94A3B8;
+    font-size: 14px;
 }
 
 .news-card-bottom {
@@ -610,21 +612,45 @@ input[type="search"]::-webkit-search-cancel-button {
         font-size: 14px;
     }
 
+    header {
+        padding: 10px;
+            margin-top: 5px;
+    }
+
+    .logo-sec {
+        gap: 3px;
+    }
+
+    .logo-sec img {
+        width: 40px;
+        height: 40px;
+    }
+
     .header-right-sec {
         justify-content: center;
         gap: 10px;
     }
 
     .search-sec {
-        width: 100px;
+        width: 120px;
+        height: 30px;
+        border-radius: 10px;
+        margin-left: 10px;
     }
 
     .search-sec i {
-        font-size: 15px;
+        font-size: 12px;
     }
 
+
+
     #newsCategory {
-        width: 120px;
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        font-size: 12px;
+        padding: 0px;
+        padding-left: 7px;
     }
 
     .greeting-sec {
@@ -653,12 +679,14 @@ input[type="search"]::-webkit-search-cancel-button {
     }
 
     .weather-sec {
-        width: 330px;
+        width: 315px;
+        height: 450px;
     }
 
+    
     .news-sec {
-        width: 330px;
-         margin-left: 0px;
+        width: 315px;
+        margin-left: 0px;
     }
 
     .news-not-sec {
