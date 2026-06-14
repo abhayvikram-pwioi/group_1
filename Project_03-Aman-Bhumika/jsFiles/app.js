@@ -4,7 +4,7 @@
 //------------------
 console.log("JS loaded");
 
-async function getWeather(city) {
+async function getWeather(city=null,lat=null,lon=null) {
     if (!city)
         return;
     console.log("Searching for:", city);
@@ -20,20 +20,33 @@ async function getWeather(city) {
     const icon = document.getElementById("weather-icon");
     try {
         console.log(API_KEY);
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`);
+        // const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`);
+        // console.log(response);
+        let url;
+        if(city){
+            url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`;
+        }
+        else{
+            url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+        }
+        const response = await fetch(url);
         console.log(response);
 
         if (!response.ok) {
             throw new Error("City not Found");
         }
+        
+        // if (!response.ok) {
+        //     throw new Error("City not Found");
+        // }
         const data = await response.json();
         console.log(data);
+        
         const weather = data.list[0];
 
         const weatherSec = document.getElementById("weather-sec");
-
-        const weatherType = weather.weather[0].main.toLowerCase();
-
+        let weatherType = weather.weather[0].main.toLowerCase();
+            
         if (weatherType.includes("clear")) {
             weatherSec.dataset.theme = "sunny";
         }
@@ -46,6 +59,7 @@ async function getWeather(city) {
         else if (weatherType.includes("thunderstorm")) {
             weatherSec.dataset.theme = "storm";
         }
+        
 
         cityName.textContent = data.city.name;
         temp.textContent = (weather.main.temp) + " °C";
@@ -69,6 +83,9 @@ document.getElementById("search-btn").addEventListener("click", () => {
     if (city) {
         getWeather(city);
     }
+    else{
+        alert("City not found");
+    }
 
 });
 document.getElementById("city-input").addEventListener("keydown", (e) => {
@@ -84,6 +101,22 @@ document.getElementById("city-input").addEventListener("keydown", (e) => {
 
 });
 
-getWeather("Delhi");
+//getWeather("Delhi");
+
+if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+        (position) => { 
+            getWeather(null,position.coords.latitude,position.coords.longitude);
+        },
+        (error) => {
+        console.log(error);
+        // getWeather("Delhi");
+    }
+    );
+    
+}
+else{
+    getWeather("Delhi");
+}
 
 
