@@ -1,1 +1,211 @@
 
+# WeatherNews Dashboard
+**B.Tech College Project | HTML5 + CSS3 + Vanilla JavaScript**
+
+---
+
+## Project Overview
+A responsive web dashboard that combines real-time weather information with the latest news headlines. Users can auto-detect their location or search for any city to get weather data. News can be filtered by category.
+
+---
+
+## Folder Structure
+```
+project/
+├── index.html           → Main HTML page (single-page app)
+├── css/
+│   └── style.css        → All styling (no frameworks)
+├── js/
+│   └── script.js        → All JavaScript logic
+├── assets/              → Folder for icons/images (if any)
+└── README.md            → This file
+```
+
+---
+
+## Setup Instructions
+
+### Step 1: Get API Keys
+
+**OpenWeatherMap API Key (Free):**
+1. Go to https://openweathermap.org/api
+2. Sign up for a free account
+3. Go to "My API Keys" in your profile
+4. Copy your API key
+
+**NewsAPI Key (Free):**
+1. Go to https://newsapi.org/
+2. Sign up for a free account
+3. Copy your API key from the dashboard
+
+> **Note:** If you do not add API keys, the app will automatically use mock/demo data so you can still see how the app looks and works.
+
+### Step 2: Add API Keys to the Project
+
+Open `js/script.js` and replace the placeholder values at the top of the file:
+
+```javascript
+const WEATHER_API_KEY = "YOUR_OPENWEATHER_API_KEY"; // Replace this
+const NEWS_API_KEY    = "YOUR_NEWSAPI_KEY";          // Replace this
+```
+
+Example:
+```javascript
+const WEATHER_API_KEY = "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6";
+const NEWS_API_KEY    = "q1w2e3r4t5y6u7i8o9p0a1s2d3f4g5h6";
+```
+
+### Step 3: Run the Project
+
+**Option A – Direct Browser (simplest):**
+1. Open the `project` folder
+2. Double-click `index.html`
+3. The app opens in your browser
+
+**Option B – Live Server (recommended for VS Code):**
+1. Install the "Live Server" extension in VS Code
+2. Right-click `index.html`
+3. Click "Open with Live Server"
+
+> **Important:** NewsAPI does not work on `file://` URLs (direct file open) due to CORS restrictions. Use Live Server or any local HTTP server. OpenWeatherMap works fine in both modes.
+
+---
+
+## Feature Checklist (from PRD)
+
+### Weather Section
+- [x] FR-1 — Auto-detect user location using Geolocation API
+- [x] FR-2 — Fetch weather from OpenWeatherMap API
+- [x] FR-4 — Manual city search via search bar
+- [x] Display temperature (in °C)
+- [x] Display weather condition
+- [x] Display humidity
+- [x] Display wind speed
+- [x] Display weather icon (FR-10)
+- [x] Display city name
+
+### News Section
+- [x] FR-3 — Fetch news from NewsAPI
+- [x] FR-5 — Filter news by category (Technology, Sports, Business, Health, Entertainment)
+- [x] Display headline
+- [x] Display thumbnail image (with fallback placeholder)
+- [x] Display short description
+- [x] Display source name and published date
+- [x] FR-9 — Open full article in a new tab
+
+### UI & Responsiveness
+- [x] FR-8 — Fully responsive layout (mobile, tablet, desktop)
+- [x] Mobile-first CSS media queries
+- [x] Card-based UI design
+- [x] Header with search, category dropdown, locate button
+- [x] Footer with API credits
+
+### Loading & Error States
+- [x] FR-6 — Show spinner loader during API requests
+- [x] FR-7 — Show error message when location is denied
+- [x] Show "City not found" for invalid city
+- [x] Show error when Weather API fails (with retry button)
+- [x] Show error when News API fails (with retry button)
+- [x] Show "No articles available" when news list is empty
+- [x] Mock data fallback when API keys are not configured
+
+---
+
+## Testing Checklist
+
+Test each item below and mark as pass/fail:
+
+| # | Test Case | Expected Result | Pass/Fail |
+|---|-----------|-----------------|-----------|
+| 1 | Open app | News loads, weather prompt appears | |
+| 2 | Click "Locate Me", allow location | Weather card appears with correct city | |
+| 3 | Click "Locate Me", deny location | Error message: "Location access denied..." | |
+| 4 | Search valid city (e.g., "Mumbai") | Weather card shows Mumbai's weather | |
+| 5 | Search invalid city (e.g., "xyzabc") | Error: "City not found" | |
+| 6 | Search empty input | Input border turns red briefly | |
+| 7 | Change news category dropdown | News grid reloads with new category | |
+| 8 | Click "Read More" on news card | Article opens in new browser tab | |
+| 9 | Click retry on weather error | Weather refetches | |
+| 10 | Click retry on news error | News refetches | |
+| 11 | Open on mobile screen (< 600px) | Header stacks vertically, single-column news | |
+| 12 | Open on tablet screen (~800px) | Weather and news stack vertically | |
+| 13 | Open on desktop screen (> 900px) | Weather card on left, news on right | |
+| 14 | News thumbnail fails to load | Newspaper emoji placeholder appears | |
+| 15 | No API key set | App shows mock data without crashing | |
+
+---
+
+## Viva Questions and Answers
+
+### Q1. What is the purpose of this project?
+**A:** This project is a Weather + News Aggregator Dashboard. It fetches real-time weather data from the OpenWeatherMap API and news headlines from NewsAPI, and displays them together in a single responsive web application. The goal is to practice API integration, async JavaScript, DOM manipulation, and responsive CSS.
+
+---
+
+### Q2. What APIs have you used and why?
+**A:**
+- **OpenWeatherMap API** — Used to fetch current weather data like temperature, humidity, wind speed, and weather condition for any city. It's free, well-documented, and widely used.
+- **NewsAPI** — Used to fetch top headlines filtered by category and country. It provides JSON data that's easy to parse and display.
+
+---
+
+### Q3. What is the Fetch API and how have you used it?
+**A:** The Fetch API is a built-in JavaScript function that lets you make HTTP requests to servers. It returns a Promise, so we use `async/await` to handle it cleanly. For example:
+```javascript
+const response = await fetch(url);
+const data = await response.json();
+```
+We used `fetch()` to call both the weather API and news API.
+
+---
+
+### Q4. What is async/await and why is it used here?
+**A:** `async/await` is a way to handle asynchronous operations in JavaScript. When we call an API, the browser has to wait for a response — this takes time. Instead of blocking the page, JavaScript handles it asynchronously. `async` marks a function as asynchronous, and `await` pauses execution inside that function until the Promise resolves. This makes the code easier to read compared to `.then()` chains.
+
+---
+
+### Q5. What is the Geolocation API?
+**A:** The Geolocation API is a built-in browser API that allows a web page to request the user's geographic location (latitude and longitude). We use `navigator.geolocation.getCurrentPosition()` to get the user's coordinates. If the user grants permission, we pass those coordinates to the weather API to get local weather. If they deny, we show a meaningful error message.
+
+---
+
+### Q6. How did you handle errors in this project?
+**A:** We handle errors at multiple levels:
+- **HTTP errors**: We check `response.ok`. If the city is not found (404), we show "City not found". If the API key is invalid (401), we fall back to mock data.
+- **Geolocation errors**: If the user denies location access, we catch the error and prompt them to search manually.
+- **Network errors**: Wrapped in `try/catch` blocks. If `fetch()` throws (no internet), we show an error and load mock data.
+- **Empty data**: If the API returns 0 articles, we show "No articles available".
+- **Retry buttons**: Users can retry the last failed request without refreshing the page.
+
+---
+
+### Q7. What is responsive design? How did you implement it?
+**A:** Responsive design means the layout adapts to different screen sizes. We implemented it using CSS media queries:
+- On desktops (> 900px): weather card is on the left, news on the right (side by side).
+- On tablets (≤ 900px): both sections stack vertically.
+- On mobiles (≤ 600px): header elements stack, news grid becomes single-column.
+We also used CSS Flexbox and Grid for flexible layouts.
+
+---
+
+### Q8. What is DOM Manipulation?
+**A:** DOM (Document Object Model) Manipulation means using JavaScript to read or change HTML elements after the page has loaded. In this project, we:
+- Show/hide elements by adding/removing the `hidden` CSS class.
+- Dynamically create news card elements (`createElement`) and inject them into the grid using `appendChild`.
+- Update text content of weather fields like temperature and city name using `.textContent`.
+
+---
+
+### Q9. What is the difference between `innerHTML` and `textContent`?
+**A:** 
+- `textContent` sets plain text. It treats the value as a string — no HTML tags are parsed. It is safer because it prevents XSS attacks.
+- `innerHTML` sets HTML content. Tags are parsed and rendered. We use it when we want to inject structured HTML (like an entire news card).
+In this project, we used `innerHTML` for news cards (since they have images, links, and nested divs) and `textContent` for simple weather fields.
+
+---
+
+### Q10. What is CORS and did you face it?
+**A:** CORS (Cross-Origin Resource Sharing) is a browser security rule that blocks JavaScript from accessing APIs on different domains unless the API server explicitly allows it. NewsAPI blocks requests from `file://` URLs (when you open the HTML file directly from disk) but allows requests from `localhost`. We handle this by recommending users run the project using Live Server. OpenWeatherMap allows requests from any origin.
+
+---
+
