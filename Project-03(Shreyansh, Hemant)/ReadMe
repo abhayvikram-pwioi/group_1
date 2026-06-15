@@ -207,5 +207,33 @@ In this project, we used `innerHTML` for news cards (since they have images, lin
 ### Q10. What is CORS and did you face it?
 **A:** CORS (Cross-Origin Resource Sharing) is a browser security rule that blocks JavaScript from accessing APIs on different domains unless the API server explicitly allows it. NewsAPI blocks requests from `file://` URLs (when you open the HTML file directly from disk) but allows requests from `localhost`. We handle this by recommending users run the project using Live Server. OpenWeatherMap allows requests from any origin.
 
+---### Q11. What is the purpose of `event.preventDefault()` in the search form?
+**A:** By default, when a form is submitted, the browser reloads the page. `event.preventDefault()` stops that default behavior so our JavaScript can handle the form submission ourselves — in this case, by calling the `fetchWeatherByCity()` function without a page reload.
+
 ---
+
+### Q12. What is `localStorage` and did you use it?
+**A:** `localStorage` is a browser storage mechanism that lets you store key-value pairs persistently (data stays even after the browser is closed). In this project, we did not need `localStorage` since the PRD stated no backend is required and no data persistence feature was specified. If we were to add a "favourite cities" feature in future, we would use `localStorage`.
+
+---
+
+### Q13. What are `async` functions and what do they return?
+**A:** An `async` function always returns a Promise. Inside it, you can use `await` to pause and wait for another Promise (like an API call) to resolve. This allows you to write asynchronous code that looks and reads like synchronous code, making it much easier to understand and debug.
+
+---
+
+### Q14. Why did you add mock data fallback?
+**A:** API keys can expire, have request limits, or may not be configured during testing or evaluation. To ensure the app always shows something meaningful instead of just a broken screen, we added mock (dummy) data functions. If the API call fails due to an invalid key or network issue, the app falls back to displaying hardcoded sample weather and news data. This is also a good industry practice.
+
+---
+
+### Q15. What does the `units=metric` parameter do in the weather API URL?
+**A:** The OpenWeatherMap API returns temperatures in Kelvin by default. Adding `units=metric` to the URL tells the API to return temperatures in Celsius instead. This is more convenient for Indian users. If we used `units=imperial`, temperatures would be in Fahrenheit.
+
+---
+
+## API Credits
+- Weather: [OpenWeatherMap](https://openweathermap.org)
+- News: [NewsAPI](https://newsapi.org)
+
 
