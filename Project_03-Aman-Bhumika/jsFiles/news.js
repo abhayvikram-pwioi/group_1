@@ -150,8 +150,8 @@ function renderNewsCards(articles) {
         document.querySelectorAll(".read-more").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
-                console.log(btn.dataset.id);
-                localStorage.setItem("selectedArticle",JSON.stringify(btn.dataset.id));
+                // console.log(btn.dataset.id);
+                localStorage.setItem("selectedArticle",JSON.stringify(article));
             });
         })
     });
@@ -227,3 +227,7 @@ updateDateTime();
 setInterval(updateDateTime, 1000);
 
 
+function renderNewsOnPage(){
+    const article = JSON.parse(localStorage.getItem("selectedArticle"));
+    
+}
