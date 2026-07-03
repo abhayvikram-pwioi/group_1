@@ -43,94 +43,94 @@ async function getNews(category) {
 
 const topicSelect = document.getElementById("newsCategory");
 
-if(topicSelect){
+if (topicSelect) {
 
 
-topicSelect.addEventListener("change", async () => {
+    topicSelect.addEventListener("change", async () => {
 
-    const articles = await getNews(topicSelect.value);
+        const articles = await getNews(topicSelect.value);
 
-    if (!articles || articles.length === 0) {
-        showNoResults();
-        return;
-    }
-
-    renderNewsCards(articles);
-});
-
-const searchBtn = document.getElementById("search-btn-news");
-
-searchBtn.addEventListener("click", async () => {
-
-    const query = document.getElementById("searchNews").value.trim();
-
-    const category = document.getElementById("newsCategory").value;
-
-    let articles;
-
-    if (query) {
-        articles = await searchNews(query, category);
-
-    }
-    else {
-
-        articles = await getNews(category);
-
-    }
-
-    if (!articles || articles.length === 0) {
-        showNoResults();
-        return;
-    }
-
-    renderNewsCards(articles);
-
-});
-
-
-async function searchNews(query, category) {
-
-    const searchTerm = `${query} ${category}`;
-    try {
-
-        const res = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(searchTerm)}&lang=en&apikey=${API_KEy}`);
-
-        const data = await res.json();
-
-        if (res.status === 429) {
-            throw new Error("API Limit Reached");
+        if (!articles || articles.length === 0) {
+            showNoResults();
+            return;
         }
 
-        if (!res.ok) {
-            throw new Error("Something went wrong");
+        renderNewsCards(articles);
+    });
+
+    const searchBtn = document.getElementById("search-btn-news");
+
+    searchBtn.addEventListener("click", async () => {
+
+        const query = document.getElementById("searchNews").value.trim();
+
+        const category = document.getElementById("newsCategory").value;
+
+        let articles;
+
+        if (query) {
+            articles = await searchNews(query, category);
+
+        }
+        else {
+
+            articles = await getNews(category);
+
         }
 
-        return data.articles;
-    } catch (error) {
+        if (!articles || articles.length === 0) {
+            showNoResults();
+            return;
+        }
 
-        alert(error.message);
+        renderNewsCards(articles);
+
+    });
+
+
+    async function searchNews(query, category) {
+
+        const searchTerm = `${query} ${category}`;
+        try {
+
+            const res = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(searchTerm)}&lang=en&apikey=${API_KEy}`);
+
+            const data = await res.json();
+
+            if (res.status === 429) {
+                throw new Error("API Limit Reached");
+            }
+
+            if (!res.ok) {
+                throw new Error("Something went wrong");
+            }
+
+            return data.articles;
+        } catch (error) {
+
+            alert(error.message);
+        }
+
     }
 
-}
 
+    function renderNewsCards(articles) {
+        const container = document.getElementById("news-container");
 
-function renderNewsCards(articles) {
-    const container = document.getElementById("news-container");
-
-    container.innerHTML = "";
+        container.innerHTML = "";
 
 
 
-    articles.slice(0, 6).forEach((article, index) => {
-        const date = new Date(article.publishedAt);
+        articles.slice(0, 6).forEach((article, index) => {
+            const date = new Date(article.publishedAt);
 
-        const formattedDate = date.toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        });
+            const formattedDate = date.toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            });
 
-        container.innerHTML += `
+            container.innerHTML += `
             <div class="news-card">
                 <div class="img-sec">
                     <img src="${article.image}" alt="image" class="img-news">
@@ -143,31 +143,30 @@ function renderNewsCards(articles) {
                 <hr class="news-hr">
                     <div class="news-card-bottom">
                         <p id="date">${formattedDate}</p>
-                    <a hjref= "${article.url}" class = "read-more" data-id= "${article.id}">Read more</a>
+                    <a class = "read-more" data-index= "${index}">Read more</a>
                     </div>
 
             </div>
 
         `
+        });
 
         document.querySelectorAll(".read-more").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
-                // console.log(btn.dataset.id);
-                localStorage.setItem("selectedArticle", JSON.stringify(article));
-
+                const index = Number(btn.dataset.index);
+                localStorage.setItem("selectedArticle", JSON.stringify(articles[index]));
                 window.location.href = "news-detail.html";
             });
         })
-    });
 
-}
+    }
 
-function showNoResults() {
+    function showNoResults() {
 
-    const container = document.getElementById("news-container");
+        const container = document.getElementById("news-container");
 
-    container.innerHTML = `
+        container.innerHTML = `
 
     <div class="news-not-sec">
                     <i class="fa-solid fa-file-circle-xmark no-article-icon"></i>
@@ -177,59 +176,59 @@ function showNoResults() {
 
 
     `;
-}
-
-
-
-
-
-// =================================TIME FOR GREETING ======================================
-
-function updateDateTime() {
-
-    const now = new Date();
-
-    // Greeting
-    const hour = now.getHours();
-
-    let greeting = "";
-
-    if (hour >= 5 && hour < 12) {
-        greeting = "Good Morning";
-    }
-    else if (hour >= 12 && hour < 17) {
-        greeting = "Good Afternoon";
-    }
-    else if (hour >= 17 && hour < 21) {
-        greeting = "Good Evening";
-    }
-    else {
-        greeting = "Good Night";
     }
 
-    document.getElementById("greeting-text").textContent =
-        `${greeting}`;
 
 
-    document.getElementById("greeting-date").textContent =
-        now.toLocaleDateString("en-GB", {
-            weekday: "short",
-            day: "numeric",
-            month: "long"
-        });
 
 
-    document.getElementById("greeting-time").textContent =
-        now.toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: true
-        });
-}
+    // =================================TIME FOR GREETING ======================================
 
-updateDateTime();
+    function updateDateTime() {
 
-setInterval(updateDateTime, 1000);
+        const now = new Date();
+
+        // Greeting
+        const hour = now.getHours();
+
+        let greeting = "";
+
+        if (hour >= 5 && hour < 12) {
+            greeting = "Good Morning";
+        }
+        else if (hour >= 12 && hour < 17) {
+            greeting = "Good Afternoon";
+        }
+        else if (hour >= 17 && hour < 21) {
+            greeting = "Good Evening";
+        }
+        else {
+            greeting = "Good Night";
+        }
+
+        document.getElementById("greeting-text").textContent =
+            `${greeting}`;
+
+
+        document.getElementById("greeting-date").textContent =
+            now.toLocaleDateString("en-GB", {
+                weekday: "short",
+                day: "numeric",
+                month: "long"
+            });
+
+
+        document.getElementById("greeting-time").textContent =
+            now.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true
+            });
+    }
+
+    updateDateTime();
+
+    setInterval(updateDateTime, 1000);
 
 }
 
