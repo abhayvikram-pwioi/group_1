@@ -118,7 +118,7 @@ function renderNewsCards(articles) {
 
 
 
-    articles.slice(0, 6).forEach(article => {
+    articles.slice(0, 6).forEach((article, index) => {
         const date = new Date(article.publishedAt);
 
         const formattedDate = date.toLocaleDateString("en-GB", {
@@ -140,12 +140,20 @@ function renderNewsCards(articles) {
                 <hr class="news-hr">
                     <div class="news-card-bottom">
                         <p id="date">${formattedDate}</p>
-                    <a hjref= "${article.url}">Read more</a>
+                    <a hjref= "${article.url}" class = "read-more" data-id= "${article.id}">Read more</a>
                     </div>
 
             </div>
 
         `
+
+        document.querySelectorAll(".read-more").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                console.log(btn.dataset.id);
+                localStorage.setItem("selectedArticle",JSON.stringify(btn.dataset.id));
+            });
+        })
     });
 
 }
@@ -181,21 +189,21 @@ function updateDateTime() {
 
     let greeting = "";
 
-    if(hour >= 5 && hour < 12){
+    if (hour >= 5 && hour < 12) {
         greeting = "Good Morning";
     }
-    else if(hour >= 12 && hour < 17){
+    else if (hour >= 12 && hour < 17) {
         greeting = "Good Afternoon";
     }
-    else if(hour >= 17 && hour < 21){
+    else if (hour >= 17 && hour < 21) {
         greeting = "Good Evening";
     }
-    else{
+    else {
         greeting = "Good Night";
     }
 
     document.getElementById("greeting-text").textContent =
-        `${greeting} ,`;
+        `${greeting}`;
 
 
     document.getElementById("greeting-date").textContent =
@@ -217,3 +225,5 @@ function updateDateTime() {
 updateDateTime();
 
 setInterval(updateDateTime, 1000);
+
+
