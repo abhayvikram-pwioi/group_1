@@ -1,4 +1,4 @@
-// const API_KEy = "6853a4c4a5c1518b55a4600dd0c750a6";
+const API_KEy = "6853a4c4a5c1518b55a4600dd0c750a6";
 
 async function getNews(category) {
     const newsUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=in&apikey=${API_KEy}`;
@@ -42,6 +42,9 @@ async function getNews(category) {
 
 
 const topicSelect = document.getElementById("newsCategory");
+
+if(topicSelect){
+
 
 topicSelect.addEventListener("change", async () => {
 
@@ -151,7 +154,9 @@ function renderNewsCards(articles) {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
                 // console.log(btn.dataset.id);
-                localStorage.setItem("selectedArticle",JSON.stringify(article));
+                localStorage.setItem("selectedArticle", JSON.stringify(article));
+
+                window.location.href = "news-detail.html";
             });
         })
     });
@@ -226,8 +231,5 @@ updateDateTime();
 
 setInterval(updateDateTime, 1000);
 
-
-function renderNewsOnPage(){
-    const article = JSON.parse(localStorage.getItem("selectedArticle"));
-    
 }
+

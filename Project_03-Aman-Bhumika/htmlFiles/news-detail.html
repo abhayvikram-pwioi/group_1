@@ -10,22 +10,24 @@
     <main class="news-detail">
         <button id="back-btn">← Back</button>
         <div class="news-meta">
-            <span>Technology</span>
+            <span id="category">Technology</span>
             <span>•</span>
-            <span>5 min read</span>
+            <span id="news-page-time">5 min read</span>
         </div>
-        <h1 id="news-title">Headline goes here</h1>
+        <h1 id="news-page-title">Headline goes here</h1>
         <div class="author">
-            By John Doe • June 14, 2026
+            <span id="news-page-brand">John Doe</span>
+            <span>•</span>
+            <span id="news-page-date"> June 14, 2026</span>
         </div>
-        <img src="" alt="" id="news-img">
+        <img src="" alt="" id="news-page-img">
         <div class="summary-card">
             <h3>Quick Summary</h3>
-            <p>
+            <p id="news-page-summary">
                 2-3 lines summary of articles
             </p>
         </div>
-        <article id="news-content">
+        <article id="news-page-content">
             Full article content.....
         </article>
         <section id="related-news">
@@ -33,5 +35,7 @@
         </section>
 
     </main>
+
+    <script src="/jsFiles/news.js"></script>
 </body>
 </html>
