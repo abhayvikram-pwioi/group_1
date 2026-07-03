@@ -232,3 +232,35 @@ if (topicSelect) {
 
 }
 
+const image = document.getElementById("news-page-img");
+
+function renderNewsOnPage() {
+    const article = JSON.parse(localStorage.getItem("selectedArticle"));
+
+    console.log(article);
+    if (!(article)) return;
+
+    const title = document.getElementById("news-page-title");
+    const description = document.getElementById("news-page-summary");
+    const content = document.getElementById("news-page-content");
+    const source = document.getElementById("news-page-brand");
+    const date = document.getElementById("news-page-date");
+
+    title.textContent = article.title;
+    image.src = article.image;
+    description.textContent = article.description;
+    content.textContent = article.content;
+    source.textContent = article.source.name;
+
+    const formattedDate = new Date(article.publishedAt).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
+
+    date.textContent = formattedDate;
+}
+
+if (image) {
+    renderNewsOnPage();
+}
