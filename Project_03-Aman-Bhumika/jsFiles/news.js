@@ -1,4 +1,4 @@
-const API_KEy = "6853a4c4a5c1518b55a4600dd0c750a6";
+// const API_KEy = "6853a4c4a5c1518b55a4600dd0c750a6";
 
 async function getNews(category) {
     const newsUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=in&apikey=${API_KEy}`;
@@ -298,7 +298,7 @@ async function renderNewsOnPage() {
 
         `
     });
-    
+
     document.querySelectorAll(".read-more").forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
