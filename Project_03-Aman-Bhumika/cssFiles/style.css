@@ -415,9 +415,38 @@ hr {
     margin-top: 20px;
 }
 
-footer {
-    border-top: 1px solid var(--border);
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer{
     padding: 20px;
+}
+
+.foot-up {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.foot-links{
+    display: flex;
+    gap: 40px;
+}
+
+.social-links{
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+
+}
+
+.foot {
+    font-size: 14px;
     display: flex;
     text-align: center;
     justify-content: space-between;
@@ -614,7 +643,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
     header {
         padding: 10px;
-            margin-top: 5px;
+        margin-top: 5px;
     }
 
     .logo-sec {
@@ -683,7 +712,7 @@ input[type="search"]::-webkit-search-cancel-button {
         height: 450px;
     }
 
-    
+
     .news-sec {
         width: 315px;
         margin-left: 0px;

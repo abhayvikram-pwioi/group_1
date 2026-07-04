@@ -1,4 +1,4 @@
-const API_KEy = "6853a4c4a5c1518b55a4600dd0c750a6";
+// const API_KEy = "6853a4c4a5c1518b55a4600dd0c750a6";
 
 async function getNews(category) {
     const newsUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=in&apikey=${API_KEy}`;
@@ -25,25 +25,26 @@ async function getNews(category) {
     }
 
     catch (error) {
-
+        console.error(error);
         alert(error.message);
+        return [];
 
     }
 
 }
-
-(async () => {
-
-    const articles = await getNews("general");
-    renderNewsCards(articles);
-
-})();
 
 
 const topicSelect = document.getElementById("newsCategory");
 
 if (topicSelect) {
 
+
+    (async () => {
+
+        const articles = await getNews("general");
+        renderNewsCards(articles);
+
+    })();
 
     topicSelect.addEventListener("change", async () => {
 
@@ -106,8 +107,9 @@ if (topicSelect) {
 
             return data.articles;
         } catch (error) {
-
+            console.error(error);
             alert(error.message);
+            return [];
         }
 
     }
@@ -115,7 +117,6 @@ if (topicSelect) {
 
     function renderNewsCards(articles) {
         const container = document.getElementById("news-container");
-        const category = document.getElementById("newsCategory").value;
 
         container.innerHTML = "";
 
@@ -154,7 +155,7 @@ if (topicSelect) {
                 e.preventDefault();
                 const index = Number(btn.dataset.index);
                 localStorage.setItem("selectedArticle", JSON.stringify(articles[index]));
-                localStorage.setItem("selectedCategory",JSON.stringify(category));
+                localStorage.setItem("allArticles", JSON.stringify(articles));
                 window.location.href = "news-detail.html";
             });
         })
@@ -233,7 +234,7 @@ if (topicSelect) {
 
 const image = document.getElementById("news-page-img");
 
-function renderNewsOnPage() {
+async function renderNewsOnPage() {
     const article = JSON.parse(localStorage.getItem("selectedArticle"));
 
     console.log(article);
@@ -258,6 +259,56 @@ function renderNewsOnPage() {
     });
 
     date.textContent = formattedDate;
+
+    const allArticles = JSON.parse(localStorage.getItem("allArticles"));
+
+    const related = allArticles.filter(a => {
+        return a.title !== article.title
+    })
+
+    const container = document.getElementById("related-news-container");
+    container.innerHTML = "";
+
+    related.slice(0, 3).forEach((article, index) => {
+        const date = new Date(article.publishedAt);
+
+        const formattedDate = date.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+
+        container.innerHTML += `
+            <div class="news-card">
+                <div class="img-sec">
+                    <img src="${article.image}" alt="image" class="img-news">
+                </div>
+                <div class="news-card-details">
+                    <h4 class="source">${article.source.name}</h4>
+                    <h3 class="title"> ${article.title}</h3>
+                    <p class="description">${article.description || "No description"}</p>
+                </div>
+                <hr class="news-hr">
+                    <div class="news-card-bottom">
+                        <p id="date">${formattedDate}</p>
+                    <a class = "read-more" data-index= "${index}">Read more</a>
+                    </div>
+
+            </div>
+
+        `
+    });
+
+    document.querySelectorAll(".read-more").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const index = Number(btn.dataset.index);
+            localStorage.setItem("selectedArticle", JSON.stringify(related[index]));
+            localStorage.setItem("allArticles", JSON.stringify(related));
+            window.location.href = "news-detail.html";
+        });
+    })
+
 }
 
 if (image) {
