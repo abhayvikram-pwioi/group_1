@@ -299,6 +299,16 @@ header {
     box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
 }
 
+.hidden{
+    display: none;
+}
+#weather-loader,
+#weather-error{
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 18px;
+}
+
 .weather-search {
     display: flex;
     justify-content: center;
