@@ -33,18 +33,18 @@ async function getNews(category) {
 
 }
 
-(async () => {
-
-    const articles = await getNews("general");
-    renderNewsCards(articles);
-
-})();
-
 
 const topicSelect = document.getElementById("newsCategory");
 
 if (topicSelect) {
 
+
+    (async () => {
+
+        const articles = await getNews("general");
+        renderNewsCards(articles);
+
+    })();
 
     topicSelect.addEventListener("change", async () => {
 
@@ -266,7 +266,7 @@ async function renderNewsOnPage() {
         return a.title !== article.title
     })
 
-     const container = document.getElementById("related-news-container");
+    const container = document.getElementById("related-news-container");
     container.innerHTML = "";
 
     related.slice(0, 3).forEach((article, index) => {
@@ -298,13 +298,13 @@ async function renderNewsOnPage() {
 
         `
     });
-
+    
     document.querySelectorAll(".read-more").forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
             const index = Number(btn.dataset.index);
-            localStorage.setItem("selectedArticle", JSON.stringify(articles[index]));
-            localStorage.setItem("allArticles", articles);
+            localStorage.setItem("selectedArticle", JSON.stringify(related[index]));
+            localStorage.setItem("allArticles", JSON.stringify(related));
             window.location.href = "news-detail.html";
         });
     })
