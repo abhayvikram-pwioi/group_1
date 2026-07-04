@@ -243,3 +243,41 @@ img {
     align-items: center;
     justify-content: space-between;
 }
+
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer{
+    padding: 20px;
+}
+
+.foot-up {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.foot-links{
+    display: flex;
+    gap: 40px;
+}
+
+.social-links{
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.foot {
+    color: white;
+    font-size: 14px;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
