@@ -25,8 +25,9 @@ async function getNews(category) {
     }
 
     catch (error) {
-
+        console.error(error);
         alert(error.message);
+        return [];
 
     }
 
@@ -106,8 +107,9 @@ if (topicSelect) {
 
             return data.articles;
         } catch (error) {
-
+            console.error(error);
             alert(error.message);
+            return [];
         }
 
     }
@@ -115,7 +117,6 @@ if (topicSelect) {
 
     function renderNewsCards(articles) {
         const container = document.getElementById("news-container");
-        const category = document.getElementById("newsCategory").value;
 
         container.innerHTML = "";
 
@@ -154,7 +155,7 @@ if (topicSelect) {
                 e.preventDefault();
                 const index = Number(btn.dataset.index);
                 localStorage.setItem("selectedArticle", JSON.stringify(articles[index]));
-                localStorage.setItem("selectedCategory",JSON.stringify(category));
+                localStorage.setItem("allArticles", JSON.stringify(articles));
                 window.location.href = "news-detail.html";
             });
         })
@@ -233,7 +234,7 @@ if (topicSelect) {
 
 const image = document.getElementById("news-page-img");
 
-function renderNewsOnPage() {
+async function renderNewsOnPage() {
     const article = JSON.parse(localStorage.getItem("selectedArticle"));
 
     console.log(article);
@@ -258,6 +259,14 @@ function renderNewsOnPage() {
     });
 
     date.textContent = formattedDate;
+
+    const allArticles = JSON.parse(localStorage.getItem("allArticles"));
+
+    const related = allArticles.filter(a => {
+        return a.title !== article.title
+    })
+    
+
 }
 
 if (image) {
