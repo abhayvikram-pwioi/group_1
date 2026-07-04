@@ -415,7 +415,33 @@ hr {
     margin-top: 20px;
 }
 
+footer a {
+    text-decoration: none;
+    color: white;
+}
 
+footer{
+    padding: 20px;
+}
+
+.foot-up {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.foot-links{
+    display: flex;
+    gap: 40px;
+}
+
+.social-links{
+    display: flex;
+    gap: 20px;
+}
 
 .foot {
     font-size: 14px;
