@@ -265,7 +265,49 @@ async function renderNewsOnPage() {
     const related = allArticles.filter(a => {
         return a.title !== article.title
     })
-    
+
+     const container = document.getElementById("related-news-container");
+    container.innerHTML = "";
+
+    related.slice(0, 3).forEach((article, index) => {
+        const date = new Date(article.publishedAt);
+
+        const formattedDate = date.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+
+        container.innerHTML += `
+            <div class="news-card">
+                <div class="img-sec">
+                    <img src="${article.image}" alt="image" class="img-news">
+                </div>
+                <div class="news-card-details">
+                    <h4 class="source">${article.source.name}</h4>
+                    <h3 class="title"> ${article.title}</h3>
+                    <p class="description">${article.description || "No description"}</p>
+                </div>
+                <hr class="news-hr">
+                    <div class="news-card-bottom">
+                        <p id="date">${formattedDate}</p>
+                    <a class = "read-more" data-index= "${index}">Read more</a>
+                    </div>
+
+            </div>
+
+        `
+    });
+
+    document.querySelectorAll(".read-more").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const index = Number(btn.dataset.index);
+            localStorage.setItem("selectedArticle", JSON.stringify(articles[index]));
+            localStorage.setItem("allArticles", articles);
+            window.location.href = "news-detail.html";
+        });
+    })
 
 }
 
