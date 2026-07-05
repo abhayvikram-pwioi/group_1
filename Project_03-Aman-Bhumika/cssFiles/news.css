@@ -281,3 +281,39 @@ footer{
     text-align: center;
     justify-content: space-between;
 }
+
+@media (max-width : 768px){
+
+
+
+    .foot {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .foot p {
+        font-size: 13px;
+    }
+
+    .foot-links a {
+        font-size: 14px;
+    }
+
+    .foot-links {
+        gap: 5px;
+        flex-direction: column;
+    }
+
+    .social-links i {
+        font-size: 15px;
+    }
+
+    .social-links {
+        align-items: center;
+    }
+
+    .foot-up {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
