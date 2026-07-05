@@ -250,7 +250,7 @@ footer a {
     color: white;
 }
 
-footer{
+footer {
     padding: 20px;
 }
 
@@ -263,12 +263,12 @@ footer{
 
 }
 
-.foot-links{
+.foot-links {
     display: flex;
     gap: 40px;
 }
 
-.social-links{
+.social-links {
     display: flex;
     gap: 20px;
     font-size: 20px;
@@ -280,4 +280,43 @@ footer{
     display: flex;
     text-align: center;
     justify-content: space-between;
+}
+
+@media (max-width : 768px) {
+
+    #related-news-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .foot {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .foot p {
+        font-size: 13px;
+    }
+
+    .foot-links a {
+        font-size: 14px;
+    }
+
+    .foot-links {
+        gap: 5px;
+        flex-direction: column;
+    }
+
+    .social-links i {
+        font-size: 15px;
+    }
+
+    .social-links {
+        align-items: center;
+    }
+
+    .foot-up {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
