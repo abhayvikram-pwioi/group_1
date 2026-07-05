@@ -5,11 +5,15 @@
 console.log("JS loaded");
 
 async function getWeather(city=null,lat=null,lon=null) {
-    if (!city)
+
+   
+    
+    if (!city && (lat===null || lon===null)){
         return;
+    }
+    showLoader();
     console.log("Searching for:", city);
-    // const lat = 28.57;
-    // const lon = 77.55;
+    
     const API_KEY = "fd93ea356d0c60b7649b41d419e306ed";
 
     const cityName = document.getElementById("city-name");
@@ -20,8 +24,6 @@ async function getWeather(city=null,lat=null,lon=null) {
     const icon = document.getElementById("weather-icon");
     try {
         console.log(API_KEY);
-        // const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`);
-        // console.log(response);
         let url;
         if(city){
             url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`;
@@ -32,13 +34,12 @@ async function getWeather(city=null,lat=null,lon=null) {
         const response = await fetch(url);
         console.log(response);
 
+      
+
         if (!response.ok) {
             throw new Error("City not Found");
         }
         
-        // if (!response.ok) {
-        //     throw new Error("City not Found");
-        // }
         const data = await response.json();
         console.log(data);
         
@@ -65,27 +66,36 @@ async function getWeather(city=null,lat=null,lon=null) {
         temp.textContent = (weather.main.temp) + " °C";
         condition.textContent = weather.weather[0].description;
         humidity.textContent = weather.main.humidity + " %";
-        wind.textContent = weather.wind.speed + " m/s";
+        wind.textContent = (weather.wind.speed * 3.6).toFixed(1) + " km/h";
         const iconCode = weather.weather[0].icon;
         icon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-
+     
+        
+        showWeather();
 
 
     }
     catch (error) {
         console.log(error);
-        alert("City not found");
+        if(city){
+            showWeatherError(`❌ City "${city}" not Found`);
+        }
+        else{
+            showWeatherError("Unable to fetch weather for your location.")
+        }
     }
 
 }
 document.getElementById("search-btn").addEventListener("click", () => {
     const city = document.getElementById("city-input").value.trim();
     if (city) {
+        
         getWeather(city);
     }
     else{
-        alert("City not found");
+       showWeatherError("Please enter a City name");
     }
+    
 
 });
 document.getElementById("city-input").addEventListener("keydown", (e) => {
@@ -95,13 +105,17 @@ document.getElementById("city-input").addEventListener("keydown", (e) => {
         if (city) {
             getWeather(city);
         }
+        else{
+            showWeatherError("Please enter a city name")
+        }
     }
+    
 
 
 
 });
 
-//getWeather("Delhi");
+
 
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(
@@ -110,7 +124,19 @@ if(navigator.geolocation){
         },
         (error) => {
         console.log(error);
-        // getWeather("Delhi");
+        if(error.code === error.PERMISSION_DENIED){
+            showWeatherError("📍 Location permission denied.<br>Please search for a city.");
+        }
+        else if(error.code === error.POSITION_UNAVAILABLE){
+            showWeatherError("Current location unavailable");
+        }
+        else if(error.code === error.TIMEOUT){
+            showWeatherError("Location request timeout");
+        }
+        else{
+            showWeatherError("Unable to fetch location");
+        }
+        
     }
     );
     
@@ -119,4 +145,35 @@ else{
     getWeather("Delhi");
 }
 
+// error handling
 
+const loader = document.getElementById("weather-loader");
+const errorBox = document.getElementById("weather-error");
+const weatherTop = document.querySelector(".weather-top");
+const temperature = document.querySelector(".temperature");
+const weatherDetails = document.querySelector(".weather-details");
+
+function showLoader(){
+    loader.classList.remove("hidden");
+    errorBox.classList.add("hidden");
+    weatherTop.style.display = "none";
+    temperature.style.display = "none";
+    weatherDetails.style.display = "none";
+}
+
+function showWeather(){
+    loader.classList.add("hidden");
+    errorBox.classList.add("hidden");
+    weatherTop.style.display = "";
+    temperature.style.display = "";
+    weatherDetails.style.display = "";
+}
+
+function showWeatherError(message){
+    loader.classList.add("hidden");
+    weatherTop.style.display = "none";
+    temperature.style.display = "none";
+    weatherDetails.style.display = "none";
+    errorBox.classList.remove("hidden");
+    errorBox.innerHTML = `<h3>${message}</h3>`;
+}

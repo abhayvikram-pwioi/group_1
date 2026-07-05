@@ -59,10 +59,18 @@
                    </button>
                  </div>
                  <div class="weather-card">
+                    <!-- loading -->
+                    <div class="hidden" id="weather-loader">
+                        <p>Loading weather...</p>
+                    </div>
+                    <!-- error -->
+                     <div class="hidden" id="weather-error"></div>
+
                     <div class="weather-top">
                     <h3 id="city-name">Loading...</h3>
                     <img id="weather-icon" src="" alt="weather-icon">
                     </div>
+                    
 
                     <div class="temperature">
                         <h1 id="temp">--°C</h1>
