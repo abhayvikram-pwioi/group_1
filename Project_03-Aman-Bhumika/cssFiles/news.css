@@ -250,7 +250,7 @@ footer a {
     color: white;
 }
 
-footer{
+footer {
     padding: 20px;
 }
 
@@ -263,12 +263,12 @@ footer{
 
 }
 
-.foot-links{
+.foot-links {
     display: flex;
     gap: 40px;
 }
 
-.social-links{
+.social-links {
     display: flex;
     gap: 20px;
     font-size: 20px;
@@ -282,9 +282,12 @@ footer{
     justify-content: space-between;
 }
 
-@media (max-width : 768px){
+@media (max-width : 768px) {
 
-
+    #related-news-container {
+        display: flex;
+        flex-direction: column;
+    }
 
     .foot {
         padding: 10px;
