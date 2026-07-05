@@ -51,7 +51,7 @@ async function getWeather(city=null,lat=null,lon=null) {
         if (weatherType.includes("clear")) {
             weatherSec.dataset.theme = "sunny";
         }
-        else if (weatherType.includes("cloud")) {
+        else if (weatherType.includes("clouds")) {
             weatherSec.dataset.theme = "cloudy";
         }
         else if (weatherType.includes("rain")) {
