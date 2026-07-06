@@ -310,8 +310,6 @@ header {
     font-size: 18px;
 }
 
-.skeleton 
-
 .weather-search {
     display: flex;
     justify-content: center;
@@ -327,13 +325,13 @@ header {
     font-size: 4rem;
 }
 
-#city-input {
+/* #city-input {
     width: 100%;
     padding: 12px;
     border: none;
     border-radius: 12px 0px 0px 12px;
     outline: black;
-}
+} */
 
 #city-input {
     flex: 1;
@@ -356,12 +354,9 @@ header {
 }
 
 .weather-card {
-    /* background: var(--primary); */
     border-radius: 24px;
     padding: 30px;
     backdrop-filter: blur(15px);
-
-
     background: linear-gradient(135deg,
             var(--primary),
             var(--secondary));
