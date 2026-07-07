@@ -133,7 +133,7 @@ if (topicSelect) {
             });
 
             container.innerHTML += `
-            <div class="news-card">
+            <div class="news-card" data-index="${index}">
                 <div class="img-sec">
                     <img src="${article.image}" alt="image" class="img-news">
                 </div>
@@ -154,6 +154,16 @@ if (topicSelect) {
         });
 
         document.querySelectorAll(".read-more").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const index = Number(btn.dataset.index);
+                localStorage.setItem("selectedArticle", JSON.stringify(articles[index]));
+                localStorage.setItem("allArticles", JSON.stringify(articles));
+                window.location.href = "news-detail.html";
+            });
+        })
+
+          document.querySelectorAll(".news-card").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
                 const index = Number(btn.dataset.index);
@@ -310,7 +320,17 @@ async function renderNewsOnPage() {
             localStorage.setItem("allArticles", JSON.stringify(related));
             window.location.href = "news-detail.html";
         });
-    })
+    });
+
+       document.querySelectorAll(".news-card").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const index = Number(btn.dataset.index);
+            localStorage.setItem("selectedArticle", JSON.stringify(related[index]));
+            localStorage.setItem("allArticles", JSON.stringify(related));
+            window.location.href = "news-detail.html";
+        });
+    });
 
 }
 
