@@ -49,8 +49,11 @@ Weather-News-Aggregator-LeapX-Project-3
 ## 📷 Screenshots
 
 <img width="1470" height="798" alt="Screenshot 2026-07-07 at 2 36 07 PM" src="https://github.com/user-attachments/assets/053b7949-954d-44bd-83db-0079c956dfc4" />
-<img width="1470" height="798" alt="Screenshot 2026-07-07 at 2 36 29 PM" src="https://github.com/user-attachments/assets/3e5d73d1-35a7-46ff-8402-60810e565a15" />
+<br/>
 <img width="1470" height="798" alt="Screenshot 2026-07-07 at 2 36 20 PM" src="https://github.com/user-attachments/assets/81f68666-1e5c-497e-b89d-d58e716dc705" />
+<br/>
+<img width="1470" height="798" alt="Screenshot 2026-07-07 at 2 36 29 PM" src="https://github.com/user-attachments/assets/3e5d73d1-35a7-46ff-8402-60810e565a15" />
+
 
 ---
 
