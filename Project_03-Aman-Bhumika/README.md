@@ -40,7 +40,6 @@ Weather-News-Aggregator-LeapX-Project-3
 ├── cssFiles/
 ├── htmlFiles/
 ├── jsFiles/
-├── index.html
 └── README.md
 ```
 
