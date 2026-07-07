@@ -292,7 +292,7 @@ async function renderNewsOnPage() {
         });
 
         container.innerHTML += `
-            <div class="news-card">
+            <div class="news-card" data-index= "${index}>
                 <div class="img-sec">
                     <img src="${article.image}" alt="image" class="img-news">
                 </div>
