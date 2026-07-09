@@ -165,3 +165,80 @@ header {
     /* border: 1px solid black; */
 }
 
+.event-card {
+    position: absolute;
+    width: 300px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .08);
+    transition: .45s ease;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.event-card::before,
+.event-card::after {
+    content: "";
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #E5E7EB;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.event-card::before {
+    left: -11px;
+}
+
+.event-card::after {
+    right: -11px;
+}
+
+.card1 {
+    top: 140px;
+    left: 100px;
+    transform: rotate(-8deg);
+}
+
+.card2 {
+    right: 60px;
+    top: 290px;
+    transform: rotate(6deg);
+    background: #FFF9DB;
+}
+
+.card3 {
+    left: 60px;
+    bottom: 40px;
+    transform: rotate(-5deg);
+    background: #ECFEFF;
+}
+
+.event-card:hover {
+    transform: rotate(0deg) translateY(-18px);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, .18);
+}
+
+.motivational-title {
+    color: #64748B;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.event-card h3 {
+    font-size: 25px;
+    line-height: 1.15;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.motivational-text{
+    color: #64748B;
+    font-size: 18px;
+}
