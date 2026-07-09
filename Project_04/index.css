@@ -107,3 +107,61 @@ header {
     border-radius: 50%;
     border: 1px solid var(--border);
 }
+
+
+.main-box {
+    display: flex;
+
+}
+
+.live-msg {
+    padding: 7px 7px 7px 15px;
+    border-radius: 25px;
+    margin-bottom: 15px;
+    width: 100%;
+    width: 250px;
+    font-weight: 550;
+    background-color: rgb(224, 222, 222);
+    box-shadow: var(--shadow-lg);
+}
+
+.greeting-sec {
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.headline-text {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--text-primary);
+}
+
+.headline-subtext {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    width: 500px;
+    margin-bottom: 35px;
+}
+
+#explore-event {
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    border-radius: var(--radius-lg);
+    background: var(--btn);
+}
+
+#explore-event:hover {
+    background-color: var(--primary-hover);
+}
+
+.greet-cards {
+    position: relative;
+    width: 50%;
+    height: 650px;
+    /* border: 1px solid black; */
+}
+
