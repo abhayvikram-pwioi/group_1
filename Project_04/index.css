@@ -506,3 +506,55 @@ header {
     color: var(--primary);
 
 }
+
+.footer-newsletter h3 {
+    margin-bottom: 15px;
+
+}
+
+.footer-newsletter p {
+    color: #CBD5E1;
+    line-height: 1.7;
+    margin-bottom: 20px;
+
+}
+
+.newsletter-box {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-box input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+
+}
+
+.newsletter-box button {
+    padding: 15px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    transition: .3s;
+
+}
+
+.newsletter-box button:hover {
+    background: var(--primary-hover);
+
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    text-align: center;
+    padding: 25px;
+    color: #94A3B8;
+
+}
+
