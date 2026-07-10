@@ -593,3 +593,90 @@ header {
     }
 
 }
+
+
+
+@media (max-width:768px) {
+    header {
+        margin: 0px;
+    }
+
+    .logo-side h1 {
+        font-size: 23px;
+    }
+
+    .live-msg {
+        width: 200px;
+    }
+
+    .live-msg p {
+        font-size: 0.8rem;
+    }
+
+
+    .menu-list a {
+        font-size: 1rem;
+    }
+
+    .headline-text {
+        font-size: 2.2rem;
+    }
+
+    .headline-subtext {
+        margin-top: 10px;
+        font-size: 1rem;
+    }
+
+    #explore-event {
+        padding: 12px;
+    }
+
+    .main-box {
+        gap: 50px;
+        padding: 20px 15px;
+        text-align: left;
+    }
+
+    .events-box {
+        margin: 0 10px;
+    }
+
+    .event-headline-text {
+        font-size: 0.8rem;
+    }
+
+    .category-search-box {
+        padding: 10px 20px;
+        flex-direction: column;
+    }
+
+    #category {
+        width: 170px;
+    }
+
+    .event-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .date-cate {
+        width: 360px
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+    }
+
+    .newsletter-box {
+        flex-direction: column;
+
+    }
+
+    .newsletter-box button {
+        width: 100%;
+
+    }
+
+
+}
