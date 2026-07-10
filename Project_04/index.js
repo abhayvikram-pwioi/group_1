@@ -1,5 +1,5 @@
 async function renderEventCard() {
-    const events = await fetch("../data/events.json").then(res => res.json());
+    const events = await fetch("events.json").then(res => res.json());
 
     const container = document.querySelector(".event-list");
     events.forEach(element => {
@@ -55,3 +55,21 @@ function formatDate(dateString) {
 }
 
 renderEventCard();
+
+
+
+const chatToggle = document.querySelector("#chatToggle");
+const chatBox = document.querySelector("#chatBox");
+const closeChat = document.querySelector("#closeChat");
+
+chatToggle.onclick = () => {
+
+    chatBox.classList.add("active");
+
+}
+
+closeChat.onclick = () => {
+
+    chatBox.classList.remove("active");
+
+}
