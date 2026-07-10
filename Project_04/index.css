@@ -30,8 +30,10 @@
     --text-light: #94A3B8;
     --text-white: #FFFFFF;
 
-     --text-muted: #66758D;      /* Closest match */
-    --text-secondary: #6B7280;  /* Slightly darker */
+    --text-muted: #66758D;
+    /* Closest match */
+    --text-secondary: #6B7280;
+    /* Slightly darker */
     --icon-color: #66758D;
 
     /* ========== Borders ========== */
@@ -108,10 +110,14 @@ header {
     border: 1px solid var(--border);
 }
 
-
 .main-box {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
-
+    justify-content: space-between;
+    align-items: center;
+    gap: 70px;
+    padding: 30px 60px;
 }
 
 .live-msg {
@@ -119,17 +125,19 @@ header {
     border-radius: 25px;
     margin-bottom: 15px;
     width: 100%;
-    width: 250px;
+    max-width: 250px;
     font-weight: 550;
     background-color: rgb(224, 222, 222);
     box-shadow: var(--shadow-lg);
 }
 
 .greeting-sec {
-    margin-left: 100px;
+    /* margin-left: 100px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex: 1;
+    margin-left: 0;
 }
 
 .headline-text {
@@ -142,7 +150,8 @@ header {
 .headline-subtext {
     margin-top: 20px;
     font-size: 1.3rem;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     margin-bottom: 35px;
 }
 
@@ -160,9 +169,8 @@ header {
 
 .greet-cards {
     position: relative;
-    width: 50%;
     height: 650px;
-    /* border: 1px solid black; */
+    flex: 1;
 }
 
 .event-card {
@@ -199,21 +207,21 @@ header {
 }
 
 .card1 {
-    top: 140px;
-    left: 100px;
+    top: 80px;
+    left: 0;
     transform: rotate(-8deg);
 }
 
 .card2 {
-    right: 60px;
-    top: 290px;
+    top: 220px;
+    right: 20px;
     transform: rotate(6deg);
     background: #FFF9DB;
 }
 
 .card3 {
-    left: 60px;
-    bottom: 40px;
+    top: 400px;
+    left: 40px;
     transform: rotate(-5deg);
     background: #ECFEFF;
 }
@@ -238,7 +246,7 @@ header {
     color: #111827;
 }
 
-.motivational-text{
+.motivational-text {
     color: #64748B;
     font-size: 18px;
 }
@@ -295,12 +303,16 @@ header {
     font-size: 15px;
 }
 
+.cate-date-sec {
+    display: flex;
+    gap: 10px;
+}
+
 #category {
     height: 50px;
     padding: 0px 10px;
     border-radius: var(--radius-md);
-    width: 100%;
-    max-width: 200px;
+    width: 250px;
     border: 1px solid var(--border);
     font-size: 15px;
 }
@@ -360,24 +372,24 @@ header {
     padding: 5px 10px;
     border-radius: 25px;
     border: 1px solid var(--border);
-    box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
 }
 
-.event-details-text{
+.event-details-text {
     padding: 10px;
-    flex:1;
-    display:flex;
-    flex-direction:column;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.time-location-text{
+.time-location-text {
     margin-top: 5px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.time-location-text p{
+.time-location-text p {
     font-size: 14px;
     color: var(--text-muted);
 }
@@ -391,23 +403,23 @@ header {
     overflow: hidden;
 }
 
-#event-card-hr{
+#event-card-hr {
     margin-top: auto;
 }
 
-.event-card-bottom{
+.event-card-bottom {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.attendees{
+.attendees {
     display: flex;
     gap: 2px;
 }
 
-#event-detail{
+#event-detail {
     padding: 10px 15px;
     font-size: 16px;
     border-radius: var(--radius-xl);
@@ -418,14 +430,15 @@ header {
     width: 100px;
 }
 
-#register-event{
+#register-event {
     padding: 8px 15px;
     font-size: 16px;
     border-radius: var(--radius-xl);
-    background : var(--btn);
+    background: var(--btn);
     color: white;
     font-weight: 600;
 }
+
 
 .footer {
     margin-top: 120px;
