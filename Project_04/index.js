@@ -1,5 +1,5 @@
 async function renderEventCard() {
-    const events = await fetch("../data/events.json").then(res => res.json());
+    const events = await fetch("events.json").then(res => res.json());
 
     const container = document.querySelector(".event-list");
     events.forEach(element => {
