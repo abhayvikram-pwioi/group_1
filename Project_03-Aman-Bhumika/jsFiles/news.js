@@ -1,4 +1,4 @@
-// const API_KEy = "6853a4c4a5c1518b55a4600dd0c750a6";
+const API_KEy = "6853a4c4a5c1518b55a4600dd0c750a6";
 
 async function getNews(category) {
     const newsUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=in&apikey=${API_KEy}`;
@@ -133,7 +133,7 @@ if (topicSelect) {
             });
 
             container.innerHTML += `
-            <div class="news-card">
+            <div class="news-card" data-index="${index}">
                 <div class="img-sec">
                     <img src="${article.image}" alt="image" class="img-news">
                 </div>
@@ -154,6 +154,16 @@ if (topicSelect) {
         });
 
         document.querySelectorAll(".read-more").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const index = Number(btn.dataset.index);
+                localStorage.setItem("selectedArticle", JSON.stringify(articles[index]));
+                localStorage.setItem("allArticles", JSON.stringify(articles));
+                window.location.href = "news-detail.html";
+            });
+        })
+
+          document.querySelectorAll(".news-card").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
                 const index = Number(btn.dataset.index);
@@ -282,7 +292,7 @@ async function renderNewsOnPage() {
         });
 
         container.innerHTML += `
-            <div class="news-card">
+            <div class="news-card" data-index= "${index}">
                 <div class="img-sec">
                     <img src="${article.image}" alt="image" class="img-news">
                 </div>
@@ -310,7 +320,17 @@ async function renderNewsOnPage() {
             localStorage.setItem("allArticles", JSON.stringify(related));
             window.location.href = "news-detail.html";
         });
-    })
+    });
+
+       document.querySelectorAll(".news-card").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const index = Number(btn.dataset.index);
+            localStorage.setItem("selectedArticle", JSON.stringify(related[index]));
+            localStorage.setItem("allArticles", JSON.stringify(related));
+            window.location.href = "news-detail.html";
+        });
+    });
 
 }
 
@@ -360,3 +380,12 @@ function showNewsSkeleton() {
         `;
     }
 }
+
+const backBtn = document.getElementById("back-btn");
+
+if (backBtn) {
+    backBtn.addEventListener("click", () => {
+            window.location.href = "index.html";
+    });
+}
+
