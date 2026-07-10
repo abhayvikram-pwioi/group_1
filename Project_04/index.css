@@ -558,3 +558,38 @@ header {
 
 }
 
+
+@media(max-width:1100px) {
+
+    .main-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .greeting-sec {
+        width: 100%;
+    }
+
+    .greet-cards {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        min-height: auto;
+
+    }
+
+    .event-card {
+        position: static;
+        width: min(420px, 90%);
+        transform: none;
+
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+}
