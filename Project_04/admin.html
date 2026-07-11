@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                EventHub
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Admin Panel</a>
+            </div>
+            <div class="profile">
+                Profile
+            </div>
+        </nav>
+    </header>
+    <!-- Main content -->
+     <h1>Admin DashBoard</h1>
+    <main>
+        
+        <!-- Add Event -->
+        <section class="add-event">
+            <h2>Add New Event</h2>
+            <form>
+                <input type="text" placeholder="Event Name">
+                <input type="date">
+                <input type="time">
+                <input type="text" placeholder="Venue">
+                <select>
+                    <option>Select Category</option>
+                    <option>Technical</option>
+                    <option>Cultural</option>
+                    <option>Workshop</option>
+                    <option>Arts & Cultural</option>
+                    <option>Music & Entertainment</option>
+                    <option>Health & Wellness</option>
+                </select>
+                <input type="number" placeholder="Available Seats">
+                <input type="file">
+                <textarea placeholder="Event Description"></textarea>
+                <button>Add Event</button>
+            </form>
+        </section>
+        <!-- Events -->
+        <!-- <section class="recent-events">
+            <div class="events-header">
+            <h2>All Events</h2>
+            <button>+ New Event</button>
+            </div>
+
+            <input type="text" placeholder="Search Events">
+
+            <div class="event-card">
+                <img src="" alt="">
+                <div>
+                    <h3>Hackthon 2026</h3>
+                    <p>12 Aug 2026</p>
+                    <p>Noida</p>
+
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="" alt="">
+                <div>
+                    <h3>Hackthon 2026</h3>
+                    <p>12 Aug 2026</p>
+                    <p>Noida</p>
+
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="" alt="">
+                <div>
+                    <h3>Hackthon 2026</h3>
+                    <p>12 Aug 2026</p>
+                    <p>Noida</p>
+
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="" alt="">
+                <div>
+                    <h3>Hackthon 2026</h3>
+                    <p>12 Aug 2026</p>
+                    <p>Noida</p>
+
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+        </section> -->
+
+        <section class="recent-events">
+
+    <div class="events-header">
+        <h2>All Events</h2>
+    </div>
+
+    <input type="text" placeholder="Search Events">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Event</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Venue</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td><img src="images/event.jpg" alt="img"></td>
+
+                <td>Hackathon 2026</td>
+
+                <td>Technical</td>
+
+                <td>12 Aug 2026</td>
+
+                <td>12:30 PM</td>
+
+                <td>Noida</td>
+
+                <td>
+                    <span class="active">Active</span>
+                </td>
+
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+
+        <tbody>
+
+            <tr>
+                <td><img src="images/event.jpg" alt="img"></td>
+
+                <td>Hackathon 2026</td>
+
+                <td>Technical</td>
+
+                <td>12 Aug 2026</td>
+
+                <td>14:00 PM</td>
+
+                <td>Noida</td>
+
+                <td>
+                    <span class="active">Active</span>
+                </td>
+
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+
+        <tbody>
+
+            <tr>
+                <td><img src="images/event.jpg" alt="img"></td>
+
+                <td>Hackathon 2026</td>
+
+                <td>Technical</td>
+
+                <td>12 Aug 2026</td>
+
+                <td>11:00 AM</td>
+
+                <td>Noida</td>
+
+                <td>
+                    <span class="active">Active</span>
+                </td>
+
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+
+        <tbody>
+
+            <tr>
+                <td><img src="images/event.jpg" alt="img"></td>
+
+                <td>Hackathon 2026</td>
+
+                <td>Technical</td>
+
+                <td>12 Aug 2026</td>
+
+                <td>13:00 PM</td>
+
+                <td>Noida</td>
+
+                <td>
+                    <span class="active">Active</span>
+                </td>
+
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2026 EventHub | Admin Dashboard</p>
+        
+    </footer>
+</body>
+</html>
