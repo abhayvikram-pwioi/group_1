@@ -97,3 +97,63 @@ eventImage.onerror = function () {
 };
 
 updateUI();
+
+
+
+
+
+async function loadEvent(){
+
+    const id = Number(new URLSearchParams(window.location.search).get("id")) || 1;
+
+    const response = await fetch("events.json");
+
+    const events = await response.json();
+
+    const event = events.find(e => e.id === id);
+
+    if(!event) return;
+
+    document.getElementById("title").innerText = event.title;
+
+    document.getElementById("category").innerText = event.category;
+
+    document.getElementById("description").innerText = event.description;
+
+    document.getElementById("about").innerText = event.description;
+
+    document.getElementById("date").innerText = event.date;
+
+    document.getElementById("time").innerText = event.time;
+
+    document.getElementById("location").innerText = event.location;
+
+    document.getElementById("speaker").innerText = event.speaker;
+
+    document.getElementById("organizer").innerText = event.organizer;
+
+    document.getElementById("duration").innerText = event.duration;
+
+    document.getElementById("eventImage").src = event.image;
+
+    attendees = event.attendees;
+
+    maxAttendees = event.maxAttendees;
+
+    document.getElementById("maxAttendees").innerText = maxAttendees;
+
+    const agenda=document.getElementById("agenda");
+
+    agenda.innerHTML="";
+
+    event.agenda.forEach(item=>{
+
+        agenda.innerHTML+=`<li>${item}</li>`;
+
+    });
+
+    updateUI();
+
+}
+
+loadEvent();
