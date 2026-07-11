@@ -29,12 +29,12 @@
         <!-- Add Event -->
         <section class="add-event">
             <h2>Add New Event</h2>
-            <form>
-                <input type="text" placeholder="Event Name" required>
-                <input type="date" required>
-                <input type="time" required>
-                <input type="text" placeholder="Venue" required>
-                <select>
+            <form id="eventForm">
+                <input type="text" id="title" placeholder="Event Name" required>
+                <input type="date" id="date" required>
+                <input type="time" id="time" required>
+                <input type="text" id="venue" placeholder="Venue" required>
+                <select id="category">
                     <option>Select Category</option>
                     <option>Technical</option>
                     <option>Cultural</option>
@@ -43,10 +43,10 @@
                     <option>Music & Entertainment</option>
                     <option>Health & Wellness</option>
                 </select>
-                <input type="number" placeholder="Available Seats" required>
-                <input type="file" required>
-                <textarea placeholder="Event Description" required></textarea>
-                <button>Add Event</button>
+                <input type="number" id="seats"  placeholder="Available Seats" required>
+                <input type="url" id="image" placeholder="Banner Image URL">
+                <textarea placeholder="Event Description" id="description" required></textarea>
+                <button type="submit" id="submitBtn">Add Event</button>
             </form>
         </section>
         
@@ -57,7 +57,7 @@
         <h2>All Events</h2>
     </div>
 
-    <input type="text" placeholder="Search Events">
+    <input type="text" id="search" placeholder="Search Events">
 
     <table>
 
@@ -75,10 +75,10 @@
             </tr>
         </thead>
 
-        <tbody>
-
+        <tbody id="eventTable">
+<!-- 
             <tr>
-                <td><img src="images/event.jpg" alt="img"></td>
+                <td><img src="" alt="img"></td>
 
                 <td>Hackathon 2026</td>
 
@@ -100,12 +100,12 @@
                 </td>
             </tr>
 
-        </tbody>
+        
 
-        <tbody>
+        
 
             <tr>
-                <td><img src="images/event.jpg" alt="img"></td>
+                <td><img src="" alt="img"></td>
 
                 <td>Hackathon 2026</td>
 
@@ -128,12 +128,12 @@
                 </td>
             </tr>
 
-        </tbody>
+       
 
-        <tbody>
+        
 
             <tr>
-                <td><img src="images/event.jpg" alt="img"></td>
+                <td><img src=""  alt="img"></td>
 
                 <td>Hackathon 2026</td>
 
@@ -155,12 +155,9 @@
                 </td>
             </tr>
 
-        </tbody>
-
-        <tbody>
-
+       
             <tr>
-                <td><img src="images/event.jpg" alt="img"></td>
+                <td><img src="" alt="img"></td>
 
                 <td>Hackathon 2026</td>
 
@@ -180,7 +177,7 @@
                     <button class="edit-btn">Edit</button>
                     <button class="delete-btn">Delete</button>
                 </td>
-            </tr>
+            </tr> -->
 
         </tbody>
 
@@ -194,5 +191,7 @@
         <p>© 2026 EventHub | Admin Dashboard</p>
         
     </footer>
+
+    <script src="admin.js"></script>
 </body>
 </html>
