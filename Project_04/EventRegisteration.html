@@ -35,16 +35,13 @@
         <label for="event">Event Selection</label>
         <select id="event" required>
           <option value="">Select an event</option>
-          <option value="tech">Tech Innovators Summit 2026</option>
-          <option value="startup">Startup Workshop</option>
-          <option value="design">Design Conference</option>
         </select>
       </div>
 
       <div class="registration-layout is-hidden" id="event-registration-area">
         <div class="registration-card">
 
-          <div class="event-summary">
+            <div class="event-summary">
             <div class="event-banner" id="event-banner">Event Banner</div>
 
             <div>
@@ -53,9 +50,11 @@
 
               <div class="event-meta">
                 <p><strong>Date:</strong> <span id="event-date">August 22, 2026</span></p>
-                <p><strong>Time:</strong> <span id="event-time">10:00 AM - 5:00 PM</span></p>
+                <p><strong>Time:</strong> <span id="event-time">10:00 AM</span></p>
                 <p><strong>Venue:</strong> <span id="event-venue">Grand Convention Center</span></p>
                 <p><strong>Available Seats:</strong> <span id="event-seats">48 seats</span></p>
+                <p><strong>Duration:</strong> <span id="event-duration">4 Hours</span></p>
+                <p><strong>Speaker:</strong> <span id="event-speaker">Sarah Johnson</span></p>
               </div>
             </div>
           </div>
@@ -71,6 +70,11 @@
               <div class="form-group">
                 <label for="reg-email">Email</label>
                 <input type="email" id="reg-email" placeholder="Enter email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" placeholder="Create password" required minlength="6">
               </div>
 
               <div class="form-group">
@@ -136,6 +140,9 @@
           <p><strong>Organizer:</strong> <span id="info-organizer">EventHub Experiences</span></p>
           <p><strong>Entry Fee:</strong> <span id="info-fee">$49 per ticket</span></p>
           <p><strong>Remaining Seats:</strong> <span id="info-seats">48 seats</span></p>
+          <p><strong>Duration:</strong> <span id="info-duration">4 Hours</span></p>
+          <p><strong>Speaker:</strong> <span id="info-speaker">Sarah Johnson</span></p>
+          <p><strong>Description:</strong> <span id="info-description">Select an event to view details.</span></p>
         </div>
       </div>
     </div>
@@ -152,85 +159,6 @@
       </div>
     </div>
   </footer>
-  <script>
-    const events = {
-      tech: {
-        name: 'Tech Innovators Summit 2026',
-        category: 'Technology',
-        date: 'August 22, 2026',
-        time: '10:00 AM - 5:00 PM',
-        venue: 'Grand Convention Center',
-        seats: '48 seats',
-        organizer: 'EventHub Experiences',
-        fee: '$49 per ticket',
-        banner: 'Tech Summit'
-      },
-      startup: {
-        name: 'Startup Workshop',
-        category: 'Business',
-        date: 'September 12, 2026',
-        time: '11:00 AM - 3:00 PM',
-        venue: 'Innovation Lab',
-        seats: '32 seats',
-        organizer: 'Startup Circle',
-        fee: '$29 per ticket',
-        banner: 'Startup Workshop'
-      },
-      design: {
-        name: 'Design Conference',
-        category: 'Design',
-        date: 'October 5, 2026',
-        time: '9:30 AM - 4:30 PM',
-        venue: 'Creative Arts Center',
-        seats: '60 seats',
-        organizer: 'Design Guild',
-        fee: '$39 per ticket',
-        banner: 'Design Conference'
-      }
-    };
-
-    const registrationForm = document.getElementById('registration-form');
-    const eventSelect = document.getElementById('event');
-    const eventRegistrationArea = document.getElementById('event-registration-area');
-
-    function setText(id, value) {
-      document.getElementById(id).textContent = value;
-    }
-
-    eventSelect.addEventListener('change', function () {
-      const selectedEvent = events[eventSelect.value];
-
-      if (!selectedEvent) {
-        eventRegistrationArea.classList.add('is-hidden');
-        setText('page-title', 'Choose an event to register');
-        setText('page-description', 'Select the event first, then fill the form below to book your seat.');
-        return;
-      }
-
-      setText('page-title', 'Register for ' + selectedEvent.name);
-      setText('page-description', 'Fill the form below to book your seat for ' + selectedEvent.name + '.');
-      setText('event-banner', selectedEvent.banner);
-      setText('event-category', selectedEvent.category);
-      setText('event-title', selectedEvent.name);
-      setText('event-date', selectedEvent.date);
-      setText('event-time', selectedEvent.time);
-      setText('event-venue', selectedEvent.venue);
-      setText('event-seats', selectedEvent.seats);
-      setText('info-name', selectedEvent.name);
-      setText('info-date', selectedEvent.date);
-      setText('info-time', selectedEvent.time);
-      setText('info-venue', selectedEvent.venue);
-      setText('info-organizer', selectedEvent.organizer);
-      setText('info-fee', selectedEvent.fee);
-      setText('info-seats', selectedEvent.seats);
-      eventRegistrationArea.classList.remove('is-hidden');
-    });
-
-    registrationForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      alert('You have been registered for the event ' + events[eventSelect.value].name + '.');
-      window.location.href = 'login.html';
-    });
-  </script>
+  <script src="registration.js"></script>
 </body>
 </html>
