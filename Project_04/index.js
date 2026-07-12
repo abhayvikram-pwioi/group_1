@@ -367,3 +367,10 @@ async function sendMessage(message) {
     const reply = await generateReply(message);
     addBotMessage(reply);
 }
+
+async function showTotalEvents(){
+    const totalEvents = await getAllEvents();
+    document.querySelector(".live-msg p").innerText = `Live · ${totalEvents.length} events this season`;
+    document.querySelector(".event-headline p").innerText = `${totalEvents.length} EVENTS`
+}
+showTotalEvents();
