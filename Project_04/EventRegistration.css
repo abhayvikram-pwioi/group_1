@@ -76,7 +76,6 @@ body {
 
 header {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
@@ -122,27 +121,6 @@ a:hover {
   margin: 0 auto;
   padding: 0 20px;
 }
-
-/* .brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text-primary);
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.brand-centered {
-  justify-content: center;
-}
-
-.brand-mark {
-  background-color: var(--primary);
-  color: var(--text-white);
-  padding: 8px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-} */
 
 /* Forms */
 .form {
@@ -853,19 +831,6 @@ dd {
 }
 
 @media (max-width: 700px) {
-  header,
-  .header-content,
-  .footer-content {
-    flex-direction: column;
-    padding: 18px 0;
-    text-align: center;
-  }
-
-  .menu-list,
-  .site-nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 
   .page-intro h1 {
     font-size: 28px;
@@ -888,9 +853,47 @@ dd {
   .form-row-between {
     flex-direction: column;
   }
+
+    header {
+        margin: 0px;
+    }
+
+    .logo-side h1 {
+        font-size: 23px;
+    }
+
+    .live-msg {
+        width: 200px;
+    }
+
+    .live-msg p {
+        font-size: 0.8rem;
+    }
+
+
+    .menu-list a {
+        font-size: 1rem;
+    }
+
+       .footer-container {
+        grid-template-columns: 1fr;
+
+    }
+
+    .newsletter-box {
+        flex-direction: column;
+
+    }
+
+    .newsletter-box button {
+        width: 100%;
+
+    }
+
+
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .auth-card {
     padding: 22px;
   }
@@ -898,4 +901,4 @@ dd {
   .auth-header h1 {
     font-size: 28px;
   }
-}
+} */
