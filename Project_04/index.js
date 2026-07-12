@@ -5,7 +5,7 @@ async function getAllEvents() {
     const localEvents = JSON.parse(localStorage.getItem("events")) || [];
 
     return [...jsonEvents, ...localEvents];
-    
+
 }
 
 async function renderEventCard() {
@@ -60,7 +60,7 @@ async function renderEventCard() {
 function formatDate(dateString) {
     const date = new Date(dateString);
     const day = date.getDate();
-    const month = date.toLocaleString("en-US", { month: "short"}).toUpperCase();
+    const month = date.toLocaleString("en-US", { month: "short" }).toUpperCase();
     return `${day} ${month}`;
 }
 
@@ -126,11 +126,11 @@ sendMsgBtn.addEventListener("click", async (e) => {
 });
 
 
-function addTypingMessage(){
+function addTypingMessage() {
 
     const container = document.getElementById("chatBody");
 
-    container.insertAdjacentHTML("beforeend",`
+    container.insertAdjacentHTML("beforeend", `
 
         <div class="bot-message typing" id="typing">
 
@@ -142,7 +142,7 @@ function addTypingMessage(){
 
 }
 
-function removeTypingMessage(){
+function removeTypingMessage() {
 
     document.getElementById("typing")?.remove();
 
@@ -368,7 +368,7 @@ async function sendMessage(message) {
     addBotMessage(reply);
 }
 
-async function showTotalEvents(){
+async function showTotalEvents() {
     const totalEvents = await getAllEvents();
     document.querySelector(".live-msg p").innerText = `Live · ${totalEvents.length} events this season`;
     document.querySelector(".event-headline p").innerText = `${totalEvents.length} EVENTS`
@@ -378,8 +378,13 @@ showTotalEvents();
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-if(currentUser){
-    document.querySelector(".login-side").style.display="none";
-    document.querySelector(".profile-side").style.display="flex";
+if (currentUser) {
+    document.querySelector(".login-side").style.display = "none";
+    document.querySelector(".profile-side").style.display = "flex";
     document.querySelector("#profile-pic").src = currentUser.profilePic;
 }
+
+document.getElementById("event-detail").addEventListener("click", () => {
+    localStorage.setItem("selectedEvent",JSON.stringify(event));
+    window.location.href = "EventRegistration.html";
+})
