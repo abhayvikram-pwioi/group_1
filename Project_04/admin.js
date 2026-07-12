@@ -28,7 +28,7 @@ eventForm.addEventListener("submit", function(e){
 
         time: time.value,
 
-        venue: venue.value,
+        location: venue.value,
 
         category: category.value,
 
@@ -65,9 +65,9 @@ eventForm.addEventListener("submit", function(e){
 });
 
 
-function displayEvents(){
+function displayEvents(eventList = events){
     eventTable.innerHTML = "";
-    events.forEach(function(event,index){
+    eventList.forEach(function(event,index){
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>
@@ -76,13 +76,15 @@ function displayEvents(){
 
             <td>${event.title}</td>
 
+            <td>${event.description}</td>
+
             <td>${event.category}</td>
 
             <td>${event.date}</td>
 
             <td>${event.time}</td>
 
-            <td>${event.venue}</td>
+            <td>${event.location}</td>
 
             <td>${event.seats}</td>
 
@@ -139,3 +141,14 @@ function displayEvents(){
 });
 }
 
+search.addEventListener("input",function(){
+    const searchText = search.value.toLowerCase();
+    const filteredEvents = events.filter(function(event){
+        return(
+            event.title.toLowerCase().includes(searchText) ||
+            event.category.toLowerCase().includes(searchText) ||
+            event.location.toLowerCase().includes(searchText)
+        );
+    })
+    displayEvents(filteredEvents);
+})
