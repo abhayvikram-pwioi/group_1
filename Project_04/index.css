@@ -716,45 +716,45 @@ header {
 }
 
 
-.chat-body{
-    flex:1;
-    padding:18px;
-    overflow-y:auto;
-    background:#F8FAFC;
+.chat-body {
+    flex: 1;
+    padding: 18px;
+    overflow-y: auto;
+    background: #F8FAFC;
 }
 
-.bot-message{
-    width:80%;
-    background:#fff;
-    border:1px solid #E5E7EB;
-    border-radius:22px 22px 22px 8px;
-    padding:14px;
-    line-height:1.2;
-    box-shadow:0 6px 18px rgba(0,0,0,.05);
+.bot-message {
+    width: 80%;
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 22px 22px 22px 5px;
+    padding: 14px;
+    line-height: 1.2;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .05);
 
 }
 
-.bot-message p{
-    font-size:15px;
+.bot-message p {
+    font-size: 15px;
     color: var(--text-primary);
 }
 
-.bot-message span{
-    display:block;
-    margin-top:10px;
-    font-size:13px;
-    color:#64748B;
-    letter-spacing:2px;
+.bot-message span {
+    display: block;
+    margin-top: 10px;
+    font-size: 10px;
+    color: #64748B;
+    letter-spacing: 2px;
 }
 
-.quick-replies{
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-    margin-top:12px;
+.quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 12px;
 }
 
-.quick-replies button{
+.quick-replies button {
     border: 1px solid var(--border);
     padding: 8px;
     text-align: center;
@@ -762,7 +762,7 @@ header {
     border-radius: 10px;
 }
 
-.quick-replies button:hover{
+.quick-replies button:hover {
     cursor: pointer;
     background: var(--btn);
     color: white;
@@ -771,16 +771,28 @@ header {
 
 
 
-.user-message{
-    margin-top:12px;
-    margin-left:auto;
-    background:var(--primary);
-    color:white;
-    padding:14px;
-    border-radius:18px 18px 8px 18px;
-    max-width:80%;
-    margin-bottom:15px;
+.user-message {
+    margin-top: 12px;
+    margin-left: auto;
+    background: var(--primary);
+    color: white;
+    padding: 14px;
+    border-radius: 18px 18px 5px 18px;
+    max-width: 80%;
+    margin-bottom: 15px;
     font-size: 13px;
+}
+
+.user-message p {
+    font-size: 15px;
+}
+
+.user-message span {
+    display: block;
+    margin-top: 10px;
+    font-size: 10px;
+    color: var(--text-white);
+    letter-spacing: 2px;
 }
 
 
