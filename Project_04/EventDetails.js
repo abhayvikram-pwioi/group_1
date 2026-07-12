@@ -1,11 +1,8 @@
 
 
 const maxAttendees = 200;
-
 let attendees = 120;
-
 let registered = false;
-
 
 const registerBtn = document.getElementById("registerBtn");
 
