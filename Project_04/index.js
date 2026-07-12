@@ -374,3 +374,12 @@ async function showTotalEvents(){
     document.querySelector(".event-headline p").innerText = `${totalEvents.length} EVENTS`
 }
 showTotalEvents();
+
+
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if(currentUser){
+    document.querySelector(".login-side").style.display="none";
+    document.querySelector(".profile-side").style.display="flex";
+    document.querySelector("#profile-pic").src = currentUser.profilePic;
+}

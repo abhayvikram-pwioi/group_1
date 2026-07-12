@@ -41,7 +41,6 @@ loginForm.addEventListener('submit', async function (e) {
     role: matchedUser.role,
     profilePic: matchedUser.profilePic,
     loggedInAt: new Date().toISOString()
-
   };
 
   localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
