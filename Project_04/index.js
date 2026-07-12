@@ -141,3 +141,9 @@ function addTypingMessage(){
     `);
 
 }
+
+function removeTypingMessage(){
+
+    document.getElementById("typing")?.remove();
+
+}
