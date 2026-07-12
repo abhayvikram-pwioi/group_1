@@ -147,3 +147,61 @@ function removeTypingMessage(){
     document.getElementById("typing")?.remove();
 
 }
+
+function searchCategory(events, message) {
+
+    const categories = [
+        "technology",
+        "music",
+        "business",
+        "art",
+        "health",
+        "photography",
+        "workshop"
+    ];
+
+    const category = categories.find(cat =>
+        message.includes(cat) ||
+        (cat === "technology" && message.includes("tech"))
+    );
+
+    if (!category) return [];
+
+    return events.filter(event =>
+        event.category.toLowerCase().includes(category)
+    );
+
+}
+
+function searchLocation(events, message) {
+
+    return events.filter(event =>
+        message.includes(event.location.toLowerCase())
+    );
+
+}
+
+function searchDate(events, message) {
+
+    return events.filter(event => {
+
+        const date = new Date(event.date);
+
+        const formatted = date.toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "long"
+        }).toLowerCase();
+
+        return message.includes(formatted);
+
+    });
+
+}
+
+function searchTitle(events, message) {
+
+    return events.filter(event =>
+        message.includes(event.title.toLowerCase())
+    );
+
+}
