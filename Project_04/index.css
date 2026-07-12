@@ -3,6 +3,10 @@
     margin: 0%;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 :root {
     /* ========== Primary Colors ========== */
     --primary: #FF4D8D;

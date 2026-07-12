@@ -1,6 +1,6 @@
 async function getAllEvents() {
 
-    const jsonEvents = await fetch("../data/events.json").then(res => res.json());
+    const jsonEvents = await fetch("events.json").then(res => res.json());
 
     const localEvents = JSON.parse(localStorage.getItem("events")) || [];
 
