@@ -12,7 +12,10 @@ async function renderEventCard() {
     const events = await getAllEvents();
 
     const container = document.querySelector(".event-list");
+    const attendeeCounts = JSON.parse(localStorage.getItem("attendeeCounts")) || {};
     events.forEach(element => {
+    const attendees = attendeeCounts[element.id] ?? element.attendees;
+
         container.innerHTML += `
          <div class="event-card-sec">
                 <div class="card-img">
@@ -40,7 +43,7 @@ async function renderEventCard() {
                     <hr id = "event-card-hr">
                     <div class="event-card-bottom">
                         <div class="attendees">
-                            <p id="attendees-num">${element.attendees}</p>
+                            <p id="attendees-num">${attendees}</p>
                             <p id="total-attendee">/ ${element.maxAttendees}</p>
                         </div>
 
@@ -53,40 +56,42 @@ async function renderEventCard() {
 
             </div>
         `
+    });
 
-        document.querySelectorAll(".register-event").forEach(btn => {
+    document.querySelectorAll(".register-event").forEach(btn => {
 
-            btn.addEventListener("click", () => {
+        btn.addEventListener("click", () => {
 
-                const id = Number(btn.dataset.id);
+            const id = btn.dataset.id;
 
-                const selectedEvent = events.find(event => event.id === id);
+            const selectedEvent = events.find(
+                event => String(event.id) === String(id)
+            );
 
-                localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
+            localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
 
-                window.location.href = "EventRegistration.html";
-
-            });
-
-        });
-
-        document.querySelectorAll(".event-detail").forEach(btn => {
-
-            btn.addEventListener("click", () => {
-
-                const id = Number(btn.dataset.id);
-
-                const selectedEvent = events.find(event => event.id === id);
-
-                localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
-
-                window.location.href = "EventDetails.html";
-
-            });
+            window.location.href = "EventRegistration.html";
 
         });
 
     });
+
+    document.querySelectorAll(".event-detail").forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+            const id = Number(btn.dataset.id);
+
+            const selectedEvent = events.find(event => event.id === id);
+
+            localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
+
+            window.location.href = "EventDetails.html";
+
+        });
+
+    });
+
 
 }
 

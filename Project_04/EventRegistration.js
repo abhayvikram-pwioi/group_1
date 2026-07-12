@@ -10,16 +10,13 @@ async function init() {
 
   await loadSelectedEvent();
 
-  document
-    .getElementById("registration-form")
-    .addEventListener("submit", registerEvent);
+  document.getElementById("registration-form").addEventListener("submit", registerEvent);
 
 }
 
 function checkLogin() {
 
-  const user =
-    JSON.parse(localStorage.getItem(CURRENT_USER));
+  const user = JSON.parse(localStorage.getItem(CURRENT_USER));
 
   if (!user) {
 
@@ -36,21 +33,19 @@ function checkLogin() {
 
 }
 
-localStorage.setItem("selectedEvent", JSON.stringify(event));
-
 
 async function loadSelectedEvent() {
 
-  let event =  JSON.parse(localStorage.getItem(EVENT_KEY));
+  let event = JSON.parse(localStorage.getItem(EVENT_KEY));
+  console.log(event);
 
   if (!event) {
 
-    const events = await fetch("events.json") .then(res => res.json());
+    const events = await fetch("events.json").then(res => res.json());
     event = events[0];
   }
 
-  document.getElementById("event-registration-area")
-    .classList.remove("is-hidden");
+  document.getElementById("event-registration-area").classList.remove("is-hidden");
 
   document.getElementById("event-title").innerText = event.title;
   document.getElementById("event-category").innerText = event.category;
@@ -75,21 +70,17 @@ async function loadSelectedEvent() {
   document.getElementById("info-venue").innerText = event.location;
   document.getElementById("info-organizer").innerText = event.organizer;
   document.getElementById("info-fee").innerText = event.price;
-  document.getElementById("info-seats").innerText =
-    event.availableSeats + " Seats";
+  document.getElementById("info-seats").innerText = event.availableSeats + " Seats";
 
-  document.getElementById("info-duration").innerText =
-    event.duration;
+  document.getElementById("info-duration").innerText = event.duration;
 
-  document.getElementById("info-speaker").innerText =
-    event.speaker;
+  document.getElementById("info-speaker").innerText = event.speaker;
 
-  document.getElementById("info-description").innerText =
-    event.description;
+  document.getElementById("info-description").innerText = event.description;
 
 }
 
-function registerEvent(e) {
+async function registerEvent(e) {
 
   e.preventDefault();
 
@@ -98,6 +89,107 @@ function registerEvent(e) {
   const selectedEvent = JSON.parse(localStorage.getItem(EVENT_KEY));
 
   const registrations = JSON.parse(localStorage.getItem(REGISTRATION_KEY)) || [];
+
+  async function getAllEvents() {
+
+    const jsonEvents = await fetch("events.json").then(res => res.json());
+
+    const localEvents = JSON.parse(localStorage.getItem("events")) || [];
+
+    return [...jsonEvents, ...localEvents];
+
+  }
+
+  const events = await getAllEvents();
+
+  const eventIndex = events.findIndex(e => e.id == selectedEvent.id);
+
+  if (eventIndex !== -1) {
+    
+    const attendeeCounts = JSON.parse(localStorage.getItem("attendeeCounts")) || {};
+
+    const tickets = Number(document.getElementById("tickets").value);
+
+    attendeeCounts[selectedEvent.id] = (attendeeCounts[selectedEvent.id] || selectedEvent.attendees) + tickets;
+
+    localStorage.setItem( "attendeeCounts",JSON.stringify(attendeeCounts));
+
+  }
+
+
+  const totalTickets = Number(document.getElementById("tickets").value);
+
+  if (selectedEvent.attendees + totalTickets > selectedEvent.maxAttendees) {
+
+    alert("Sorry! No seats available.");
+
+    return;
+
+  }
+
+  const phone = document.getElementById("phone").value.trim();
+
+  if (!/^[6-9]\d{9}$/.test(phone)) {
+
+    alert("Enter a valid phone number.");
+
+    return;
+
+  }
+
+  const age = Number(document.getElementById("age").value);
+
+  if (age < 15 || age > 100) {
+
+    alert("Age must be between 15 and 100.");
+
+    return;
+
+  }
+
+  const emergency = document.getElementById("emergency").value.trim();
+
+  if (emergency && !/^[6-9]\d{9}$/.test(emergency)) {
+
+    alert("Invalid emergency contact.");
+
+    return;
+
+  }
+
+  const name = document.getElementById("full-name").value.trim();
+
+  if (name.length < 3) {
+
+    alert("Full name must contain at least 3 characters.");
+
+    return;
+
+  }
+
+  const org = document.getElementById("organization").value.trim();
+
+  if (org.length < 3) {
+
+    alert("Enter your college or organization.");
+
+    return;
+
+  }
+
+  const tickets = Number(document.getElementById("tickets").value);
+
+  if (tickets < 1) {
+
+    alert("Minimum one ticket is required.");
+
+    return;
+
+  }
+
+
+
+
 
   const alreadyRegistered = registrations.find(reg =>
 
