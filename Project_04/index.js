@@ -326,3 +326,44 @@ Frontend Bootcamp
     `;
 
 }
+
+
+function addBotMessage(message) {
+    const container = document.getElementById("chatBody");
+
+    container.innerHTML += `
+     <div class="bot-message">
+                <p>
+                   ${message}
+                </p>
+                <span>${getCurrentTime()}</span>
+            </div>
+    `
+}
+
+const quickReplies = document.querySelectorAll(".quick-replies button");
+
+quickReplies.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const message = button.innerText;
+
+        sendMessage(message);
+
+    });
+
+});
+
+async function sendMessage(message) {
+    const container = document.getElementById("chatBody");
+    container.insertAdjacentHTML("beforeend", `
+        <div class="user-message">
+            <p>${message}</p>
+            <span>${getCurrentTime()}</span>
+        </div>
+
+    `);
+    const reply = await generateReply(message);
+    addBotMessage(reply);
+}
