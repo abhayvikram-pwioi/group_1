@@ -431,3 +431,46 @@ if (currentUser) {
     document.querySelector(".profile-side").style.display = "flex";
     document.querySelector("#profile-pic").src = currentUser.profilePic;
 }
+
+
+const profileImg = document.querySelector(".profile-img");
+const dropdown = document.getElementById("profile-dropdown");
+
+profileImg.addEventListener("click",(e)=>{
+
+    e.stopPropagation();
+    dropdown.classList.toggle("active");
+
+});
+
+document.addEventListener("click",()=>{
+
+    dropdown.classList.remove("active");
+
+});
+
+const user = JSON.parse(localStorage.getItem("currentUser"));
+
+document.getElementById("dropdown-name").innerText = user.fullName;
+document.getElementById("dropdown-email").innerText = user.email;
+
+document.getElementById("dropdown-pic").src = user.profilePic;
+document.getElementById("profile-pic").src = user.profilePic;
+
+if(user.role === "admin"){
+
+    document.getElementById("registration-link").style.display = "none";
+
+}else{
+
+    document.getElementById("dashboard-link").style.display = "none";
+
+}
+
+document.getElementById("logout-btn").addEventListener("click",()=>{
+
+    localStorage.removeItem("currentUser");
+
+    window.location.href = "LoginPage.html";
+
+});
