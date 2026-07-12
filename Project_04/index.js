@@ -236,3 +236,93 @@ function buildReply(title, events) {
 
     return reply;
 }
+
+async function generateReply(message) {
+
+    message = message.toLowerCase().trim();
+    const events = await getAllEvents();
+
+
+    if (
+        message.includes("hi") ||
+        message.includes("hello") ||
+        message.includes("hey")
+    ) {
+
+        return `
+Hello!
+
+I'm your Event Assistant Scout.
+
+You can search events by:<br>
+
+• Category<br>
+• Location<br>
+• Date<br>
+• Event name<br>
+`;
+
+    }
+
+    if (message.includes("help")) {
+
+        return `
+Try asking:
+
+Technology Events
+
+Music Events
+
+Events in Delhi
+
+20 July
+
+Frontend Bootcamp
+`;
+
+    }
+
+    let result = searchCategory(events, message);
+
+    if (result.length) {
+        return buildReply(`I found events matching your search.<br>Here are the most relevant results:<br>`, result);
+    }
+
+    result = searchLocation(events, message);
+
+    if (result.length)
+        return buildReply(
+            `Events in this location.`,
+            result
+        );
+
+
+    result = searchDate(events, message);
+
+    if (result.length)
+        return buildReply(
+            `Events on this date.`,
+            result
+        );
+
+    result = searchTitle(events, message);
+
+    if (result.length)
+        return buildReply(`Here's the event you searched for.`, result);
+
+    return `
+        <strong>Sorry, I couldn't understand your question..</strong><br><br>
+
+        Try searching by category, location, or keyword.<br><br>
+
+        <strong>Popular searches:</strong><br>
+
+        • Technology<br>
+        • Music<br>
+        • Workshops<br>
+        • Delhi<br><br>
+
+        Need help finding something specific? Just let me know.
+    `;
+
+}
