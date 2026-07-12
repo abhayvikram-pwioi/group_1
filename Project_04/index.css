@@ -823,6 +823,37 @@ header {
 }
 
 
+.chat-event {
+    margin-top: 12px;
+    padding: 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    background: #FAFAFA;
+    margin-bottom: 10px;
+}
+
+.chat-event h4 {
+    margin-bottom: 6px;
+    font-size: 17px;
+}
+
+.chat-event p {
+    color: #64748B;
+    margin-bottom: 8px;
+}
+
+.chat-event span {
+    font-size: 13px;
+    color: #94A3B8;
+}
+
+.chat-event small {
+    display: block;
+    margin-top: 6px;
+    color: #475569;
+}
+
+
 @media(max-width:1100px) {
 
     .main-box {
