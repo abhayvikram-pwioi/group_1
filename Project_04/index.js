@@ -10,7 +10,7 @@ async function getAllEvents() {
 
 async function renderEventCard() {
     const events = await getAllEvents();
-    
+
     const container = document.querySelector(".event-list");
     events.forEach(element => {
         container.innerHTML += `
@@ -81,5 +81,63 @@ chatToggle.onclick = () => {
 closeChat.onclick = () => {
 
     chatBox.classList.remove("active");
+
+}
+
+function getCurrentTime() {
+
+    return new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+}
+
+const sendMsgBtn = document.getElementById("sendBtn");
+
+sendMsgBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    const container = document.getElementById("chatBody");
+    if (message === "") return;
+
+    container.innerHTML += `
+            <div class="user-message">
+                <p>${message}</p>
+                <span>${getCurrentTime()}</span>
+            </div>
+
+   `
+    addTypingMessage();
+
+    const reply = await generateReply(message);
+
+    setTimeout(() => {
+        removeTypingMessage();
+        addBotMessage(reply);
+
+    }, 1200);
+
+    input.value = "";
+
+    container.scrollTop = container.scrollHeight;
+});
+
+
+function addTypingMessage(){
+
+    const container = document.getElementById("chatBody");
+
+    container.insertAdjacentHTML("beforeend",`
+
+        <div class="bot-message typing" id="typing">
+
+            <p>Typing...</p>
+
+        </div>
+
+    `);
 
 }
