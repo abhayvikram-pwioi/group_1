@@ -25,7 +25,7 @@ function checkLogin() {
 
     alert("Please login first.");
 
-    window.location.href = "Login.html";
+    window.location.href = "LoginPage.html";
 
     return;
 
@@ -41,16 +41,12 @@ localStorage.setItem("selectedEvent", JSON.stringify(event));
 
 async function loadSelectedEvent() {
 
-  let event =
-    JSON.parse(localStorage.getItem(EVENT_KEY));
+  let event =  JSON.parse(localStorage.getItem(EVENT_KEY));
 
   if (!event) {
 
-    const events = await fetch("../data/events.json")
-      .then(res => res.json());
-
+    const events = await fetch("events.json") .then(res => res.json());
     event = events[0];
-
   }
 
   document.getElementById("event-registration-area")
@@ -61,14 +57,11 @@ async function loadSelectedEvent() {
   document.getElementById("event-date").innerText = event.date;
   document.getElementById("event-time").innerText = event.time;
   document.getElementById("event-venue").innerText = event.location;
-  document.getElementById("event-seats").innerText =
-    event.availableSeats + " Seats";
+  document.getElementById("event-seats").innerText = event.availableSeats + " Seats";
 
-  document.getElementById("event-duration").innerText =
-    event.duration;
+  document.getElementById("event-duration").innerText = event.duration;
 
-  document.getElementById("event-speaker").innerText =
-    event.speaker;
+  document.getElementById("event-speaker").innerText = event.speaker;
 
   document.getElementById("event-banner").innerHTML = `
         <img src="${event.image}"

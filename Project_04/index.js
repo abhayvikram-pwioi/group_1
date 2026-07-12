@@ -45,14 +45,47 @@ async function renderEventCard() {
                         </div>
 
                         <div class="card-btns">
-                            <button id="event-detail">Detail</button>
-                            <button id="register-event">Register</button>
+                            <button class="event-detail" data-id="${element.id}">Detail</button>
+                            <button class="register-event" data-id="${element.id}">Register</button>
                         </div>
                     </div>
                 </div>
 
             </div>
         `
+
+        document.querySelectorAll(".register-event").forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                const id = Number(btn.dataset.id);
+
+                const selectedEvent = events.find(event => event.id === id);
+
+                localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
+
+                window.location.href = "EventRegistration.html";
+
+            });
+
+        });
+
+        document.querySelectorAll(".event-detail").forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                const id = Number(btn.dataset.id);
+
+                const selectedEvent = events.find(event => event.id === id);
+
+                localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
+
+                window.location.href = "EventDetails.html";
+
+            });
+
+        });
+
     });
 
 }
@@ -384,7 +417,3 @@ if (currentUser) {
     document.querySelector("#profile-pic").src = currentUser.profilePic;
 }
 
-document.getElementById("event-detail").addEventListener("click", () => {
-    localStorage.setItem("selectedEvent",JSON.stringify(event));
-    window.location.href = "EventRegistration.html";
-})

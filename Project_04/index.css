@@ -421,7 +421,7 @@ header {
     gap: 2px;
 }
 
-#event-detail {
+.event-detail {
     padding: 10px 15px;
     font-size: 16px;
     border-radius: var(--radius-xl);
@@ -432,7 +432,7 @@ header {
     width: 100px;
 }
 
-#register-event {
+.register-event {
     padding: 8px 15px;
     font-size: 16px;
     border-radius: var(--radius-xl);
