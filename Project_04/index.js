@@ -205,3 +205,34 @@ function searchTitle(events, message) {
     );
 
 }
+
+function buildReply(title, events) {
+    if (events.length == 0) {
+
+        return `${title} No events are currently available.`;
+    }
+
+
+
+    let reply = `${title}<br>`;
+
+    events.slice(0, 3).forEach((event) => {
+        reply += `
+        <div class="chat-event">
+
+    <h4>${event.title}</h4>
+
+    <p>${event.category}</p>
+
+    <span>${event.date} • ${event.time}</span>
+
+    <small>${event.location}</small>
+
+</div>
+        `
+    });
+
+    reply += "<p>Need more details? Type the event name.</p>";
+
+    return reply;
+}
