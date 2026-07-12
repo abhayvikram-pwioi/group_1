@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="admin.css">
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -22,10 +24,38 @@
             </div>
         </nav>
     </header>
+
+    <!-- <div class="profile-wrapper">
+
+        <img src="" id="profile-pic">
+
+        <div class="profile-dropdown">
+
+            <p id="user-name">Aman Kumar</p>
+
+            <p id="user-email">aman@gmail.com</p>
+
+            <hr>
+
+            <button id="my-profile">
+                👤 My Profile
+            </button>
+
+            <button id="my-registrations">
+                🎫 My Registrations
+            </button>
+
+            <button id="logout-btn">
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </div> -->
     <!-- Main content -->
-     <h1>Admin DashBoard</h1>
+    <h1>Admin DashBoard</h1>
     <main>
-        
+
         <!-- Add Event -->
         <section class="add-event">
             <h2>Add New Event</h2>
@@ -43,44 +73,44 @@
                     <option>Music & Entertainment</option>
                     <option>Health & Wellness</option>
                 </select>
-                <input type="number" id="seats"  placeholder="Available Seats" required>
+                <input type="number" id="seats" placeholder="Available Seats" required>
                 <input type="url" id="image" placeholder="Banner Image URL">
                 <textarea placeholder="Event Description" id="description" required></textarea>
                 <button type="submit" id="submitBtn">Add Event</button>
             </form>
         </section>
-        
+
 
         <section class="recent-events">
 
-    <div class="events-header">
-        <h2>All Events</h2>
-    </div>
+            <div class="events-header">
+                <h2>All Events</h2>
+            </div>
 
-    <input type="text" id="search" placeholder="Search Events">
+            <input type="text" id="search" placeholder="Search Events">
 
-    <table>
+            <table>
 
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Event Title</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Venue</th>
-                <th>Maximum Attendee</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Event Title</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Venue</th>
+                        <th>Maximum Attendee</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
 
-        <tbody id="eventTable">
-        </tbody>
+                <tbody id="eventTable">
+                </tbody>
 
-    </table>
+            </table>
 
-</section>
+        </section>
     </main>
 
     <!-- Footer Section -->
@@ -150,4 +180,5 @@
 
     <script src="admin.js"></script>
 </body>
+
 </html>

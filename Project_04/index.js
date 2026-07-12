@@ -14,7 +14,7 @@ async function renderEventCard() {
     const container = document.querySelector(".event-list");
     const attendeeCounts = JSON.parse(localStorage.getItem("attendeeCounts")) || {};
     events.forEach(element => {
-    const attendees = attendeeCounts[element.id] ?? element.attendees;
+        const attendees = attendeeCounts[element.id] ?? element.attendees;
 
         container.innerHTML += `
          <div class="event-card-sec">
@@ -61,6 +61,16 @@ async function renderEventCard() {
     document.querySelectorAll(".register-event").forEach(btn => {
 
         btn.addEventListener("click", () => {
+
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+            if (currentUser.role === "admin") {
+
+                alert("Admins cannot register for events. Please log in with a user account.");
+
+                return;
+
+            }
 
             const id = btn.dataset.id;
 
@@ -421,4 +431,3 @@ if (currentUser) {
     document.querySelector(".profile-side").style.display = "flex";
     document.querySelector("#profile-pic").src = currentUser.profilePic;
 }
-

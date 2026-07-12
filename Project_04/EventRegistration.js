@@ -90,6 +90,14 @@ async function registerEvent(e) {
 
   const registrations = JSON.parse(localStorage.getItem(REGISTRATION_KEY)) || [];
 
+  if (currentUser.role === "admin") {
+
+    alert("Admins cannot register for events. Please log in with a user account.");
+
+    return;
+
+  }
+
   async function getAllEvents() {
 
     const jsonEvents = await fetch("events.json").then(res => res.json());
@@ -105,14 +113,14 @@ async function registerEvent(e) {
   const eventIndex = events.findIndex(e => e.id == selectedEvent.id);
 
   if (eventIndex !== -1) {
-    
+
     const attendeeCounts = JSON.parse(localStorage.getItem("attendeeCounts")) || {};
 
     const tickets = Number(document.getElementById("tickets").value);
 
     attendeeCounts[selectedEvent.id] = (attendeeCounts[selectedEvent.id] || selectedEvent.attendees) + tickets;
 
-    localStorage.setItem( "attendeeCounts",JSON.stringify(attendeeCounts));
+    localStorage.setItem("attendeeCounts", JSON.stringify(attendeeCounts));
 
   }
 
@@ -188,9 +196,6 @@ async function registerEvent(e) {
   }
 
 
-
-
-
   const alreadyRegistered = registrations.find(reg =>
 
     reg.userEmail === currentUser.email &&
@@ -248,8 +253,33 @@ async function registerEvent(e) {
 
   localStorage.setItem(REGISTRATION_KEY, JSON.stringify(registrations));
 
-  alert("Registration Successful!");
+  const popup = document.getElementById("successPopup");
 
-  window.location.href = "index.html";
+  document.getElementById("popupMessage").innerHTML = `
+You have successfully registered for
+<b>${selectedEvent.title}</b>.<br><br>
+Tickets : ${registration.tickets}
+`;
+
+  popup.classList.add("active");
+
+  document.getElementById("popupBtn").onclick = () => {
+    window.location.href = "index.html";
+  };
+
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 3000);
 
 }
+
+
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if (currentUser) {
+  document.querySelector(".profile-side").style.display = "flex";
+  document.querySelector("#profile-pic").src = currentUser.profilePic;
+}
+
+
+
