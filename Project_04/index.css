@@ -1025,5 +1025,16 @@ header {
 
     }
 
+      .chat-box {
+
+        width: 360px;
+        height: 580px;
+
+        right: 15px;
+        bottom: 80px;
+
+    }
+
+
 
 }
