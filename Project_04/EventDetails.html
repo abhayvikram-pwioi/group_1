@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="EventDetails.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div class="main1">
+ <header>
+        <div class="logo-side">
+            <img src="" alt="">
+            <h1>UniEvents</h1>
+        </div>
+        <div class="menu-list">
+            <a href="index.html">Home</a>
+            <a href="#events-section">Events</a>
+        </div>
+        <div class="profile-side">
+            <div class="profile-img">
+                <img src="" alt="" id="profile-pic">
+            </div>
+
+            <div class="profile-dropdown" id="profile-dropdown">
+
+                <div class="user-info">
+                    <img src="" id="dropdown-pic">
+
+                    <div>
+                        <h4 id="dropdown-name">Aman Kumar</h4>
+                        <p id="dropdown-email">aman@gmail.com</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <a href="Profile.html"> My Profile</a>
+
+                <a href="#" id="registration-link">
+                     My Registrations
+                </a>
+
+                <a href="admin.html" id="dashboard-link">
+                     Dashboard
+                </a>
+
+                <button id="logout-btn">
+                    Logout
+                </button>
+
+            </div>
+        </div>
+
+        
+        <div class="login-side">
+            <a href="LoginPage.html" id="login-btn">Login</a>
+            <a href="LoginPage.html" id="sign-up-btn">Sign Up</a>
+        </div>
+    </header>
+
+<div class="container">
+    <a href="#" class="back-btn">
+        ← Back to Events
+    </a>
+
+    <div class="event-card">
+
+
+
+        <div class="left">
+
+            <img
+            src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200"
+            id="eventImage">
+
+        </div>
+        <div class="right">
+
+            <span class="category" id="category">
+                Technology
+            </span>
+
+            <h1 id="title">
+                Frontend Bootcamp 2026
+            </h1>
+
+            <p class="tagline" id="tagline">
+
+                Learn HTML, CSS and JavaScript
+                through hands-on workshops.
+
+            </p>
+
+            <div class="info">
+
+                <p>
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    <strong>Date :</strong>
+
+                    <span id="date">20 June 2026</span>
+
+                </p>
+
+
+                <p>
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <strong>Time :</strong>
+
+                    <span id="time">10:00 AM - 4:00 PM</span>
+
+                </p>
+
+                <p>
+
+                    <i class="fa-solid fa-hourglass-half"></i>
+
+                    <strong>Duration :</strong>
+
+                    <span id="duration">6 Hours</span>
+
+                </p>
+
+
+                <p>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <strong>Venue :</strong>
+
+                    <span id="location">Community Hall, Noida</span>
+
+                </p>
+
+                <p>
+
+                    <i class="fa-solid fa-microphone"></i>
+
+                    <strong>Speaker :</strong>
+
+                    <span id="speaker">John Anderson</span>
+
+                </p>
+
+            </div>
+            <div class="registration-box">
+
+                <div>
+
+                    Registered
+
+                    <span id="attendees">
+
+                        120
+
+                    </span>
+
+                    /
+                    <span id="maxAttendees">200</span>
+
+                </div>
+
+
+                <div>
+
+                    Seats Left :
+
+                    <span id="seats">
+
+                        80
+
+                    </span>
+                </div>
+            </div>
+
+            <div class="progress">
+
+                <div class="progress-bar"
+                id="progressBar"></div>
+
+            </div>
+            <button id="registerBtn">
+
+                Register Now
+
+            </button>
+
+        </div>
+
+    </div>
+    <section class="about">
+
+        <h2>
+
+            About Event
+
+        </h2>
+
+        <p id="about">
+
+            Frontend Bootcamp is a beginner-friendly
+            coding workshop where participants learn
+            HTML, CSS and JavaScript by building
+            real-world projects. The session includes
+            practical coding exercises, mentor guidance,
+            project discussion and Q&A.
+
+        </p>
+
+    </section>
+
+    <section class="highlights">
+
+        <h2>
+
+            Event Highlights
+
+        </h2>
+
+        <div class="highlight-box">
+
+            <div class="item">
+
+                ✅ Live Coding Sessions
+
+            </div>
+
+            <div class="item">
+
+                ✅ Hands-on Projects
+
+            </div>
+
+            <div class="item">
+
+                ✅ Certificate of Participation
+
+            </div>
+
+            <div class="item">
+
+                ✅ Networking with Developers
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="learn">
+
+        <h2>
+
+            What You'll Learn
+
+        </h2>
+
+        <ul>
+
+            <li>HTML5 Basics</li>
+
+            <li>CSS3 Styling</li>
+
+            <li>Responsive Web Design</li>
+
+            <li>JavaScript Fundamentals</li>
+
+            <li>DOM Manipulation</li>
+
+            <li>Mini Project Development</li>
+
+        </ul>
+
+    </section>
+
+
+    <section class="agenda">
+
+        <h2>
+
+            Event Agenda
+
+        </h2>
+
+        <ul id="agenda">
+
+            <li>10:00 AM - Registration & Welcome</li>
+            <li>10:30 AM - HTML & CSS Basics</li>
+            <li>12:00 PM - Lunch Break</li>
+            <li>1:00 PM - JavaScript Fundamentals</li>
+            <li>3:00 PM - Mini Project Building</li>
+            <li>4:00 PM - Certificate Distribution</li>
+
+        </ul>
+
+    </section>
+
+
+    <section class="organizer">
+
+        <h2>
+
+            Organizer
+
+        </h2>
+
+        <div class="organizer-card">
+
+            <img src="https://i.pravatar.cc/150?img=12">
+
+            <div>
+
+                <h3 id="organizer">
+
+                    EventHub Organization
+
+                </h3>
+
+                <p>
+
+                    Senior Frontend Developer
+
+                </p>
+
+                <p>
+
+                    EventHub Organization
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="contact">
+
+        <h2>
+            Contact Information
+        </h2>
+        <p>
+            📧 eventhub@gmail.com
+
+        </p>
+
+        <p>
+
+            📞 +91 9876543210
+
+        </p>
+
+    </section>
+
+</div>
+<div id="toast">
+    Registration Successful!
+</div>
+
+<footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>UniEvents</h2>
+                <p>
+                    Discover amazing events, connect with inspiring people,
+                    and create unforgettable memories wherever you go.
+                </p>
+
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+
+                <a href="#">Home</a>
+                <a href="#">Events</a>
+                <a href="#">Categories</a>
+                <a href="#">About Us</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Support</h3>
+
+                <a href="#">Help Center</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <div class="footer-newsletter">
+
+                <h3>Stay Updated</h3>
+
+                <p>
+                    Get notified about upcoming events and exclusive meetups.
+                </p>
+
+                <div class="newsletter-box">
+                    <input type="email" placeholder="Enter your email">
+                    <button>Subscribe</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 UniEvents. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</div>
+
+<script src="EventDetails.js"></script>
+
+</body>
+</html>

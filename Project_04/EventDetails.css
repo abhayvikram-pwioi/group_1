@@ -1,0 +1,658 @@
+/* ============================================
+   FONTS
+   Sora = headings (rounded, geometric — matches
+   the pill buttons/badges already in this theme)
+   Inter = body text (clean, highly readable)
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*{
+    box-sizing:border-box;
+}
+
+ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+a{
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+h1,h2,h3,h4{
+    font-family:'Sora', sans-serif;
+    margin:0;
+}
+
+/* Background */
+body{
+    background:#ffffff;
+    color:#111827;
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    margin:0;
+}
+
+.container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:40px 24px 80px;
+}
+
+/* Navbar */
+header{
+    background:#ffffff;
+    color:#111827;
+    box-shadow:0 2px 15px rgba(0,0,0,.05);
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:16px 48px;
+}
+
+.logo-side{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-side img{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#ffe0eb;
+}
+
+.logo-side h1{
+    font-size:22px;
+    font-weight:700;
+    color:#111827;
+    white-space:nowrap;
+}
+
+/* Handles both markup patterns: <ul><li><a> and plain <a> inside .menu-list */
+.menu-list,
+header nav ul{
+    display:flex;
+    align-items:center;
+    gap:32px;
+    flex:1;
+    justify-content:center;
+}
+
+.menu-list a,
+header nav ul li a{
+    color:#111827;
+    font-weight:500;
+    font-size:15px;
+}
+
+.menu-list a:hover,
+header nav ul li a:hover{
+    color:#ff4f8b;
+}
+
+.profile-side,
+.login-side{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+/* Default to guest view. Add class="logged-in" to <body> from your auth
+   script to flip which side of the header shows. */
+.profile-side{
+    display:none;
+}
+
+body.logged-in .profile-side{
+    display:flex;
+}
+
+body.logged-in .login-side{
+    display:none;
+}
+
+.profile-img{
+    cursor:pointer;
+}
+
+.profile-img img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#ffe0eb;
+}
+
+#login-btn,
+#sign-up-btn{
+    padding:9px 20px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:14px;
+}
+
+#login-btn{
+    color:#111827;
+}
+
+#sign-up-btn{
+    background:#ff4f8b;
+    color:#ffffff;
+}
+
+#sign-up-btn:hover{
+    background:#ff2f75;
+}
+
+/* Back Button */
+.back-btn{
+    color:#ff4f8b;
+    font-weight:600;
+    font-size:15px;
+    display:inline-block;
+    margin-bottom:24px;
+}
+
+.back-btn:hover{
+    color:#ff2f75;
+}
+
+/* Event Card */
+.event-card{
+    background:#ffffff;
+    border-radius:18px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    padding:32px;
+    margin-bottom:60px;
+}
+
+.left img{
+    width:100%;
+    height:100%;
+    max-height:460px;
+    object-fit:cover;
+}
+
+.right{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+@media (max-width:800px){
+    .event-card{
+        grid-template-columns:1fr;
+        padding:20px;
+    }
+    .left img{
+        max-height:280px;
+    }
+}
+
+/* Category Badge */
+.category{
+    background:#ff4f8b;
+    color:white;
+    border-radius:30px;
+    display:inline-block;
+    width:fit-content;
+    padding:6px 16px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.3px;
+}
+
+/* Heading */
+.right h1{
+    color:#111827;
+    font-size:30px;
+    font-weight:700;
+    line-height:1.25;
+}
+
+.tagline{
+    color:#6b7280;
+    font-size:16px;
+    margin:0 0 4px;
+}
+
+/* Info rows */
+.info{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin:4px 0;
+}
+
+.info p{
+    margin:0;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:15px;
+    color:#374151;
+}
+
+/* Icons */
+.info i{
+    color:#ff4f8b;
+    width:18px;
+    text-align:center;
+}
+
+/* Registration Box */
+.registration-box{
+    background:#fff7fb;
+    border:1px solid #ffd6e5;
+    border-radius:14px;
+    padding:14px 18px;
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    font-weight:600;
+    color:#374151;
+}
+
+/* Progress */
+.progress{
+    background:#f2f2f2;
+    height:8px;
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    background:linear-gradient(90deg,#ff4f8b,#ff7aa8);
+    height:100%;
+    border-radius:30px;
+    transition:width .4s ease;
+}
+
+/* Button */
+button{
+    background:#ff4f8b;
+    color:white;
+    border-radius:30px;
+    font-weight:600;
+    border:none;
+    padding:14px 20px;
+    font-size:15px;
+    cursor:pointer;
+    font-family:'Inter', sans-serif;
+    margin-top:6px;
+}
+
+button:hover{
+    background:#ff2f75;
+}
+
+button:disabled{
+    background:#cfcfcf;
+    cursor:not-allowed;
+}
+
+/* Sections */
+section{
+    background:#ffffff;
+    border-radius:18px;
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+    padding:32px;
+    margin-bottom:32px;
+}
+
+section h2{
+    color:#ff4f8b;
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:10px;
+    position:relative;
+    padding-bottom:14px;
+}
+
+/* Signature motif: a short gradient rule under every section heading,
+   echoing the progress-bar gradient used in the registration box */
+section h2::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:48px;
+    height:4px;
+    border-radius:30px;
+    background:linear-gradient(90deg,#ff4f8b,#ff7aa8);
+}
+
+section p{
+    color:#374151;
+    font-size:15px;
+    max-width:70ch;
+}
+
+/* Highlight Cards */
+.highlight-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:16px;
+}
+
+.item{
+    background:#fff8fc;
+    border:1px solid #ffe0eb;
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:14px;
+    font-weight:500;
+    color:#374151;
+}
+
+/* "What You'll Learn" and Agenda lists */
+.learn ul,
+#agenda{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:10px;
+}
+
+.learn li,
+#agenda li{
+    background:#fff8fc;
+    border:1px solid #ffe0eb;
+    border-radius:10px;
+    padding:12px 16px;
+    font-size:14px;
+    color:#374151;
+}
+
+#agenda li{
+    background:#ffffff;
+    border:1px solid #f0f0f0;
+    border-left:3px solid #ff4f8b;
+    border-radius:8px;
+}
+
+/* Organizer */
+.organizer-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.organizer-card img{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.organizer-card h3{
+    font-size:17px;
+    margin-bottom:2px;
+}
+
+.organizer-card p{
+    margin:0;
+    font-size:14px;
+    color:#6b7280;
+}
+
+/* Contact */
+.contact p{
+    font-size:15px;
+    margin:6px 0;
+}
+
+/* Toast */
+#toast{
+    display:none;
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    background:#ff4f8b;
+    color:#ffffff;
+    padding:14px 22px;
+    border-radius:10px;
+    font-weight:600;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    z-index:9999;
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity .25s ease, transform .25s ease;
+}
+
+#toast.show{
+    display:block;
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Profile Dropdown (hidden until toggled by JS) */
+.profile-side{
+    position:relative;
+}
+
+.profile-dropdown{
+    display:none;
+    position:absolute;
+    top:50px;
+    right:0;
+    background:#ffffff;
+    border-radius:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+    padding:14px;
+    min-width:200px;
+    z-index:999;
+}
+
+.profile-dropdown.active{
+    display:block;
+}
+
+.profile-dropdown .user-info{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.profile-dropdown img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.profile-dropdown a,
+.profile-dropdown button{
+    display:block;
+    width:100%;
+    text-align:left;
+    padding:8px 0;
+    color:#111827;
+    background:none;
+    border:none;
+    font-weight:500;
+    cursor:pointer;
+}
+
+.profile-dropdown a:hover,
+.profile-dropdown button:hover{
+    color:#ff4f8b;
+    background:none;
+}
+
+.left img{
+    border-radius:18px;
+    transition:.4s;
+}
+
+.left img:hover{
+    transform:scale(1.02);
+}
+
+.event-card:hover,
+section:hover{
+    transform:translateY(-4px);
+    transition:.3s;
+}
+
+/* ============================================
+   FOOTER — dark bookend against the white page
+   ============================================ */
+.footer{
+    background:#111827;
+    color:#d1d5db;
+    padding:56px 48px 0;
+}
+
+.footer-container{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.6fr 1fr 1fr 1.4fr;
+    gap:32px;
+    padding-bottom:40px;
+}
+
+.footer-brand h2{
+    color:#ffffff;
+    font-size:20px;
+    margin-bottom:12px;
+}
+
+.footer-brand p{
+    font-size:14px;
+    color:#9ca3af;
+    max-width:32ch;
+}
+
+.social-links{
+    display:flex;
+    gap:12px;
+    margin-top:16px;
+}
+
+.social-links a{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    color:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+}
+
+.social-links a:hover{
+    background:#ff4f8b;
+}
+
+.footer-links h3,
+.footer-newsletter h3{
+    color:#ffffff;
+    font-size:15px;
+    margin-bottom:14px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.footer-links a{
+    color:#9ca3af;
+    font-size:14px;
+}
+
+.footer-links a:hover{
+    color:#ff4f8b;
+}
+
+.footer-newsletter p{
+    font-size:14px;
+    color:#9ca3af;
+    margin-bottom:14px;
+}
+
+.newsletter-box{
+    display:flex;
+    gap:8px;
+}
+
+.newsletter-box input{
+    flex:1;
+    padding:10px 14px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.05);
+    color:#ffffff;
+    font-size:13px;
+    font-family:'Inter', sans-serif;
+}
+
+.newsletter-box input::placeholder{
+    color:#6b7280;
+}
+
+.newsletter-box button{
+    padding:10px 18px;
+    font-size:13px;
+    margin-top:0;
+    white-space:nowrap;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    padding:20px 0;
+    text-align:center;
+}
+
+.footer-bottom p{
+    font-size:13px;
+    color:#9ca3af;
+    margin:0;
+}
+
+@media (max-width:800px){
+    .footer-container{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media (max-width:520px){
+    header{
+        padding:14px 20px;
+        flex-wrap:wrap;
+    }
+    .menu-list,
+    header nav ul{
+        order:3;
+        width:100%;
+        justify-content:flex-start;
+        gap:20px;
+    }
+    .footer-container{
+        grid-template-columns:1fr;
+    }
+    .footer{
+        padding:40px 24px 0;
+    }
+}
