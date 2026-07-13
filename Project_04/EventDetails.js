@@ -194,6 +194,12 @@ document.addEventListener("click", () => {
 const user = JSON.parse(localStorage.getItem("currentUser"));
 
 if (user) {
+    document.querySelector(".login-side").style.display = "none";
+    document.querySelector(".profile-side").style.display = "flex";
+    document.querySelector("#profile-pic").src = currentUser.profilePic;
+}
+
+if (user) {
     document.getElementById("dropdown-name").innerText = user.fullName;
     document.getElementById("dropdown-email").innerText = user.email;
 
