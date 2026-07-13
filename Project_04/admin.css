@@ -50,36 +50,31 @@
 }
 
 body{
-    background:linear-gradient(
+    background: linear-gradient(
         135deg,
         #FFF7FB 0%,
         #F8FAFC 60%,
         #F3F0FF 100%
     );
 
-    color:var(--text-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
 }
 
 header {
-    width:100%;
-    padding:15px 5%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:var(--primary-light);
-    box-shadow:var(--shadow-sm);
-    position:sticky;
-    top:0;
-    z-index:1000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 0px 30px;
 }
 
 .logo-side {
     display: flex;
+    justify-content: center;
     align-items: center;
     color: var(--primary);
-}
-.logo-side h1{
-    color: #FF4D8D;
 }
 
 .menu-list {
@@ -98,6 +93,20 @@ header {
     width: 40px;
     border-radius: 50%;
     border: 1px solid var(--border);
+}
+
+.login-side {
+    display: flex;
+    gap: 10px;
+}
+
+#login-btn,
+#sign-up-btn {
+    width: 70px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    text-align: center;
 }
 
 .menu-list a:hover{
@@ -477,7 +486,7 @@ td img{
     border-radius: 50%;
     background: #1F2937;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     color: white;
     text-decoration: none;
@@ -559,29 +568,11 @@ td img{
 }
 
 
-html{
-
-    overflow-x:hidden;
-
-}
-
-body{
-
-    overflow-x:hidden;
-
-}
-
-
 /* ==========================
       RESPONSIVE - 1200px
 ========================== */
 
 @media (max-width:1200px){
-
-    header{
-        padding:15px 4%;
-        margin:0;
-    }
 
     main{
 
@@ -605,12 +596,6 @@ body{
 
 @media (max-width:992px){
 
-    header{
-
-        padding:15px 25px;
-        margin:0;
-
-    }
 
     main{
 
@@ -647,34 +632,34 @@ body{
 
 @media (max-width:768px){
 
-    header{
-
-        padding:12px 18px;
-        flex-wrap:nowrap;
-        justify-content:space-between;
-        align-items:center;
-
+     header {
+        margin: 0px;
     }
 
-    .logo-side{
-        font-size: 22px;
+    .logo-side h1 {
+        font-size: 23px;
     }
 
-    .menu-list{
-        gap: 14px;
-
+    .live-msg {
+        width: 200px;
     }
-    .menu-list a{
-        font-size: 14px;
+
+    .live-msg p {
+        font-size: 0.8rem;
     }
 
 
+    .menu-list a {
+        font-size: 1rem;
+    }
+
+/* 
     .profile-img{
 
         width:38px;
         height:38px;
 
-    }
+    } */
 
     h1{
 

@@ -155,6 +155,8 @@ search.addEventListener("input",function(){
 })
 
 
+
+
 const profileImg = document.querySelector(".profile-img");
 const dropdown = document.getElementById("profile-dropdown");
 
@@ -170,6 +172,7 @@ document.addEventListener("click",()=>{
     dropdown.classList.remove("active");
 
 });
+
 
 const user = JSON.parse(localStorage.getItem("currentUser"));
 

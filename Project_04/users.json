@@ -2,7 +2,7 @@
   {
     "id": 1,
     "fullName": "Admin",
-    "email": "admin@eventhub.com",
+    "email": "admin@unievents.com",
     "password": "admin123",
     "role": "admin",
     "profilePic": "https://i.pravatar.cc/150?img=68"
