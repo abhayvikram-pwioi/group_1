@@ -196,7 +196,7 @@ const user = JSON.parse(localStorage.getItem("currentUser"));
 if (user) {
     document.querySelector(".login-side").style.display = "none";
     document.querySelector(".profile-side").style.display = "flex";
-    document.querySelector("#profile-pic").src = currentUser.profilePic;
+    document.querySelector("#profile-pic").src = user.profilePic;
 }
 
 if (user) {

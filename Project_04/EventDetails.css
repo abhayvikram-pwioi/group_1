@@ -122,6 +122,7 @@ body {
 /* Navbar */
 header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
@@ -717,4 +718,13 @@ section:hover {
         width: 100%;
 
     }
+
+    .login-side{
+        width:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:15px;
+    }
+
 }
