@@ -43,7 +43,7 @@ async function renderEventCard(events) {
                     <hr id = "event-card-hr">
                     <div class="event-card-bottom">
                         <div class="attendees">
-                            <p id="attendees-num">${attendees}</p>
+                            <p id="attendees-num">${attendees || 0}</p>
                             <p id="total-attendee">/ ${element.maxAttendees}</p>
                         </div>
 
@@ -90,9 +90,13 @@ async function renderEventCard(events) {
 
         btn.addEventListener("click", () => {
 
-            const id = Number(btn.dataset.id);
+             const id = btn.dataset.id;
 
-            const selectedEvent = events.find(event => event.id === id);
+            const selectedEvent = events.find(
+                event => String(event.id) === String(id)
+            );
+
+            localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
 
             localStorage.setItem("selectedEvent", JSON.stringify(selectedEvent));
 

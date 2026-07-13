@@ -32,7 +32,7 @@ eventForm.addEventListener("submit", function(e){
 
         category: category.value,
 
-        seats: seats.value,
+        maxAttendees: seats.value,
 
         image: image.value,
 

@@ -41,6 +41,10 @@ function loadEvent() {
         return;
     }
 
+    const attendeeCounts = JSON.parse(localStorage.getItem("attendeeCounts")) || {};
+    const attendees = attendeeCounts[event.id] ?? event.attendees;
+
+
     document.getElementById("eventImage").src = event.image;
 
     document.getElementById("category").innerText = event.category;
@@ -63,22 +67,18 @@ function loadEvent() {
 
     document.getElementById("organizer").innerText = event.organizer;
 
-    document.getElementById("attendees").innerText = event.attendees;
+    document.getElementById("attendees").innerText = attendees;
 
     document.getElementById("maxAttendees").innerText = event.maxAttendees;
 
-    document.getElementById("seats").innerText =
-        event.maxAttendees - event.attendees;
+    document.getElementById("seats").innerText = event.maxAttendees - attendees;
 
-    //---------------- Progress Bar ----------------//
 
-    const progress =
-        (event.attendees / event.maxAttendees) * 100;
+    const progress = (attendees / event.maxAttendees) * 100;
 
     document.getElementById("progressBar").style.width =
         progress + "%";
 
-    //---------------- Highlights ----------------//
 
     const highlightBox =
         document.querySelector(".highlight-box");
