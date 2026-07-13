@@ -1,16 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    /* ========== Primary Colors ========== */
     --primary: #FF4D8D;
     --primary-hover: #FF2E75;
     --primary-light: #FFF1F6;
-
-    /* ========== Secondary ========== */
     --secondary: #7C3AED;
     --secondary-light: #F3F0FF;
-
-    /* ========== Background ========== */
     --bg: #FFFFFF;
     --bg-secondary: #F8FAFC;
     --bg-card: #FFFFFF;
@@ -20,56 +15,32 @@
             #353538 0%,
             #2B2B2E 55%,
             #26262C 100%);
-
-    /* ========== Text Colors ========== */
     --text-primary: #111827;
-    /* --text-secondary: #475569;  */
     --text-light: #94A3B8;
     --text-white: #FFFFFF;
-
-    --text-muted: #66758D;
-    /* Closest match */
-    --text-secondary: #6B7280;
-    /* Slightly darker */
     --icon-color: #66758D;
-
-    /* ========== Borders ========== */
     --border: #E2E8F0;
     --border-light: #F1F5F9;
-
-    /* ========== Status Colors ========== */
     --success: #22C55E;
     --warning: #F59E0B;
     --danger: #EF4444;
     --info: #3B82F6;
-
-    /* ========== Extra Accent Colors ========== */
     --pink: #FFB3D1;
     --purple: #C4B5FD;
     --yellow: #FFD166;
     --teal: #2DD4BF;
-
-    /* ========== Shadows ========== */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, .06);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, .10);
     --shadow-lg: 0 15px 40px rgba(0, 0, 0, .15);
-
-    /* ========== Border Radius ========== */
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 20px;
     --radius-xl: 30px;
     --radius-round: 999px;
-
-    /* ========== Transition ========== */
     --transition: all .3s ease;
 }
 
 
-
-/* ==========================
-        RESET
-========================== */
 
 *{
     margin:0;
@@ -89,38 +60,21 @@ body{
     color:var(--text-primary);
 }
 
-/* ==========================
-        HEADER
-========================== */
 header {
-   
-
     width:100%;
-
     padding:15px 5%;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     background:var(--primary-light);
-
     box-shadow:var(--shadow-sm);
-
     position:sticky;
-
     top:0;
-
     z-index:1000;
-
-
 }
 
 .logo-side {
     display: flex;
-    justify-content: center;
     align-items: center;
     color: var(--primary);
 }
@@ -171,107 +125,68 @@ header {
 
     width:100%;
     height:100%;
-
     object-fit:cover;
 }
 
 .profile-dropdown{
 
     position:absolute;
-
     top:60px;
     right:0;
-
     width:260px;
-
     background:white;
-
     border-radius:12px;
-
     box-shadow:0 10px 25px rgba(0,0,0,.15);
-
     display:none;
-
     overflow:hidden;
-
     z-index:1000;
 }
 
 .profile-dropdown.active{
-
     display:block;
-
 }
 
 .user-info{
-
     display:flex;
-
     gap:12px;
-
     align-items:center;
-
     padding:15px;
-
 }
 
 .user-info img{
-
     width:50px;
     height:50px;
-
     border-radius:50%;
 }
 
 .profile-dropdown a,
 .profile-dropdown button{
-
     display:block;
-
     width:100%;
-
     padding:14px 18px;
-
     border:none;
-
     background:white;
-
     text-decoration:none;
-
     color:#333;
-
     cursor:pointer;
-
     text-align:left;
-
     font-size:15px;
 }
 
 .profile-dropdown a:hover,
 .profile-dropdown button:hover{
-
     background:#f5f5f5;
-
 }
-
-
-
-/* ==========================
-        PAGE TITLE
-========================== */
+/* 
+page title */
 
 h1{
     text-align:center;
     font-size:38px;
     color:var(--text-primary);
     font-weight:700;
-    grid-column:1/-1;
-    text-align:center;
 }
 
-/* ==========================
-        MAIN
-========================== */
 
 main{
    max-width:1400px;
@@ -283,22 +198,23 @@ main{
     gap:35px;
 }
 
-/* ==========================
-      ADD EVENT CARD
-========================== */
 
-.add-event{
+.add-event,
+.recent-events{
 
     background:var(--bg-card);
     padding:30px;
     border-radius:var(--radius-lg);
     box-shadow:var(--shadow-md);
-
-    height:fit-content;
     transition:var(--transition);
 }
 
-.add-event:hover{
+.add-event{
+    height:fit-content;
+}
+
+.add-event:hover,
+.recent-events:hover{
     transform:translateY(-4px);
     box-shadow:var(--shadow-lg);
 }
@@ -320,7 +236,8 @@ main{
 
 .add-event input,
 .add-event textarea,
-.add-event select{
+.add-event select,
+.recent-events input{
 
     width:100%;
     padding:14px;
@@ -383,29 +300,6 @@ main{
 
 }
 
-/* ==========================
-      EVENTS SECTION
-========================== */
-
-.recent-events{
-
-    background:white;
-
-    padding:30px;
-
-    border-radius:var(--radius-lg);
-
-    box-shadow:var(--shadow-md);
-
-    transition:var(--transition);
-
-}
-
-.recent-events:hover{
-    transform:translateY(-4px);
-    box-shadow:var(--shadow-lg);
-}
-
 .events-header{
 
     display:flex;
@@ -419,24 +313,6 @@ main{
 .events-header h2{
 
     color:var(--secondary);
-
-}
-
-.recent-events input{
-
-    width:100%;
-
-    padding:14px 18px;
-    font-size: 15px;
-
-    margin-bottom:25px;
-
-    border:1px solid var(--border);
-
-    border-radius:var(--radius-sm);
-
-    outline:none;
-    transition:var(--transition);
 
 }
 
@@ -548,26 +424,14 @@ td img{
 
 }
 
-.edit-btn:hover{
-
+.edit-btn:hover,
+.delete-btn:hover{
     transform:translateY(-2px);
-
 }
 
 .delete-btn{
      background:var(--danger);
 }
-
-
-.delete-btn:hover{
-
-    transform:translateY(-2px);
-
-}
-
-/* ==========================
-        FOOTER
-========================== */
 
 .footer {
     margin-top: 120px;
@@ -623,13 +487,6 @@ td img{
 .social-links a:hover {
     background: var(--primary);
     transform: translateY(-5px);
-
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 
 }
 
