@@ -57,21 +57,21 @@ function loadEvent() {
 
     document.getElementById("time").innerText = event.time;
 
-    document.getElementById("duration").innerText = event.duration;
+    document.getElementById("duration").innerText = event.duration || "Available Soon";
 
     document.getElementById("location").innerText = event.location;
 
-    document.getElementById("speaker").innerText = event.speaker;
+    document.getElementById("speaker").innerText = event.speaker || "To Be Announced";
 
-    document.getElementById("about").innerText = event.fullDescription;
+    document.getElementById("about").innerText = event.fullDescription || "Description not available.";
 
-    document.getElementById("organizer").innerText = event.organizer;
+    document.getElementById("organizer").innerText = event.organizer || "UniEvents";
 
-    document.getElementById("attendees").innerText = attendees;
+    document.getElementById("attendees").innerText = attendees || 0;
 
     document.getElementById("maxAttendees").innerText = event.maxAttendees;
 
-    document.getElementById("seats").innerText = event.maxAttendees - attendees;
+    document.getElementById("seats").innerText = event.maxAttendees - (attendees || 0);
 
 
     const progress = (attendees / event.maxAttendees) * 100;
@@ -80,50 +80,68 @@ function loadEvent() {
         progress + "%";
 
 
-    const highlightBox =
-        document.querySelector(".highlight-box");
+    const highlightBox = document.querySelector(".highlight-box");
 
     highlightBox.innerHTML = "";
 
-    event.highlights.forEach(item => {
+    const highlights = event.highlights || [];
 
-        highlightBox.innerHTML += `
-            <div class="item">
-                ✅ ${item}
-            </div>
-        `;
+    if (highlights.length === 0) {
+        document.querySelector(".highlights").style.display = "none";
+    } else {
+        event.highlights.forEach(item => {
+    
+            highlightBox.innerHTML += `
+                <div class="item">
+                    ✅ ${item}
+                </div>
+            `;
+    
+        });
+    }
 
-    });
 
     //---------------- Learning ----------------//
 
-    const learn =
-        document.querySelector(".learn ul");
+    const learn = document.querySelector(".learn ul");
 
     learn.innerHTML = "";
 
-    event.learning.forEach(item => {
+    const learnD = event.learn || [];
 
-        learn.innerHTML += `
-            <li>${item}</li>
-        `;
+    if (learnD.length === 0) {
+        document.querySelector(".learn").style.display = "none";
+    } else {
+        event.learning.forEach(item => {
+    
+            learn.innerHTML += `
+                <li>${item}</li>
+            `;
+    
+        });
+    }
 
-    });
 
     //---------------- Agenda ----------------//
 
-    const agenda =
-        document.getElementById("agenda");
+    const agenda = document.getElementById("agenda");
 
     agenda.innerHTML = "";
 
-    event.agenda.forEach(item => {
+    const agendaD = event.agenda || [];
+    if (agendaD.length === 0) {
+        document.querySelector(".agenda").style.display = "none";
+    } else {
 
-        agenda.innerHTML += `
-            <li>${item}</li>
-        `;
+        event.agenda.forEach(item => {
+    
+            agenda.innerHTML += `
+                <li>${item}</li>
+            `;
+    
+        });
+    }
 
-    });
 
     //---------------- Organizer ----------------//
 
@@ -131,15 +149,15 @@ function loadEvent() {
         document.querySelector(".organizer-card");
 
     organizerCard.innerHTML = `
-        <img src="${event.organizerImage}">
+        <img src="${event.organizerImage || "https://i.pravatar.cc/150?img=12"}">
 
         <div>
 
-            <h3>${event.organizer}</h3>
+            <h3>${event.organizer || "UniEvents Team"}</h3>
 
-            <p>${event.organizerDesignation}</p>
+            <p>${event.organizerDesignation || "Event Organizer"}</p>
 
-            <p>${event.organizer}</p>
+            <p>${event.organizer || "UniEvents"}</p>
 
         </div>
     `;
@@ -149,12 +167,12 @@ function loadEvent() {
     document.querySelector(".contact").innerHTML = `
         <h2>Contact Information</h2>
 
-        <p>📧 ${event.contact.email}</p>
+        <p>📧 ${event.contact?.email || "unievents@gmail.com"}</p>
 
-        <p>📞 ${event.contact.phone}</p>
+        <p>📞 ${event.contact?.phone || "+91 9876543210" }</p>
     `;
-
 }
+
 /* ---------------- Profile dropdown menu ---------------- */
 
 const profileImg = document.querySelector(".profile-img");

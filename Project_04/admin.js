@@ -21,6 +21,7 @@ eventForm.addEventListener("submit", function(e){
     e.preventDefault();
 
     const event = {
+        id: Date.now(),
 
         title: title.value,
 

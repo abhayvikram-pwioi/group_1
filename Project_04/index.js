@@ -64,6 +64,8 @@ async function renderEventCard(events) {
 
             const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
+            if(!currentUser) alert("Please Login First");
+
             if (currentUser.role === "admin") {
 
                 alert("Admins cannot register for events. Please log in with a user account.");

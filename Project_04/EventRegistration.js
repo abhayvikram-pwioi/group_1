@@ -45,6 +45,9 @@ async function loadSelectedEvent() {
     event = events[0];
   }
 
+    const attendeeCounts = JSON.parse(localStorage.getItem("attendeeCounts")) || {};
+        const attendees = attendeeCounts[event.id] ?? event.attendees;
+
   document.getElementById("event-registration-area").classList.remove("is-hidden");
 
   document.getElementById("event-title").innerText = event.title;
@@ -52,7 +55,7 @@ async function loadSelectedEvent() {
   document.getElementById("event-date").innerText = event.date;
   document.getElementById("event-time").innerText = event.time;
   document.getElementById("event-venue").innerText = event.location;
-  document.getElementById("event-seats").innerText = event.availableSeats + " Seats";
+  document.getElementById("event-seats").innerText = (event.maxAttendees - attendees) + " Seats";
 
   document.getElementById("event-duration").innerText = event.duration;
 
