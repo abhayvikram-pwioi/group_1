@@ -49,114 +49,74 @@ body{
 }
 
 /* Navbar */
-header{
-    background:#ffffff;
-    color:#111827;
-    box-shadow:0 2px 15px rgba(0,0,0,.05);
-    position:sticky;
-    top:0;
-    z-index:100;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:24px;
-    padding:16px 48px;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 0px 30px;
 }
 
-.logo-side{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.logo-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
 }
 
-.logo-side img{
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    background:#ffe0eb;
+.menu-list {
+    display: flex;
+    gap: 20px;
 }
 
-.logo-side h1{
-    font-size:22px;
-    font-weight:700;
-    color:#111827;
-    white-space:nowrap;
+.menu-list a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.1rem;
 }
 
-/* Handles both markup patterns: <ul><li><a> and plain <a> inside .menu-list */
-.menu-list,
-header nav ul{
-    display:flex;
-    align-items:center;
-    gap:32px;
-    flex:1;
-    justify-content:center;
+#profile-pic {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
 }
 
-.menu-list a,
-header nav ul li a{
-    color:#111827;
-    font-weight:500;
-    font-size:15px;
-}
-
-.menu-list a:hover,
-header nav ul li a:hover{
-    color:#ff4f8b;
-}
-
-.profile-side,
-.login-side{
-    display:flex;
-    align-items:center;
-    gap:14px;
-}
-
-/* Default to guest view. Add class="logged-in" to <body> from your auth
-   script to flip which side of the header shows. */
-.profile-side{
-    display:none;
-}
-
-body.logged-in .profile-side{
-    display:flex;
-}
-
-body.logged-in .login-side{
-    display:none;
-}
-
-.profile-img{
-    cursor:pointer;
-}
-
-.profile-img img{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    object-fit:cover;
-    background:#ffe0eb;
+.login-side {
+    display: flex;
+    gap: 10px;
 }
 
 #login-btn,
-#sign-up-btn{
-    padding:9px 20px;
-    border-radius:30px;
-    font-weight:600;
-    font-size:14px;
+#sign-up-btn {
+    width: 70px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    text-align: center;
 }
 
-#login-btn{
-    color:#111827;
+#login-btn {
+    background: var(--primary);
+    color: white;
 }
 
-#sign-up-btn{
-    background:#ff4f8b;
-    color:#ffffff;
+#sign-up-btn {
+    border: 1px solid var(--primary);
+    color: var(--primary);
 }
 
-#sign-up-btn:hover{
-    background:#ff2f75;
+#login-btn:hover {
+    transform: scale(1.1);
+    background-color: var(--primary-hover);
+}
+
+#sign-up-btn:hover {
+    transform: scale(1.1);
+}
+
+.login-side{
+  display: none;
 }
 
 /* Back Button */

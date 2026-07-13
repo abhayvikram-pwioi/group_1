@@ -8,10 +8,10 @@ async function getAllEvents() {
 
 }
 
-async function renderEventCard() {
-    const events = await getAllEvents();
+async function renderEventCard(events) {
 
     const container = document.querySelector(".event-list");
+    container.innerHTML = "";
     const attendeeCounts = JSON.parse(localStorage.getItem("attendeeCounts")) || {};
     events.forEach(element => {
         const attendees = attendeeCounts[element.id] ?? element.attendees;
@@ -111,9 +111,6 @@ function formatDate(dateString) {
     const month = date.toLocaleString("en-US", { month: "short" }).toUpperCase();
     return `${day} ${month}`;
 }
-
-renderEventCard();
-
 
 
 const chatToggle = document.querySelector("#chatToggle");
@@ -436,14 +433,14 @@ if (currentUser) {
 const profileImg = document.querySelector(".profile-img");
 const dropdown = document.getElementById("profile-dropdown");
 
-profileImg.addEventListener("click",(e)=>{
+profileImg.addEventListener("click", (e) => {
 
     e.stopPropagation();
     dropdown.classList.toggle("active");
 
 });
 
-document.addEventListener("click",()=>{
+document.addEventListener("click", () => {
 
     dropdown.classList.remove("active");
 
@@ -451,26 +448,103 @@ document.addEventListener("click",()=>{
 
 const user = JSON.parse(localStorage.getItem("currentUser"));
 
-document.getElementById("dropdown-name").innerText = user.fullName;
-document.getElementById("dropdown-email").innerText = user.email;
+if (user) {
+    document.getElementById("dropdown-name").innerText = user.fullName;
+    document.getElementById("dropdown-email").innerText = user.email;
 
-document.getElementById("dropdown-pic").src = user.profilePic;
-document.getElementById("profile-pic").src = user.profilePic;
+    document.getElementById("dropdown-pic").src = user.profilePic;
+    document.getElementById("profile-pic").src = user.profilePic;
 
-if(user.role === "admin"){
+    if (user.role === "admin") {
 
-    document.getElementById("registration-link").style.display = "none";
+        document.getElementById("registration-link").style.display = "none";
 
-}else{
+    } else {
 
-    document.getElementById("dashboard-link").style.display = "none";
+        document.getElementById("dashboard-link").style.display = "none";
+
+    }
+
+    document.getElementById("logout-btn").addEventListener("click", () => {
+
+        localStorage.removeItem("currentUser");
+
+        window.location.href = "LoginPage.html";
+
+    });
 
 }
 
-document.getElementById("logout-btn").addEventListener("click",()=>{
 
-    localStorage.removeItem("currentUser");
 
-    window.location.href = "LoginPage.html";
 
-});
+
+let allEvents = [];
+
+async function loadEvents() {
+
+    allEvents = await getAllEvents();
+
+    renderEventCard(allEvents);
+
+}
+
+document.getElementById("search").addEventListener("input", filterEvents);
+
+document.getElementById("category").addEventListener("change", filterEvents);
+
+document.getElementById("date").addEventListener("change", filterEvents);
+
+function filterEvents() {
+
+    const keyword = document.getElementById("search").value.toLowerCase().trim();
+
+    const category = document.getElementById("category").value;
+
+    const date = document.getElementById("date").value;
+
+    const filtered = allEvents.filter(event => {
+
+        const searchMatch =
+
+            event.title.toLowerCase().includes(keyword) ||
+
+            event.location.toLowerCase().includes(keyword) ||
+
+            event.description.toLowerCase().includes(keyword) ||
+
+            event.organizer.toLowerCase().includes(keyword);
+
+        const categoryMatch =
+
+            category === "" ||
+
+            event.category.toLowerCase() === category.toLowerCase();
+
+        const dateMatch =
+
+            date === "" ||
+
+            event.date === date;
+
+        return searchMatch && categoryMatch && dateMatch;
+
+    });
+
+    if (filtered.length === 0) {
+
+        document.querySelector(".event-list").innerHTML = `
+        <div class="no-events">
+            <h2>No Events Found</h2>
+            <p>Try changing your search, category or date.</p>
+        </div>
+    `;
+
+        return;
+    }
+
+    renderEventCard(filtered);
+
+}
+
+loadEvents();

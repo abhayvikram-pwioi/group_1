@@ -1,153 +1,203 @@
-let maxAttendees = 200;
-let attendees = 120;
-let registered = false;
+const EVENT_KEY = "selectedEvent";
 
-const registerBtn = document.getElementById("registerBtn");
-const attendeeText = document.getElementById("attendees");
-const seatsText = document.getElementById("seats");
-const progressBar = document.getElementById("progressBar");
-const toast = document.getElementById("toast");
-const eventImage = document.getElementById("eventImage");
+document.addEventListener("DOMContentLoaded", init);
 
-function updateUI() {
+function init() {
 
-    attendeeText.innerText = attendees;
-    seatsText.innerText = maxAttendees - attendees;
+    loadEvent();
 
-    let percentage = (attendees / maxAttendees) * 100;
-    progressBar.style.width = percentage + "%";
+    document.querySelector(".back-btn").addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "index.html";
+    });
 
-    // Keep the button state correct even if the event loaded already full
-    if (attendees >= maxAttendees && !registered) {
-        registerBtn.disabled = true;
-        registerBtn.innerText = "Event Full";
-    }
-}
+    document.getElementById("registerBtn").addEventListener("click", () => {
 
-function showToast(message, color = "#28a745") {
+        const user = JSON.parse(localStorage.getItem("currentUser"));
 
-    toast.innerText = message;
-    toast.style.background = color;
-    toast.classList.add("show");
-
-    clearTimeout(showToast._timer);
-    showToast._timer = setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2500);
-}
-
-registerBtn.addEventListener("click", function () {
-
-    if (registered) {
-        showToast("You are already registered!", "#dc3545");
-        return;
-    }
-
-    if (attendees >= maxAttendees) {
-        showToast("Sorry! Event is Full.", "#dc3545");
-        registerBtn.disabled = true;
-        registerBtn.innerText = "Event Full";
-        return;
-    }
-
-    attendees++;
-    registered = true;
-    updateUI();
-
-    registerBtn.innerText = "Registered";
-    registerBtn.disabled = true;
-
-    showToast("Registration Successful!");
-});
-
-eventImage.onerror = function () {
-    eventImage.src = "https://via.placeholder.com/700x450?text=No+Image";
-};
-
-updateUI();
-
-async function loadEvent() {
-
-    const id = Number(new URLSearchParams(window.location.search).get("id")) || 1;
-
-    try {
-        const response = await fetch("events.json");
-
-        if (!response.ok) {
-            throw new Error(`Failed to load events.json (status ${response.status})`);
-        }
-
-        const events = await response.json();
-        const event = events.find(e => e.id === id);
-
-        if (!event) {
-            console.warn(`No event found with id ${id}`);
+        if (!user) {
+            alert("Please login first.");
+            window.location.href = "LoginPage.html";
             return;
         }
 
-        document.getElementById("title").innerText = event.title;
-        document.getElementById("category").innerText = event.category;
-        document.getElementById("tagline").innerText = event.tagline;
-        document.getElementById("about").innerText = event.description;
-        document.getElementById("date").innerText = event.date;
-        document.getElementById("time").innerText = event.time;
-        document.getElementById("duration").innerText = event.duration;
-        document.getElementById("location").innerText = event.location;
-        document.getElementById("speaker").innerText = event.speaker;
-        document.getElementById("organizer").innerText = event.organizer;
-        document.getElementById("eventImage").src = event.image;
+        if (user.role === "admin") {
+            alert("Admin cannot register for events.");
+            return;
+        }
 
-        attendees = event.attendees;
-        maxAttendees = event.maxAttendees;
-        document.getElementById("maxAttendees").innerText = maxAttendees;
+        window.location.href = "EventRegistration.html";
+    });
 
-        const agenda = document.getElementById("agenda");
-        agenda.innerHTML = "";
-        event.agenda.forEach(item => {
-            const li = document.createElement("li");
-            li.innerText = item;
-            agenda.appendChild(li);
-        });
-
-        // Reset button state in case a previous event left it disabled
-        registered = false;
-        registerBtn.disabled = false;
-        registerBtn.innerText = "Register Now";
-
-        updateUI();
-
-    } catch (err) {
-        console.error("Could not load event data:", err);
-        // Falls back silently to the static placeholder content already in the HTML
-    }
 }
 
-loadEvent();
+function loadEvent() {
 
+    const event = JSON.parse(localStorage.getItem(EVENT_KEY));
+
+    if (!event) {
+        alert("No event selected.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    document.getElementById("eventImage").src = event.image;
+
+    document.getElementById("category").innerText = event.category;
+
+    document.getElementById("title").innerText = event.title;
+
+    document.getElementById("tagline").innerText = event.description;
+
+    document.getElementById("date").innerText = event.date;
+
+    document.getElementById("time").innerText = event.time;
+
+    document.getElementById("duration").innerText = event.duration;
+
+    document.getElementById("location").innerText = event.location;
+
+    document.getElementById("speaker").innerText = event.speaker;
+
+    document.getElementById("about").innerText = event.fullDescription;
+
+    document.getElementById("organizer").innerText = event.organizer;
+
+    document.getElementById("attendees").innerText = event.attendees;
+
+    document.getElementById("maxAttendees").innerText = event.maxAttendees;
+
+    document.getElementById("seats").innerText =
+        event.maxAttendees - event.attendees;
+
+    //---------------- Progress Bar ----------------//
+
+    const progress =
+        (event.attendees / event.maxAttendees) * 100;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+    //---------------- Highlights ----------------//
+
+    const highlightBox =
+        document.querySelector(".highlight-box");
+
+    highlightBox.innerHTML = "";
+
+    event.highlights.forEach(item => {
+
+        highlightBox.innerHTML += `
+            <div class="item">
+                ✅ ${item}
+            </div>
+        `;
+
+    });
+
+    //---------------- Learning ----------------//
+
+    const learn =
+        document.querySelector(".learn ul");
+
+    learn.innerHTML = "";
+
+    event.learning.forEach(item => {
+
+        learn.innerHTML += `
+            <li>${item}</li>
+        `;
+
+    });
+
+    //---------------- Agenda ----------------//
+
+    const agenda =
+        document.getElementById("agenda");
+
+    agenda.innerHTML = "";
+
+    event.agenda.forEach(item => {
+
+        agenda.innerHTML += `
+            <li>${item}</li>
+        `;
+
+    });
+
+    //---------------- Organizer ----------------//
+
+    const organizerCard =
+        document.querySelector(".organizer-card");
+
+    organizerCard.innerHTML = `
+        <img src="${event.organizerImage}">
+
+        <div>
+
+            <h3>${event.organizer}</h3>
+
+            <p>${event.organizerDesignation}</p>
+
+            <p>${event.organizer}</p>
+
+        </div>
+    `;
+
+    //---------------- Contact ----------------//
+
+    document.querySelector(".contact").innerHTML = `
+        <h2>Contact Information</h2>
+
+        <p>📧 ${event.contact.email}</p>
+
+        <p>📞 ${event.contact.phone}</p>
+    `;
+
+}
 /* ---------------- Profile dropdown menu ---------------- */
 
 const profileImg = document.querySelector(".profile-img");
-const profileDropdown = document.getElementById("profile-dropdown");
-const logoutBtn = document.getElementById("logout-btn");
+const dropdown = document.getElementById("profile-dropdown");
 
-if (profileImg && profileDropdown) {
+profileImg.addEventListener("click", (e) => {
 
-    profileImg.addEventListener("click", function (e) {
-        e.stopPropagation();
-        profileDropdown.classList.toggle("active");
-    });
+    e.stopPropagation();
+    dropdown.classList.toggle("active");
 
-    document.addEventListener("click", function (e) {
-        if (!profileDropdown.contains(e.target)) {
-            profileDropdown.classList.remove("active");
-        }
-    });
-}
+});
 
-if (logoutBtn) {
-    logoutBtn.addEventListener("click", function () {
-        profileDropdown.classList.remove("active");
-        // Hook this up to your real logout/session logic
+document.addEventListener("click", () => {
+
+    dropdown.classList.remove("active");
+
+});
+
+const user = JSON.parse(localStorage.getItem("currentUser"));
+
+if (user) {
+    document.getElementById("dropdown-name").innerText = user.fullName;
+    document.getElementById("dropdown-email").innerText = user.email;
+
+    document.getElementById("dropdown-pic").src = user.profilePic;
+    document.getElementById("profile-pic").src = user.profilePic;
+
+    if (user.role === "admin") {
+
+        document.getElementById("registration-link").style.display = "none";
+
+    } else {
+
+        document.getElementById("dashboard-link").style.display = "none";
+
+    }
+
+    document.getElementById("logout-btn").addEventListener("click", () => {
+
+        localStorage.removeItem("currentUser");
+
         window.location.href = "LoginPage.html";
+
     });
+
 }

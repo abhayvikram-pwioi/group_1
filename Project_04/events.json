@@ -3,48 +3,262 @@
     "id": 1,
     "title": "Frontend Bootcamp 2026",
     "category": "Technology",
-    "tagline": "Learn HTML, CSS and JavaScript through hands-on workshops.",
-    "description": "Frontend Bootcamp is a beginner-friendly coding workshop where participants learn HTML, CSS and JavaScript by building real-world projects. The session includes practical coding exercises, mentor guidance, project discussion and Q&A.",
-    "date": "20 June 2026",
+    "date": "2026-06-20",
     "time": "10:00 AM - 4:00 PM",
-    "duration": "6 Hours",
     "location": "Community Hall, Noida",
+    "image": "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg",
+    "description": "Learn HTML, CSS and JavaScript through hands-on workshops.",
+    "fullDescription": "Frontend Bootcamp is a beginner-friendly coding workshop where participants learn HTML, CSS and JavaScript by building real-world projects.",
     "speaker": "John Anderson",
     "organizer": "EventHub Organization",
-    "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200",
+    "organizerDesignation": "Senior Frontend Developer",
+    "organizerImage": "https://randomuser.me/api/portraits/men/32.jpg",
+    "duration": "6 Hours",
+    "price": "Free",
     "attendees": 120,
     "maxAttendees": 200,
+    "highlights": [
+      "Live Coding Sessions",
+      "Hands-on Projects",
+      "Certificate",
+      "Networking"
+    ],
+    "learning": [
+      "HTML5",
+      "CSS3",
+      "Responsive Design",
+      "JavaScript",
+      "DOM",
+      "Mini Project"
+    ],
     "agenda": [
-      "10:00 AM - Registration & Welcome",
-      "10:30 AM - HTML & CSS Basics",
-      "12:00 PM - Lunch Break",
-      "1:00 PM - JavaScript Fundamentals",
-      "3:00 PM - Mini Project Building",
-      "4:00 PM - Certificate Distribution"
-    ]
+      "10:00 AM - Registration",
+      "10:30 AM - HTML",
+      "12:00 PM - Lunch",
+      "1:00 PM - JavaScript",
+      "3:00 PM - Project",
+      "4:00 PM - Certificate"
+    ],
+    "requirements": [
+      "Laptop",
+      "Notebook",
+      "Basic Computer Knowledge"
+    ],
+    "contact": {
+      "email": "frontend@eventhub.com",
+      "phone": "+91 9876543210"
+    }
   },
+
   {
     "id": 2,
-    "title": "AI & Machine Learning Summit",
-    "category": "Artificial Intelligence",
-    "tagline": "Explore the future of AI with industry experts.",
-    "description": "A one-day summit covering the fundamentals of machine learning, neural networks and real-world AI applications, featuring talks from practitioners and hands-on lab sessions.",
-    "date": "15 August 2026",
-    "time": "9:00 AM - 5:00 PM",
-    "duration": "8 Hours",
-    "location": "Tech Park Auditorium, Bengaluru",
-    "speaker": "Priya Sharma",
-    "organizer": "AI Learners Community",
-    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200",
-    "attendees": 180,
-    "maxAttendees": 200,
+    "title": "AI Product Summit",
+    "category": "Technology",
+    "date": "2026-07-22",
+    "time": "02:30 PM",
+    "location": "Delhi • Pragati Maidan",
+    "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg",
+    "description": "Explore AI with founders and engineers.",
+    "fullDescription": "Learn how AI products are built, deployed and scaled with live demos.",
+    "speaker": "Multiple Industry Experts",
+    "organizer": "AI India",
+    "organizerDesignation": "AI Community",
+    "organizerImage": "https://randomuser.me/api/portraits/men/41.jpg",
+    "duration": "6 Hours",
+    "price": "₹999",
+    "attendees": 245,
+    "maxAttendees": 300,
+    "highlights": [
+      "Keynote Sessions",
+      "AI Product Demos",
+      "Networking",
+      "Panel Discussion"
+    ],
+    "learning": [
+      "Generative AI",
+      "LLMs",
+      "Prompt Engineering",
+      "AI Startups"
+    ],
     "agenda": [
-      "9:00 AM - Keynote: State of AI",
-      "10:30 AM - Intro to Neural Networks",
-      "1:00 PM - Lunch & Networking",
-      "2:00 PM - Hands-on ML Lab",
-      "4:00 PM - Panel Discussion",
-      "5:00 PM - Closing Remarks"
-    ]
+      "Opening Keynote",
+      "Product Demo",
+      "Lunch",
+      "AI Panel",
+      "Networking"
+    ],
+    "requirements": [
+      "Student ID",
+      "Laptop Optional"
+    ],
+    "contact": {
+      "email": "ai@eventhub.com",
+      "phone": "+91 9876543211"
+    }
+  },
+
+  {
+    "id": 3,
+    "title": "Live Music Festival",
+    "category": "Music",
+    "date": "2026-08-05",
+    "time": "07:00 PM",
+    "location": "Noida Stadium",
+    "image": "https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg",
+    "description": "An unforgettable night of live music.",
+    "fullDescription": "Enjoy performances by top singers and bands.",
+    "speaker": "Arijit Singh & Guests",
+    "organizer": "Music India",
+    "organizerDesignation": "Event Organizer",
+    "organizerImage": "https://randomuser.me/api/portraits/women/20.jpg",
+    "duration": "5 Hours",
+    "price": "₹1499",
+    "attendees": 420,
+    "maxAttendees": 500,
+    "highlights": [
+      "Live Bands",
+      "DJ Night",
+      "Food Court",
+      "VIP Lounge"
+    ],
+    "learning": [],
+    "agenda": [
+      "Opening DJ",
+      "Band Performance",
+      "Celebrity Singer"
+    ],
+    "requirements": [
+      "Valid Ticket"
+    ],
+    "contact": {
+      "email": "music@eventhub.com",
+      "phone": "+91 9876543212"
+    }
+  },
+
+  {
+    "id": 4,
+    "title": "Startup Founders Meetup",
+    "category": "Business",
+    "date": "2026-07-28",
+    "time": "11:00 AM",
+    "location": "Bangalore",
+    "image": "https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg",
+    "description": "Meet founders and investors.",
+    "fullDescription": "Pitch ideas and network with startup founders.",
+    "speaker": "Top Startup CEOs",
+    "organizer": "Startup India",
+    "organizerDesignation": "Startup Community",
+    "organizerImage": "https://randomuser.me/api/portraits/men/22.jpg",
+    "duration": "5 Hours",
+    "price": "₹499",
+    "attendees": 180,
+    "maxAttendees": 250,
+    "highlights": [
+      "Pitch Competition",
+      "Investor Meet",
+      "Networking"
+    ],
+    "learning": [
+      "Startup Basics",
+      "Fundraising",
+      "Pitching"
+    ],
+    "agenda": [
+      "Founder Talk",
+      "Pitch Session",
+      "Networking"
+    ],
+    "requirements": [
+      "Business Idea"
+    ],
+    "contact": {
+      "email": "startup@eventhub.com",
+      "phone": "+91 9876543213"
+    }
+  },
+
+  {
+    "id": 5,
+    "title": "Photography Walk",
+    "category": "Photography",
+    "date": "2026-08-02",
+    "time": "06:30 AM",
+    "location": "Jaipur",
+    "image": "https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg",
+    "description": "Capture beautiful landscapes.",
+    "fullDescription": "Outdoor photography session with professionals.",
+    "speaker": "Rahul Verma",
+    "organizer": "Photo Club",
+    "organizerDesignation": "Photography Mentor",
+    "organizerImage": "https://randomuser.me/api/portraits/men/55.jpg",
+    "duration": "4 Hours",
+    "price": "₹299",
+    "attendees": 75,
+    "maxAttendees": 100,
+    "highlights": [
+      "Nature Photography",
+      "Camera Tips",
+      "Editing Basics"
+    ],
+    "learning": [
+      "Composition",
+      "Lighting",
+      "Editing"
+    ],
+    "agenda": [
+      "Sunrise Shoot",
+      "Street Walk",
+      "Review Session"
+    ],
+    "requirements": [
+      "Camera"
+    ],
+    "contact": {
+      "email": "photo@eventhub.com",
+      "phone": "+91 9876543214"
+    }
+  },
+
+  {
+    "id": 6,
+    "title": "Yoga & Wellness Camp",
+    "category": "Wellness",
+    "date": "2026-08-10",
+    "time": "07:00 AM",
+    "location": "Rishikesh",
+    "image": "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
+    "description": "Relax your body and mind.",
+    "fullDescription": "Yoga, meditation and healthy lifestyle workshop.",
+    "speaker": "Swami Anand",
+    "organizer": "Wellness India",
+    "organizerDesignation": "Yoga Trainer",
+    "organizerImage": "https://randomuser.me/api/portraits/men/60.jpg",
+    "duration": "3 Hours",
+    "price": "₹199",
+    "attendees": 60,
+    "maxAttendees": 80,
+    "highlights": [
+      "Meditation",
+      "Yoga",
+      "Healthy Food"
+    ],
+    "learning": [
+      "Breathing",
+      "Meditation",
+      "Yoga"
+    ],
+    "agenda": [
+      "Yoga",
+      "Meditation",
+      "Breakfast"
+    ],
+    "requirements": [
+      "Yoga Mat"
+    ],
+    "contact": {
+      "email": "wellness@eventhub.com",
+      "phone": "+91 9876543215"
+    }
   }
 ]
