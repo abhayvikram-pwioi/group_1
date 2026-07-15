@@ -3,9 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Team Management</title>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <link rel="stylesheet" href="team-manage.css">
 </head>
 <body>
-    
+     <header>
+        <div class="logo-side">
+            <h1>Trello</h1>
+        </div>
+        <div class="menu-list">
+            <a href="">Board</a>
+            <a href="">Team Management</a>
+        </div>
+        <div class="right-side">
+           <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" id="search">
+            </div>
+            <button id="add-task-btn">+ New task</button>
+            <div class="profile-pic">
+                <img src="https://images.pexels.com/photos/5798993/pexels-photo-5798993.jpeg" alt="" id="profile-pic">
+            </div>
+        </div>
+    </header>
+
+     <div class="main-body">
+        <div class="headline">
+            <div class="headline-text">
+                <h1>Team Management</h1>
+                <p>Manage your team members</p>
+            </div>
+            <div class="member-count">
+                <h3>4 Members</h3>
+            </div>
+        </div>
+
+        <div class="member-manage-sec">
+
+            <div class="member-table-sec">
+                <div class="table-head">
+                    <h2>Team Members</h2>
+                    <input type="search" name="" id="member-search" placeholder="Search members...">
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Member name</th>
+                            <th>Role</th>
+                            <th>Task assign</th>
+                            <th>Joined On</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Aman</td>
+                            <td>Developer</td>
+                            <td>Login Page</td>
+                            <td>20 July 2024</td>
+                            <td><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="member-add-sec">
+
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
