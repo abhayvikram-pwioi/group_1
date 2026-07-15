@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - meetup</title>
+  <link rel="stylesheet" href="LoginPage.css">
+</head>
+<body>
+
+  <main class="auth-page">
+    <div class="auth-card">
+      <div class="brand brand-centered">
+        <span>meetup</span>
+      </div>
+
+
+      <div class="auth-header">
+        <h1>Welcome back</h1>
+        <p>Login to find events and register for them.</p>
+      </div>
+
+
+      <form class="form" id="login-form">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="form-row-between">
+          <label class="checkbox-label">
+            <input type="checkbox">
+            Remember me
+          </label>
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <button class="btn btn-primary btn-full" type="submit">Login</button>
+
+        <div class="divider">
+          <span>OR</span>
+        </div>
+
+        <button class="btn btn-outline btn-full" type="button" id="google-login">Continue with Google</button>
+      </form>
+
+      <p class="auth-switch">
+        New to meetup? <a href="registration.html">Register</a>
+      </p>
+    </div>
+  </main>
+  <script src="LoginPage.js"></script>
+</body>
+</html>

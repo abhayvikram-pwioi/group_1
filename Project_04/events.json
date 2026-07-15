@@ -1,31 +1,53 @@
 [
   {
     "id": 1,
-    "title": "Frontend Bootcamp: Modern CSS",
+    "title": "Frontend Bootcamp 2026",
     "category": "Technology",
-    "date": "2026-07-20",
-    "time": "10:00 AM",
-    "location": "Online • Zoom & Discord",
-    "image": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
-    "attendees": 97,
-    "maxAttendees": 100,
+    "date": "2026-06-20",
+    "time": "10:00 AM - 4:00 PM",
+    "location": "Community Hall, Noida",
+    "image": "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg",
+    "description": "Learn HTML, CSS and JavaScript through hands-on workshops.",
+    "fullDescription": "Frontend Bootcamp is a beginner-friendly coding workshop where participants learn HTML, CSS and JavaScript by building real-world projects.",
+    "speaker": "John Anderson",
+    "organizer": "EventHub Organization",
+    "organizerDesignation": "Senior Frontend Developer",
+    "organizerImage": "https://randomuser.me/api/portraits/men/32.jpg",
+    "duration": "6 Hours",
     "price": "Free",
-    "organizer": "CodeMasters Community",
-    "duration": "4 Hours",
-    "speaker": "Sarah Johnson",
-    "description": "Master modern CSS by building responsive layouts using Flexbox, CSS Grid, Container Queries, View Transitions, and Scroll-driven Animations. This hands-on workshop includes live coding sessions, mini challenges, and real-world UI projects that will help you write clean, maintainable, and production-ready CSS. Perfect for beginners and frontend developers looking to level up their skills.",
+    "attendees": 120,
+    "maxAttendees": 200,
+    "highlights": [
+      "Live Coding Sessions",
+      "Hands-on Projects",
+      "Certificate",
+      "Networking"
+    ],
+    "learning": [
+      "HTML5",
+      "CSS3",
+      "Responsive Design",
+      "JavaScript",
+      "DOM",
+      "Mini Project"
+    ],
     "agenda": [
-      "Introduction to Modern CSS",
-      "Flexbox & CSS Grid",
-      "Container Queries",
-      "Scroll Animations",
-      "Mini Project & Q&A"
+      "10:00 AM - Registration",
+      "10:30 AM - HTML",
+      "12:00 PM - Lunch",
+      "1:00 PM - JavaScript",
+      "3:00 PM - Project",
+      "4:00 PM - Certificate"
     ],
     "requirements": [
-      "Basic HTML & CSS knowledge",
-      "Laptop with VS Code",
-      "Stable internet connection"
-    ]
+      "Laptop",
+      "Notebook",
+      "Basic Computer Knowledge"
+    ],
+    "contact": {
+      "email": "frontend@eventhub.com",
+      "phone": "+91 9876543210"
+    }
   },
 
   {
@@ -36,76 +58,124 @@
     "time": "02:30 PM",
     "location": "Delhi • Pragati Maidan",
     "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg",
+    "description": "Explore AI with founders and engineers.",
+    "fullDescription": "Learn how AI products are built, deployed and scaled with live demos.",
+    "speaker": "Multiple Industry Experts",
+    "organizer": "AI India",
+    "organizerDesignation": "AI Community",
+    "organizerImage": "https://randomuser.me/api/portraits/men/41.jpg",
+    "duration": "6 Hours",
+    "price": "₹999",
     "attendees": 245,
     "maxAttendees": 300,
-    "price": "₹999",
-    "organizer": "AI India",
-    "duration": "6 Hours",
-    "speaker": "Multiple Industry Experts",
-    "description": "Explore the latest breakthroughs in Artificial Intelligence with founders, engineers, researchers, and product leaders from top companies. Learn how AI products are designed, deployed, and scaled while networking with professionals from across the industry.",
-    "agenda": [
+    "highlights": [
       "Keynote Sessions",
       "AI Product Demos",
       "Networking",
       "Panel Discussion"
     ],
+    "learning": [
+      "Generative AI",
+      "LLMs",
+      "Prompt Engineering",
+      "AI Startups"
+    ],
+    "agenda": [
+      "Opening Keynote",
+      "Product Demo",
+      "Lunch",
+      "AI Panel",
+      "Networking"
+    ],
     "requirements": [
-      "Student ID or Event Ticket",
-      "Laptop (Optional)"
-    ]
+      "Student ID",
+      "Laptop Optional"
+    ],
+    "contact": {
+      "email": "ai@eventhub.com",
+      "phone": "+91 9876543211"
+    }
   },
 
   {
     "id": 3,
     "title": "Live Music Festival",
     "category": "Music",
-    "date": "2026-07-25",
+    "date": "2026-08-05",
     "time": "07:00 PM",
     "location": "Noida Stadium",
-    "image": "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg",
+    "image": "https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg",
+    "description": "An unforgettable night of live music.",
+    "fullDescription": "Enjoy performances by top singers and bands.",
+    "speaker": "Arijit Singh & Guests",
+    "organizer": "Music India",
+    "organizerDesignation": "Event Organizer",
+    "organizerImage": "https://randomuser.me/api/portraits/women/20.jpg",
+    "duration": "5 Hours",
+    "price": "₹1499",
     "attendees": 420,
     "maxAttendees": 500,
-    "price": "₹499",
-    "organizer": "Live Nation",
-    "duration": "5 Hours",
-    "speaker": "Various Artists",
-    "description": "Enjoy an unforgettable night filled with live performances by top singers, DJs, and bands. Experience immersive lighting, delicious food stalls, exciting games, and an energetic crowd while celebrating music under the stars.",
+    "highlights": [
+      "Live Bands",
+      "DJ Night",
+      "Food Court",
+      "VIP Lounge"
+    ],
+    "learning": [],
     "agenda": [
       "Opening DJ",
-      "Band Performances",
-      "Celebrity Performance",
-      "After Party"
+      "Band Performance",
+      "Celebrity Singer"
     ],
     "requirements": [
-      "Valid Ticket",
-      "Government ID"
-    ]
+      "Valid Ticket"
+    ],
+    "contact": {
+      "email": "music@eventhub.com",
+      "phone": "+91 9876543212"
+    }
   },
 
   {
     "id": 4,
-    "title": "Startup Networking Meetup",
+    "title": "Startup Founders Meetup",
     "category": "Business",
     "date": "2026-07-28",
-    "time": "05:00 PM",
-    "location": "Gurugram • Cyber Hub",
-    "image": "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg",
-    "attendees": 154,
-    "maxAttendees": 200,
-    "price": "Free",
+    "time": "11:00 AM",
+    "location": "Bangalore",
+    "image": "https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg",
+    "description": "Meet founders and investors.",
+    "fullDescription": "Pitch ideas and network with startup founders.",
+    "speaker": "Top Startup CEOs",
     "organizer": "Startup India",
-    "duration": "3 Hours",
-    "speaker": "Founders & Investors",
-    "description": "Meet startup founders, angel investors, and aspiring entrepreneurs to exchange ideas, build valuable connections, and discover new opportunities in India's thriving startup ecosystem.",
+    "organizerDesignation": "Startup Community",
+    "organizerImage": "https://randomuser.me/api/portraits/men/22.jpg",
+    "duration": "5 Hours",
+    "price": "₹499",
+    "attendees": 180,
+    "maxAttendees": 250,
+    "highlights": [
+      "Pitch Competition",
+      "Investor Meet",
+      "Networking"
+    ],
+    "learning": [
+      "Startup Basics",
+      "Fundraising",
+      "Pitching"
+    ],
     "agenda": [
-      "Networking Session",
-      "Founder Stories",
-      "Pitch Deck Review",
-      "Open Networking"
+      "Founder Talk",
+      "Pitch Session",
+      "Networking"
     ],
     "requirements": [
-      "Business Card (Optional)"
-    ]
+      "Business Idea"
+    ],
+    "contact": {
+      "email": "startup@eventhub.com",
+      "phone": "+91 9876543213"
+    }
   },
 
   {
@@ -114,157 +184,81 @@
     "category": "Photography",
     "date": "2026-08-02",
     "time": "06:30 AM",
-    "location": "Lodhi Garden, Delhi",
-    "image": "https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg",
-    "attendees": 38,
-    "maxAttendees": 50,
+    "location": "Jaipur",
+    "image": "https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg",
+    "description": "Capture beautiful landscapes.",
+    "fullDescription": "Outdoor photography session with professionals.",
+    "speaker": "Rahul Verma",
+    "organizer": "Photo Club",
+    "organizerDesignation": "Photography Mentor",
+    "organizerImage": "https://randomuser.me/api/portraits/men/55.jpg",
+    "duration": "4 Hours",
     "price": "₹299",
-    "organizer": "Photo Club Delhi",
-    "duration": "2.5 Hours",
-    "speaker": "Rohit Sharma",
-    "description": "Capture breathtaking sunrise landscapes while learning composition, lighting, portrait photography, and camera settings from professional photographers in a fun outdoor environment.",
+    "attendees": 75,
+    "maxAttendees": 100,
+    "highlights": [
+      "Nature Photography",
+      "Camera Tips",
+      "Editing Basics"
+    ],
+    "learning": [
+      "Composition",
+      "Lighting",
+      "Editing"
+    ],
     "agenda": [
-      "Camera Basics",
-      "Golden Hour Photography",
-      "Portrait Session",
-      "Photo Review"
+      "Sunrise Shoot",
+      "Street Walk",
+      "Review Session"
     ],
     "requirements": [
-      "Camera or Smartphone",
-      "Comfortable Shoes"
-    ]
+      "Camera"
+    ],
+    "contact": {
+      "email": "photo@eventhub.com",
+      "phone": "+91 9876543214"
+    }
   },
 
   {
     "id": 6,
     "title": "Yoga & Wellness Camp",
-    "category": "Health",
-    "date": "2026-08-05",
+    "category": "Wellness",
+    "date": "2026-08-10",
     "time": "07:00 AM",
-    "location": "Central Park, Noida",
-    "image": "https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg",
-    "attendees": 76,
-    "maxAttendees": 100,
-    "price": "Free",
-    "organizer": "Healthy Living Foundation",
-    "duration": "2 Hours",
-    "speaker": "Anjali Mehta",
-    "description": "Refresh your body and mind with guided yoga, meditation, breathing exercises, and mindfulness practices designed for beginners and experienced participants alike.",
-    "agenda": [
-      "Warm-up",
-      "Yoga Session",
-      "Meditation",
-      "Healthy Breakfast"
-    ],
-    "requirements": [
-      "Yoga Mat",
-      "Water Bottle"
-    ]
-  },
-
-  {
-    "id": 7,
-    "title": "Cricket Championship",
-    "category": "Sports",
-    "date": "2026-08-08",
-    "time": "09:00 AM",
-    "location": "Arun Jaitley Stadium",
-    "image": "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg",
-    "attendees": 310,
-    "maxAttendees": 500,
+    "location": "Rishikesh",
+    "image": "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
+    "description": "Relax your body and mind.",
+    "fullDescription": "Yoga, meditation and healthy lifestyle workshop.",
+    "speaker": "Swami Anand",
+    "organizer": "Wellness India",
+    "organizerDesignation": "Yoga Trainer",
+    "organizerImage": "https://randomuser.me/api/portraits/men/60.jpg",
+    "duration": "3 Hours",
     "price": "₹199",
-    "organizer": "Delhi Sports Club",
-    "duration": "Full Day",
-    "speaker": "Professional Commentators",
-    "description": "Watch thrilling cricket matches between top local teams competing for the championship trophy. Enjoy food courts, live commentary, entertainment, and exciting fan activities.",
+    "attendees": 60,
+    "maxAttendees": 80,
+    "highlights": [
+      "Meditation",
+      "Yoga",
+      "Healthy Food"
+    ],
+    "learning": [
+      "Breathing",
+      "Meditation",
+      "Yoga"
+    ],
     "agenda": [
-      "League Matches",
-      "Semi Finals",
-      "Grand Finale",
-      "Prize Ceremony"
+      "Yoga",
+      "Meditation",
+      "Breakfast"
     ],
     "requirements": [
-      "Entry Ticket"
-    ]
-  },
-
-  {
-    "id": 8,
-    "title": "Global Food Carnival",
-    "category": "Food",
-    "date": "2026-08-12",
-    "time": "04:00 PM",
-    "location": "Connaught Place, Delhi",
-    "image": "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg",
-    "attendees": 212,
-    "maxAttendees": 350,
-    "price": "₹149",
-    "organizer": "Delhi Foodies",
-    "duration": "6 Hours",
-    "speaker": "Celebrity Chefs",
-    "description": "Taste cuisines from around the world, attend live cooking demonstrations, participate in food challenges, and discover unique flavors from over 50 food stalls.",
-    "agenda": [
-      "Street Food Zone",
-      "Live Cooking",
-      "Food Competition",
-      "Dessert Festival"
+      "Yoga Mat"
     ],
-    "requirements": [
-      "Event Pass"
-    ]
-  },
-
-  {
-    "id": 9,
-    "title": "Hackathon 2026",
-    "category": "Technology",
-    "date": "2026-08-16",
-    "time": "09:00 AM",
-    "location": "PW IOI Campus",
-    "image": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
-    "attendees": 132,
-    "maxAttendees": 150,
-    "price": "Free",
-    "organizer": "PW IOI",
-    "duration": "24 Hours",
-    "speaker": "Industry Mentors",
-    "description": "Build innovative software solutions with your team during an exciting 24-hour coding challenge. Receive mentorship from experienced developers and compete for prizes worth ₹1,00,000.",
-    "agenda": [
-      "Opening Ceremony",
-      "Coding Begins",
-      "Mentor Sessions",
-      "Final Presentations"
-    ],
-    "requirements": [
-      "Laptop",
-      "Student ID",
-      "Team of 2-4 Members"
-    ]
-  },
-
-  {
-    "id": 10,
-    "title": "Art & Craft Exhibition",
-    "category": "Art",
-    "date": "2026-08-20",
-    "time": "11:00 AM",
-    "location": "India Habitat Centre",
-    "image": "https://images.pexels.com/photos/1109354/pexels-photo-1109354.jpeg",
-    "attendees": 88,
-    "maxAttendees": 120,
-    "price": "₹99",
-    "organizer": "Creative Arts Society",
-    "duration": "5 Hours",
-    "speaker": "Local Artists",
-    "description": "Discover stunning paintings, sculptures, handmade crafts, and interactive workshops by talented artists. Learn new creative techniques while supporting independent creators.",
-    "agenda": [
-      "Art Gallery Tour",
-      "Live Painting",
-      "Craft Workshop",
-      "Meet the Artists"
-    ],
-    "requirements": [
-      "Registration Required"
-    ]
+    "contact": {
+      "email": "wellness@eventhub.com",
+      "phone": "+91 9876543215"
+    }
   }
 ]

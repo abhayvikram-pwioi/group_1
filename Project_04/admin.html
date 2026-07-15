@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-side">
+            <h1 style="color: var(--primary);">UniEvents</h1>
+        </div>
+        <div class="menu-list">
+            <a href="index.html">Home</a>
+            <a href="#events-section">Events</a>
+        </div>
+        <div class="profile-side">
+            <div class="profile-img">
+                <img src="" alt="" id="profile-pic">
+            </div>
+
+            <div class="profile-dropdown" id="profile-dropdown">
+
+                <div class="user-info">
+                    <img src="" id="dropdown-pic">
+
+                    <div>
+                        <h4 id="dropdown-name">Aman Kumar</h4>
+                        <p id="dropdown-email">aman@gmail.com</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <a href="Profile.html"> My Profile</a>
+
+                <a href="#" id="registration-link">
+                     My Registrations
+                </a>
+
+                <a href="admin.html" id="dashboard-link">
+                     Dashboard
+                </a>
+
+                <button id="logout-btn">
+                     Logout
+                </button>
+
+            </div>
+        </div>
+
+    </header>
+
+
+    <!-- Main content -->
+    <h1>Admin DashBoard</h1>
+    <main>
+
+        <!-- Add Event -->
+        <section class="add-event">
+            <h2>Add New Event</h2>
+            <form id="eventForm">
+                <input type="text" id="title" placeholder="Event Name" required>
+                <input type="date" id="date" required>
+                <input type="time" id="time" required>
+                <input type="text" id="venue" placeholder="Venue" required>
+                <select id="category">
+                    <option>Select Category</option>
+                    <option>Technical</option>
+                    <option>Cultural</option>
+                    <option>Workshop</option>
+                    <option>Arts & Cultural</option>
+                    <option>Music & Entertainment</option>
+                    <option>Health & Wellness</option>
+                </select>
+                <input type="number" id="seats" placeholder="Available Seats" required>
+                <input type="url" id="image" placeholder="Banner Image URL">
+                <textarea placeholder="Event Description" id="description" required></textarea>
+                <button type="submit" id="submitBtn">Add Event</button>
+            </form>
+        </section>
+
+
+        <section class="recent-events">
+
+            <div class="events-header">
+                <h2>All Events</h2>
+            </div>
+
+            <input type="text" id="search" placeholder="Search Events">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Event Title</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Venue</th>
+                        <th>Maximum Attendee</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="eventTable">
+                </tbody>
+
+            </table>
+
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2>UniEvents</h2>
+                <p>
+                    Discover amazing events, connect with inspiring people,
+                    and create unforgettable memories wherever you go.
+                </p>
+
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+
+                <a href="#">Home</a>
+                <a href="#">Events</a>
+                <a href="#">Categories</a>
+                <a href="#">About Us</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Support</h3>
+
+                <a href="#">Help Center</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <div class="footer-newsletter">
+
+                <h3>Stay Updated</h3>
+
+                <p>
+                    Get notified about upcoming events and exclusive meetups.
+                </p>
+
+                <div class="newsletter-box">
+                    <input type="email" placeholder="Enter your email">
+                    <button>Subscribe</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 UniEvents. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
