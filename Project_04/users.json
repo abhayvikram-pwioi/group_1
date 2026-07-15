@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "fullName": "Admin",
+    "email": "admin@unievents.com",
+    "password": "admin123",
+    "role": "admin",
+    "profilePic": "https://i.pravatar.cc/150?img=68"
+  },
+  {
+    "id": 2,
+    "fullName": "Aman Kumar",
+    "email": "aman@gmail.com",
+    "password": "123456",
+    "role": "user",
+    "profilePic": "https://i.pravatar.cc/150?img=12"
+  }
+]

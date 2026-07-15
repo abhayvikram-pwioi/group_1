@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Registration - EventHub</title>
+  <link rel="stylesheet" href="EventRegistration.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <header>
+    <div class="logo-side">
+      <img src="" alt="">
+      <h1>UniEvents</h1>
+    </div>
+    <div class="menu-list">
+      <a href="index.html">Home</a>
+      <a href="index.html">Events</a>
+    </div>
+    <div class="profile-side">
+      <div class="profile-img">
+        <img src="" alt="" id="profile-pic">
+      </div>
+
+      <div class="profile-dropdown" id="profile-dropdown">
+
+        <div class="user-info">
+          <img src="" id="dropdown-pic">
+
+          <div>
+            <h4 id="dropdown-name">Aman Kumar</h4>
+            <p id="dropdown-email">aman@gmail.com</p>
+          </div>
+        </div>
+
+        <hr>
+
+        <a href="Profile.html"> My Profile</a>
+
+        <a href="#" id="registration-link">
+           My Registrations
+        </a>
+
+        <a href="admin.html" id="dashboard-link">
+           Dashboard
+        </a>
+
+        <button id="logout-btn">
+           Logout
+        </button>
+
+      </div>
+    </div>
+    <div class="login-side">
+      <a href="LoginPage.html" id="login-btn">Login</a>
+      <a href="LoginPage.html" id="sign-up-btn">Sign Up</a>
+    </div>
+  </header>
+
+  <main class="page-main">
+
+    <div class="container">
+      <div class="page-intro">
+        <p class="eyebrow">Event Registration</p>
+      </div>
+
+      <div class="registration-layout is-hidden" id="event-registration-area">
+        <div class="registration-card">
+
+          <div class="event-summary">
+            <div class="event-banner" id="event-banner">Event Banner</div>
+
+            <div>
+              <p class="badge" id="event-category">Technology</p>
+              <h2 id="event-title">Tech Innovators Summit 2026</h2>
+
+              <div class="event-meta">
+                <p><strong>Date:</strong> <span id="event-date">August 22, 2026</span></p>
+                <p><strong>Time:</strong> <span id="event-time">10:00 AM</span></p>
+                <p><strong>Venue:</strong> <span id="event-venue">Grand Convention Center</span></p>
+                <p><strong>Available Seats:</strong> <span id="event-seats">48 seats</span></p>
+                <p><strong>Duration:</strong> <span id="event-duration">4 Hours</span></p>
+                <p><strong>Speaker:</strong> <span id="event-speaker">Sarah Johnson</span></p>
+              </div>
+            </div>
+          </div>
+
+
+          <form class="form registration-form" id="registration-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="Enter full name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-email">Email</label>
+                <input type="email" id="reg-email" placeholder="Enter email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" placeholder="Create password" required minlength="6">
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter phone number" required>
+              </div>
+
+              <div class="form-group">
+                <label for="organization">College/Organization</label>
+                <input type="text" id="organization" placeholder="Enter college or organization" required>
+              </div>
+
+              <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" placeholder="Enter age" required>
+              </div>
+
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" required>
+                  <option value="">Select gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="tickets">Number of Tickets</label>
+                <input type="number" id="tickets" value="1" min="1">
+              </div>
+
+              <div class="form-group form-group-wide">
+                <label for="emergency">Emergency Contact</label>
+                <input type="tel" id="emergency" placeholder="Emergency contact number">
+              </div>
+
+              <div class="form-group form-group-wide">
+                <label for="requirements">Special Requirements</label>
+                <textarea id="requirements" rows="4" placeholder="Write special requirements if any"></textarea>
+              </div>
+            </div>
+
+            <label class="checkbox-label terms">
+              <input type="checkbox" required>
+              I agree to the Terms &amp; Conditions.
+            </label>
+
+            <div class="button-row">
+              <button class="btn btn-primary" type="submit">Register</button>
+              <button class="btn btn-secondary" type="reset">Cancel</button>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="info-card">
+          <h2>Event Information</h2>
+          <p><strong>Event Name:</strong> <span id="info-name">Tech Innovators Summit 2026</span></p>
+          <p><strong>Date:</strong> <span id="info-date">August 22, 2026</span></p>
+          <p><strong>Time:</strong> <span id="info-time">10:00 AM - 5:00 PM</span></p>
+          <p><strong>Venue:</strong> <span id="info-venue">Grand Convention Center</span></p>
+          <p><strong>Organizer:</strong> <span id="info-organizer">EventHub Experiences</span></p>
+          <p><strong>Entry Fee:</strong> <span id="info-fee">$49 per ticket</span></p>
+          <p><strong>Remaining Seats:</strong> <span id="info-seats">48 seats</span></p>
+          <p><strong>Duration:</strong> <span id="info-duration">4 Hours</span></p>
+          <p><strong>Speaker:</strong> <span id="info-speaker">Sarah Johnson</span></p>
+          <p><strong>Description:</strong> <span id="info-description">Select an event to view details.</span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <h2>UniEvents</h2>
+        <p>
+          Discover amazing events, connect with inspiring people,
+          and create unforgettable memories wherever you go.
+        </p>
+
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h3>Explore</h3>
+
+        <a href="#">Home</a>
+        <a href="#">Events</a>
+        <a href="#">Categories</a>
+        <a href="#">About Us</a>
+      </div>
+
+      <div class="footer-links">
+        <h3>Support</h3>
+
+        <a href="#">Help Center</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="footer-newsletter">
+
+        <h3>Stay Updated</h3>
+
+        <p>
+          Get notified about upcoming events and exclusive meetups.
+        </p>
+
+        <div class="newsletter-box">
+          <input type="email" placeholder="Enter your email">
+          <button>Subscribe</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 UniEvents. All Rights Reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <div class="success-popup" id="successPopup">
+
+    <div class="popup-box">
+
+      <div class="check-icon">✔</div>
+
+      <h2>Registration Successful!</h2>
+
+      <p id="popupMessage"></p>
+
+      <button id="popupBtn">Go to Home</button>
+
+    </div>
+
+  </div>
+  <script src="EventRegistration.js"></script>
+</body>
+
+</html>
