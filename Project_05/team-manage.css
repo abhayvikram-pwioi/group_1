@@ -160,3 +160,25 @@ tbody td i{
     font-size:18px;
     transition:.3s;
 }
+
+.fa-pen-to-square{
+    color:#6c63ff;
+}
+
+.fa-pen-to-square:hover{
+    color:#564df5;
+}
+
+.fa-trash{
+    color:#ff4d4f;
+}
+
+.fa-trash:hover{
+    color:#d9363e;
+}
+
+.member-add-sec{
+    border: 1px solid black;
+    width: 500px;
+    height: 100vh;
+}
