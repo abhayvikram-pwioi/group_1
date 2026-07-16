@@ -79,7 +79,7 @@ a {
 .headline{
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     align-items: center;
 }
 
