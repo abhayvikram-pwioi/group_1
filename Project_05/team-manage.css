@@ -246,3 +246,25 @@ tbody td i{
 #add-member-btn:hover{
     cursor: pointer;
 }
+
+.member-data{
+    border: 1px solid black;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.team-summary{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+.summary-sec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
