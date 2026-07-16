@@ -89,3 +89,35 @@ a {
     justify-content: space-between;
     gap: 20px;
 }
+
+.member-table-sec{
+    border: 1px solid black;
+    width: 100%;
+}
+
+.table-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.table-head h2{
+    font-size: 1.7rem;
+    color: #222;
+}
+
+#member-search{
+    width: 100%;
+    max-width: 280px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+#member-search:focus{
+    box-shadow: 0 0 5px rgba(108,99,255,.3);
+}
