@@ -177,8 +177,35 @@ tbody td i{
     color:#d9363e;
 }
 
-.member-add-sec{
-    border: 1px solid black;
+.add-data-member{
     width: 500px;
     height: 100vh;
+}
+
+.member-add-sec{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 10px;
+    gap: 20px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sub-sec{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sub-sec input{
+    height: 40px;
+    border-radius: 10px;
+    padding: 0px 5px;
+    border: 1px solid gray;
+    outline: none;
 }
