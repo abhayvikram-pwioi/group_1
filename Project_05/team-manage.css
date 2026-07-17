@@ -337,6 +337,49 @@ tbody td i {
 }
 
 
+#task-form {
+    padding: 15px 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #374151;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+
+    width: 95%;
+    padding: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    outline: none;
+    font-size: 16px;
+    transition: .3s;
+    background: #fff;
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+    /* border-color: #4f46e5; */
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, .15);
+}
+
 
 @media (max-width: 768px) {
     .main-body {
