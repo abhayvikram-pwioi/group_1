@@ -272,6 +272,32 @@ tbody td i {
 }
 
 
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    animation: popup .25s ease;
+}
+
+
+
 @media (max-width: 768px) {
     .main-body {
         padding: 10px;
