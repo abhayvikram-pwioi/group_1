@@ -296,6 +296,46 @@ tbody td i {
     animation: popup .25s ease;
 }
 
+@keyframes popup {
+
+    from {
+        transform: scale(.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h2 {
+    font-size: 22px;
+    color: #1f2937;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: .3s;
+}
+
+.close-btn:hover {
+    color: #111827;
+}
+
 
 
 @media (max-width: 768px) {
