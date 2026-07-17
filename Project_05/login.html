@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trello| Workspace Setup</title>
+
+    <link rel="stylesheet" href="login.css">
+
+    
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Left Section -->
+
+        <div class="left-section">
+
+            <div class="logo">
+                <i class="fa-solid fa-layer-group"></i>
+                <h1>Trello</h1>
+            </div>
+
+            <h2>Welcome!</h2>
+
+            <p>
+                Create your workspace, add your teammates,
+                and start managing your project efficiently.
+            </p>
+
+        </div>
+
+        <!-- Right Section -->
+
+        <div class="right-section">
+
+            <form id="workspaceForm">
+
+                <h2>Create Workspace</h2>
+
+                <!-- Workspace -->
+
+                <div class="input-box">
+
+                    <label>Workspace Name</label>
+
+                    <input
+                        type="text"
+                        id="workspaceName"
+                        placeholder="Trello Workspace">
+
+                </div>
+
+                <!-- Project -->
+
+                <div class="input-box">
+
+                    <label>Project Name</label>
+
+                    <input
+                        type="text"
+                        id="projectName"
+                        placeholder="Project Management Board">
+
+                </div>
+
+                <!-- Description -->
+
+                <div class="input-box">
+
+                    <label>Description</label>
+
+                    <textarea
+                        id="projectDescription"
+                        placeholder="Write about your project..."></textarea>
+
+                </div>
+
+                <hr>
+
+                <h3>Team Members</h3>
+
+                <!-- Member Form -->
+
+                <div class="member-form">
+
+                    <input
+                        type="text"
+                        id="memberName"
+                        placeholder="Member Name">
+
+                    <select id="memberRole">
+
+                        <option value="">Select Role</option>
+
+                        <option>Team Lead</option>
+
+                        <option>Frontend Developer</option>
+
+                        <option>Backend Developer</option>
+
+                        <option>UI/UX Designer</option>
+
+                        <option>Tester</option>
+
+                    </select>
+
+                    <button
+                        type="button"
+                        id="addMemberBtn">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add Member
+
+                    </button>
+
+                </div>
+
+                <!-- Members List -->
+
+                <div
+                    class="members-container"
+                    id="membersContainer">
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="create-btn">
+
+                    Create Workspace
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>
