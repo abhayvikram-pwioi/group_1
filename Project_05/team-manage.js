@@ -87,3 +87,23 @@ window.addEventListener("DOMContentLoaded",()=>{
     renderMembers();
 
 });
+
+const modal = document.getElementById("task-modal");
+
+document.getElementById("add-task-btn").onclick = () => {
+    modal.classList.add("active");
+};
+
+document.getElementById("close-modal").onclick = () => {
+    modal.classList.remove("active");
+};
+
+document.getElementById("cancel-btn").onclick = () => {
+    modal.classList.remove("active");
+};
+
+window.onclick = (e) => {
+    if (e.target === modal) {
+        modal.classList.remove("active");
+    }
+};
