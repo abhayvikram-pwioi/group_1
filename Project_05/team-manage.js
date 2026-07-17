@@ -44,3 +44,46 @@ document.getElementById("add-member-btn").addEventListener("click", (e) => {
     role.value = "";
     avatar.value = "";
 })
+
+function saveMembers(members) {
+    localStorage.setItem("members", JSON.stringify(members));
+}
+
+
+function renderMembers() {
+    const members = JSON.parse(localStorage.getItem("members")) || [];
+
+    const container = document.getElementById("table-body");
+
+    container.innerHTML = "";
+
+    members.forEach(member => {
+
+        container.innerHTML += `
+            <tr>
+
+                <td>${member.name}</td>
+
+                <td>${member.role}</td>
+
+                <td>${member.taskCount}</td>
+
+                <td>${member.joinedOn}</td>
+
+                <td>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+
+            </tr>
+        `;
+
+    });
+
+};
+
+window.addEventListener("DOMContentLoaded",()=>{
+
+    renderMembers();
+
+});
