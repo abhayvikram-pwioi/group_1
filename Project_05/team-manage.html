@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Management</title>
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
     <link rel="stylesheet" href="team-manage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
+
 <body>
-     <header>
+    <header>
         <div class="logo-side">
             <h1>Trello</h1>
         </div>
@@ -17,9 +19,9 @@
             <a href="">Team Management</a>
         </div>
         <div class="right-side">
-           <div class="search-box">
+            <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" id="search">
+                <input type="search" id="search" placeholder="Search keywords...">
             </div>
             <button id="add-task-btn">+ New task</button>
             <div class="profile-pic">
@@ -28,14 +30,14 @@
         </div>
     </header>
 
-     <div class="main-body">
+    <div class="main-body">
         <div class="headline">
             <div class="headline-text">
                 <h1>Team Management</h1>
                 <p>Manage your team members</p>
             </div>
             <div class="member-count">
-                <h3>4 Members</h3>
+                <h3>1 Member</h3>
             </div>
         </div>
 
@@ -68,11 +70,213 @@
                     </tbody>
                 </table>
             </div>
-            <div class="member-add-sec">
 
+            <div class="add-data-member">
+                <div class="member-add-sec">
+                    <h2>Add new Member</h2>
+                    <div class="form">
+                        <div class="sub-sec">
+                            <label for="">Full name</label>
+                            <input type="text" placeholder="Enter full name..." id="full-name" required>
+                        </div>
+                        <div class="sub-sec">
+                            <label for="">Email address</label>
+                            <input type="email" placeholder="Enter email id...." id="email-id" required>
+                        </div>
+                        <div class="sub-sec">
+                            <label for="">Role</label>
+                            <select name="" id="role">
+                                <option value="">Select Role</option>
+                                <option value="Project Manager">Project Manager</option>
+                                <option value="Frontend Developer">Frontend Developer</option>
+                                <option value="Backend Developer">Backend Developer</option>
+                                <option value="UI/UX Designer">UI/UX Designer</option>
+                                <option value="QA Tester">QA Tester</option>
+                                <option value="DevOps Engineer">DevOps Engineer</option>
+                            </select>
+                        </div>
+                        <div class="sub-sec">
+                            <label for="">Avatar (optional)</label>
+                            <input type="file" name="" id="avatar">
+                        </div>
+                        <button id="add-member-btn"><i class="fa-solid fa-user-plus"></i> Add Member</button>
+                    </div>
+                </div>
+
+                <div class="member-data">
+                    <h2>Team summary</h2>
+                    <div class="team-summary">
+
+                        <div class="summary-sec">
+                            <p>Total Members</p>
+                            <p>6</p>
+                        </div>
+
+                        <div class="summary-sec">
+                            <p>UI/UX Designers</p>
+                            <p>6</p>
+                        </div>
+
+                        <div class="summary-sec">
+                            <p>Frontend Developers</p>
+                            <p>6</p>
+                        </div>
+                        
+                        <div class="summary-sec">
+                            <p>Backend Developers</p>
+                            <p>6</p>
+                        </div>
+
+                        <div class="summary-sec">
+                            <p>Project Managers</p>
+                            <p>6</p>
+                        </div>
+                        
+                        <div class="summary-sec">
+                            <p>DevOps Engineers</p>
+                            <p>6</p>
+                        </div>
+                        
+                        <div class="summary-sec">
+                            <p>QA Testers</p>
+                            <p>6</p>
+                        </div>
+
+                    </div>
+                </div>
             </div>
+
+
         </div>
     </div>
 
+
+    <div class="modal" id="task-modal">
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+            <h2>New Task</h2>
+
+            <button class="close-btn" id="close-modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+
+        <form id="task-form">
+
+
+            <div class="input-group">
+                <label for="task-title">Title</label>
+
+                <input type="text" id="task-title" placeholder="Task title" >
+            </div>
+
+
+            <div class="input-group">
+                <label for="task-description">Description</label>
+
+                <textarea id="task-description" rows="5" placeholder="Task description..." ></textarea>
+            </div>
+
+            <!-- Row -->
+
+            <div class="form-row">
+
+                <!-- Assignee -->
+
+                <div class="input-group">
+                    <label for="task-member">Assignee</label>
+
+                    <select id="task-member">
+
+                        <option value="">Select Member</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Priority -->
+
+                <div class="input-group">
+                    <label for="task-priority">Priority</label>
+
+                    <select id="task-priority">
+
+                        <option value="Low">Low</option>
+
+                        <option value="Medium" selected>
+                            Medium
+                        </option>
+
+                        <option value="High">High</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- Row -->
+
+            <div class="form-row">
+
+                <!-- Status -->
+
+                <div class="input-group">
+                    <label for="task-status">Status</label>
+
+                    <select id="task-status">
+
+                        <option value="Backlog">Backlog</option>
+
+                        <option value="To Do">To Do</option>
+
+                        <option value="In Progress">In Progress</option>
+
+                        <option value="Review">Review</option>
+
+                        <option value="Done">Done</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Due Date -->
+
+                <div class="input-group">
+                    <label for="task-date">Due Date</label>
+
+                    <input
+                        type="date"
+                        id="task-date"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+
+            <div class="modal-footer">
+
+                <button type="button" id="cancel-btn" class="cancel-btn" >
+                    Cancel
+                </button>
+
+                <button type="submit" id="save-task-btn" class="save-btn" >
+                    Save
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+    <script src="team-manage.js"></script>
 </body>
 </html>
