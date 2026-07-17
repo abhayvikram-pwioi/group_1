@@ -149,6 +149,134 @@
 
         </div>
     </div>
+
+
+    <div class="modal" id="task-modal">
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+            <h2>New Task</h2>
+
+            <button class="close-btn" id="close-modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+
+        <form id="task-form">
+
+
+            <div class="input-group">
+                <label for="task-title">Title</label>
+
+                <input type="text" id="task-title" placeholder="Task title" >
+            </div>
+
+
+            <div class="input-group">
+                <label for="task-description">Description</label>
+
+                <textarea id="task-description" rows="5" placeholder="Task description..." ></textarea>
+            </div>
+
+            <!-- Row -->
+
+            <div class="form-row">
+
+                <!-- Assignee -->
+
+                <div class="input-group">
+                    <label for="task-member">Assignee</label>
+
+                    <select id="task-member">
+
+                        <option value="">Select Member</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Priority -->
+
+                <div class="input-group">
+                    <label for="task-priority">Priority</label>
+
+                    <select id="task-priority">
+
+                        <option value="Low">Low</option>
+
+                        <option value="Medium" selected>
+                            Medium
+                        </option>
+
+                        <option value="High">High</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- Row -->
+
+            <div class="form-row">
+
+                <!-- Status -->
+
+                <div class="input-group">
+                    <label for="task-status">Status</label>
+
+                    <select id="task-status">
+
+                        <option value="Backlog">Backlog</option>
+
+                        <option value="To Do">To Do</option>
+
+                        <option value="In Progress">In Progress</option>
+
+                        <option value="Review">Review</option>
+
+                        <option value="Done">Done</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Due Date -->
+
+                <div class="input-group">
+                    <label for="task-date">Due Date</label>
+
+                    <input
+                        type="date"
+                        id="task-date"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+
+            <div class="modal-footer">
+
+                <button type="button" id="cancel-btn" class="cancel-btn" >
+                    Cancel
+                </button>
+
+                <button type="submit" id="save-task-btn" class="save-btn" >
+                    Save
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
     <script src="team-manage.js"></script>
 </body>
 </html>
