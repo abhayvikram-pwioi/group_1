@@ -127,3 +127,52 @@ function loadMembers() {
     });
 
 }
+
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+document.getElementById("task-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const title = document.getElementById("task-title");
+    const description = document.getElementById("task-description");
+    const member = document.getElementById("task-member");
+    const priority = document.getElementById("task-priority");
+    const status = document.getElementById("task-status");
+    const dueDate = document.getElementById("task-date");
+
+    if (title.value === "" ||
+        description.value === "" ||
+        member.value === "" || dueDate.value === "") {
+
+        alert("Fill all fields");
+
+        return;
+    }
+
+    const task = {
+
+        id: Date.now(),
+
+        title: title.value,
+
+        description: description.value,
+
+        assignee: member.value,
+
+        priority: priority.value,
+
+        status: status.value,
+
+        dueDate: formatDate(dueDate.value),
+
+        createdAt: formatDate(new Date())
+
+    };
+
+    tasks.push(task);
+    saveTasks();
+    this.reset();
+    document.getElementById("task-modal").classList.remove("active");
+});
+
+function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
