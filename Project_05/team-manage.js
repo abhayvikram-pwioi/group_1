@@ -23,6 +23,18 @@ document.getElementById("add-member-btn").addEventListener("click", (e) => {
 
     let members = JSON.parse(localStorage.getItem("members")) || [];
 
+    const exists = members.some(
+        m => m.email === emailId.value
+    );
+
+    if (exists) {
+
+        alert("Member already exists");
+
+        return;
+
+    }
+
     const member = {
         id: Date.now(),
         name: fullName.value,
@@ -30,7 +42,6 @@ document.getElementById("add-member-btn").addEventListener("click", (e) => {
         role: role.value,
         joinedOn: formatDate(new Date()),
         avatar: avatar.value,
-        taskCount: 0
     };
 
     members.push(member);
@@ -38,6 +49,7 @@ document.getElementById("add-member-btn").addEventListener("click", (e) => {
     saveMembers(members);
 
     renderMembers();
+    updateSummary();
 
     fullName.value = "";
     emailId.value = "";
@@ -59,6 +71,10 @@ function renderMembers() {
 
     members.forEach(member => {
 
+        const count = tasks.filter(
+            task => task.assignee === member.name
+        ).length;
+
         container.innerHTML += `
             <tr>
 
@@ -66,7 +82,7 @@ function renderMembers() {
 
                 <td>${member.role}</td>
 
-                <td>${member.taskCount}</td>
+                <td>${count}</td>
 
                 <td>${member.joinedOn}</td>
 
@@ -82,15 +98,10 @@ function renderMembers() {
 
 };
 
-window.addEventListener("DOMContentLoaded",()=>{
-
-    renderMembers();
-
-});
 
 const modal = document.getElementById("task-modal");
 
-document.getElementById("add-task-btn").onclick = () => {
+document.getElementById("addTaskBtn").onclick = () => {
     modal.classList.add("active");
 };
 
