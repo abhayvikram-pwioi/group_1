@@ -107,3 +107,23 @@ window.onclick = (e) => {
         modal.classList.remove("active");
     }
 };
+
+function loadMembers() {
+
+    const members = JSON.parse(localStorage.getItem("members")) || [];
+
+    const select = document.getElementById("task-member");
+
+    select.innerHTML = `<option value="">Select Member</option>`;
+
+    members.forEach(member => {
+
+        select.innerHTML += `
+            <option value="${member.name}">
+                ${member.name}
+            </option>
+        `;
+
+    });
+
+}
