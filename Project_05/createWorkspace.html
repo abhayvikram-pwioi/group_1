@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Workspace | Flowboard</title>
+
+    <link rel="stylesheet" href="createWorkspace.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT PANEL -->
+
+    <div class="left-section">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            <h1>Flowboard</h1>
+
+        </div>
+
+        <h2>Create your Workspace</h2>
+
+        <p>
+
+            Invite your teammates, organize projects and
+            start collaborating in minutes.
+
+        </p>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+
+    <div class="right-section">
+
+        <form id="workspaceForm">
+
+            <h2>Create Workspace</h2>
+
+            <!-- ====================== -->
+            <!-- Workspace Details -->
+            <!-- ====================== -->
+
+            <h3>Workspace Details</h3>
+
+            <div class="input-box">
+
+                <label>Workspace Name</label>
+
+                <input
+                    type="text"
+                    id="workspaceName"
+                    placeholder="Flowboard Team"
+                    required>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Project Name</label>
+
+                <input
+                    type="text"
+                    id="projectName"
+                    placeholder="Project Management Dashboard"
+                    required>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Description</label>
+
+                <textarea
+                    id="projectDescription"
+                    placeholder="Describe your project..."
+                    required></textarea>
+
+            </div>
+
+            <hr>
+
+            <!-- ====================== -->
+            <!-- Admin -->
+            <!-- ====================== -->
+
+            <h3>Workspace Admin</h3>
+
+            <div class="input-box">
+
+                <label>Admin Name</label>
+
+                <input
+                    type="text"
+                    id="adminName"
+                    placeholder="Bhumika Sharma"
+                    required>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Admin Email</label>
+
+                <input
+                    type="email"
+                    id="adminEmail"
+                    placeholder="bhumika@gmail.com"
+                    required>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create Password"
+                    required>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Confirm Password</label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                    required>
+
+            </div>
+
+            <hr>
+
+            <!-- ====================== -->
+            <!-- Members -->
+            <!-- ====================== -->
+
+            <h3>Team Members</h3>
+
+            <div class="member-form">
+
+                <input
+                    type="text"
+                    id="memberName"
+                    placeholder="Member Name">
+
+                <input
+                    type="email"
+                    id="memberEmail"
+                    placeholder="Member Email">
+
+                <select id="memberRole">
+
+                    <option value="">Role</option>
+
+                    <option>Team Lead</option>
+
+                    <option>Frontend Developer</option>
+
+                    <option>Backend Developer</option>
+
+                    <option>UI/UX Designer</option>
+
+                    <option>Tester</option>
+
+                </select>
+
+                <button
+                    type="button"
+                    id="addMemberBtn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </button>
+
+            </div>
+
+            <div
+                class="members-container"
+                id="membersContainer">
+
+            </div>
+
+            <button
+                class="create-btn"
+                type="submit">
+
+                Create Workspace
+
+            </button>
+
+            <p class="login-link">
+
+                Already have a workspace?
+
+                <a href="login.html">
+
+                    Login
+
+                </a>
+
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="createWorkspace.js"></script>
+
+</body>
+</html>
