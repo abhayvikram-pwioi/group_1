@@ -12,6 +12,8 @@ export function renderDashboard(student) {
     renderCircleProgress(student.dashboard);
     renderCharts(student.myCourses);
     renderDashboardStats(student.myCourses);
+    renderUpcomingTasks(student.upcomingTasks);
+    renderRecentActivity(student.recentActivity);
 }
 
 function renderProfile(profile) {
@@ -67,4 +69,46 @@ function renderCircleProgress(dashboard) {
 
 import { renderCharts } from "./charts.js";
 
+
+export function renderUpcomingTasks(tasks) {
+
+    const taskList = document.getElementById("taskList");
+    taskList.innerHTML = "";
+    tasks.forEach(task => {
+        taskList.innerHTML += `
+            <li class="task-item">
+
+                <div>
+                    <h4>${task.title}</h4>
+                    <p>${task.course}</p>
+                </div>
+
+                <span>${task.dueDate}</span>
+
+            </li>
+        `;
+    });
+
+}
+
+
+export function renderRecentActivity(activities) {
+
+    const activityList = document.getElementById("activityList");
+    activityList.innerHTML = "";
+    activities.forEach(activity => {
+        activityList.innerHTML += `
+            <li class="activity-item">
+
+                <div>
+                    <h4>${activity.title}</h4>
+                </div>
+
+                <span>${activity.date}</span>
+
+            </li>
+        `;
+    });
+
+}
 
