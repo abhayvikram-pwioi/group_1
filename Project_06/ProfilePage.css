@@ -58,8 +58,181 @@ body {
   font-size: 24px;
 }
 
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.top-nav .logo {
+  margin: 0;
+  flex: 1;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  font-size: 20px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle:hover {
+  background: var(--card-hover);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-pic {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  object-fit: cover;
+}
+
+.student-name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.student-email {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--secondary);
+}
+
+@media (max-width: 800px) {
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .top-nav {
+    padding: 10px 16px;
+  }
+
+  .top-nav .logo {
+    font-size: 19px;
+  }
+
+  .student-email {
+    display: none;
+  }
+}
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  min-height: calc(100vh - 70px);
+  background: var(--card);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 18px 0;
+}
+
+.nav-menu,
+.nav-logout {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-menu li a,
+.nav-logout li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 22px;
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 14px;
+  border-left: 3px solid transparent;
+  transition: 0.3s;
+}
+
+.nav-menu li a i,
+.nav-logout li a i {
+  width: 18px;
+  text-align: center;
+}
+
+.nav-menu li a:hover,
+.nav-logout li a:hover {
+  background: var(--card-hover);
+  color: var(--text);
+}
+
+.nav-menu li a.active {
+  color: var(--text);
+  background: var(--card-hover);
+  border-left-color: var(--violet);
+}
+
 main {
+  flex: 1;
+  min-width: 0;
   padding: 28px 0 40px;
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay.open {
+    display: block;
+  }
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 150;
 }
 
 .profile-section,

@@ -35,6 +35,29 @@ const studentData = {
   // ]
 };
 
+function showNav() {
+  const initials = studentData.name
+    .split(" ")
+    .map(function (word) {
+      return word[0];
+    })
+    .join("");
+
+  const navAvatar = document.getElementById("navAvatar");
+  const navName = document.getElementById("navStudentName");
+  const navEmail = document.getElementById("navStudentEmail");
+
+  if (navAvatar) {
+    navAvatar.src =
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='60' fill='%237C5CFF'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='white' font-family='Arial' font-size='34' font-weight='700'%3E" +
+      initials +
+      "%3C/text%3E%3C/svg%3E";
+    navAvatar.alt = studentData.name + " profile image";
+  }
+  if (navName) navName.textContent = studentData.name;
+  if (navEmail) navEmail.textContent = studentData.email;
+}
+
 function showProfile() {
   const initials = studentData.name
     .split(" ")
@@ -115,6 +138,28 @@ function showList(listId, items) {
     .join("");
 }
 
+function initSidebar() {
+  const menuToggle = document.getElementById("menuToggle");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("sidebarOverlay");
+
+  if (!menuToggle || !sidebar || !overlay) return;
+
+  function closeSidebar() {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("open");
+  }
+
+  menuToggle.addEventListener("click", function () {
+    sidebar.classList.toggle("open");
+    overlay.classList.toggle("open");
+  });
+
+  overlay.addEventListener("click", closeSidebar);
+}
+
+initSidebar();
+showNav();
 showProfile();
 showInformation();
 showProgress();
