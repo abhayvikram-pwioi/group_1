@@ -8,41 +8,308 @@ const gradesCanvas = document.getElementById("gradesChart");
 const subjectCanvas = document.getElementById("subjectChart");
 const attendanceCanvas = document.getElementById("attendanceChart");
 
-export function renderCharts(dashboard) {
+export function renderCharts(courses) {
+  const courseNames = courses.map(course => {
+    if (course.title === "Database Management System") return "DBMS";
+    if (course.title === "Data Structures & Algorithms") return "DSA";
+    if (course.title === "Java Programming") return "Java";
+    if (course.title === "Operating System") return "OS";
+    return course.title;
+});
+    const progressData = courses.map(course => course.progress);
+    const attendanceData = courses.map(course => course.attendance);
+    const grades = courses.map(course => course.grade);
+
+    if (!courses || courses.length === 0) {
+        return;
+    }
+
+    const gradeCount = {
+        A: 0,
+        B: 0,
+        C: 0,
+        D: 0
+    };
+
+    grades.forEach((grade) => {
+
+        if (gradeCount[grade] !== undefined) {
+
+            gradeCount[grade]++;
+
+        }
+    });
 
     if (progressChart) {
         progressChart.destroy();
     }
 
     progressChart = new Chart(progressCanvas, {
+
         type: "line",
 
         data: {
-            labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
+
+            labels: courseNames,
 
             datasets: [{
+
                 label: "Progress",
 
-                data: dashboard.progressChart,
+                data: progressData,
 
                 borderColor: "#7C5CFF",
 
-                backgroundColor: "rgba(124,92,255,0.2)",
+                backgroundColor: "rgba(124,92,255,0.15)",
 
                 fill: true,
 
-                tension: 0.4
+                tension: 0.4,
+
+                borderWidth: 3,
+
+                pointRadius: 5,
+
+                pointHoverRadius: 7
+
             }]
+
         },
 
         options: {
+
             responsive: true,
 
+            maintainAspectRatio: false,
+
             plugins: {
+
                 legend: {
+
                     display: false
+
                 }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    max: 100,
+
+                    ticks: {
+
+                        callback: (value) => value + "%"
+
+                    }
+
+                }
+
             }
+
+        }
+
+    });
+
+
+
+
+    if (gradesChart) {
+        gradesChart.destroy();
+    }
+
+    gradesChart = new Chart(gradesCanvas, {
+
+        type: "doughnut",
+
+        data: {
+
+            labels: ["Grade A", "Grade B", "Grade C", "Grade D"],
+
+            datasets: [{
+
+                data: [
+                    gradeCount.A,
+                    gradeCount.B,
+                    gradeCount.C,
+                    gradeCount.D
+                ],
+
+                backgroundColor: [
+                    "#7C5CFF",
+                    "#4DA6FF",
+                    "#FFD43B",
+                    "#FF4ECD"
+                ],
+
+                borderWidth: 0,
+
+                hoverOffset: 8
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            cutout: "70%",
+
+            plugins: {
+
+                legend: {
+
+                    position: "bottom",
+
+                    labels: {
+
+                        color: "#FFFFFF",
+
+                        padding: 20,
+
+                        usePointStyle: true,
+
+                        pointStyle: "circle"
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+
+
+    if (subjectChart) {
+        subjectChart.destroy();
+    }
+
+    subjectChart = new Chart(subjectCanvas, {
+
+        type: "bar",
+
+        data: {
+
+            labels: courseNames,
+
+            datasets: [{
+
+                label: "Progress",
+
+                data: progressData,
+
+                backgroundColor: "#7C5CFF",
+
+                borderRadius: 8
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    display: false
+
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    max: 100
+
+                }
+
+            }
+
+        }
+
+    });
+
+
+
+
+    if (attendanceChart) {
+        attendanceChart.destroy();
+    }
+
+    attendanceChart = new Chart(attendanceCanvas, {
+
+        type: "line",
+
+        data: {
+
+            labels: courseNames,
+
+            datasets: [{
+
+                label: "Attendance",
+
+                data: attendanceData,
+
+                borderColor: "#4DA6FF",
+
+                backgroundColor: "rgba(77,166,255,0.15)",
+
+                fill: true,
+
+                tension: 0.4,
+
+                borderWidth: 3
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    display: false
+
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    max: 100
+
+                }
+
+            }
+
         }
 
     });

@@ -9,9 +9,9 @@ const studentAvatar = document.getElementById("studentAvatar");
 
 export function renderDashboard(student) {
     renderProfile(student.profile);
-    renderStats(student.dashboard);
     renderCircleProgress(student.dashboard);
-    renderCharts(student.dashboard);
+    renderCharts(student.myCourses);
+    renderDashboardStats(student.myCourses);
 }
 
 function renderProfile(profile) {
@@ -29,29 +29,35 @@ function renderProfile(profile) {
 
 }
 
-const coursesEnrolled = document.querySelector('[data-stat="totalCourses"]');
-const completedCourses = document.querySelector('[data-stat="completedCourses"]');
-const pendingModules = document.querySelector('[data-stat="pendingModules"]');
-const averageProgress = document.querySelector('[data-stat="averageProgress"]');
+export function renderDashboardStats(courses) {
 
-function renderStats(dashboard){
+    const totalCourses = courses.length;
+    const completedCourses = courses.filter(course => course.progress === 100).length;
 
-coursesEnrolled.textContent = dashboard.coursesEnrolled;
-completedCourses.textContent = dashboard.completedCourses;
-pendingModules.textContent = dashboard.pendingModules;
-averageProgress.textContent = dashboard.averageProgress + "%";
+    const pendingModules = courses.reduce((total, course) => {
+        return total + (course.totalModules - course.completedModules);
+    }, 0);
+
+    const averageProgress = Math.round(
+        courses.reduce((total, course) => total + course.progress, 0) / totalCourses
+    );
+
+    document.querySelector("[data-stat='totalCourses']").textContent = totalCourses;
+    document.querySelector("[data-stat='completedCourses']").textContent = completedCourses;
+    document.querySelector("[data-stat='pendingModules']").textContent = pendingModules;
+    document.querySelector("[data-stat='averageProgress']").textContent = averageProgress + "%";
 
 }
 
 const circleProgress = document.getElementById("circleProgress");
 const circleProgressValue = document.getElementById("circleProgressValue");
 
-function renderCircleProgress(dashboard){
+function renderCircleProgress(dashboard) {
 
     const progress = dashboard.averageProgress;
     circleProgressValue.textContent = progress + "%";
     circleProgress.style.background =
-    `conic-gradient(
+        `conic-gradient(
         var(--violet) ${progress * 3.6}deg,
         #2A2A3A 0deg
     )`;
@@ -60,3 +66,5 @@ function renderCircleProgress(dashboard){
 
 
 import { renderCharts } from "./charts.js";
+
+
