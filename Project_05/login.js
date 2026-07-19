@@ -1,78 +1,73 @@
-const addMemberBtn = document.getElementById("addMemberBtn");
-const membersContainer = document.getElementById("membersContainer");
+const loginForm = document.getElementById("loginForm");
 
-const memberName = document.getElementById("memberName");
-const memberRole = document.getElementById("memberRole");
+const togglePassword = document.getElementById("togglePassword");
 
-let members = [];
+const password = document.getElementById("password");
 
-// Add Member
-addMemberBtn.addEventListener("click", () => {
+togglePassword.addEventListener("click", () => {
 
-    const name = memberName.value.trim();
-    const role = memberRole.value;
+    if(password.type === "password"){
 
-    if (name === "" || role === "") {
-        alert("Please enter member details.");
-        return;
+        password.type = "text";
+
+        togglePassword.classList.replace("fa-eye","fa-eye-slash");
+
     }
 
-    const initials = name
-        .split(" ")
-        .map(word => word[0])
-        .join("")
-        .toUpperCase();
+    else{
 
-    members.push({
-        name,
-        role,
-        initials
-    });
+        password.type = "password";
 
-    renderMembers();
+        togglePassword.classList.replace("fa-eye-slash","fa-eye");
 
-    memberName.value = "";
-    memberRole.selectedIndex = 0;
+    }
 
 });
 
-// Render Members
-function renderMembers() {
+loginForm.addEventListener("submit",(e)=>{
 
-    membersContainer.innerHTML = "";
+    e.preventDefault();
 
-    members.forEach((member, index) => {
+    const workspaceId=document.getElementById("workspaceId").value.trim();
 
-        membersContainer.innerHTML += `
+    const email=document.getElementById("email").value.trim();
 
-        <div class="member-card">
+    const passwordValue=password.value;
 
-            <div class="avatar">
-                ${member.initials}
-            </div>
+    const workspace=JSON.parse(localStorage.getItem(workspaceId));
 
-            <div class="member-info">
-                <h4>${member.name}</h4>
-                <p>${member.role}</p>
-            </div>
+    if(!workspace){
 
-            <button class="delete-btn" onclick="deleteMember(${index})">
-                <i class="fa-solid fa-trash"></i>
-            </button>
+        alert("Workspace not found");
 
-        </div>
+        return;
 
-        `;
+    }
 
-    });
+    const isAdmin=workspace.admin &&
+    workspace.admin.email===email &&
+    workspace.password===passwordValue;
 
-}
+    const isMember=workspace.members.some(member=>
+        member.email===email
+    );
 
-// Delete Member
-function deleteMember(index){
+    if(isAdmin || isMember){
 
-    members.splice(index,1);
+        localStorage.setItem("currentWorkspace",workspaceId);
 
-    renderMembers();
+        localStorage.setItem("currentUser",email);
 
-}
+        localStorage.setItem("isLoggedIn","true");
+
+        window.location.href="index.html";
+
+    }
+
+    else{
+
+        alert("Invalid Email or Password");
+
+    }
+
+});
