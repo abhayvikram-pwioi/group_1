@@ -11,6 +11,7 @@ export function renderDashboard(student) {
     renderProfile(student.profile);
     renderStats(student.dashboard);
     renderCircleProgress(student.dashboard);
+    renderCharts(student.dashboard);
 }
 
 function renderProfile(profile) {
@@ -56,3 +57,6 @@ function renderCircleProgress(dashboard){
     )`;
 
 }
+
+
+import { renderCharts } from "./charts.js";
