@@ -73,6 +73,16 @@ import { renderCharts } from "./charts.js";
 
 export function renderUpcomingTasks(tasks) {
 
+    if (tasks.length === 0) {
+
+        taskList.innerHTML = `
+<li class="empty-list">
+    <i class="fa-solid fa-calendar-xmark"></i>
+    No upcoming tasks
+</li>`;
+
+    }
+
     const taskList = document.getElementById("taskList");
 
     taskList.innerHTML = "";
@@ -116,6 +126,16 @@ export function renderUpcomingTasks(tasks) {
 
 
 export function renderRecentActivity(activities) {
+
+    if (activities.length === 0) {
+
+        activityList.innerHTML = `
+<li class="empty-list">
+    <i class="fa-solid fa-clock"></i>
+    No recent activity
+</li>`;
+
+    }
 
     const activityList = document.getElementById("activityList");
 

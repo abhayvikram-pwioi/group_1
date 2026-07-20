@@ -1017,3 +1017,22 @@ select:focus {
     box-shadow:0 0 18px rgba(124,92,255,.18);
 
 }
+
+.empty-chart{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    color:#9ca3af;
+}
+
+.empty-chart i{
+    font-size:40px;
+    color:#7c5cff;
+}
+
+.empty-chart p{
+    font-size:15px;
+}

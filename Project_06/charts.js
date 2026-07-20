@@ -9,13 +9,21 @@ const subjectCanvas = document.getElementById("subjectChart");
 const attendanceCanvas = document.getElementById("attendanceChart");
 
 export function renderCharts(courses) {
-  const courseNames = courses.map(course => {
-    if (course.title === "Database Management System") return "DBMS";
-    if (course.title === "Data Structures & Algorithms") return "DSA";
-    if (course.title === "Java Programming") return "Java";
-    if (course.title === "Operating System") return "OS";
-    return course.title;
-});
+
+    if (courses.length === 0) {
+
+        showEmptyCharts();
+        return;
+
+    }
+
+    const courseNames = courses.map(course => {
+        if (course.title === "Database Management System") return "DBMS";
+        if (course.title === "Data Structures & Algorithms") return "DSA";
+        if (course.title === "Java Programming") return "Java";
+        if (course.title === "Operating System") return "OS";
+        return course.title;
+    });
     const progressData = courses.map(course => course.progress);
     const attendanceData = courses.map(course => course.attendance);
     const grades = courses.map(course => course.grade);
@@ -314,4 +322,32 @@ export function renderCharts(courses) {
 
     });
 
+}
+
+
+function showEmptyCharts(){
+
+    progressCanvas.parentElement.innerHTML =
+        `<div class="empty-chart">
+            <i class="fa-solid fa-chart-line"></i>
+            <p>No learning data available</p>
+        </div>`;
+
+    gradesCanvas.parentElement.innerHTML =
+        `<div class="empty-chart">
+            <i class="fa-solid fa-chart-pie"></i>
+            <p>No grades yet</p>
+        </div>`;
+
+    subjectCanvas.parentElement.innerHTML =
+        `<div class="empty-chart">
+            <i class="fa-solid fa-book"></i>
+            <p>No subjects available</p>
+        </div>`;
+
+    attendanceCanvas.parentElement.innerHTML =
+        `<div class="empty-chart">
+            <i class="fa-solid fa-calendar-check"></i>
+            <p>No attendance records</p>
+        </div>`;
 }
