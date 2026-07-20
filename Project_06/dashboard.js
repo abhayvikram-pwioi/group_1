@@ -21,7 +21,6 @@ onAuthStateChanged(auth, async (user) => {
     currentStudent = await getStudentData(user.uid);
 
     const studentId = document.getElementById("studentId");
-
     studentId.textContent = currentUser.uid.slice(0, 8);
     renderDashboard(currentStudent);
 

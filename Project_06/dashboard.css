@@ -751,6 +751,12 @@ select:focus {
   .course-card {
     padding: 18px;
   }
+
+  .chart-card{
+    width:100%;
+    min-width:0;
+
+}
 }
 
 /* Sidebar Layout Adjustments for Pinned Logout */
@@ -924,5 +930,90 @@ select:focus {
 
   font-size: 1.8rem;
   font-weight: 700;
+
+}
+
+
+.task-item,
+.activity-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    padding: 18px 20px;
+    margin-bottom: 16px;
+
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    transition: 0.3s ease;
+}
+
+.task-item:hover,
+.activity-item:hover {
+    background: var(--card-hover);
+    transform: translateY(-3px);
+}
+
+.task-info,
+.activity-info{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.task-info h4,
+.activity-info h4{
+    color:var(--text);
+    font-size:18px;
+    font-weight:600;
+}
+
+.task-info p,
+.activity-info p{
+    color:var(--secondary);
+    font-size:14px;
+}
+
+.task-date,
+.activity-date{
+
+    text-align:right;
+
+    color:var(--secondary);
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+}
+
+.task-date{
+  margin-top: 10px;
+}
+.task-status{
+    padding:6px 20px;
+    border-radius:999px;
+
+    background:rgba(255,212,59,.15);
+
+    color:var(--yellow);
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.task-item:hover,
+.activity-item:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--violet);
+
+    box-shadow:0 0 18px rgba(124,92,255,.18);
 
 }

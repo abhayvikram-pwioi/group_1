@@ -55,7 +55,8 @@ const circleProgress = document.getElementById("circleProgress");
 const circleProgressValue = document.getElementById("circleProgressValue");
 
 function renderCircleProgress(dashboard) {
-
+    const overallPercentage = document.getElementById("overallProgressText");
+    overallPercentage.textContent = dashboard.averageProgress + "%";
     const progress = dashboard.averageProgress;
     circleProgressValue.textContent = progress + "%";
     circleProgress.style.background =
@@ -73,20 +74,42 @@ import { renderCharts } from "./charts.js";
 export function renderUpcomingTasks(tasks) {
 
     const taskList = document.getElementById("taskList");
+
     taskList.innerHTML = "";
+
     tasks.forEach(task => {
+
+        const dueDate = new Date(task.dueDate).toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        });
+
         taskList.innerHTML += `
             <li class="task-item">
 
-                <div>
+                <div class="task-info">
+
                     <h4>${task.title}</h4>
+
                     <p>${task.course}</p>
+
                 </div>
 
-                <span>${task.dueDate}</span>
+                <div class="task-right">
+
+                    <span class="task-status">${task.status}</span>
+
+                    <p class="task-date">
+                        <i class="fa-regular fa-calendar"></i>
+                        ${dueDate}
+                    </p>
+
+                </div>
 
             </li>
         `;
+
     });
 
 }
@@ -95,19 +118,40 @@ export function renderUpcomingTasks(tasks) {
 export function renderRecentActivity(activities) {
 
     const activityList = document.getElementById("activityList");
+
     activityList.innerHTML = "";
+
     activities.forEach(activity => {
+
+        const activityDate = new Date(activity.date).toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        });
+
         activityList.innerHTML += `
             <li class="activity-item">
 
-                <div>
-                    <h4>${activity.title}</h4>
+                <div class="activity-info">
+
+                    <h4>
+                        <i class="fa-solid fa-circle-check"></i>
+                        ${activity.title}
+                    </h4>
+
+                    <p>Learning Activity</p>
+
                 </div>
 
-                <span>${activity.date}</span>
+                <p class="activity-date">
+
+                    ${activityDate}
+
+                </p>
 
             </li>
         `;
+
     });
 
 }
