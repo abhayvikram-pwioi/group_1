@@ -38,3 +38,20 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 
+const logoutBtn = document.getElementById("sidebarLogout");
+
+logoutBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    try {
+
+        await signOut(auth);
+
+        window.location.href = "login.html";
+
+    } catch (error) {
+
+        alert(error.message);
+
+    }
+
+});
