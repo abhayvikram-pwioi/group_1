@@ -40,9 +40,7 @@ export function renderDashboardStats(courses) {
         return total + (course.totalModules - course.completedModules);
     }, 0);
 
-    const averageProgress = Math.round(
-        courses.reduce((total, course) => total + course.progress, 0) / totalCourses
-    );
+    const averageProgress = courses.length === 0 ? 0 : Math.round(courses.reduce((sum, c) => sum + c.progress, 0) / courses.length);
 
     document.querySelector("[data-stat='totalCourses']").textContent = totalCourses;
     document.querySelector("[data-stat='completedCourses']").textContent = completedCourses;
@@ -72,6 +70,8 @@ import { renderCharts } from "./charts.js";
 
 
 export function renderUpcomingTasks(tasks) {
+    const taskList = document.getElementById("taskList");
+
 
     if (tasks.length === 0) {
 
@@ -81,9 +81,10 @@ export function renderUpcomingTasks(tasks) {
     No upcoming tasks
 </li>`;
 
+        return;
+
     }
 
-    const taskList = document.getElementById("taskList");
 
     taskList.innerHTML = "";
 
@@ -126,6 +127,7 @@ export function renderUpcomingTasks(tasks) {
 
 
 export function renderRecentActivity(activities) {
+    const activityList = document.getElementById("activityList");
 
     if (activities.length === 0) {
 
@@ -135,9 +137,10 @@ export function renderRecentActivity(activities) {
     No recent activity
 </li>`;
 
+return;
+
     }
 
-    const activityList = document.getElementById("activityList");
 
     activityList.innerHTML = "";
 
