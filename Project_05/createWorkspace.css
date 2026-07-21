@@ -177,7 +177,7 @@ hr{
     width:55px;
     height:55px;
     border-radius:50%;
-    background:linear-gradient(135deg,#4f7df3,#63e6ff);
+    background:var(--avatar-color, #4f7df3);
     color:#fff;
     display:flex;
     align-items:center;
