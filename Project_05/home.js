@@ -101,6 +101,68 @@ const CURRENT_USER_NAME_KEY = "currentUserName";
 const CURRENT_USER_AVATAR_KEY = "currentUserAvatar";
 const CURRENT_WORKSPACE_KEY = "currentWorkspace";
 
+function getCurrentWorkspaceId() {
+  return localStorage.getItem(CURRENT_WORKSPACE_KEY) || "";
+}
+
+function getWorkspaceMembersStorageKey(workspaceId) {
+  return MEMBERS_STORAGE_KEY + "_" + encodeURIComponent(workspaceId);
+}
+
+function loadCurrentWorkspace() {
+  const workspaceId = getCurrentWorkspaceId();
+  if (!workspaceId) return null;
+
+  try {
+    return JSON.parse(localStorage.getItem(workspaceId));
+  } catch (error) {
+    console.error("Could not parse the current workspace.", error);
+    return null;
+  }
+}
+
+function saveCurrentWorkspace(workspace) {
+  if (!workspace || !workspace.id) return;
+  localStorage.setItem(workspace.id, JSON.stringify(workspace));
+}
+
+function normalizeMemberRecord(person, fallbackId, fallbackRole) {
+  const now = new Date().toISOString();
+  const name = (person && person.name) || "";
+  const email = (person && person.email) || "";
+
+  return {
+    id: (person && person.id) || fallbackId || generateId("member"),
+    name: name,
+    email: email,
+    role: (person && person.role) || fallbackRole || "",
+    avatarColor: (person && person.avatarColor) || generateColorFromName(name || email || fallbackId || "Member"),
+    avatarUrl: (person && person.avatarUrl) || "",
+    createdAt: (person && person.createdAt) || now,
+    updatedAt: (person && person.updatedAt) || now
+  };
+}
+
+function getWorkspaceTeamMembers(workspace) {
+  if (!workspace) return null;
+
+  const list = [];
+  if (workspace.admin) {
+    workspace.admin = normalizeMemberRecord(workspace.admin, "member-admin", "Admin");
+    list.push(workspace.admin);
+  }
+
+  workspace.members = Array.isArray(workspace.members) ? workspace.members : [];
+  workspace.members.forEach(function (member, index) {
+    const normalizedMember = normalizeMemberRecord(member, "member-" + index);
+    workspace.members[index] = normalizedMember;
+    list.push(normalizedMember);
+  });
+
+  saveCurrentWorkspace(workspace);
+  return list;
+}
+
 
 
 const boardEl = document.getElementById("board");
@@ -187,6 +249,11 @@ const deleteColumnModalConfirmBtn = document.getElementById("deleteColumnModalCo
 
 
 function loadTasks() {
+  const workspace = loadCurrentWorkspace();
+  if (workspace && Array.isArray(workspace.tasks)) {
+    return workspace.tasks;
+  }
+
   const raw = localStorage.getItem(STORAGE_KEY);
 
   if (!raw) {
@@ -206,6 +273,12 @@ function loadTasks() {
 
 function saveTasks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+
+  const workspace = loadCurrentWorkspace();
+  if (workspace) {
+    workspace.tasks = tasks;
+    saveCurrentWorkspace(workspace);
+  }
 }
 
 
@@ -331,6 +404,14 @@ function loadCurrentActivity() {
 
 
 function loadMembers() {
+  const workspace = loadCurrentWorkspace();
+  const workspaceMembers = getWorkspaceTeamMembers(workspace);
+  if (workspaceMembers) {
+    localStorage.setItem(MEMBERS_STORAGE_KEY, JSON.stringify(workspaceMembers));
+    localStorage.setItem(getWorkspaceMembersStorageKey(workspace.id), JSON.stringify(workspaceMembers));
+    return workspaceMembers;
+  }
+
   const raw = localStorage.getItem(MEMBERS_STORAGE_KEY);
 
   if (!raw) {
@@ -349,6 +430,28 @@ function loadMembers() {
 
 function saveMembers() {
   localStorage.setItem(MEMBERS_STORAGE_KEY, JSON.stringify(members));
+
+  const workspaceId = getCurrentWorkspaceId();
+  if (workspaceId) {
+    localStorage.setItem(getWorkspaceMembersStorageKey(workspaceId), JSON.stringify(members));
+  }
+
+  const workspace = loadCurrentWorkspace();
+  if (workspace) {
+    const adminMember = members.find(function (member) {
+      return member.id === "member-admin" || (member.role === "Admin" && workspace.admin && member.email === workspace.admin.email);
+    });
+
+    if (adminMember) {
+      workspace.admin = adminMember;
+    }
+
+    workspace.members = members.filter(function (member) {
+      return !(workspace.admin && member.email === workspace.admin.email);
+    });
+
+    saveCurrentWorkspace(workspace);
+  }
 }
 
 
@@ -644,14 +747,14 @@ function renderActivityItem(activity) {
 
   const actorName = activity.actor || activity.message.split(" ")[0] || "You";
 
-  const avatarEl = document.createElement("span");
-  avatarEl.className = "avatar avatar-sm";
-  avatarEl.style.setProperty(
-    "--avatar-color",
-    ACTOR_COLORS[actorName] || (actorName === "You" ? DEFAULT_ACTOR_COLOR : generateColorFromName(actorName))
-  );
+  const avatarEl = renderAvatar(actorName, "avatar-sm");
+  if (!getMemberByName(actorName) && actorName !== "You") {
+    avatarEl.style.setProperty("--avatar-color", ACTOR_COLORS[actorName] || generateColorFromName(actorName));
+  }
+  if (actorName === "You") {
+    avatarEl.style.setProperty("--avatar-color", DEFAULT_ACTOR_COLOR);
+  }
   avatarEl.title = actorName;
-  avatarEl.textContent = getInitials(actorName);
   li.appendChild(avatarEl);
 
   const contentEl = document.createElement("div");
@@ -852,14 +955,23 @@ function getCurrentUserName() {
 
 function getAvatarColor(name) {
   if (!name) return DEFAULT_AVATAR_COLOR;
-  return AVATAR_COLORS[name] || generateColorFromName(name);
+  const member = getMemberByName(name);
+  return (member && member.avatarColor) || AVATAR_COLORS[name] || generateColorFromName(name);
+}
+
+function getMemberByName(name) {
+  if (!name) return null;
+  return members.find(function (member) {
+    return member.name === name;
+  }) || null;
 }
 
 
 
 function renderAvatar(name, extraClass) {
   const className = "avatar" + (extraClass ? " " + extraClass : "");
-  const imageUrl = name ? AVATAR_IMAGES[name] : null;
+  const member = getMemberByName(name);
+  const imageUrl = (member && member.avatarUrl) || (name ? AVATAR_IMAGES[name] : null);
 
   if (imageUrl) {
     const img = document.createElement("img");
@@ -1129,12 +1241,15 @@ function moveTask(id, newStatus) {
 
 function createMember(data) {
   const now = new Date().toISOString();
+  const name = data.name.trim();
 
   const newMember = {
     id: generateId("member"),
-    name: data.name.trim(),
+    name: name,
     email: data.email.trim(),
     role: data.role.trim(),
+    avatarColor: generateColorFromName(name),
+    avatarUrl: "",
     createdAt: now,
     updatedAt: now
   };
@@ -2029,14 +2144,13 @@ function init() {
     return;
   }
 
-  renderCurrentUser();
-
   columns = loadColumns();
   saveColumns();
   renderColumns();
 
   members = loadMembers();
   saveMembers();
+  renderCurrentUser();
   renderTeam();
   renderAssigneeOptions();
 
