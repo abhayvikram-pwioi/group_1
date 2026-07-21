@@ -1,12 +1,10 @@
 
-
-
-
 let members = [];
 
-
-
-
+const AVATAR_PALETTE = [
+    "#4361EE", "#7C5CFC", "#0BA5A0", "#E0673C",
+    "#D1345B", "#2E9CCA", "#E8A33D", "#8854D0", "#16A085", "#C2547A"
+];
 
 const memberName = document.getElementById("memberName");
 const memberEmail = document.getElementById("memberEmail");
@@ -19,8 +17,6 @@ const workspaceForm = document.getElementById("workspaceForm");
 
 
 
-
-
 function generateWorkspaceId() {
     return (
         "FLOW-" +
@@ -28,6 +24,43 @@ function generateWorkspaceId() {
     );
 }
 
+function generateMemberId(prefix) {
+    return (
+        (prefix || "member") +
+        "-" +
+        Date.now() +
+        "-" +
+        Math.floor(Math.random() * 1000)
+    );
+}
+
+function generateColorFromName(name) {
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return AVATAR_PALETTE[Math.abs(hash) % AVATAR_PALETTE.length];
+}
+
+function getInitials(name) {
+    const words = name.trim().split(/\s+/);
+    if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+    return (words[0][0] + words[1][0]).toUpperCase();
+}
+
+function createMemberRecord(name, email, role, prefix) {
+    const now = new Date().toISOString();
+    return {
+        id: generateMemberId(prefix),
+        name,
+        email,
+        role,
+        avatarColor: generateColorFromName(name || email),
+        avatarUrl: "",
+        createdAt: now,
+        updatedAt: now
+    };
+}
 
 
 
@@ -38,17 +71,11 @@ function renderMembers() {
 
     members.forEach((member, index) => {
 
-        const initials = member.name
-            .split(" ")
-            .map(word => word[0])
-            .join("")
-            .toUpperCase();
-
         const card = document.createElement("div");
         card.className = "member-card";
 
         card.innerHTML = `
-            <div class="avatar">${initials}</div>
+            <div class="avatar" style="--avatar-color:${member.avatarColor}">${getInitials(member.name)}</div>
 
             <div class="member-info">
                 <h4>${member.name}</h4>
@@ -95,11 +122,7 @@ addMemberBtn.addEventListener("click", () => {
         return;
     }
 
-    members.push({
-        name,
-        email,
-        role
-    });
+    members.push(createMemberRecord(name, email, role));
 
     renderMembers();
 
@@ -184,6 +207,8 @@ workspaceForm.addEventListener("submit", function (e) {
 
     const workspaceId = generateWorkspaceId();
 
+    const admin = createMemberRecord(adminName, adminEmail, "Admin", "member-admin");
+
     const workspace = {
 
         id: workspaceId,
@@ -196,13 +221,7 @@ workspaceForm.addEventListener("submit", function (e) {
 
         password,
 
-        admin: {
-
-            name: adminName,
-
-            email: adminEmail
-
-        },
+        admin,
 
         members,
 
