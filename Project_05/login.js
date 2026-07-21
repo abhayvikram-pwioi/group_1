@@ -2,6 +2,32 @@ const loginForm = document.getElementById("loginForm");
 const togglePassword = document.getElementById("togglePassword");
 const password = document.getElementById("password");
 
+const AVATAR_PALETTE = [
+  "#4361EE", "#7C5CFC", "#0BA5A0", "#E0673C",
+  "#D1345B", "#2E9CCA", "#E8A33D", "#8854D0", "#16A085", "#C2547A"
+];
+
+function generateColorFromName(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return AVATAR_PALETTE[Math.abs(hash) % AVATAR_PALETTE.length];
+}
+
+function normalizePerson(person, fallbackId, fallbackRole) {
+  return {
+    id: person.id || fallbackId,
+    name: person.name,
+    email: person.email,
+    role: person.role || fallbackRole || "",
+    avatarColor: person.avatarColor || generateColorFromName(person.name || person.email || fallbackId),
+    avatarUrl: person.avatarUrl || "",
+    createdAt: person.createdAt || new Date().toISOString(),
+    updatedAt: person.updatedAt || new Date().toISOString()
+  };
+}
+
 
 function ensureDemoWorkspace() {
   const demoWorkspaceId = "FLOW-DEMO1";
@@ -15,13 +41,16 @@ function ensureDemoWorkspace() {
     password: "flowboard123",
     admin: {
       name: "Alex Rivera",
-      email: "alex@flowboard.app"
+      email: "alex@flowboard.app",
+      role: "Admin",
+      avatarColor: generateColorFromName("Alex Rivera"),
+      avatarUrl: ""
     },
     members: [
-      { name: "John Park", email: "john.park@flowboard.app", role: "Engineering Lead" },
-      { name: "Priya Nair", email: "priya.nair@flowboard.app", role: "Product Designer" },
-      { name: "Mike Chen", email: "mike.chen@flowboard.app", role: "Frontend Engineer" },
-      { name: "Sarah Lee", email: "sarah.lee@flowboard.app", role: "QA Engineer" }
+      normalizePerson({ name: "John Park", email: "john.park@flowboard.app", role: "Engineering Lead" }, "member-1"),
+      normalizePerson({ name: "Priya Nair", email: "priya.nair@flowboard.app", role: "Product Designer" }, "member-2"),
+      normalizePerson({ name: "Mike Chen", email: "mike.chen@flowboard.app", role: "Frontend Engineer" }, "member-3"),
+      normalizePerson({ name: "Sarah Lee", email: "sarah.lee@flowboard.app", role: "QA Engineer" }, "member-4")
     ],
     tasks: [],
     activities: [],
@@ -46,34 +75,25 @@ togglePassword.addEventListener("click", () => {
 
 
 function syncTeamManagementFromWorkspace(workspace) {
-  if (localStorage.getItem("flowboard_members")) return;
-
-  const now = new Date().toISOString();
   const list = [];
 
   if (workspace.admin) {
-    list.push({
-      id: "member-admin",
-      name: workspace.admin.name,
-      email: workspace.admin.email,
-      role: "Admin",
-      createdAt: workspace.createdAt || now,
-      updatedAt: now
-    });
+    workspace.admin = normalizePerson(workspace.admin, "member-admin", "Admin");
+    list.push(workspace.admin);
   }
 
   (workspace.members || []).forEach(function (member, index) {
-    list.push({
-      id: "member-" + index + "-" + Date.now(),
-      name: member.name,
-      email: member.email,
-      role: member.role || "",
-      createdAt: workspace.createdAt || now,
-      updatedAt: now
-    });
+    const normalizedMember = normalizePerson(member, "member-" + index);
+    workspace.members[index] = normalizedMember;
+    list.push(normalizedMember);
   });
 
   localStorage.setItem("flowboard_members", JSON.stringify(list));
+  localStorage.setItem(
+    "flowboard_members_" + encodeURIComponent(workspace.id),
+    JSON.stringify(list)
+  );
+  localStorage.setItem(workspace.id, JSON.stringify(workspace));
 }
 
 
