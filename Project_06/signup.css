@@ -75,3 +75,97 @@ p {
 
     margin: 8px 0 30px;
 }
+
+.input-box {
+
+    display: flex;
+
+    align-items: center;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    margin-bottom: 18px;
+
+    padding: 0 15px;
+}
+
+.input-box i {
+
+    color: #64748b;
+}
+
+.input-box input {
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    padding: 15px;
+
+    font-size: 15px;
+}
+
+.checkbox {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+
+    font-size: 14px;
+
+    color: #475569;
+}
+
+.checkbox a {
+    color: black;
+    text-decoration: none;
+}
+
+button {
+
+    width: 100%;
+
+    border: none;
+
+    padding: 15px;
+
+    background: black;
+    color: white;
+
+    font-size: 16px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.login {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #64748b;
+}
+
+.login a {
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
