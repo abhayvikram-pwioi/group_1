@@ -169,3 +169,12 @@ button:hover {
     font-weight: bold;
 }
 
+@media(max-width:480px) {
+
+    .card {
+
+        width: 90%;
+        padding: 30px 25px;
+    }
+
+}
