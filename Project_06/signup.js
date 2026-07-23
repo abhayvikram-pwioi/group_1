@@ -36,3 +36,25 @@ signupForm.addEventListener("submit", async (e) => {
         alert("Please accept the Terms & Conditions.");
         return;
     }
+ try {
+        const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPassword);
+        alert("Account Created Successfully!");
+        window.location.href = "login.html";
+    } catch (error) {
+
+        if (error.code === "auth/email-already-in-use") {
+            alert("This email is already registered.");
+
+        } else if (error.code === "auth/weak-password") {
+            alert("Password should be at least 6 characters.");
+
+        } else if (error.code === "auth/invalid-email") {
+            alert("Please enter a valid email.");
+
+        } else {
+            alert(error.message);
+        }
+
+    }
+
+});
