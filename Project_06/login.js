@@ -1,6 +1,7 @@
 import { auth } from "./firebase.js";
 
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { showToast } from "./toast.js";
 
 const loginForm = document.getElementById("loginForm");
 const email = document.getElementById("email");
@@ -14,17 +15,17 @@ loginForm.addEventListener("submit", async (e) => {
 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, userEmail, userPassword);
-        alert("Login Successful");
+        showToast("Login Successful", "success");
         console.log(userCredential.user);
 
         window.location.href = "dashboard.html";
     } catch (error) {
 
         if (error.code === "auth/invalid-credential") {
-            alert("Invalid email or password.");
+            showToast("Invalid Email or Password", "error");
 
         } else if (error.code === "auth/invalid-email") {
-            alert("Please enter a valid email.");
+            showToast("Please enter a valid email.","error");
         } else {
 
             alert(error.message);
