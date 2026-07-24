@@ -9,6 +9,8 @@ const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 const terms = document.getElementById("terms");
 
+const signupBtn = document.getElementById("signupBtn");
+
 signupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const userName = fullName.value;
@@ -36,11 +38,18 @@ signupForm.addEventListener("submit", async (e) => {
         alert("Please accept the Terms & Conditions.");
         return;
     }
- try {
+    try {
+
+        signupBtn.innerText = "Creating Account...";
+        signupBtn.disabled = true;
+
         const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPassword);
         alert("Account Created Successfully!");
         window.location.href = "login.html";
     } catch (error) {
+
+        signupBtn.innerText = "Create Account";
+        signupBtn.disabled = false;
 
         if (error.code === "auth/email-already-in-use") {
             alert("This email is already registered.");
@@ -63,15 +72,15 @@ const togglePassword = document.getElementById("togglePassword");
 
 togglePassword.addEventListener("click", () => {
 
-    if(password.type === "password"){
+    if (password.type === "password") {
 
         password.type = "text";
-        togglePassword.classList.replace("fa-eye","fa-eye-slash");
+        togglePassword.classList.replace("fa-eye", "fa-eye-slash");
 
-    }else{
+    } else {
 
         password.type = "password";
-        togglePassword.classList.replace("fa-eye-slash","fa-eye");
+        togglePassword.classList.replace("fa-eye-slash", "fa-eye");
 
     }
 
