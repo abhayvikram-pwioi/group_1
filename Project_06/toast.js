@@ -1,6 +1,6 @@
-const toast = document.getElementById("toast");
+export function showToast(message, type) {
 
-export function showToast(message, type){
+    const toast = document.getElementById("toast");
 
     toast.innerText = message;
 
@@ -10,10 +10,10 @@ export function showToast(message, type){
 
     toast.classList.add("show");
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
         toast.classList.remove("show");
 
-    },3000);
+    }, 3000);
 
 }

@@ -17,15 +17,18 @@ loginForm.addEventListener("submit", async (e) => {
         const userCredential = await signInWithEmailAndPassword(auth, userEmail, userPassword);
         showToast("Login Successful", "success");
         console.log(userCredential.user);
+        
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 2000);
 
-        window.location.href = "dashboard.html";
     } catch (error) {
 
         if (error.code === "auth/invalid-credential") {
             showToast("Invalid Email or Password", "error");
 
         } else if (error.code === "auth/invalid-email") {
-            showToast("Please enter a valid email.","error");
+            showToast("Please enter a valid email.", "error");
         } else {
 
             alert(error.message);
@@ -35,3 +38,4 @@ loginForm.addEventListener("submit", async (e) => {
     }
 
 });
+
