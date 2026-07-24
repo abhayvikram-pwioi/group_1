@@ -1,5 +1,6 @@
 import { auth } from "./firebase.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { showToast } from "./toast.js";
 
 const signupForm = document.getElementById("signupForm");
 const fullName = document.getElementById("fullName");
@@ -25,7 +26,7 @@ signupForm.addEventListener("submit", async (e) => {
     }
 
     if (userPassword !== userConfirmPassword) {
-        alert("Passwords do not match");
+        showToast("Passwords do not match", "warning");
         return;
     }
 
@@ -38,13 +39,14 @@ signupForm.addEventListener("submit", async (e) => {
         alert("Please accept the Terms & Conditions.");
         return;
     }
+    
     try {
 
         signupBtn.innerText = "Creating Account...";
         signupBtn.disabled = true;
 
         const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPassword);
-        alert("Account Created Successfully!");
+        showToast("Account Created Successfully", "success");
         window.location.href = "login.html";
     } catch (error) {
 
@@ -52,13 +54,13 @@ signupForm.addEventListener("submit", async (e) => {
         signupBtn.disabled = false;
 
         if (error.code === "auth/email-already-in-use") {
-            alert("This email is already registered.");
+            showToast("Email already exists", "error");
 
         } else if (error.code === "auth/weak-password") {
-            alert("Password should be at least 6 characters.");
+            showToast("Password must be at least 6 characters", "warning");
 
         } else if (error.code === "auth/invalid-email") {
-            alert("Please enter a valid email.");
+            showToast("Please enter a valid email", "error");
 
         } else {
             alert(error.message);
