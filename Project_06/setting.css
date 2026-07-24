@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #000000;
+  background-color: #f5f5f5;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #000000;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+}
+
+.logo,
+.header h1 {
+  margin: 0;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header h1 {
+  font-size: 24px;
+}
+
+main {
+  padding: 28px 0 40px;
+}
+
+.profile-section,
+.section {
+  margin-bottom: 22px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 6px;
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.profile-details h2 {
+  margin: 0 0 7px;
+  font-size: 26px;
+}
+
+.profile-details p {
+  margin: 5px 0;
+}
+
+.completion {
+  font-weight: bold;
+}
+
+.section h2 {
+  margin: 0 0 16px;
+  font-size: 21px;
+}
+
+.info-grid,
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.info-item,
+.stat-card {
+  padding: 14px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+.info-item h3,
+.stat-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.info-item p,
+.stat-card p {
+  margin: 0;
+}
+
+.stat-card p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.progress-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.progress-item {
+  padding: 14px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+
+.progress-item h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.progress-item p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.skill {
+  margin-bottom: 18px;
+}
+
+.skill:last-child {
+  margin-bottom: 0;
+}
+
+.skill-name {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.bar {
+  height: 14px;
+  overflow: hidden;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.bar-fill {
+  height: 100%;
+  background-color: #000000;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.list-section {
+  margin-bottom: 0;
+}
+
+.list-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list-section li {
+  padding: 12px 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+.list-section li:first-child {
+  padding-top: 0;
+}
+
+.list-section li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .header-content,
+  .profile-content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-content {
+    gap: 8px;
+    padding: 14px 0;
+  }
+
+  .header h1 {
+    font-size: 21px;
+  }
+
+  .info-grid,
+  .statistics-grid,
+  .progress-card,
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-section,
+  .section {
+    padding: 16px;
+  }
+}
