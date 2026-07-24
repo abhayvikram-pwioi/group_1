@@ -39,7 +39,7 @@ signupForm.addEventListener("submit", async (e) => {
         alert("Please accept the Terms & Conditions.");
         return;
     }
-    
+
     try {
 
         signupBtn.innerText = "Creating Account...";
@@ -47,7 +47,11 @@ signupForm.addEventListener("submit", async (e) => {
 
         const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPassword);
         showToast("Account Created Successfully", "success");
-        window.location.href = "login.html";
+
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 2000);
+        
     } catch (error) {
 
         signupBtn.innerText = "Create Account";
