@@ -89,12 +89,22 @@ p {
     margin-bottom: 18px;
 
     padding: 0 15px;
+
+    position: relative;
+
+}
+
+.toggle-password{
+    cursor: pointer;
+    color: #666;
+    margin-right: 10px;
 }
 
 .input-box i {
 
     color: #64748b;
 }
+
 
 .input-box input {
 
