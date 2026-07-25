@@ -2,88 +2,258 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+
+    <title>EduTrack | Create Account</title>
 
     <link rel="stylesheet" href="signup.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="background-blur blur-1"></div>
+    <div class="background-blur blur-2"></div>
 
-        <div class="card">
+    <main class="signup-page">
 
-            <div class="logo">
-                <i class="fa-solid fa-graduation-cap"></i>
+
+        <section class="left-side">
+
+            <nav class="logo">
+
+                <div class="logo-icon">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                </div>
+
+                <h2>EduTrack</h2>
+
+            </nav>
+
+            <div class="hero-content">
+
+                <span class="badge">
+
+                    Join Thousands of Learners
+
+                </span>
+
+                <h1>
+
+                    Start
+                    <br>
+
+                    Your Learning
+                    <br>
+
+                    Journey
+                    <br>
+
+                    Today.
+
+                </h1>
+
+                <p>
+
+                    Create your account and unlock personalized learning,
+                    progress tracking, certificates and much more.
+
+                </p>
+
+                <div class="stats">
+
+                    <div class="stat-card">
+
+                        <h3>120+</h3>
+
+                        <span>Courses</span>
+
+                    </div>
+
+                    <div class="stat-card">
+
+                        <h3>10K+</h3>
+
+                        <span>Students</span>
+
+                    </div>
+
+                    <div class="stat-card">
+
+                        <h3>24/7</h3>
+
+                        <span>Support</span>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <h2>Create Account</h2>
+        </section>
 
-            <p>Join Student Progress Tracker</p>
+        <section class="right-side">
 
-            <form id="signupForm">
+            <div class="login-card">
 
-                <div class="input-box">
-                    <i class="fa-solid fa-user"></i>
-                    <input type="text" id="fullName" placeholder="Full Name" required>
-                </div>
+                <div class="card-header">
 
-                <div class="input-box">
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="email" id="email" placeholder="Email Address" required>
-                </div>
+                    <h2>Create Account 🚀</h2>
 
-                <div class="input-box">
-                    <i class="fa-solid fa-phone"></i>
-                    <input type="tel" id="phone" placeholder="Phone Number">
-                </div>
+                    <p>
 
-                <div class="input-box">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="password" placeholder="Password" required>
-                    <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
-                </div>
+                        Start your learning journey with EduTrack.
 
-                <div class="input-box">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-                    <i class="fa-solid fa-eye toggle-password" id="toggleConfirmPassword"></i>
-                </div>
-
-                <div class="checkbox">
-
-                    <input type="checkbox" id="terms">
-
-                    <label for="terms">
-                        I agree to the
-                        <a href="#">Terms & Conditions</a>
-                    </label>
+                    </p>
 
                 </div>
 
-                <button type="submit" id="signupBtn" >
-                    Create Account
+                <form id="signupForm">
+
+                    <div class="input-group">
+
+                        <label>Full Name</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Email Address</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input type="email" id="email" placeholder="Enter your email" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Phone Number</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input type="tel" id="phone" placeholder="Enter phone number" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Password</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input type="password" id="password" placeholder="Create password" required>
+
+                            <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Confirm Password</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+
+                            <i class="fa-solid fa-eye toggle-password" id="toggleConfirmPassword"></i>
+
+                        </div>
+
+                    </div>
+
+                    <div class="options">
+
+                        <label>
+
+                            <input type="checkbox" id="terms">
+
+                            I agree to the Terms & Conditions
+
+                        </label>
+
+                    </div>
+
+                    <button class="login-btn" id="signupBtn" type="submit">
+
+                        Create Account
+
+                    </button>
+
+                </form>
+
+                <div class="divider">
+
+                    <span>OR</span>
+
+                </div>
+
+                <button class="google-btn">
+
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg">
+
+                    Continue with Google
+
                 </button>
 
-            </form>
+                <p class="signup-text">
 
-            <div class="login">
-                Already have an account?
-                <a href="login.html">Login</a>
+                    Already have an account?
+
+                    <a href="login.html">
+
+                        Login
+
+                    </a>
+
+                </p>
+
             </div>
 
-        </div>
+        </section>
 
-    </div>
+    </main>
 
     <div id="toast"></div>
 
     <script type="module" src="signup.js"></script>
+
 </body>
 
 </html>
