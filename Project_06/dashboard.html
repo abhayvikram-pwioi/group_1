@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduTrack Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="loading-active">
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <header class="top-nav">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open sidebar">☰</button>
+    <h1 class="logo">EduTrack</h1>
+
+    <div class="profile">
+      <img class="profile-pic" id="navAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='60' fill='%237C5CFF'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='white' font-family='Arial' font-size='34' font-weight='700'%3EST%3C/text%3E%3C/svg%3E" alt="Student avatar">
+      <div>
+        <p class="student-name" id="navStudentName">Student</p>
+        <p class="student-email" id="navStudentEmail">Loading...</p>
+      </div>
+    </div>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidebar-nav">
+      <ul class="nav-menu">
+        <li><a href="dashboard.html" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
+        <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+      </ul>
+      <ul class="nav-logout">
+        <li><a href="#" id="sidebarLogout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <p class="error-message" id="errorMessage"></p>
+
+    <section class="welcome dashboard-view" id="dashboard-section">
+      <h2 class="hide-on-loading">Welcome back, <span id="welcomeName">Student</span></h2>
+      <div class="skeleton-title show-on-loading" style="width: 280px;"></div>
+      <p>Here is a quick look at your learning progress.</p>
+    </section>
+
+    <section class="student-card card dashboard-view">
+      <!-- Loaded profile image -->
+      <img class="avatar hide-on-loading" id="studentAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='60' fill='%237C5CFF'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='white' font-family='Arial' font-size='34' font-weight='700'%3EST%3C/text%3E%3C/svg%3E" alt="Student profile image">
+      <!-- Loading profile image skeleton -->
+      <div class="avatar skeleton show-on-loading" style="width: 96px; height: 96px;"></div>
+
+      <div class="student-details hide-on-loading">
+        <h2 id="studentName">Student Name</h2>
+        <p>Email: <span id="studentEmail">Loading...</span></p>
+        <p>Student ID: <span id="studentId">Loading...</span></p>
+        <p>Semester: <span id="studentSemester">-</span></p>
+        <p>Overall Progress: <span id="overallProgressText">0%</span></p>
+      </div>
+      <div class="student-details show-on-loading" style="flex: 1;">
+        <div class="skeleton-title" style="width: 200px;"></div>
+        <div class="skeleton-text medium"></div>
+        <div class="skeleton-text short"></div>
+        <div class="skeleton-text medium"></div>
+      </div>
+
+      <!-- Circle Progress -->
+      <div class="circle-progress hide-on-loading" id="circleProgress" aria-label="Overall progress">
+        <span id="circleProgressValue">0%</span>
+      </div>
+      <div class="skeleton-circle show-on-loading" style="width: 132px; height: 132px;"></div>
+    </section>
+
+    <section class="stats dashboard-view">
+      <article class="card stat-card">
+        <h3>Courses Enrolled</h3>
+        <p class="hide-on-loading" data-stat="totalCourses">0</p>
+        <div class="skeleton-title show-on-loading" style="width: 60px; margin-top: 10px;"></div>
+      </article>
+
+      <article class="card stat-card">
+        <h3>Completed Courses</h3>
+        <p class="hide-on-loading" data-stat="completedCourses">0</p>
+        <div class="skeleton-title show-on-loading" style="width: 60px; margin-top: 10px;"></div>
+      </article>
+
+      <article class="card stat-card">
+        <h3>Pending Modules</h3>
+        <p class="hide-on-loading" data-stat="pendingModules">0</p>
+        <div class="skeleton-title show-on-loading" style="width: 60px; margin-top: 10px;"></div>
+      </article>
+
+      <article class="card stat-card">
+        <h3>Average Progress</h3>
+        <p class="hide-on-loading" data-stat="averageProgress">0%</p>
+        <div class="skeleton-title show-on-loading" style="width: 60px; margin-top: 10px;"></div>
+      </article>
+    </section>
+
+    <section class="analytics dashboard-view">
+      <article class="card chart-card">
+        <h3>Overall Learning Progress</h3>
+        <div class="chart-container hide-on-loading">
+          <canvas id="progressChart"></canvas>
+        </div>
+        <div class="skeleton show-on-loading" style="height: 220px; border-radius: var(--radius-sm);"></div>
+      </article>
+
+      <article class="card chart-card">
+        <h3>Grade Distribution</h3>
+        <div class="chart-container hide-on-loading">
+          <canvas id="gradesChart"></canvas>
+        </div>
+        <div class="skeleton show-on-loading" style="height: 220px; border-radius: var(--radius-sm);"></div>
+      </article>
+
+      <article class="card chart-card">
+        <h3>Subject Performance</h3>
+        <div class="chart-container hide-on-loading">
+          <canvas id="subjectChart"></canvas>
+        </div>
+        <div class="skeleton show-on-loading" style="height: 220px; border-radius: var(--radius-sm);"></div>
+      </article>
+
+      <article class="card chart-card">
+        <h3>Attendance Trend</h3>
+        <div class="chart-container hide-on-loading">
+          <canvas id="attendanceChart"></canvas>
+        </div>
+        <div class="skeleton show-on-loading" style="height: 220px; border-radius: var(--radius-sm);"></div>
+      </article>
+    </section>
+
+    <section class="courses-section dashboard-view" id="courses-section">
+      <div class="section-heading">
+        <h2>My Courses</h2>
+        <p>Courses are loaded from Firestore.</p>
+      </div>
+      <div class="course-grid" id="courseList">
+        <article class="card course-card skeleton" style="height: 180px;"></article>
+        <article class="card course-card skeleton" style="height: 180px;"></article>
+        <article class="card course-card skeleton" style="height: 180px;"></article>
+      </div>
+    </section>
+
+    <section class="bottom-section dashboard-view">
+      <article class="card tasks-card">
+        <h2>Upcoming Tasks</h2>
+        <ul id="taskList">
+          <li class="skeleton" style="height: 54px;"></li>
+          <li class="skeleton" style="height: 54px;"></li>
+          <li class="skeleton" style="height: 54px;"></li>
+        </ul>
+      </article>
+
+      <article class="card activity-card">
+        <h2>Recent Activity</h2>
+        <ul id="activityList">
+          <li class="skeleton" style="height: 54px;"></li>
+          <li class="skeleton" style="height: 54px;"></li>
+          <li class="skeleton" style="height: 54px;"></li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>
