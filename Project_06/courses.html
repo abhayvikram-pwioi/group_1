@@ -8,450 +8,78 @@
 </head>
 <body>
     <main class="courses-page">
+        <header class="top-nav">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open sidebar">☰</button>
+    <h1 class="logo">EduTrack</h1>
 
+    <div class="profile">
+      <img class="profile-pic" id="navAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='60' fill='%237C5CFF'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='white' font-family='Arial' font-size='34' font-weight='700'%3EST%3C/text%3E%3C/svg%3E" alt="Student avatar">
+      <div>
+        <p class="student-name" id="navStudentName">Student</p>
+        <p class="student-email" id="navStudentEmail">Loading...</p>
+      </div>
+    </div>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidebar-nav">
+      <ul class="nav-menu">
+        <li><a href="dashboard.html" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
+        <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+      </ul>
+      <ul class="nav-logout">
+        <li><a href="#" id="sidebarLogout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
    
-    <section class="page-header">
-        <div class="heading">
-            <h1>My Courses</h1>
-            <p>Track your enrolled courses and learning progress.</p>
-        </div>
+   
+<div class="main-content">
 
-        <div class="header-actions">
-            <input type="text" placeholder="Search courses..." id="search-course"/>
-        </div>
-    </section>
+<section class="course-controls">
 
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search courses..."
+        >
+    </div>
+    
 
-    <section class="course-filters">
+    <div class="filter-buttons">
 
-        <button class="active">All</button>
+        <button class="filter-btn active" data-filter="All">
+            All
+        </button>
 
-        <button>In Progress</button>
+        <button class="filter-btn" data-filter="Completed">
+            Completed
+        </button>
 
-        <button>Completed</button>
+        <button class="filter-btn" data-filter="In Progress">
+            In Progress
+        </button>
 
-        <button>Not Started</button>
+        <button class="filter-btn" data-filter="Not Started">
+            Not Started
+        </button>
 
-    </section>
+    </div>
+
+</section>
 
    
     <section class="courses-grid">
 
-       
-        <article class="course-card">
-
-            <div class="course-image">
-                <img src="https://d15cw65ipctsrr.cloudfront.net/6a/ed5c267c59457db2d621c28201f2f5/JavaScript-for-Beginners.png" alt="JavaScript">
-            </div>
-
-            <div class="course-content">
-
-                <span class="course-category">
-                    Web Development
-                </span>
-
-                <h2>JavaScript Fundamentals</h2>
-
-                <p class="instructor">
-                    Instructor: John Doe
-                </p>
-
-                <div class="progress-section">
-
-                    <div class="progress-info">
-                        <span>Progress</span>
-                        <span>75%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                </div>
-
-                <p class="modules">
-                    15 of 20 modules completed
-                </p>
-
-                <div class="course-footer">
-
-                    <span class="status in-progress">
-                        In Progress
-                    </span>
-
-                    <button>
-                        Continue Learning
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="course-card">
-
-            <div class="course-image">
-                <img src="https://d15cw65ipctsrr.cloudfront.net/6a/ed5c267c59457db2d621c28201f2f5/JavaScript-for-Beginners.png" alt="JavaScript">
-            </div>
-
-            <div class="course-content">
-
-                <span class="course-category">
-                    Web Development
-                </span>
-
-                <h2>JavaScript Fundamentals</h2>
-
-                <p class="instructor">
-                    Instructor: John Doe
-                </p>
-
-                <div class="progress-section">
-
-                    <div class="progress-info">
-                        <span>Progress</span>
-                        <span>75%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                </div>
-
-                <p class="modules">
-                    15 of 20 modules completed
-                </p>
-
-                <div class="course-footer">
-
-                    <span class="status in-progress">
-                        In Progress
-                    </span>
-
-                    <button>
-                        Continue Learning
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <article class="course-card">
-
-            <div class="course-image">
-                <img src="https://d15cw65ipctsrr.cloudfront.net/6a/ed5c267c59457db2d621c28201f2f5/JavaScript-for-Beginners.png" alt="JavaScript">
-            </div>
-
-            <div class="course-content">
-
-                <span class="course-category">
-                    Web Development
-                </span>
-
-                <h2>JavaScript Fundamentals</h2>
-
-                <p class="instructor">
-                    Instructor: John Doe
-                </p>
-
-                <div class="progress-section">
-
-                    <div class="progress-info">
-                        <span>Progress</span>
-                        <span>75%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                </div>
-
-                <p class="modules">
-                    15 of 20 modules completed
-                </p>
-
-                <div class="course-footer">
-
-                    <span class="status in-progress">
-                        In Progress
-                    </span>
-
-                    <button>
-                        Continue Learning
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="course-card">
-
-            <div class="course-image">
-                <img src="https://d15cw65ipctsrr.cloudfront.net/6a/ed5c267c59457db2d621c28201f2f5/JavaScript-for-Beginners.png" alt="JavaScript">
-            </div>
-
-            <div class="course-content">
-
-                <span class="course-category">
-                    Web Development
-                </span>
-
-                <h2>JavaScript Fundamentals</h2>
-
-                <p class="instructor">
-                    Instructor: John Doe
-                </p>
-
-                <div class="progress-section">
-
-                    <div class="progress-info">
-                        <span>Progress</span>
-                        <span>75%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                </div>
-
-                <p class="modules">
-                    15 of 20 modules completed
-                </p>
-
-                <div class="course-footer">
-
-                    <span class="status in-progress">
-                        In Progress
-                    </span>
-
-                    <button>
-                        Continue Learning
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="course-card">
-
-            <div class="course-image">
-                <img src="https://d15cw65ipctsrr.cloudfront.net/6a/ed5c267c59457db2d621c28201f2f5/JavaScript-for-Beginners.png" alt="JavaScript">
-            </div>
-
-            <div class="course-content">
-
-                <span class="course-category">
-                    Web Development
-                </span>
-
-                <h2>JavaScript Fundamentals</h2>
-
-                <p class="instructor">
-                    Instructor: John Doe
-                </p>
-
-                <div class="progress-section">
-
-                    <div class="progress-info">
-                        <span>Progress</span>
-                        <span>75%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                </div>
-
-                <p class="modules">
-                    15 of 20 modules completed
-                </p>
-
-                <div class="course-footer">
-
-                    <span class="status in-progress">
-                        In Progress
-                    </span>
-
-                    <button>
-                        Continue Learning
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="course-card">
-
-            <div class="course-image">
-                <img src="https://d15cw65ipctsrr.cloudfront.net/6a/ed5c267c59457db2d621c28201f2f5/JavaScript-for-Beginners.png" alt="JavaScript">
-            </div>
-
-            <div class="course-content">
-
-                <span class="course-category">
-                    Web Development
-                </span>
-
-                <h2>JavaScript Fundamentals</h2>
-
-                <p class="instructor">
-                    Instructor: John Doe
-                </p>
-
-                <div class="progress-section">
-
-                    <div class="progress-info">
-                        <span>Progress</span>
-                        <span>75%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                </div>
-
-                <p class="modules">
-                    15 of 20 modules completed
-                </p>
-
-                <div class="course-footer">
-
-                    <span class="status in-progress">
-                        In Progress
-                    </span>
-
-                    <button>
-                        Continue Learning
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="course-card">
-
-            <div class="course-image">
-                <img src="https://d15cw65ipctsrr.cloudfront.net/6a/ed5c267c59457db2d621c28201f2f5/JavaScript-for-Beginners.png" alt="JavaScript">
-            </div>
-
-            <div class="course-content">
-
-                <span class="course-category">
-                    Web Development
-                </span>
-
-                <h2>JavaScript Fundamentals</h2>
-
-                <p class="instructor">
-                    Instructor: John Doe
-                </p>
-
-                <div class="progress-section">
-
-                    <div class="progress-info">
-                        <span>Progress</span>
-                        <span>75%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                </div>
-
-                <p class="modules">
-                    15 of 20 modules completed
-                </p>
-
-                <div class="course-footer">
-
-                    <span class="status in-progress">
-                        In Progress
-                    </span>
-
-                    <button>
-                        Continue Learning
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="course-card">
-
-            <div class="course-image">
-                <img src="https://d15cw65ipctsrr.cloudfront.net/6a/ed5c267c59457db2d621c28201f2f5/JavaScript-for-Beginners.png" alt="JavaScript">
-            </div>
-
-            <div class="course-content">
-
-                <span class="course-category">
-                    Web Development
-                </span>
-
-                <h2>JavaScript Fundamentals</h2>
-
-                <p class="instructor">
-                    Instructor: John Doe
-                </p>
-
-                <div class="progress-section">
-
-                    <div class="progress-info">
-                        <span>Progress</span>
-                        <span>75%</span>
-                    </div>
-
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                </div>
-
-                <p class="modules">
-                    15 of 20 modules completed
-                </p>
-
-                <div class="course-footer">
-
-                    <span class="status in-progress">
-                        In Progress
-                    </span>
-
-                    <button>
-                        Continue Learning
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
 
     </section>
+</div>
 
 </main>
 
-<script src="courses.js"></script>
+
+<script type="module" src="courses.js"></script>
 </body>
 </html>
