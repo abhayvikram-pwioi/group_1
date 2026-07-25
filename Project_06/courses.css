@@ -156,6 +156,12 @@ ul{
 .nav-logout li{
     margin-top: 400px;
 }
+.nav-logout i{
+    padding: 15px;
+}
+.nav-menu i{
+    padding: 15px;
+}
 
 .sidebar a {
   display: flex;
