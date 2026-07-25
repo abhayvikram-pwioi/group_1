@@ -153,6 +153,9 @@ ul{
   gap: 8px;
   margin-top: 85px;
 }
+.nav-logout li{
+    margin-top: 400px;
+}
 
 .sidebar a {
   display: flex;
