@@ -7,15 +7,10 @@ const studentEmail = document.getElementById("studentEmail");
 const studentSemester = document.getElementById("studentSemester");
 const studentAvatar = document.getElementById("studentAvatar");
 
-
-const coursesEnrolled = document.querySelector('[data-stat="totalCourses"]');
-const completedCourses = document.querySelector('[data-stat="completedCourses"]');
-const pendingModules = document.querySelector('[data-stat="pendingModules"]');
-const averageProgress = document.querySelector('[data-stat="averageProgress"]');
-
 export function renderDashboard(student) {
     renderProfile(student.profile);
     renderStats(student.dashboard);
+    renderCircleProgress(student.dashboard);
 }
 
 function renderProfile(profile) {
@@ -33,11 +28,31 @@ function renderProfile(profile) {
 
 }
 
+const coursesEnrolled = document.querySelector('[data-stat="totalCourses"]');
+const completedCourses = document.querySelector('[data-stat="completedCourses"]');
+const pendingModules = document.querySelector('[data-stat="pendingModules"]');
+const averageProgress = document.querySelector('[data-stat="averageProgress"]');
+
 function renderStats(dashboard){
 
 coursesEnrolled.textContent = dashboard.coursesEnrolled;
 completedCourses.textContent = dashboard.completedCourses;
 pendingModules.textContent = dashboard.pendingModules;
 averageProgress.textContent = dashboard.averageProgress + "%";
+
+}
+
+const circleProgress = document.getElementById("circleProgress");
+const circleProgressValue = document.getElementById("circleProgressValue");
+
+function renderCircleProgress(dashboard){
+
+    const progress = dashboard.averageProgress;
+    circleProgressValue.textContent = progress + "%";
+    circleProgress.style.background =
+    `conic-gradient(
+        var(--violet) ${progress * 3.6}deg,
+        #2A2A3A 0deg
+    )`;
 
 }
