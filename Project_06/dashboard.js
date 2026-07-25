@@ -2,6 +2,7 @@ import {
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
 import {
   doc,
   getDoc,
@@ -13,6 +14,7 @@ import {
   addDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
 import { auth, db } from "./firebase.js";
 import { checkAndSeedData } from "./db-seeder.js";
 
@@ -44,7 +46,7 @@ const elements = {
 
 let currentUser = null;
 let currentStudent = null;
-let charts = {}; // Store references to Chart instances for proper destroying/resizing
+let charts = {};
 let unsubscribeDashboard = [];
 
 function showToast(message) {
