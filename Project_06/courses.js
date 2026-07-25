@@ -1,74 +1,34 @@
+import { db } from "./firebase-courses.js";
+import { collection, getDocs } from "firebase/firestore";
 
-
-const courses = [
-    {
-        title: "React Fundamentals",
-        category: "Web Development",
-        instructor: "John Doe",
-        progress: 75,
-        completedModules: 15,
-        totalModules: 20,
-        status: "In Progress",
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600"
-    },
-    {
-        title: "JavaScript Essentials",
-        category: "Programming",
-        instructor: "Jane Smith",
-        progress: 100,
-        completedModules: 18,
-        totalModules: 18,
-        status: "Completed",
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600"
-    },
-    {
-        title: "Node.js Basics",
-        category: "Backend",
-        instructor: "Alex Brown",
-        progress: 40,
-        completedModules: 6,
-        totalModules: 15,
-        status: "In Progress",
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600"
-    },
-    {
-        title: "HTML & CSS Mastery",
-        category: "Frontend",
-        instructor: "Sarah Wilson",
-        progress: 100,
-        completedModules: 22,
-        totalModules: 22,
-        status: "Completed",
-        image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600"
-    },
-    {
-        title: "Python for Beginners",
-        category: "Programming",
-        instructor: "David Miller",
-        progress: 10,
-        completedModules: 2,
-        totalModules: 20,
-        status: "Not Started",
-        image: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=600"
-    },
-    {
-        title: "UI/UX Design",
-        category: "Design",
-        instructor: "Emily Clark",
-        progress: 55,
-        completedModules: 11,
-        totalModules: 20,
-        status: "In Progress",
-        image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=600"
-    }
-];
-
-
-
+// Select the container where cards will be displayed
 const courseGrid = document.querySelector(".courses-grid");
 
+// Store all courses
+const courses = [];
 
+// Fetch data from Firestore
+async function getCourses() {
+    try {
+        const querySnapshot = await getDocs(collection(db, "courses"));
 
+        querySnapshot.forEach((doc) => {
+            courses.push({
+                id: doc.id,
+                ...doc.data()
+            });
+        });
+
+        console.log(courses);
+
+        displayCourses(courses);
+
+    } catch (error) {
+        console.error("Error fetching courses:", error);
+    }
+}
+
+// Display all course cards
 function displayCourses(courseList) {
 
     courseGrid.innerHTML = "";
@@ -77,71 +37,67 @@ function displayCourses(courseList) {
 
         let statusClass = "";
 
-        if(course.status === "Completed")
+        if (course.status === "Completed") {
             statusClass = "completed";
-
-        else if(course.status === "In Progress")
+        } else if (course.status === "In Progress") {
             statusClass = "in-progress";
-
-        else
+        } else {
             statusClass = "not-started";
-
+        }
 
         const card = document.createElement("article");
 
-        card.className = "course-card";
+        card.classList.add("course-card");
 
         card.innerHTML = `
-
-        <div class="course-image">
-            <img src="${course.image}" alt="${course.title}">
-        </div>
-
-        <div class="course-content">
-
-            <span class="course-category">
-                ${course.category}
-            </span>
-
-            <h2>${course.title}</h2>
-
-            <p class="instructor">
-                Instructor : ${course.instructor}
-            </p>
-
-            <div class="progress-section">
-
-                <div class="progress-info">
-                    <span>Progress</span>
-                    <span>${course.progress}%</span>
-                </div>
-
-                <div class="progress-bar">
-                    <div class="progress-fill"
-                        style="width:${course.progress}%">
-                    </div>
-                </div>
-
+            <div class="course-image">
+                <img src="${course.image}" alt="${course.title}">
             </div>
 
-            <p class="modules">
-                ${course.completedModules} / ${course.totalModules} Modules
-            </p>
+            <div class="course-content">
 
-            <div class="course-footer">
-
-                <span class="status ${statusClass}">
-                    ${course.status}
+                <span class="course-category">
+                    ${course.category}
                 </span>
 
-                <button>
-                    Continue
-                </button>
+                <h3>${course.title}</h3>
+
+                <p class="instructor">
+                    👨‍🏫 ${course.instructor}
+                </p>
+
+                <div class="progress-section">
+
+                    <div class="progress-info">
+                        <span>Progress</span>
+                        <span>${course.progress}%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                             style="width:${course.progress}%">
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="modules">
+                    📚 ${course.completedModules} / ${course.totalModules} Modules Completed
+                </p>
+
+                <div class="course-footer">
+
+                    <span class="status ${statusClass}">
+                        ${course.status}
+                    </span>
+
+                    <span class="progress-percent">
+                        ${course.progress}% Complete
+                    </span>
+
+                </div>
 
             </div>
-
-        </div>
-
         `;
 
         courseGrid.appendChild(card);
@@ -150,7 +106,54 @@ function displayCourses(courseList) {
 
 }
 
+// Fetch courses when page loads
+getCourses();
 
 
+const searchInput = document.querySelector("#searchInput");
+const filterButtons = document.querySelectorAll(".filter-btn");
 
-displayCourses(courses);
+let selectedFilter = "All";
+
+function filterCourses() {
+
+    const searchText = searchInput.value.toLowerCase();
+
+    const filteredCourses = courses.filter(course => {
+
+        const matchesSearch =
+            course.title.toLowerCase().includes(searchText) ||
+            course.category.toLowerCase().includes(searchText) ||
+            course.instructor.toLowerCase().includes(searchText);
+
+        const matchesFilter =
+            selectedFilter === "All" ||
+            course.status === selectedFilter;
+
+        return matchesSearch && matchesFilter;
+
+    });
+
+    displayCourses(filteredCourses);
+
+}
+
+searchInput.addEventListener("input", filterCourses);
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        selectedFilter = button.dataset.filter;
+
+        filterCourses();
+
+    });
+
+});

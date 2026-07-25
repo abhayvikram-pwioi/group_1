@@ -113,60 +113,60 @@ body{
 
 }
 
-/* ==========================
-   FILTERS
-========================== */
-
-.course-filters{
-
+.course-controls{
     display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:30px 0;
     flex-wrap:wrap;
-    gap:15px;
-    margin-bottom:40px;
-
+    gap:20px;
 }
 
-.course-filters button{
+.search-box{
+    flex:1;
+    min-width:280px;
+}
 
-    padding:12px 22px;
-
+.search-box input{
+    width:100%;
+    padding:14px 18px;
+    border-radius:10px;
     border:none;
+    outline:none;
+    font-size:16px;
+}
 
-    border-radius:50px;
+.filter-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    
+}
 
-    background:#191922;
-
-    color:white;
-
+.filter-btn{
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
     cursor:pointer;
-
     transition:.3s;
-
+    background-color:#FFD43B;
+    font-weight:bolder ;
 }
 
-.course-filters button:hover{
-
-    background:linear-gradient(135deg,var(--pink),var(--violet));
-
-    transform:translateY(-2px);
-
+.filter-btn.active{
+    transform:scale(1.05);
 }
 
-.course-filters .active{
-
-    background:linear-gradient(135deg,var(--pink),var(--violet));
-
-}
 
 /* ==========================
    GRID
 ========================== */
-
 .courses-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,300px));
-    justify-content:center;
-    gap:22px;
+    grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+    gap:25px;
+    align-items:start;
+    justify-content:start;
 }
 
 /* ==========================

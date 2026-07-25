@@ -1,5 +1,12 @@
 {
   "dependencies": {
     "firebase": "^12.16.0"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.16.4"
+  },
+  "scripts": {
+    "start": "parcel courses.html"
   }
 }
