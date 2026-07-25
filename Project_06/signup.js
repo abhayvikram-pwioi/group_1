@@ -1,6 +1,9 @@
 import { auth } from "./firebase.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { showToast } from "./toast.js";
+import { db } from "./firebase.js";
+
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const signupForm = document.getElementById("signupForm");
 const fullName = document.getElementById("fullName");
@@ -46,12 +49,55 @@ signupForm.addEventListener("submit", async (e) => {
         signupBtn.disabled = true;
 
         const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPassword);
+        const user = userCredential.user;
+
+        await setDoc(doc(db, "studentData", user.uid), {
+
+            profile: {
+
+                fullName: userName,
+
+                email: userEmail,
+
+                phone: userPhone,
+
+                semester: 3,
+
+                profilePic: "https://images.pexels.com/photos/32703420/pexels-photo-32703420.jpeg"
+
+            },
+
+            dashboard: {
+
+                coursesEnrolled: 0,
+
+                completedCourses: 0,
+
+                pendingModules: 0,
+
+                averageProgress: 0
+
+            },
+
+            myCourses: [],
+
+            upcomingTasks: [],
+
+            recentActivity: [],
+
+            settings: {
+
+                theme: "dark"
+
+            }
+
+        });
         showToast("Account Created Successfully", "success");
 
         setTimeout(() => {
             window.location.href = "login.html";
         }, 2000);
-        
+
     } catch (error) {
 
         signupBtn.innerText = "Create Account";
