@@ -137,7 +137,7 @@ export function renderRecentActivity(activities) {
     No recent activity
 </li>`;
 
-return;
+        return;
 
     }
 
@@ -183,8 +183,72 @@ return;
 
 // <------- COURSES ---------->
 
-export function renderCourses(courses){
+export function renderCourses(courses) {
 
-    console.log(courses);
+    const coursesGrid = document.getElementById("coursesGrid");
+
+    coursesGrid.innerHTML = "";
+
+    if (courses.length === 0) {
+
+        coursesGrid.innerHTML = `
+            <div class="empty-courses">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>No Courses Enrolled</h3>
+                <p>You haven't enrolled in any course yet.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    courses.forEach(course => {
+
+        coursesGrid.innerHTML += `
+            <article class="course-card">
+
+                <img
+                    src="${course.image}"
+                    alt="${course.title}"
+                    class="course-image"
+                >
+
+                <div class="course-content">
+
+                    <h3>${course.title}</h3>
+
+                    <p class="instructor">
+                        ${course.instructor}
+                    </p>
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            style="width:${course.progress}%">
+                        </div>
+
+                    </div>
+
+                    <div class="course-footer">
+
+                        <span>${course.progress}% Complete</span>
+
+                        <span class="grade grade-${course.grade}">
+                            ${course.grade}
+                        </span>
+
+                    </div>
+
+                    <button class="continue-btn">
+                        Continue Learning
+                    </button>
+
+                </div>
+
+            </article>
+        `;
+
+    });
 
 }
