@@ -179,3 +179,12 @@ return;
 
 }
 
+
+
+// <------- COURSES ---------->
+
+export function renderCourses(courses){
+
+    console.log(courses);
+
+}
