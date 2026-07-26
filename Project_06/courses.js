@@ -11,6 +11,82 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     const student = await getStudentData(user.uid);
+
     renderCourses(student.myCourses);
+
 });
 
+let allCourses = [];
+let currentSearch = "";
+let currentFilter = "All";
+
+
+function updateCourses() {
+
+    console.log("All Courses:", allCourses);
+console.log("Search:", currentSearch);
+console.log("Filter:", currentFilter);
+
+
+    let filtered = [...allCourses];
+
+    if (currentSearch) {
+
+        filtered = filtered.filter(course =>
+            course.title.toLowerCase().includes(currentSearch)
+        );
+
+    }
+
+    if (currentFilter === "Completed") {
+
+        filtered = filtered.filter(course => course.progress === 100);
+
+    }
+
+    else if (currentFilter === "In Progress") {
+
+        filtered = filtered.filter(course =>
+            course.progress > 0 &&
+            course.progress < 100
+        );
+
+    }
+
+    else if (currentFilter === "Not Started") {
+
+        filtered = filtered.filter(course => course.progress === 0);
+
+    }
+
+console.log("Filtered:", filtered);
+    renderCourses(filtered);
+
+}
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", () => {
+
+    currentSearch = searchInput.value.toLowerCase();
+
+    updateCourses();
+
+});
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        currentFilter = button.dataset.filter;
+
+        updateCourses();
+
+    });
+
+});
