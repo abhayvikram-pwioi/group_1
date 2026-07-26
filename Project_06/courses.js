@@ -14,6 +14,16 @@ onAuthStateChanged(auth, async (user) => {
 
     renderCourses(student.myCourses);
 
+    document.getElementById("navStudentName").textContent = student.profile.fullName;
+
+    document.getElementById("navStudentEmail").textContent = student.profile.email;
+
+    document.getElementById("navAvatar").src = student.profile.profilePic;
+
+    allCourses = student.myCourses || [];
+
+    updateCourses();
+
 });
 
 let allCourses = [];
