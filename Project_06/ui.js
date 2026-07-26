@@ -208,7 +208,7 @@ export function renderCourses(courses) {
             <article class="course-card">
 
                 <img
-                    src="${course.image}"
+                    src="${course.thumbnail}"
                     alt="${course.title}"
                     class="course-image"
                 >
