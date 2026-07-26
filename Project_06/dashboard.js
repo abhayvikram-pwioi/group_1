@@ -42,14 +42,25 @@ onAuthStateChanged(auth, async (user) => {
 const logoutBtn = document.getElementById("sidebarLogout");
 
 logoutBtn.addEventListener("click", async (e) => {
+
     e.preventDefault();
+
+    const confirmLogout = confirm("Are you sure you want to logout?");
+
+    if (!confirmLogout) return;
+
     try {
+
         await signOut(auth);
-        window.location.href = "login.html";
+
+        localStorage.clear();
+        sessionStorage.clear();
+
+        window.location.replace("login.html");
 
     } catch (error) {
 
-        alert(error.message);
+        console.error(error);
 
     }
 
