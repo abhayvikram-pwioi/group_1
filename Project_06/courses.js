@@ -6,8 +6,9 @@ import { signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth
 onAuthStateChanged(auth, async (user) => {
 
     if (!user) {
-        window.location.href = "login.html";
-        return;
+
+        window.location.replace("login.html");
+
     }
 
     const student = await getStudentData(user.uid);
@@ -34,8 +35,8 @@ let currentFilter = "All";
 function updateCourses() {
 
     console.log("All Courses:", allCourses);
-console.log("Search:", currentSearch);
-console.log("Filter:", currentFilter);
+    console.log("Search:", currentSearch);
+    console.log("Filter:", currentFilter);
 
 
     let filtered = [...allCourses];
@@ -69,7 +70,7 @@ console.log("Filter:", currentFilter);
 
     }
 
-console.log("Filtered:", filtered);
+    console.log("Filtered:", filtered);
     renderCourses(filtered);
 
 }

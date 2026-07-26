@@ -11,8 +11,9 @@ let currentStudent = null;
 onAuthStateChanged(auth, async (user) => {
 
   if (!user) {
-    window.location.href = "login.html";
-    return;
+
+    window.location.replace("login.html");
+
   }
 
   currentUser = user;
@@ -23,7 +24,7 @@ onAuthStateChanged(auth, async (user) => {
 
     const studentId = document.getElementById("studentId");
     studentId.textContent = currentUser.uid.slice(0, 8);
-    
+
     renderDashboard(currentStudent);
 
   }
@@ -43,25 +44,25 @@ const logoutBtn = document.getElementById("sidebarLogout");
 
 logoutBtn.addEventListener("click", async (e) => {
 
-    e.preventDefault();
+  e.preventDefault();
 
-    const confirmLogout = confirm("Are you sure you want to logout?");
+  const confirmLogout = confirm("Are you sure you want to logout?");
 
-    if (!confirmLogout) return;
+  if (!confirmLogout) return;
 
-    try {
+  try {
 
-        await signOut(auth);
+    await signOut(auth);
 
-        localStorage.clear();
-        sessionStorage.clear();
+    localStorage.clear();
+    sessionStorage.clear();
 
-        window.location.replace("login.html");
+    window.location.replace("login.html");
 
-    } catch (error) {
+  } catch (error) {
 
-        console.error(error);
+    console.error(error);
 
-    }
+  }
 
 });
