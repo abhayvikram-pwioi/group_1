@@ -1,6 +1,6 @@
 import { auth } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-import { getStudentData } from "./firestore.js";
+import { getStudentData, addCourse } from "./firestore.js";
 import { renderCourses } from "./ui.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 onAuthStateChanged(auth, async (user) => {
@@ -31,6 +31,11 @@ let allCourses = [];
 let currentSearch = "";
 let currentFilter = "All";
 
+const modal = document.getElementById("courseModal");
+const openModal = document.getElementById("openModal");
+const closeModal = document.getElementById("closeModal");
+const courseForm = document.getElementById("courseForm");
+
 
 function updateCourses() {
 
@@ -43,10 +48,15 @@ function updateCourses() {
 
     if (currentSearch) {
 
-        filtered = filtered.filter(course =>
-            course.title.toLowerCase().includes(currentSearch)
-        );
+       filtered = filtered.filter(course =>
 
+    course.title.toLowerCase().includes(currentSearch) ||
+
+    course.instructor.toLowerCase().includes(currentSearch) ||
+
+    (course.category || "").toLowerCase().includes(currentSearch)
+
+);
     }
 
     if (currentFilter === "Completed") {
@@ -124,6 +134,110 @@ logoutBtn.addEventListener("click", async (e) => {
     } catch (error) {
 
         console.error(error);
+
+    }
+
+});
+courseForm.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const completedModules = Number(document.getElementById("completedModules").value);
+
+    const totalModules = Number(document.getElementById("totalModules").value);
+
+    if (completedModules > totalModules) {
+
+        alert("Completed Modules cannot exceed Total Modules.");
+
+        return;
+
+    }
+
+    const title = document.getElementById("title").value.trim();
+    const category = document.getElementById("category").value.trim();
+    const instructor = document.getElementById("instructor").value.trim();
+    const thumbnail = document.getElementById("image").value.trim();
+
+    if (!title || !category || !instructor || !thumbnail) {
+
+    alert("Please fill all fields.");
+
+    return;
+
+}
+
+    const progress = totalModules === 0
+        ? 0
+        : Math.round((completedModules / totalModules) * 100);
+
+    const newCourse = {
+
+    id: crypto.randomUUID(),
+
+    title: document.getElementById("title").value.trim(),
+
+    category: document.getElementById("category").value.trim(),
+
+    instructor: document.getElementById("instructor").value.trim(),
+
+    thumbnail: document.getElementById("image").value.trim(),
+
+    completedModules,
+
+    totalModules,
+
+    progress,
+
+    grade: "NA"
+
+};
+
+    try {
+
+        await addCourse(auth.currentUser.uid, newCourse);
+
+        const student = await getStudentData(auth.currentUser.uid);
+
+        allCourses = student.myCourses || [];
+
+        updateCourses();
+
+        courseForm.reset();
+
+        modal.style.display = "none";
+
+        alert("Course Added Successfully!");
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert("Failed to Add Course");
+
+    }
+
+});
+
+openModal.addEventListener("click", () => {
+
+    modal.style.display = "flex";
+
+});
+
+closeModal.addEventListener("click", () => {
+
+    modal.style.display = "none";
+
+});
+
+window.addEventListener("click", (e) => {
+
+    if (e.target === modal) {
+
+        modal.style.display = "none";
 
     }
 

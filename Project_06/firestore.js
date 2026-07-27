@@ -1,7 +1,8 @@
 import {
   doc,
   getDoc,
-  updateDoc
+  updateDoc,
+  arrayUnion
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 import { db } from "./firebase.js";
@@ -77,3 +78,28 @@ export async function updateSettings(uid, settingsData) {
     }
 
 }
+
+export async function addCourse(uid, course) {
+
+    try {
+
+        const studentRef = doc(db, "studentData", uid);
+
+        await updateDoc(studentRef, {
+
+            myCourses: arrayUnion(course)
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error("Add Course Error:", error);
+
+        throw error;
+
+    }
+
+}
+

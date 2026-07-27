@@ -68,6 +68,10 @@
         </button>
 
     </div>
+    <!-- Add Course button -->
+     <button id="openModal" class="add-course-btn">
+        <i class="fa-solid fa-plus"></i> Add Course
+    </button>
 
 </section>
 
@@ -75,6 +79,70 @@
 
 
     </section>
+</div>
+
+<div id="courseModal" class="modal">
+
+    <div class="modal-content">
+
+        <span id="closeModal" class="close">&times;</span>
+
+        <h2>Add New Course</h2>
+
+        <form id="courseForm">
+
+            <input
+                type="text"
+                id="title"
+                placeholder="Course Title"
+                required
+            >
+
+            <input
+                type="text"
+                id="category"
+                placeholder="Category"
+                required
+            >
+
+            <input
+                type="text"
+                id="instructor"
+                placeholder="Instructor Name"
+                required
+            >
+
+            <input
+                type="url"
+                id="image"
+                placeholder="Thumbnail Image URL"
+                required
+            >
+
+            <input
+                type="number"
+                id="completedModules"
+                placeholder="Completed Modules"
+                min="0"
+                required
+            >
+
+            <input
+                type="number"
+                id="totalModules"
+                placeholder="Total Modules"
+                min="1"
+                required
+            >
+
+            <button type="submit">
+                Add Course
+            </button>
+
+        </form>
+
+    </div>
+
 </div>
 
 </main>
