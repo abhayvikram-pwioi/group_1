@@ -48,15 +48,15 @@ function updateCourses() {
 
     if (currentSearch) {
 
-       filtered = filtered.filter(course =>
+        filtered = filtered.filter(course =>
 
-    course.title.toLowerCase().includes(currentSearch) ||
+            course.title.toLowerCase().includes(currentSearch) ||
 
-    course.instructor.toLowerCase().includes(currentSearch) ||
+            course.instructor.toLowerCase().includes(currentSearch) ||
 
-    (course.category || "").toLowerCase().includes(currentSearch)
+            (course.category || "").toLowerCase().includes(currentSearch)
 
-);
+        );
     }
 
     if (currentFilter === "Completed") {
@@ -160,13 +160,21 @@ courseForm.addEventListener("submit", async (e) => {
     const instructor = document.getElementById("instructor").value.trim();
     const thumbnail = document.getElementById("image").value.trim();
 
-    if (!title || !category || !instructor || !thumbnail) {
+    const grade = document.getElementById("grade").value;
+    const attendance = Number(document.getElementById("attendance").value);
 
-    alert("Please fill all fields.");
+    if (attendance < 0 || attendance > 100) {
+        alert("Attendance must be between 0 and 100.");
+        return;
+    }
 
-    return;
+    if (!title || !category || !instructor || !thumbnail || !grade || !attendance) {
 
-}
+        alert("Please fill all fields.");
+
+        return;
+
+    }
 
     const progress = totalModules === 0
         ? 0
@@ -174,81 +182,83 @@ courseForm.addEventListener("submit", async (e) => {
 
     const newCourse = {
 
-    id: editingCourseId || crypto.randomUUID(),
+        id: editingCourseId || crypto.randomUUID(),
 
-    title: document.getElementById("title").value.trim(),
+        title: document.getElementById("title").value.trim(),
 
-    category: document.getElementById("category").value.trim(),
+        category: document.getElementById("category").value.trim(),
 
-    instructor: document.getElementById("instructor").value.trim(),
+        instructor: document.getElementById("instructor").value.trim(),
 
-    thumbnail: document.getElementById("image").value.trim(),
+        thumbnail: document.getElementById("image").value.trim(),
 
-    completedModules,
+        completedModules,
 
-    totalModules,
+        totalModules,
 
-    progress,
+        progress,
 
-    grade: "NA"
+        grade,
+        
+        attendance
 
-};
+    };
 
-  try {
+    try {
 
-    if (editingCourseId) {
+        if (editingCourseId) {
 
-        const updatedCourses = allCourses.map(course => {
+            const updatedCourses = allCourses.map(course => {
 
-            if (course.id === editingCourseId) {
+                if (course.id === editingCourseId) {
 
-                return newCourse;
+                    return newCourse;
 
-            }
+                }
 
-            return course;
+                return course;
 
-        });
+            });
 
-        await updateCourse(auth.currentUser.uid, updatedCourses);
+            await updateCourse(auth.currentUser.uid, updatedCourses);
 
-        allCourses = updatedCourses;
+            allCourses = updatedCourses;
 
-        editingCourseId = null;
+            editingCourseId = null;
 
-        courseForm.querySelector("button[type='submit']").textContent = "Add Course";
+            courseForm.querySelector("button[type='submit']").textContent = "Add Course";
 
-        alert("Course Updated Successfully!");
+            alert("Course Updated Successfully!");
+
+        }
+
+        else {
+
+            await addCourse(auth.currentUser.uid, newCourse);
+
+            const student = await getStudentData(auth.currentUser.uid);
+
+            allCourses = student.myCourses || [];
+
+            alert("Course Added Successfully!");
+
+        }
+
+        updateCourses();
+
+        courseForm.reset();
+
+        modal.style.display = "none";
 
     }
 
-    else {
+    catch (error) {
 
-        await addCourse(auth.currentUser.uid, newCourse);
+        console.error(error);
 
-        const student = await getStudentData(auth.currentUser.uid);
-
-        allCourses = student.myCourses || [];
-
-        alert("Course Added Successfully!");
+        alert("Operation Failed!");
 
     }
-
-    updateCourses();
-
-    courseForm.reset();
-
-    modal.style.display = "none";
-
-}
-
-catch (error) {
-
-    console.error(error);
-
-    alert("Operation Failed!");
-
-}
 
 });
 
@@ -276,33 +286,33 @@ window.addEventListener("click", (e) => {
 
 let editingCourseId = null;
 
-document.addEventListener("click", async(e) => {
+document.addEventListener("click", async (e) => {
 
     if (e.target.closest(".edit-btn")) {
 
         const id = e.target.closest(".edit-btn").dataset.id;
 
-// Find the selected course
-const course = allCourses.find(course => course.id === id);
+        // Find the selected course
+        const course = allCourses.find(course => course.id === id);
 
-if (!course) return;
+        if (!course) return;
 
-// Store the course id
-editingCourseId = id;
+        // Store the course id
+        editingCourseId = id;
 
-// Fill the form
-document.getElementById("title").value = course.title;
-document.getElementById("category").value = course.category || "";
-document.getElementById("instructor").value = course.instructor;
-document.getElementById("image").value = course.thumbnail;
-document.getElementById("completedModules").value = course.completedModules;
-document.getElementById("totalModules").value = course.totalModules;
+        // Fill the form
+        document.getElementById("title").value = course.title;
+        document.getElementById("category").value = course.category || "";
+        document.getElementById("instructor").value = course.instructor;
+        document.getElementById("image").value = course.thumbnail;
+        document.getElementById("completedModules").value = course.completedModules;
+        document.getElementById("totalModules").value = course.totalModules;
 
-// Change button text
-courseForm.querySelector("button[type='submit']").textContent = "Update Course";
+        // Change button text
+        courseForm.querySelector("button[type='submit']").textContent = "Update Course";
 
-// Open Modal
-modal.style.display = "flex";
+        // Open Modal
+        modal.style.display = "flex";
 
     }
 
@@ -318,21 +328,21 @@ modal.style.display = "flex";
 
         try {
 
-           await deleteCourse(auth.currentUser.uid, updatedCourses);
+            await deleteCourse(auth.currentUser.uid, updatedCourses);
 
-           allCourses = updatedCourses;
+            allCourses = updatedCourses;
 
-           updateCourses();
+            updateCourses();
 
-}
+        }
 
-catch (error) {
+        catch (error) {
 
-    console.error(error);
+            console.error(error);
 
-    alert("Failed to delete course.");
+            alert("Failed to delete course.");
 
-}
+        }
 
     }
 
