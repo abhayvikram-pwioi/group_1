@@ -241,3 +241,35 @@ showStatistics();
 showSkills();
 showList("activity-list", studentData.recentActivity);
 showList("module-list", studentData.pendingModules);
+
+
+
+
+import { auth } from "./firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { getStudentData } from "./firestore.js";
+
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+    window.location.replace = "login.html";
+  }
+
+  try {
+
+    const student = await getStudentData(user.uid);
+    const profile = student.profile;
+
+    document.getElementById("navStudentName").textContent = profile.fullName;
+
+    document.getElementById("navStudentEmail").textContent = profile.email;
+
+    document.getElementById("navAvatar").src = student.profile.profilePic;
+
+  } catch (error) {
+
+    console.error(error);
+
+  }
+
+});
