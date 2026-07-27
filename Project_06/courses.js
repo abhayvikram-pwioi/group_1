@@ -138,6 +138,7 @@ logoutBtn.addEventListener("click", async (e) => {
     }
 
 });
+
 courseForm.addEventListener("submit", async (e) => {
 
     e.preventDefault();

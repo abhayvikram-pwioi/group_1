@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,147 +8,127 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <title>Courses</title>
 </head>
+
 <body>
     <main class="courses-page">
         <header class="top-nav">
-    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open sidebar">☰</button>
-    <h1 class="logo">EduTrack</h1>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open sidebar">☰</button>
+            <h1 class="logo">EduTrack</h1>
 
-    <div class="profile">
-      <img class="profile-pic" id="navAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='60' fill='%237C5CFF'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='white' font-family='Arial' font-size='34' font-weight='700'%3EST%3C/text%3E%3C/svg%3E" alt="Student avatar">
-      <div>
-        <p class="student-name" id="navStudentName">Student</p>
-        <p class="student-email" id="navStudentEmail">Loading...</p>
-      </div>
-    </div>
-  </header>
+            <div class="profile">
+                <img class="profile-pic" id="navAvatar"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='60' fill='%237C5CFF'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='white' font-family='Arial' font-size='34' font-weight='700'%3EST%3C/text%3E%3C/svg%3E"
+                    alt="Student avatar">
+                <div>
+                    <p class="student-name" id="navStudentName">Student</p>
+                    <p class="student-email" id="navStudentEmail">Loading...</p>
+                </div>
+            </div>
+        </header>
 
-  <aside class="sidebar" id="sidebar">
-    <nav class="sidebar-nav">
-      <ul class="nav-menu">
-        <li><a href="dashboard.html" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
-        <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
-        <li><a href="ProfilePage.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
-      </ul>
-      <ul class="nav-logout">
-        <li><a href="#" id="sidebarLogout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
-      </ul>
-    </nav>
-  </aside>
-   
-   
-<div class="main-content">
-
-<section class="course-controls">
-
-    <div class="search-box">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔍 Search courses..."
-        >
-    </div>
-    
-
-    <div class="filter-buttons">
-
-        <button class="filter-btn active" data-filter="All">
-            All
-        </button>
-
-        <button class="filter-btn" data-filter="Completed">
-            Completed
-        </button>
-
-        <button class="filter-btn" data-filter="In Progress">
-            In Progress
-        </button>
-
-        <button class="filter-btn" data-filter="Not Started">
-            Not Started
-        </button>
-
-    </div>
-    <!-- Add Course button -->
-     <button id="openModal" class="add-course-btn">
-        <i class="fa-solid fa-plus"></i> Add Course
-    </button>
-
-</section>
-
-    <section class="courses-grid" id="coursesGrid">
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li><a href="dashboard.html" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                    </li>
+                    <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
+                    <li><a href="ProfilePage.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                </ul>
+                <ul class="nav-logout">
+                    <li><a href="#" id="sidebarLogout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
 
 
-    </section>
-</div>
+        <div class="main-content">
 
-<div id="courseModal" class="modal">
+            <section class="course-controls">
 
-    <div class="modal-content">
-
-        <span id="closeModal" class="close">&times;</span>
-
-        <h2>Add New Course</h2>
-
-        <form id="courseForm">
-
-            <input
-                type="text"
-                id="title"
-                placeholder="Course Title"
-                required
-            >
-
-            <input
-                type="text"
-                id="category"
-                placeholder="Category"
-                required
-            >
-
-            <input
-                type="text"
-                id="instructor"
-                placeholder="Instructor Name"
-                required
-            >
-
-            <input
-                type="url"
-                id="image"
-                placeholder="Thumbnail Image URL"
-                required
-            >
-
-            <input
-                type="number"
-                id="completedModules"
-                placeholder="Completed Modules"
-                min="0"
-                required
-            >
-
-            <input
-                type="number"
-                id="totalModules"
-                placeholder="Total Modules"
-                min="1"
-                required
-            >
-
-            <button type="submit">
-                Add Course
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-</main>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 Search courses...">
+                </div>
 
 
-<script type="module" src="courses.js"></script>
+                <div class="filter-buttons">
+
+                    <button class="filter-btn active" data-filter="All">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="Completed">
+                        Completed
+                    </button>
+
+                    <button class="filter-btn" data-filter="In Progress">
+                        In Progress
+                    </button>
+
+                    <button class="filter-btn" data-filter="Not Started">
+                        Not Started
+                    </button>
+
+                </div>
+                <!-- Add Course button -->
+                <button id="openModal" class="add-course-btn">
+                    <i class="fa-solid fa-plus"></i> Add Course
+                </button>
+
+            </section>
+
+            <section class="courses-grid" id="coursesGrid">
+
+
+            </section>
+        </div>
+
+        <div id="courseModal" class="modal">
+
+            <div class="modal-content">
+
+                <span id="closeModal" class="close">&times;</span>
+
+                <h2>Add New Course</h2>
+
+                <form id="courseForm">
+
+                    <input type="text" id="title" placeholder="Course Title" required>
+
+                    <input type="text" id="category" placeholder="Category" required>
+
+                    <input type="text" id="instructor" placeholder="Instructor Name" required>
+
+                    <input type="url" id="image" placeholder="Thumbnail Image URL" required>
+
+                    <input type="number" id="completedModules" placeholder="Completed Modules" min="0" required>
+
+                    <input type="number" id="totalModules" placeholder="Total Modules" min="1" required>
+
+                    <select id="grade" required>
+                        <option value="">Select Grade</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="F">F</option>
+                    </select>
+
+                    <input type="number" id="attendance" placeholder="Attendance (%)" min="0" max="100" required>
+
+                    <button type="submit">
+                        Add Course
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script type="module" src="courses.js"></script>
 </body>
+
 </html>
