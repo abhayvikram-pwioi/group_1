@@ -2,7 +2,7 @@ import { auth } from "./firebase.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { showToast } from "./toast.js";
 import { db } from "./firebase.js";
-
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const signupForm = document.getElementById("signupForm");
@@ -12,6 +12,14 @@ const phone = document.getElementById("phone");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 const terms = document.getElementById("terms");
+
+onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+        window.location.replace("dashboard.html");
+    }
+
+});
 
 const signupBtn = document.getElementById("signupBtn");
 

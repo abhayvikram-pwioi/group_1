@@ -1,5 +1,5 @@
 import { auth } from "./firebase.js";
-
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { showToast } from "./toast.js";
 
@@ -7,6 +7,14 @@ const loginForm = document.getElementById("loginForm");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const remember = document.getElementById("remember");
+
+onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+        window.location.replace("dashboard.html");
+    }
+
+});
 
 loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
