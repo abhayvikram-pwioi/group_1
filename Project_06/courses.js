@@ -199,7 +199,7 @@ courseForm.addEventListener("submit", async (e) => {
         progress,
 
         grade,
-        
+
         attendance
 
     };
@@ -247,6 +247,9 @@ courseForm.addEventListener("submit", async (e) => {
         updateCourses();
 
         courseForm.reset();
+        
+        document.getElementById("grade").value = "NA";
+        document.getElementById("attendance").value = "";
 
         modal.style.display = "none";
 
@@ -307,6 +310,8 @@ document.addEventListener("click", async (e) => {
         document.getElementById("image").value = course.thumbnail;
         document.getElementById("completedModules").value = course.completedModules;
         document.getElementById("totalModules").value = course.totalModules;
+        document.getElementById("grade").value = course.grade || "NA";
+        document.getElementById("attendance").value = course.attendance || 0;
 
         // Change button text
         courseForm.querySelector("button[type='submit']").textContent = "Update Course";
