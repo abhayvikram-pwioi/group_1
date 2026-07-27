@@ -1,6 +1,6 @@
 import { auth } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-import { getStudentData, addCourse } from "./firestore.js";
+import { getStudentData, addCourse, deleteCourse, updateCourse } from "./firestore.js";
 import { renderCourses } from "./ui.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 onAuthStateChanged(auth, async (user) => {
@@ -173,7 +173,7 @@ courseForm.addEventListener("submit", async (e) => {
 
     const newCourse = {
 
-    id: crypto.randomUUID(),
+    id: editingCourseId || crypto.randomUUID(),
 
     title: document.getElementById("title").value.trim(),
 
@@ -193,7 +193,35 @@ courseForm.addEventListener("submit", async (e) => {
 
 };
 
-    try {
+  try {
+
+    if (editingCourseId) {
+
+        const updatedCourses = allCourses.map(course => {
+
+            if (course.id === editingCourseId) {
+
+                return newCourse;
+
+            }
+
+            return course;
+
+        });
+
+        await updateCourse(auth.currentUser.uid, updatedCourses);
+
+        allCourses = updatedCourses;
+
+        editingCourseId = null;
+
+        courseForm.querySelector("button[type='submit']").textContent = "Add Course";
+
+        alert("Course Updated Successfully!");
+
+    }
+
+    else {
 
         await addCourse(auth.currentUser.uid, newCourse);
 
@@ -201,23 +229,25 @@ courseForm.addEventListener("submit", async (e) => {
 
         allCourses = student.myCourses || [];
 
-        updateCourses();
-
-        courseForm.reset();
-
-        modal.style.display = "none";
-
         alert("Course Added Successfully!");
 
     }
 
-    catch (error) {
+    updateCourses();
 
-        console.error(error);
+    courseForm.reset();
 
-        alert("Failed to Add Course");
+    modal.style.display = "none";
 
-    }
+}
+
+catch (error) {
+
+    console.error(error);
+
+    alert("Operation Failed!");
+
+}
 
 });
 
@@ -238,6 +268,70 @@ window.addEventListener("click", (e) => {
     if (e.target === modal) {
 
         modal.style.display = "none";
+
+    }
+
+});
+
+let editingCourseId = null;
+
+document.addEventListener("click", async(e) => {
+
+    if (e.target.closest(".edit-btn")) {
+
+        const id = e.target.closest(".edit-btn").dataset.id;
+
+// Find the selected course
+const course = allCourses.find(course => course.id === id);
+
+if (!course) return;
+
+// Store the course id
+editingCourseId = id;
+
+// Fill the form
+document.getElementById("title").value = course.title;
+document.getElementById("category").value = course.category || "";
+document.getElementById("instructor").value = course.instructor;
+document.getElementById("image").value = course.thumbnail;
+document.getElementById("completedModules").value = course.completedModules;
+document.getElementById("totalModules").value = course.totalModules;
+
+// Change button text
+courseForm.querySelector("button[type='submit']").textContent = "Update Course";
+
+// Open Modal
+modal.style.display = "flex";
+
+    }
+
+    if (e.target.closest(".delete-btn")) {
+
+        const id = e.target.closest(".delete-btn").dataset.id;
+
+        const confirmDelete = confirm("Delete this course?");
+
+        if (!confirmDelete) return;
+
+        const updatedCourses = allCourses.filter(course => course.id !== id);
+
+        try {
+
+           await deleteCourse(auth.currentUser.uid, updatedCourses);
+
+           allCourses = updatedCourses;
+
+           updateCourses();
+
+}
+
+catch (error) {
+
+    console.error(error);
+
+    alert("Failed to delete course.");
+
+}
 
     }
 

@@ -240,10 +240,19 @@ export function renderCourses(courses) {
 
                     </div>
 
-                    <button class="continue-btn">
-                        Continue Learning
-                    </button>
+                    <div class="course-actions">
 
+        <button class="edit-btn" data-id="${course.id}">
+        <i class="fa-solid fa-pen"></i>
+        Edit
+        </button>
+
+        <button class="delete-btn" data-id="${course.id}">
+        <i class="fa-solid fa-trash"></i>
+        Delete
+       </button>
+
+               </div>
                 </div>
 
             </article>

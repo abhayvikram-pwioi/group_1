@@ -637,7 +637,7 @@ ul{
    BUTTON
 ========================== */
 
-.course-btn{
+/* .course-btn{
 
     width:100%;
 
@@ -662,6 +662,63 @@ ul{
     transform:translateY(-2px);
 
     box-shadow:var(--shadow);
+
+} */
+
+.course-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:18px;
+
+}
+
+.edit-btn,
+.delete-btn{
+
+    flex:1;
+
+    padding:10px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.edit-btn{
+
+    background:var(--violet);
+
+    color:white;
+
+}
+
+.edit-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.delete-btn{
+
+    background:#ff4d4d;
+
+    color:white;
+
+}
+
+.delete-btn:hover{
+
+    transform:translateY(-2px);
 
 }
 

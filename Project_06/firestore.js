@@ -103,3 +103,51 @@ export async function addCourse(uid, course) {
 
 }
 
+export async function deleteCourse(uid, updatedCourses) {
+
+    try {
+
+        const studentRef = doc(db, "studentData", uid);
+
+        await updateDoc(studentRef, {
+
+            myCourses: updatedCourses
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error("Delete Course Error:", error);
+
+        throw error;
+
+    }
+
+}
+
+
+export async function updateCourse(uid, updatedCourses) {
+
+    try {
+
+        const studentRef = doc(db, "studentData", uid);
+
+        await updateDoc(studentRef, {
+
+            myCourses: updatedCourses
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        throw error;
+
+    }
+
+}
