@@ -1006,3 +1006,51 @@ ul {
     color: #9ca3af;
 
 }
+
+#grade,
+#attendance{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #2f2f45;
+    border-radius:12px;
+    background:#1a1a27;
+    color:#fff;
+    font-size:0.95rem;
+    outline:none;
+    transition:.3s ease;
+}
+
+#grade:focus,
+#attendance:focus{
+    border-color:#7c5cff;
+    box-shadow:0 0 0 4px rgba(124,92,255,.18);
+}
+
+#grade option{
+    background:#1a1a27;
+    color:#fff;
+}
+
+#courseForm input,
+#courseForm select{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #2f2f45;
+    border-radius:12px;
+    background:#1a1a27;
+    color:#fff;
+    font-size:.95rem;
+    outline:none;
+    transition:.3s ease;
+}
+
+#courseForm input:focus,
+#courseForm select:focus{
+    border-color:#7c5cff;
+    box-shadow:0 0 0 4px rgba(124,92,255,.18);
+}
+
+#courseForm select option{
+    background:#1a1a27;
+    color:#fff;
+}
