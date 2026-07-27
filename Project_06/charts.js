@@ -11,10 +11,8 @@ const attendanceCanvas = document.getElementById("attendanceChart");
 export function renderCharts(courses) {
 
     if (courses.length === 0) {
-
         showEmptyCharts();
         return;
-
     }
 
     const courseNames = courses.map(course => {
@@ -42,9 +40,7 @@ export function renderCharts(courses) {
     grades.forEach((grade) => {
 
         if (gradeCount[grade] !== undefined) {
-
             gradeCount[grade]++;
-
         }
     });
 
